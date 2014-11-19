@@ -752,6 +752,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) processAlbumResponseAndUpdateResultsTable:(id) responseAlbums
 {
+    // THIS POPULATES THE DATA MODEL OBJECT
+    
+    
     id albums = nil;
     
     if([responseAlbums isKindOfClass:[GnResponseAlbums class]])
@@ -857,8 +860,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
@@ -1097,6 +1100,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) musicIdStreamAlbumResult: (GnResponseAlbums*)result cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
+    // A RESULT WAS FOUND. processAlbumResponseAndUpdateResultsTable called
     [self.cancellableObjects removeObject:self.gnMusicIDStream];
 
     if(self.cancellableObjects.count==0)
@@ -1947,7 +1951,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) statusEvent: (GnLookupLocalStreamIngestStatus)status bundleId: (NSString*)bundleId cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
-    NSLog(@"status = %d", status);
+    NSLog(@"status = %ld", status);
 }
 
 #pragma mark - GnAudioVisualizerDelegate Methods
