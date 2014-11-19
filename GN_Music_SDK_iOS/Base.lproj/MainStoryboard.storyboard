@@ -50,7 +50,7 @@
                                     <constraint firstAttribute="height" constant="275" id="DON-m1-3Fz"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pw-PF-b3I">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pw-PF-b3I" userLabel="IDNOW">
                                 <rect key="frame" x="230" y="446" width="140" height="140"/>
                                 <state key="normal" image="IDNow_iPad">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,7 +81,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.24056887635822166" green="0.63302430883424421" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottomMargin" secondItem="P5N-m7-9U4" secondAttribute="bottom" constant="94" id="Bl3-Dy-Mow"/>
                                     <constraint firstItem="P5N-m7-9U4" firstAttribute="top" secondItem="r86-AQ-UdS" secondAttribute="topMargin" constant="17" id="GDC-ST-NYl"/>
@@ -91,8 +91,8 @@
                                 </constraints>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igl-3p-5U5">
-                                <rect key="frame" x="350" y="700" width="150" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igl-3p-5U5">
+                                <rect key="frame" x="494" y="550" width="86" height="30"/>
                                 <color key="backgroundColor" red="0.22515914710000001" green="0.99134206830000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="FIND DRINK">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -120,8 +120,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="igl-3p-5U5" secondAttribute="trailing" constant="20" id="04f-ih-Prm"/>
                             <constraint firstItem="r86-AQ-UdS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1Em-Bc-cAH"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" id="1Wi-GV-19s"/>
+                            <constraint firstAttribute="bottom" secondItem="igl-3p-5U5" secondAttribute="bottom" constant="20" id="77V-DB-zb1"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="top" secondItem="AC3-vN-C0D" secondAttribute="bottom" constant="10" id="A1R-ek-eBY"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="trailing" secondItem="r86-AQ-UdS" secondAttribute="trailing" id="H53-qD-sbp"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RQs-km-3q6"/>

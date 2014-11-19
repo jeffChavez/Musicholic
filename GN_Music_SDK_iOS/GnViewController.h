@@ -8,18 +8,6 @@
 #import <UIKit/UIKit.h>
 
 
-typedef NS_ENUM(NSInteger, Mode)
-{
-    UnknownMode=-1,
-    AdditionalContentMode
-};
-
-#define kHeightOfAdditionalMetadataCell 260
-#define kHeightOfAdditionalMetadataCellPad 360
-
-#define kHeightOfRowPad 140
-#define kHeightOfRow 100
-
 @interface GnViewController : UIViewController<UINavigationBarDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;

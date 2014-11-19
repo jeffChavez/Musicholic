@@ -23,31 +23,6 @@
 #import "NetworkController.h"
 
 
-#define BUTTONWIDTH 150
-#define BUTTONHEIGHT 50
-
-#define ALBUMTITLELABELTAG 7000
-#define TRACKTITLELABELTAG 7001
-#define ARTISTLABELTAG 7002
-#define TRACKDURATIONLABELTAG 7003
-#define CAPTIONLABELTAG 7004
-#define TEXTFIELDTAG 7005
-#define ALBUMIDACTIONSHEETTAG 7007
-#define ALBUMCOVERARTIMAGETAG 7008
-#define ADDITIONALMETADATAVIEWTAG 7009
-#define TRACKMATCHPOSITIONLABELTAG 7010
-#define ADDITIONALCONTENTVIEWTAG 7011
-#define ADDITIONALCONTENTIMAGEVIEWTAG 7012
-#define ADDITIONALCONTENTALBUMLABELTAG 7013
-#define ADDITIONALCONTENTARTISTLABELTAG 7014
-#define ADDITIONALCONTENTTEXTVIEWTAG 7015
-#define ADDITIONALCONTENTTITLELABELTAG 7016
-
-#define LABELWIDTHIPHONE  150
-#define LABELWIDTHIPAD    420
-
-
-#define LOCALLOOKUPOPTIONONLY               @"local-lookupoption-only"
 
 
 static NSString *gnsdkLicenseFilename = @"license.txt";
@@ -87,8 +62,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property dispatch_queue_t internalQueue;
 @property (strong) NSMutableArray *results;
 
-@property Mode currentMode;
-
 @property NSIndexPath *currentlySelectedIndexPath;
 
 @end
@@ -102,7 +75,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.recordingIsPaused = NO;
     __block NSError * error = nil;
 
-    self.currentMode = UnknownMode;
     self.lookupSourceIsLocal = 0;
     self.audioProcessingStarted = 0;
     self.queryBeginTimeInterval = -1;
@@ -686,8 +658,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
@@ -1271,7 +1243,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) statusEvent: (GnLookupLocalStreamIngestStatus)status bundleId: (NSString*)bundleId cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
-    NSLog(@"status = %d", status);
+    NSLog(@"status = %ld", status);
 }
 
 #pragma mark - GnAudioVisualizerDelegate Methods
