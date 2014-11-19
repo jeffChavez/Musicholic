@@ -12,9 +12,6 @@
 typedef NS_ENUM(NSInteger, Mode)
 {
     UnknownMode=-1,
-    TextSearchMode=0,
-    SettingsMode,
-    HistoryMode,
     AdditionalContentMode
 };
 
@@ -40,21 +37,13 @@ typedef NS_ENUM(NSInteger, Mode)
 @property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *busyIndicator;
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
-@property (weak, nonatomic) IBOutlet UITabBarItem *albumIDTabBarItem;
-@property (weak, nonatomic) IBOutlet UITabBarItem *recognizeMediaTabBarItem;
-@property (weak, nonatomic) IBOutlet UITabBarItem *textSearchTabBarItem;
 @property (weak, nonatomic) IBOutlet UITabBarItem *historyTabBarItem;
 @property (weak, nonatomic) IBOutlet UITableView *searchFieldsTableView;
-@property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelOperationsButton;
 @property (weak, nonatomic) IBOutlet UIButton *idNowButton;
-@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
-@property (weak, nonatomic) IBOutlet UIProgressView *bundleLoadingProgressView;
 
 - (IBAction) idNow:(id) sender;
 - (IBAction)cancelAllOperations:(id)sender;
-- (IBAction)doTextSearch:(id)sender;
 - (IBAction)showVisualization:(id)sender;
 
 -(void) stopRecording;

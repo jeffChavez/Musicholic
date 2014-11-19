@@ -26,12 +26,6 @@
                                 <rect key="frame" x="0.0" y="76" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <view contentMode="scaleToFill" id="3l3-i8-i1w">
-                                <rect key="frame" x="0.0" y="517" width="320" height="51"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
-                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="iTl-tr-bmF">
                                 <rect key="frame" x="58" y="71" width="262" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
@@ -106,13 +100,6 @@
                                             <action selector="cancelAllOperations:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YpE-MF-0Nt"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="quf-GT-yhv">
-                                        <rect key="frame" x="47" y="85" width="218" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -127,10 +114,6 @@
                                     <action selector="idNow:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="DHW-6B-EPJ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow.png" id="Wr0-Yc-CGm">
-                                <rect key="frame" x="203" y="499" width="40" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" id="q8T-Ye-ihF">
                                 <rect key="frame" x="150" y="64" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -141,8 +124,6 @@
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="arrowImageView" destination="Wr0-Yc-CGm" id="8fQ-ZB-wZc"/>
-                        <outlet property="bundleLoadingProgressView" destination="gZW-Dk-XWI" id="G5p-nA-1EB"/>
                         <outlet property="busyIndicator" destination="q8T-Ye-ihF" id="Yrt-J4-bMS"/>
                         <outlet property="cancelOperationsButton" destination="uYj-0M-v4k" id="wee-Ei-I3A"/>
                         <outlet property="coloredRingImageView" destination="iPf-6J-rGk" id="gXe-Cx-ZSd"/>
@@ -153,7 +134,6 @@
                         <outlet property="showOrHideVisualizationButtonView" destination="OPW-cb-il1" id="fZO-79-V0y"/>
                         <outlet property="statusCaptionLabel" destination="7Xn-Ae-2UW" id="UzJ-Wa-ciG"/>
                         <outlet property="statusLabel" destination="jGl-dY-gcv" id="sxN-LO-C5n"/>
-                        <outlet property="titleLabel" destination="quf-GT-yhv" id="mFQ-OZ-SgF"/>
                         <outlet property="visualizationView" destination="dGk-J8-QlJ" id="1g0-M3-ZeQ"/>
                     </connections>
                 </viewController>
@@ -167,7 +147,6 @@
         <image name="GracenoteLogo" width="200" height="200"/>
         <image name="IDNow.png" width="70" height="70"/>
         <image name="coloredRing" width="300" height="300"/>
-        <image name="downArrow.png" width="80" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

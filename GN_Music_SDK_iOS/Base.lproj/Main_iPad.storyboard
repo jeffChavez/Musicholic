@@ -56,42 +56,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="O4G-re-Tk3">
-                                <rect key="frame" x="0.0" y="959" width="788" height="65"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uPU-MK-itP">
-                                        <rect key="frame" x="30" y="39" width="65" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lWW-hW-e8m">
-                                        <rect key="frame" x="103" y="39" width="112" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rh5-qb-Jn3">
-                                        <rect key="frame" x="505" y="39" width="76" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OG6-8C-Nbd">
-                                        <rect key="frame" x="661" y="37" width="76" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1pw-PF-b3I">
                                 <rect key="frame" x="314" y="870" width="140" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -119,11 +83,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CLB-3e-qKb">
-                                        <rect key="frame" x="696" y="121" width="63" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Settings"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HDh-bt-Pkl">
                                         <rect key="frame" x="14" y="121" width="41" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -132,43 +91,23 @@
                                             <action selector="cancelAllOperations:" destination="BYZ-38-t0r" eventType="touchUpInside" id="utS-bf-Uf6"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aCX-dc-5nD">
-                                        <rect key="frame" x="63" y="127" width="647" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Sz7-Lg-VrG">
-                                        <rect key="frame" x="713" y="30" width="28" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="Console"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow.png" id="vhN-sV-jYc">
-                                <rect key="frame" x="513" y="936" width="56" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="arrowImageView" destination="vhN-sV-jYc" id="M1E-dO-Fh7"/>
                         <outlet property="cancelOperationsButton" destination="HDh-bt-Pkl" id="WV6-7e-4P4"/>
                         <outlet property="coloredRingImageView" destination="dY9-wr-odg" id="QFs-es-WdD"/>
                         <outlet property="gracenoteLogoImageView" destination="Fy3-AN-tXo" id="Yng-DB-91T"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
                         <outlet property="resultsTableView" destination="W4x-jI-Mnt" id="GjK-ib-uc6"/>
-                        <outlet property="settingsButton" destination="CLB-3e-qKb" id="2oy-gl-PdA"/>
                         <outlet property="showOrHideVisualizationButton" destination="ekR-At-UIa" id="xzp-Bx-Vuv"/>
                         <outlet property="showOrHideVisualizationButtonView" destination="slf-em-6jT" id="ewr-9M-roW"/>
                         <outlet property="statusCaptionLabel" destination="hYC-sN-Yet" id="bps-0L-b1g"/>
                         <outlet property="statusLabel" destination="P5N-m7-9U4" id="ZTZ-28-HCc"/>
-                        <outlet property="titleLabel" destination="aCX-dc-5nD" id="yJf-IE-eAu"/>
                         <outlet property="visualizationView" destination="kAg-Qh-xzK" id="P5e-kH-pL5"/>
                     </connections>
                 </viewController>
@@ -179,12 +118,9 @@
     </scenes>
     <resources>
         <image name="Cancel" width="28" height="28"/>
-        <image name="Console" width="28" height="28"/>
         <image name="GracenoteLogo" width="200" height="200"/>
         <image name="IDNow_iPad" width="140" height="140"/>
-        <image name="Settings" width="28" height="28"/>
         <image name="coloredRing" width="300" height="300"/>
-        <image name="downArrow.png" width="80" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

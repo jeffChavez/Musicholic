@@ -10,7 +10,6 @@
 #import "GnDataModel.h"
 
 #import <AVFoundation/AVFoundation.h>
-#import <MediaPlayer/MediaPlayer.h>
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
@@ -54,7 +53,7 @@
 
 static NSString *gnsdkLicenseFilename = @"license.txt";
 
-@interface GnViewController ()<GnMusicIdStreamEventsDelegate, MPMediaPickerControllerDelegate, GnMusicIdFileEventsDelegate, UITabBarDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, GnMusicIdFileInfoEventsDelegate, GnAudioVisualizerDelegate, GnLookupLocalStreamIngestEventsDelegate>
+@interface GnViewController ()<GnMusicIdStreamEventsDelegate, GnMusicIdFileEventsDelegate, UITabBarDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, GnMusicIdFileInfoEventsDelegate, GnAudioVisualizerDelegate, GnLookupLocalStreamIngestEventsDelegate>
 
 /*GnSDK properties*/
 @property (strong) GnMusicIdStream *gnMusicIDStream;
@@ -159,11 +158,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     error = [self initializeGNSDKWithClientID: CLIENTID clientIDTag: CLIENTIDTAG];
 	if (error)
 	{
-		NSLog( @"Error: 0x%zx %@ - %@", [error code], [error domain], [error localizedDescription] );
+		NSLog( @"Error: 0x%zx %@ - %@", (long)[error code], [error domain], [error localizedDescription] );
 	}
 	else
 	{
-        self.titleLabel.text =  [NSString stringWithFormat:@"Gracenote SDK %@", [GnManager productVersion] ];
         
 
 		@try
@@ -173,14 +171,14 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 			[self.gnStorageSqlite storageLocationWithFolderPath:[GnAppDelegate applicationDocumentsDirectory] error: &error];
 			if (error)
 			{
-				NSLog( @"Error: 0x%zx %@ - %@", [error code], [error domain], [error localizedDescription] );
+				NSLog( @"Error: 0x%zx %@ - %@", (long)[error code], [error domain], [error localizedDescription] );
 			}
 			else
 			{
 				error = [self setupLocalLookup];
 				if (error)
 				{
-					NSLog( @"Error: 0x%zx %@ - %@", [error code], [error domain], [error localizedDescription] );
+					NSLog( @"Error: 0x%zx %@ - %@", (long)[error code], [error domain], [error localizedDescription] );
 				}
 				else
 				{
@@ -289,9 +287,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) setupInterface
 {
-	// Hide Search View and Arrow.
-    self.arrowImageView.alpha = 0.0f;
-    self.searchFieldsTableView.layer.cornerRadius = 5.0f;
     
     //Setup Dynamic Animator.
     self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.visualizationView];
@@ -305,7 +300,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.showOrHideVisualizationButtonView.layer.borderWidth = 1.0f;
     self.showOrHideVisualizationButtonView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.visualizationView.layer.cornerRadius = 5.0f;
-    self.visualizationView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.2];
 
 	//Add Search and Cancel Buttons.
     self.searchSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Search"]];
@@ -328,7 +322,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.searchSegmentedControl.tintColor = [UIColor whiteColor];
     self.searchSegmentedControl.layer.cornerRadius = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?5.0f:5.0f;
     self.searchSegmentedControl.layer.borderColor = [UIColor greenColor].CGColor;
-    [self.searchSegmentedControl addTarget:self action:@selector(doTextSearch:) forControlEvents:UIControlEventValueChanged];
+//    [self.searchSegmentedControl addTarget:self action:@selector(doTextSearch:) forControlEvents:UIControlEventValueChanged];
 
 
     self.cancelSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Cancel"]];
@@ -354,7 +348,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 -(void) enableOrDisableControls:(BOOL) enable
 {
     self.idNowButton.enabled = enable && self.audioProcessingStarted;
-    self.settingsButton.enabled = enable;
     self.cancelOperationsButton.enabled = !enable;
 
     self.resultsTableView.userInteractionEnabled = enable;
@@ -747,72 +740,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 
-- (IBAction)doTextSearch:(id)sender
-{
-    NSArray*	indexPaths = [self.searchFieldsTableView indexPathsForVisibleRows];
-    NSString*	artistName = nil;
-    NSString*	albumTitle = nil;
-    NSString*	trackTitle = nil;
-	GnMusicId*	musicId	= nil;
-    NSError*	error = nil;
 
-    self.cancelOperationsButton.enabled = YES;
-    [self.results removeAllObjects];
-    self.currentlySelectedIndexPath = nil;
-
-    for (NSIndexPath *indexPath in indexPaths)
-    {
-        UITextField *textField = (UITextField*)  [[self.searchFieldsTableView cellForRowAtIndexPath:indexPath].contentView viewWithTag:TEXTFIELDTAG];
-
-        if (indexPath.row==0)
-        {//Artist.
-            artistName = textField.text;
-        }
-        else if (indexPath.row==1)
-        {//Album
-            albumTitle = textField.text;
-        }
-        else if (indexPath.row==2)
-        {//Track.
-            trackTitle = textField.text;
-        }
-    }
-
-	@try
-	{
-		musicId = [[GnMusicId alloc] initWithGnUser: self.gnUser statusEventsDelegate: self];
-
-		[self.cancellableObjects addObject: musicId];
-
-		[[musicId options] lookupData:kLookupDataContent bEnable:YES error:&error];
-
-		self.queryBeginTimeInterval = [[NSDate date] timeIntervalSince1970];
-
-		[self enableOrDisableControls:NO];
-
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-			NSError *textSearchOperationError = nil;
-			GnResponseAlbums *responseAlbums = [musicId findAlbumsWithAlbumTitle: albumTitle
-																	  trackTitle: trackTitle
-																 albumArtistName: artistName
-																 trackArtistName: artistName
-																	composerName: nil
-																		   error: &textSearchOperationError];
-
-			dispatch_async(dispatch_get_main_queue(), ^{
-				self.queryEndTimeInterval = [[NSDate date] timeIntervalSince1970];
-				[self.cancellableObjects removeObject: musicId];
-				[self enableOrDisableControls:YES];
-				[self processAlbumResponseAndUpdateResultsTable:responseAlbums];
-			});
-		});
-
-	}
-	@catch (NSException *exception)
-	{
-		NSLog( @"Error: %@ - %@ - %@", [exception name], [exception reason], [exception userInfo] );
-	}
-}
 
 
 - (NSString*)stringWithPercentEscape:(NSString*) refStr
@@ -929,8 +857,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%zu", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%zu", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
@@ -1164,7 +1092,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
             break;
     }
 
-	[self updateStatus: [NSString stringWithFormat:@"%@ [%zu%%]", statusString?statusString:@"", percentComplete]];
+	[self updateStatus: [NSString stringWithFormat:@"%@ [%zu%%]", statusString?statusString:@"", (unsigned long)percentComplete]];
 }
 
 -(void) musicIdStreamAlbumResult: (GnResponseAlbums*)result cancellableDelegate: (id <GnCancellableDelegate>)canceller
@@ -1182,7 +1110,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) musicIdStreamIdentifyCompletedWithError: (NSError*)completeError
 {
-    NSString *statusString = [NSString stringWithFormat:@"%@ - [%zx]", [completeError localizedDescription], [completeError code] ];
+    NSString *statusString = [NSString stringWithFormat:@"%@ - [%zx]", [completeError localizedDescription], (long)[completeError code] ];
     
     [self.cancellableObjects removeObject:self.gnMusicIDStream];
     
@@ -1230,18 +1158,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 		return (NSInteger)self.results.count;
 	}
-	else if (tableView==self.searchFieldsTableView && self.currentMode==TextSearchMode)
-	{
-		return 3;
-	}
-	else if (tableView==self.searchFieldsTableView && self.currentMode==SettingsMode)
-	{
-		return 2;
-	}
-	else if (tableView==self.searchFieldsTableView && self.currentMode==HistoryMode && self.history)
-	{
-		return (NSInteger) [self.history count];
-	}
 
     return 0;
 }
@@ -1258,7 +1174,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 
-		if (tableView==self.resultsTableView || (tableView==self.searchFieldsTableView && self.currentMode==HistoryMode) )
+		if (tableView==self.resultsTableView)
 		{
 			UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10,  (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?112:56, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?112:56)];
 			imageView.tag = ALBUMCOVERARTIMAGETAG;
@@ -1296,7 +1212,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 			UIView *additionalContentView = [[UIView alloc] initWithFrame:CGRectMake((UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?768:320, 0, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?768:cell.contentView.bounds.size.width,  (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?kHeightOfAdditionalMetadataCellPad:kHeightOfAdditionalMetadataCell)];
 
 			additionalContentView.tag = ADDITIONALCONTENTVIEWTAG;
-			additionalContentView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.9];
+			additionalContentView.backgroundColor = [UIColor blueColor];
 
 			//Add content views to additional content view
 			UILabel *additionalContentTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, additionalContentView.frame.size.width, 20)];
@@ -1519,40 +1435,35 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 	if(tableView==self.resultsTableView && self.currentlySelectedIndexPath!=nil && self.currentlySelectedIndexPath.row==indexPath.row)
 		return (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?kHeightOfAdditionalMetadataCellPad : kHeightOfAdditionalMetadataCell;
 
-	if (tableView==self.resultsTableView || (tableView==self.searchFieldsTableView && self.currentMode==HistoryMode))
+	if (tableView==self.resultsTableView)
 		return 100.0f;
 
     return 45;
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(!self.currentlySelectedIndexPath)
-    {
-        self.currentlySelectedIndexPath = indexPath;
-
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    }
-    else
-    {
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
-
-        self.currentlySelectedIndexPath = nil;
-
-		UIView *additionalContentView = (UIView*) [cell.contentView viewWithTag:ADDITIONALCONTENTVIEWTAG];
-        CGRect frame = additionalContentView.frame;
-        frame.origin.x = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad?768:320);
-        additionalContentView.frame = frame;
-    }
-
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [tableView beginUpdates];
-    [tableView reloadData];
-
-    [self performSelector:@selector(scrollPlaybackViewToVisibleRect) withObject:nil afterDelay:0.1 ];
-    [tableView endUpdates];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//    else
+//    {
+//        UITableViewCell* cell = [tableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
+//
+//        self.currentlySelectedIndexPath = nil;
+//
+//		UIView *additionalContentView = (UIView*) [cell.contentView viewWithTag:ADDITIONALCONTENTVIEWTAG];
+//        CGRect frame = additionalContentView.frame;
+//        frame.origin.x = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad?768:320);
+//        additionalContentView.frame = frame;
+//    }
+//
+//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//    [tableView beginUpdates];
+//    [tableView reloadData];
+//
+//    [self performSelector:@selector(scrollPlaybackViewToVisibleRect) withObject:nil afterDelay:0.1 ];
+//    [tableView endUpdates];
+//}
 
 #pragma mark - Table View Positioning
 
@@ -1567,33 +1478,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 
 
-- (IBAction)albumIdButtonTapped:(id)sender
-{
-    // clear the results from the previous identification
-    [self.results removeAllObjects];
-    [self performSelectorOnMainThread:@selector(refreshResults) withObject:nil waitUntilDone:NO];
-    self.currentlySelectedIndexPath = nil;
-    
-    UIButton *albumIDButton = (UIButton*) sender;
-    CGRect albumIDRect = [albumIDButton frame];
-    albumIDRect = [self.view convertRect:albumIDRect fromView:albumIDButton.superview];
-
-    UIActionSheet *albumIdActionsheet = [[UIActionSheet alloc] initWithTitle: @"Album Id:"
-																	delegate: self
-														   cancelButtonTitle: @"Cancel"
-													  destructiveButtonTitle: nil
-														   otherButtonTitles: @"iPod-Library",@"Documents Directory",nil];
-    albumIdActionsheet.tag = ALBUMIDACTIONSHEETTAG;
-
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        [albumIdActionsheet showFromRect:albumIDRect inView:self.view animated:YES];
-    }
-    else
-    {
-		[albumIdActionsheet showInView:self.view];
-    }
-}
 
 
 
@@ -1617,58 +1501,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 	return result;
 }
 
-#pragma MPMediaPickerControllerDelegate Methods
 
-- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-    [self enableOrDisableControls:NO];
-    NSError *error = nil;
-    
-    GnMusicIdFile* gnMusicIdFile = [[GnMusicIdFile alloc] initWithGnUser: self.gnUser musicIdFileEventsDelegate: self];
-    
-    if ( gnMusicIdFile )
-    {
-        [self.cancellableObjects addObject: gnMusicIdFile];
-        
-        [[gnMusicIdFile options] lookupData:kLookupDataSonicData enable:YES error:&error];
-        [[gnMusicIdFile options] lookupData:kLookupDataContent enable:YES error:&error];
-    
-        NSUInteger protectContentCount = 0;
-        for (NSUInteger i=0; i < [mediaItemCollection items].count; i++)
-        {
-            MPMediaItem *song = [[mediaItemCollection items] objectAtIndex:i];
-            NSURL *assetURL = [song valueForProperty:MPMediaItemPropertyAssetURL];
-
-            if (assetURL)
-            {
-                NSError *error = nil;
-                [[gnMusicIdFile fileInfos] add: [assetURL absoluteString] musicIdFileInfoEventsDelegate:nil error: &error];
-            }
-            else
-            {
-                [self updateStatus: @"Content is protected. Cannot decode it."];
-                protectContentCount++;
-            }
-        }
-    
-        if(protectContentCount==[mediaItemCollection items].count)
-            [self stopBusyIndicator];
-    
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSError *error = nil;
-            [gnMusicIdFile doLibraryId:kResponseAlbums error:&error];
-        });
-        
-    }
-    
-}
-
-- (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 #pragma mark - MusicIdFileEventsDelegate Methods
@@ -1677,6 +1510,8 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 {
     [self processAlbumResponseAndUpdateResultsTable:albumResult];
 }
+
+
 
 -(void) refreshResults
 {
@@ -1692,6 +1527,8 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     [self.resultsTableView reloadData];
     [self.busyIndicator stopAnimating];
 }
+
+
 
 -(void) gatherFingerprint: (GnMusicIdFileInfo*) fileInfo
 			  currentFile: (NSUInteger)currentFile
@@ -1966,7 +1803,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
         NSString *URLString = [NSString stringWithFormat:@"http://%@", [coverArtAsset url]];
     
         NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
-        __weak GnViewController *weakSelf = self;
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error)
          {
          
@@ -1976,10 +1812,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
                  coverArt.mimeType = [URLString lastPathComponent];
                  coverArt.data = data;
              
-                 if(weakSelf.currentMode==HistoryMode)
-                 {
-                     [weakSelf.searchFieldsTableView reloadData];
-                 }
              }
          }];
 
@@ -2115,7 +1947,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) statusEvent: (GnLookupLocalStreamIngestStatus)status bundleId: (NSString*)bundleId cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
-    NSLog(@"status = %ld", status);
+    NSLog(@"status = %d", status);
 }
 
 #pragma mark - GnAudioVisualizerDelegate Methods
