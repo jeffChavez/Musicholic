@@ -10,12 +10,18 @@
 
 @implementation Drink
 
-- (instancetype) initDrink {
+- (instancetype) initWithDictionary: (NSDictionary *) drinkDictionary {
     self = [super init];
-    self.name = @"DRINK TITLE";
-    
+    self.name = @"drank title";
+    self.imageURL = @"www.draaaaaank.com";
     return self;
 }
 
+- (NSObject *) parseJSONDataIntoDrink: (NSData *) data {
+    NSError *error = nil;
+    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    Drink *newDrink = [[Drink alloc] initWithDictionary:jsonDictionary];
+    return newDrink;
+}
 
 @end
