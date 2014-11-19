@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B2E860D1A1D3D6F003FBAD0 /* DrinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */; };
+		6B2E86101A1D3F43003FBAD0 /* DrinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */; };
+		6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E86111A1D4784003FBAD0 /* martini.jpg */; };
 		6BA157A71A1C2BD800005950 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA157A61A1C2BD800005950 /* NetworkController.m */; };
 		6BA157AA1A1C2C8E00005950 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA157A91A1C2C8E00005950 /* Drink.m */; };
 		6BBC53FC1A1AD15D0077C373 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6BBC53FB1A1AD15D0077C373 /* license.txt */; };
@@ -43,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrinkView.xib; sourceTree = "<group>"; };
+		6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkView.h; sourceTree = "<group>"; };
+		6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkView.m; sourceTree = "<group>"; };
+		6B2E86111A1D4784003FBAD0 /* martini.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = martini.jpg; sourceTree = "<group>"; };
 		6BA157A51A1C2BD800005950 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
 		6BA157A61A1C2BD800005950 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
 		6BA157A81A1C2C8E00005950 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
@@ -178,6 +185,11 @@
 				6BA157A61A1C2BD800005950 /* NetworkController.m */,
 				6BA157A81A1C2C8E00005950 /* Drink.h */,
 				6BA157A91A1C2C8E00005950 /* Drink.m */,
+				6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */,
+				6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */,
+				6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */,
+				F6BBF99517CD10BC00E9814E /* Main_iPhone.storyboard */,
+				F6BBF99817CD10BC00E9814E /* Main_iPad.storyboard */,
 				F6BBF99817CD10BC00E9814E /* MainStoryboard.storyboard */,
 				F6BBF98A17CD10BC00E9814E /* Supporting Files */,
 			);
@@ -187,6 +199,7 @@
 		F6BBF98A17CD10BC00E9814E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6B2E86111A1D4784003FBAD0 /* martini.jpg */,
 				6BBC53FB1A1AD15D0077C373 /* license.txt */,
 				F648A64118A80B0500B303ED /* 1557.b */,
 				F68FEA25183D665B008F59EA /* emptyImage.png */,
@@ -268,10 +281,12 @@
 				F651AFFD182AD70C00B0D688 /* upArrow.png in Resources */,
 				F651AFFC182AD70C00B0D688 /* downArrow.png in Resources */,
 				F63C7CC9182C1A1E009F60D2 /* Images.xcassets in Resources */,
+				6B2E860D1A1D3D6F003FBAD0 /* DrinkView.xib in Resources */,
 				F650376E17FD566C0058F9BB /* NavBarImage.png in Resources */,
 				F651AFED182ACA6100B0D688 /* IDNow@2x.png in Resources */,
 				F648A64218A80B0500B303ED /* 1557.b in Resources */,
 				F6BBF98E17CD10BC00E9814E /* InfoPlist.strings in Resources */,
+				6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */,
 				F650377617FDC96D0058F9BB /* 320x568h.png in Resources */,
 				F650377E17FDD24A0058F9BB /* idNowButtonImage.png in Resources */,
 			);
@@ -285,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F68849D3183C768E00DA28E6 /* Metadata.m in Sources */,
+				6B2E86101A1D3F43003FBAD0 /* DrinkView.m in Sources */,
 				F68849D6183C768E00DA28E6 /* CoverArt.m in Sources */,
 				6BA157AA1A1C2C8E00005950 /* Drink.m in Sources */,
 				F6FE703817FB3C4700369F16 /* GnDataModel.m in Sources */,
