@@ -39,8 +39,7 @@
 		F6BBF98E17CD10BC00E9814E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6BBF98C17CD10BC00E9814E /* InfoPlist.strings */; };
 		F6BBF99017CD10BC00E9814E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BBF98F17CD10BC00E9814E /* main.m */; };
 		F6BBF99417CD10BC00E9814E /* GnAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BBF99317CD10BC00E9814E /* GnAppDelegate.m */; };
-		F6BBF99717CD10BC00E9814E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BBF99517CD10BC00E9814E /* Main_iPhone.storyboard */; };
-		F6BBF99A17CD10BC00E9814E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BBF99817CD10BC00E9814E /* Main_iPad.storyboard */; };
+		F6BBF99A17CD10BC00E9814E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BBF99817CD10BC00E9814E /* MainStoryboard.storyboard */; };
 		F6BBF99D17CD10BC00E9814E /* GnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BBF99C17CD10BC00E9814E /* GnViewController.m */; };
 		F6DC0AD01937DBF60096B555 /* GnAudioVisualizeAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC0ACF1937DBF60096B555 /* GnAudioVisualizeAdapter.m */; };
 		F6FE703817FB3C4700369F16 /* GnDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FE703717FB3C4700369F16 /* GnDataModel.m */; };
@@ -89,8 +88,7 @@
 		F6BBF99117CD10BC00E9814E /* Musicholic-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Musicholic-Prefix.pch"; sourceTree = "<group>"; };
 		F6BBF99217CD10BC00E9814E /* GnAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GnAppDelegate.h; sourceTree = "<group>"; };
 		F6BBF99317CD10BC00E9814E /* GnAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GnAppDelegate.m; sourceTree = "<group>"; };
-		F6BBF99617CD10BC00E9814E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		F6BBF99917CD10BC00E9814E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		F6BBF99917CD10BC00E9814E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F6BBF99B17CD10BC00E9814E /* GnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GnViewController.h; sourceTree = "<group>"; };
 		F6BBF99C17CD10BC00E9814E /* GnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GnViewController.m; sourceTree = "<group>"; };
 		F6BBF9A517CD10BC00E9814E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -192,6 +190,7 @@
 				6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */,
 				F6BBF99517CD10BC00E9814E /* Main_iPhone.storyboard */,
 				F6BBF99817CD10BC00E9814E /* Main_iPad.storyboard */,
+				F6BBF99817CD10BC00E9814E /* MainStoryboard.storyboard */,
 				F6BBF98A17CD10BC00E9814E /* Supporting Files */,
 			);
 			path = GN_Music_SDK_iOS;
@@ -249,7 +248,7 @@
 				ORGANIZATIONNAME = CodeFellows;
 				TargetAttributes = {
 					F6BBF97F17CD10BC00E9814E = {
-						DevelopmentTeam = T337VCC9XQ;
+						DevelopmentTeam = J42Q5AV837;
 					};
 				};
 			};
@@ -278,8 +277,7 @@
 			files = (
 				6BBC53FC1A1AD15D0077C373 /* license.txt in Resources */,
 				F68FEA26183D665B008F59EA /* emptyImage.png in Resources */,
-				F6BBF99A17CD10BC00E9814E /* Main_iPad.storyboard in Resources */,
-				F6BBF99717CD10BC00E9814E /* Main_iPhone.storyboard in Resources */,
+				F6BBF99A17CD10BC00E9814E /* MainStoryboard.storyboard in Resources */,
 				F651AFFD182AD70C00B0D688 /* upArrow.png in Resources */,
 				F651AFFC182AD70C00B0D688 /* downArrow.png in Resources */,
 				F63C7CC9182C1A1E009F60D2 /* Images.xcassets in Resources */,
@@ -327,20 +325,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		F6BBF99517CD10BC00E9814E /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F6BBF99617CD10BC00E9814E /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		F6BBF99817CD10BC00E9814E /* Main_iPad.storyboard */ = {
+		F6BBF99817CD10BC00E9814E /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F6BBF99917CD10BC00E9814E /* Base */,
 			);
-			name = Main_iPad.storyboard;
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
