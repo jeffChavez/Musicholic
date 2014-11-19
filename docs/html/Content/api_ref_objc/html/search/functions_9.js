@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['label',['label',['../interface_gn_album.html#a81b11b4854e4b995f945d2cc60b783ec',1,'GnAlbum']]],
+  ['language',['language',['../interface_gn_album.html#a67395c20f01ba390a9e22683d1ced07f',1,'GnAlbum::language()'],['../interface_gn_locale_info.html#a4042983905d818f3430fa907958853fc',1,'GnLocaleInfo::language()'],['../interface_gn_name.html#a5738c8c997806f3d633a18fe358ecd48',1,'GnName::language()'],['../interface_gn_title.html#a9ad79373161fd09f800bae3e147e87cc',1,'GnTitle::language()']]],
+  ['language_3a',['language:',['../interface_gn_list.html#ad05b160e47885b9d8fc3cd0742132ef8',1,'GnList']]],
+  ['languagecode',['languageCode',['../interface_gn_album.html#a6dd412d1c13f2b33b752341ab3905331',1,'GnAlbum::languageCode()'],['../interface_gn_name.html#a2bd184356bff4fe57cb0af8a482c640a',1,'GnName::languageCode()'],['../interface_gn_title.html#a32c111a871f866329d24686e099dfbc0',1,'GnTitle::languageCode()']]],
+  ['layouttype_3a',['layoutType:',['../interface_gn_moodgrid_presentation.html#a7d40d92958e03c7fc45842a4dc5d1de7',1,'GnMoodgridPresentation']]],
+  ['level_3a',['level:',['../interface_gn_list_element.html#ad6eaa877de16ffb96573880035586936',1,'GnListElement']]],
+  ['levelcount_3a',['levelCount:',['../interface_gn_list.html#a0858db8fcc0fc72b334e5803688f44a3',1,'GnList']]],
+  ['listelements_3a',['listElements:',['../interface_gn_list.html#a1d4b12e009b3ec5cb0460a3557d6dbe0',1,'GnList']]],
+  ['listupdateneeded_3a',['listUpdateNeeded:',['../protocol_gn_system_events_delegate-p.html#a7d483eb29e29d849b4bc4d826335f3e1',1,'GnSystemEventsDelegate-p']]],
+  ['loadserializeduser_3a',['loadSerializedUser:',['../protocol_gn_user_store_delegate-p.html#a60532df1ef9121c871ae7637d0f52b0a',1,'GnUserStoreDelegate-p']]],
+  ['loadwithcollectionname_3aerror_3a',['loadWithCollectionName:error:',['../interface_gn_playlist_storage.html#aab629233ec9a0219fb1a2a06c37b40b2',1,'GnPlaylistStorage']]],
+  ['locale_3aerror_3a',['locale:error:',['../interface_gn_data_object.html#ad64f1e2116e76833b42c33263820e5c2',1,'GnDataObject']]],
+  ['localeinformation',['localeInformation',['../interface_gn_locale.html#ad218a6b0baa9a25ed29ad8abc98251d7',1,'GnLocale']]],
+  ['localesstore',['localesStore',['../interface_gn_manager.html#aa5106c9701e8d55215d76e2f7e5a0770',1,'GnManager']]],
+  ['localeupdateneeded_3a',['localeUpdateNeeded:',['../protocol_gn_system_events_delegate-p.html#a4c134eb5debaef62fc03a68eb357d204',1,'GnSystemEventsDelegate-p']]],
+  ['location_3aerror_3a',['location:error:',['../interface_gn_playlist_storage.html#ae34c8b69a1ad655e5c5e0eefbeaf488c',1,'GnPlaylistStorage::location:error:()'],['../interface_gn_store_ops.html#add693abe46730cf57bb2d29e1de280e3',1,'GnStoreOps::location:error:()']]],
+  ['logmessage_3afiltermask_3aerrorcode_3amessage_3a',['logMessage:filterMask:errorCode:message:',['../protocol_gn_log_events_delegate-p.html#a51c5af20210ea6dca70709c49a965461',1,'GnLogEventsDelegate-p']]],
+  ['lookupdata_3abenable_3aerror_3a',['lookupData:bEnable:error:',['../interface_gn_music_id_options.html#a2e5c40e10c5bfaf7dfb670eb9f71f3e6',1,'GnMusicIdOptions']]],
+  ['lookupdata_3aenable_3aerror_3a',['lookupData:enable:error:',['../interface_gn_music_id_file_options.html#adceb5b28e83980ca0dd13ba4ade3e41f',1,'GnMusicIdFileOptions::lookupData:enable:error:()'],['../interface_gn_music_id_stream_options.html#acdf4f78acc10449b845674adbfd0ab5a',1,'GnMusicIdStreamOptions::lookupData:enable:error:()']]],
+  ['lookupmode_3a',['lookupMode:',['../interface_gn_user_options.html#a3a2ed2e811f8850be8f9b1dcdba65a30',1,'GnUserOptions']]],
+  ['lookupmode_3aerror_3a',['lookupMode:error:',['../interface_gn_music_id_file_options.html#a0e9efcf203d063c1d3360afdeecb71cb',1,'GnMusicIdFileOptions::lookupMode:error:()'],['../interface_gn_music_id_options.html#ac563f3c7b2bc9e353a9c4aedf346b3d4',1,'GnMusicIdOptions::lookupMode:error:()'],['../interface_gn_music_id_stream_options.html#ab042dad16785aec34255dd38a1948ad7',1,'GnMusicIdStreamOptions::lookupMode:error:()']]],
+  ['lookupmodewithlookupmode_3aerror_3a',['lookupModeWithLookupMode:error:',['../interface_gn_user_options.html#a68b76addcbb81bf1972360dbf1c934e9',1,'GnUserOptions']]]
+];

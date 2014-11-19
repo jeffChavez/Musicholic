@@ -1,0 +1,1160 @@
+<toc label="GNSDK for Mobile (iOS)" topic="index.html">
+  <topic label="Classes">
+    <topic label="Class List" href="annotated.html">
+      <topic label="GnAlbum" href="interface_gn_album.html">
+        <topic label="artist" href="interface_gn_album.html#aa3a4cea063b9be92291ccf0f66e41483"/>
+        <topic label="compilation" href="interface_gn_album.html#ab0c4039a599448bd5f841bced2a9fcf7"/>
+        <topic label="content:" href="interface_gn_album.html#a22c961e663c439620e09f7eb1cfe54bd"/>
+        <topic label="contents" href="interface_gn_album.html#a4b89b8e4e962c9c7a425f90947a4db76"/>
+        <topic label="coverArt" href="interface_gn_album.html#a0440d1f5b6a9bd4ae428fc0e30ec0658"/>
+        <topic label="cppGnAlbum" href="interface_gn_album.html#a41c72c4350df29b8e7cb71bcb6a1b378"/>
+        <topic label="credits" href="interface_gn_album.html#aa625f783b8a786ea16cd549fda42a6ad"/>
+        <topic label="discInSet" href="interface_gn_album.html#ae61921191b64fb3cd4d9dcec881d7521"/>
+        <topic label="externalIds" href="interface_gn_album.html#a0ce5a3608fe33f9cd18271ab7b37c16d"/>
+        <topic label="from:error:" href="interface_gn_album.html#ae1949c85745803ca2c866839a38e86e0"/>
+        <topic label="genre:" href="interface_gn_album.html#a982d93f26ac9fb9a7804060db5194c9e"/>
+        <topic label="globalId" href="interface_gn_album.html#a859683c02d32f34ce9131be2e1d1cac9"/>
+        <topic label="gnId" href="interface_gn_album.html#a9f008d63b51481d24512f857fa159ce5"/>
+        <topic label="gnType" href="interface_gn_album.html#a9ebd1b3603dceb43e13e84d99da6b6e7"/>
+        <topic label="gnUId" href="interface_gn_album.html#a75ed0724cfa6f578c73076bd48d5fc1b"/>
+        <topic label="init" href="interface_gn_album.html#a31164d4ff4b2bdcfc4a10fd4e4d4e620"/>
+        <topic label="init_with_GnAlbum:" href="interface_gn_album.html#ac18fdda97a2812833259cab661983955"/>
+        <topic label="initWithId:idTag:" href="interface_gn_album.html#aea26e75efc8152bdf316a1b02202f906"/>
+        <topic label="isClassical" href="interface_gn_album.html#a8754ea97cf22466cafddeb45fcb53f79"/>
+        <topic label="isFullResult" href="interface_gn_album.html#ae94b40e7e026efb50e21684457160b86"/>
+        <topic label="label" href="interface_gn_album.html#a81b11b4854e4b995f945d2cc60b783ec"/>
+        <topic label="language" href="interface_gn_album.html#a67395c20f01ba390a9e22683d1ced07f"/>
+        <topic label="languageCode" href="interface_gn_album.html#a6dd412d1c13f2b33b752341ab3905331"/>
+        <topic label="matchScore" href="interface_gn_album.html#abcde94ed0b1aec9c67a88350ed5562f6"/>
+        <topic label="review" href="interface_gn_album.html#ae125496d058aff5ac65e354fed563236"/>
+        <topic label="script" href="interface_gn_album.html#a9bcf22f38c0dfef1111d472f86285241"/>
+        <topic label="tagId" href="interface_gn_album.html#a8797066f879ae40bca9a3fbb26402ca6"/>
+        <topic label="title" href="interface_gn_album.html#aaada5ede36d784948f9b9a629e04ba3f"/>
+        <topic label="titleClassical" href="interface_gn_album.html#a756dc5af5e4406da5bd6ec5fc6ab5769"/>
+        <topic label="titleRegional" href="interface_gn_album.html#afa1ea18ae1cbf2e732a196efac0076c6"/>
+        <topic label="titleRegionalLocale" href="interface_gn_album.html#a96a4e2052939d3a5ea5bd7ce95ade9d4"/>
+        <topic label="totalInSet" href="interface_gn_album.html#a09d7eb1ffcce3b2c91a3e43aaaf46b5d"/>
+        <topic label="track:" href="interface_gn_album.html#abc9b647f896531151d76ddb9d4d15029"/>
+        <topic label="trackCount" href="interface_gn_album.html#ad3ef6029dc0bd1b71aa4afb92466ec20"/>
+        <topic label="trackMatched:" href="interface_gn_album.html#a354b967768770f9061dbe1adaba2e13a"/>
+        <topic label="trackMatchNumber:" href="interface_gn_album.html#a7c79e143f15b198328815d4dad4be02f"/>
+        <topic label="tracks" href="interface_gn_album.html#a748e310b0fbdbf61c455c2b62d8dda68"/>
+        <topic label="tracksMatched" href="interface_gn_album.html#aeb1311b6fbacccdedd7055ec86963c8f"/>
+        <topic label="tui" href="interface_gn_album.html#aa11cc6de390daa716359bda17e062b2f"/>
+        <topic label="tuiTag" href="interface_gn_album.html#a99ab4eb07c513bd38bf22dac4c84b6b4"/>
+        <topic label="year" href="interface_gn_album.html#ae5f13d308b4099a2724983034b713f30"/>
+      </topic>
+      <topic label="GnAlbumEnumerator()" href="category_gn_album_enumerator_07_08.html">
+        <topic label="init_with_album_iterable:" href="category_gn_album_enumerator_07_08.html#aa2a6bb8b694e1da757391483a9d0832f"/>
+      </topic>
+      <topic label="GnArtist" href="interface_gn_artist.html">
+        <topic label="contributor" href="interface_gn_artist.html#aa1d530cb5318c8160f5ffd4ba32ca81f"/>
+        <topic label="cppGnArtist" href="interface_gn_artist.html#a83030c6fb455bb8bbeb58e0872bab9b6"/>
+        <topic label="from:error:" href="interface_gn_artist.html#ae929448bce446d7db85f5700c28d01ae"/>
+        <topic label="gnType" href="interface_gn_artist.html#aef3275d600c29faf001666874256b520"/>
+        <topic label="init" href="interface_gn_artist.html#a872a89f0f8376d2c3ade5f8e5d62683a"/>
+        <topic label="init_with_GnArtist:" href="interface_gn_artist.html#af083437db781326a632ce3347fda3e72"/>
+        <topic label="name" href="interface_gn_artist.html#a73a417ac685ee36994339588232bbb8f"/>
+      </topic>
+      <topic label="GnAsset" href="interface_gn_asset.html">
+        <topic label="bytes" href="interface_gn_asset.html#af8746cdbfd33bb0b76c918fc660e630c"/>
+        <topic label="cppGnAsset" href="interface_gn_asset.html#ae0806185934337d46918534e5876a70e"/>
+        <topic label="dimension" href="interface_gn_asset.html#acb3b4269b8b0af423ffd7579a18e3e48"/>
+        <topic label="init" href="interface_gn_asset.html#a2fc76557ad6d2c982967a9f11392dd99"/>
+        <topic label="init_with_GnAsset:" href="interface_gn_asset.html#ae0a17e279910e6e00cd4a7e6b565db9b"/>
+        <topic label="size" href="interface_gn_asset.html#a179dd21c22048bd5768e797500ae1503"/>
+        <topic label="url" href="interface_gn_asset.html#a6213db42a0171334f94a677bf8ef3066"/>
+      </topic>
+      <topic label="GnAssetEnumerator()" href="category_gn_asset_enumerator_07_08.html">
+        <topic label="init_with_asset_iterable:" href="category_gn_asset_enumerator_07_08.html#ab596c1467d1fda1bc6dd5764639561aa"/>
+      </topic>
+      <topic label="GnAudioFile" href="interface_gn_audio_file.html">
+        <topic label="initWithAudioFileURL:" href="interface_gn_audio_file.html#ac030cceec12d4093849410b6277c2a9e"/>
+        <topic label="startDecoding:" href="interface_gn_audio_file.html#aea00538ef69314ff43013b89e10e65bd"/>
+        <topic label="audioFileUrl" href="interface_gn_audio_file.html#a846d45c0f0b565faf548651009a53a6e"/>
+        <topic label="tempFileUrl" href="interface_gn_audio_file.html#a05f5642f46d9e4548e2cc473791376bd"/>
+      </topic>
+      <topic label="&lt;GnAudioSourceDelegate&gt;" href="protocol_gn_audio_source_delegate-p.html">
+        <topic label="getData:dataSize:" href="protocol_gn_audio_source_delegate-p.html#a4811c201c184595b3136b78431a1d222"/>
+        <topic label="numberOfChannels" href="protocol_gn_audio_source_delegate-p.html#a7e75c1bb70e89bb2dadb00e63c3fbbb8"/>
+        <topic label="sampleSizeInBits" href="protocol_gn_audio_source_delegate-p.html#a19fccb2fc0b45dbd80a0039d02f1d818"/>
+        <topic label="samplesPerSecond" href="protocol_gn_audio_source_delegate-p.html#a1d9931872df3b251a0130590a7d94887"/>
+        <topic label="sourceClose" href="protocol_gn_audio_source_delegate-p.html#a0b62203a02d7fea7576511deb1b42d64"/>
+        <topic label="sourceInit" href="protocol_gn_audio_source_delegate-p.html#ab5a16df48f0f582faae1e92d7adee376"/>
+      </topic>
+      <topic label="GnAudioWork" href="interface_gn_audio_work.html">
+        <topic label="compositionForm" href="interface_gn_audio_work.html#a1f383819ee25bf301d533896a5b306c7"/>
+        <topic label="cppGnAudioWork" href="interface_gn_audio_work.html#a34a8d75eb18357222ce0ecb32310a503"/>
+        <topic label="credit" href="interface_gn_audio_work.html#a4b5c648383af5dc7ea9c92b9d1a7a339"/>
+        <topic label="era:" href="interface_gn_audio_work.html#a951bf4f16f4771d49868d19ec0099ae8"/>
+        <topic label="from:error:" href="interface_gn_audio_work.html#a87768bec93e58649de7ba85d3d9688fc"/>
+        <topic label="genre:" href="interface_gn_audio_work.html#a772deeee130b68296f32132d6b6509af"/>
+        <topic label="gnId" href="interface_gn_audio_work.html#acf76d11f4969bca86a4ff73132e83210"/>
+        <topic label="gnType" href="interface_gn_audio_work.html#ad7ffde5eb22a6e829918fff65b1c74c7"/>
+        <topic label="gnUId" href="interface_gn_audio_work.html#ac356dfcea2d9feaa5d54a967d295d9d1"/>
+        <topic label="init" href="interface_gn_audio_work.html#a64ff5a4f17059f412cb59b15722bf72f"/>
+        <topic label="init_with_GnAudioWork:" href="interface_gn_audio_work.html#a1d631e1f5e6b71a6a5ca488c1655c912"/>
+        <topic label="origin:" href="interface_gn_audio_work.html#ad6567ea5b56b17ac748e05a66140dfad"/>
+        <topic label="productId" href="interface_gn_audio_work.html#a25938a4e0b00e140c10705e3248c278b"/>
+        <topic label="tagId" href="interface_gn_audio_work.html#a52342e8cf956eab8b7cd55ede04f9136"/>
+        <topic label="title" href="interface_gn_audio_work.html#a71ce287b53bb83ccf4e870dde321fedc"/>
+        <topic label="tui" href="interface_gn_audio_work.html#ae4ae0c5d96ad31315c67134610e49288"/>
+        <topic label="tuiTag" href="interface_gn_audio_work.html#a9f8f4f7e87104134d3f988ede7d2dbd6"/>
+      </topic>
+      <topic label="&lt;GnCancellableDelegate&gt;" href="protocol_gn_cancellable_delegate-p.html">
+        <topic label="isCancelled" href="protocol_gn_cancellable_delegate-p.html#adeba026f9e58cdbbb4a837dbd688ce1a"/>
+        <topic label="setCancel:" href="protocol_gn_cancellable_delegate-p.html#ac1592b2023144c08ce387fdd03b2b4db"/>
+      </topic>
+      <topic label="GnCancellableDelegateImpl" href="interface_gn_cancellable_delegate_impl.html">
+        <topic label="init_with_IGnCancellable:" href="interface_gn_cancellable_delegate_impl.html#afe8864f89e350d55f1d65a73f55c3087"/>
+        <topic label="cppIGnCancellable" href="interface_gn_cancellable_delegate_impl.html#a8889c1def434032d30553db22e185980"/>
+      </topic>
+      <topic label="GnContent" href="interface_gn_content.html">
+        <topic label="asset:" href="interface_gn_content.html#ab6b8b05d3e79ce3b5d79cc3db1f187c8"/>
+        <topic label="assets" href="interface_gn_content.html#a8fe228e2b7728f7b42d5791e6c2736a3"/>
+        <topic label="contentType" href="interface_gn_content.html#a634e4b67b2956f8467cc5b4f7cfb84d2"/>
+        <topic label="cppGnContent" href="interface_gn_content.html#ad17015e1b8f21846978a581c1ee4fb71"/>
+        <topic label="id" href="interface_gn_content.html#af4391d895731d7cdec73be7b4d82cda5"/>
+        <topic label="init" href="interface_gn_content.html#abd26c14c1564cc4cc993e57b7ad1706a"/>
+        <topic label="init_with_GnContent:" href="interface_gn_content.html#a946a777e8abc8feb06be24745f92eeb7"/>
+        <topic label="mimeType" href="interface_gn_content.html#a9d7bcb2403ea836a2ef6cc60e85e2b23"/>
+      </topic>
+      <topic label="GnContentEnumerator()" href="category_gn_content_enumerator_07_08.html">
+        <topic label="init_with_content_iterable:" href="category_gn_content_enumerator_07_08.html#a4b618f367728e58cb6895f8fa7d9c2cf"/>
+      </topic>
+      <topic label="GnContributor" href="interface_gn_contributor.html">
+        <topic label="artistType:" href="interface_gn_contributor.html#a91ad39759487032cfc6f44451e72b6d4"/>
+        <topic label="biography" href="interface_gn_contributor.html#ace7da97df2e5cd2db1878fa75079cc74"/>
+        <topic label="biographyVideo" href="interface_gn_contributor.html#aee48b0133d97b366f8c250b32a6746bb"/>
+        <topic label="birthDate" href="interface_gn_contributor.html#ad336906515c42b3161785c01de229b3c"/>
+        <topic label="birthPlace" href="interface_gn_contributor.html#a5ab74fd00506457f7f69699e6692d314"/>
+        <topic label="collaborator" href="interface_gn_contributor.html#a2953d1329b87263aab9f2d736f7b65de"/>
+        <topic label="collaboratorResult" href="interface_gn_contributor.html#a6ab11d7a2fa3ca3a746760eca7761c4e"/>
+        <topic label="content:" href="interface_gn_contributor.html#a6113752033aa8a5058d21c82dbf1f69d"/>
+        <topic label="contents" href="interface_gn_contributor.html#a20368e1173e16087a27697fb9ce5b698"/>
+        <topic label="cppGnContributor" href="interface_gn_contributor.html#a2a894e142b47f2106ddd49c542ae9c1d"/>
+        <topic label="deathDate" href="interface_gn_contributor.html#a97a336d848eef7b554091893179a2e81"/>
+        <topic label="deathPlace" href="interface_gn_contributor.html#a9b14a9d2a3e9d4663e7b1bb24e475103"/>
+        <topic label="era:" href="interface_gn_contributor.html#ae6385aaecfc15cc4d6d88dbc112e0433"/>
+        <topic label="externalIds" href="interface_gn_contributor.html#a1044a993e7ebbef31423b59c9d4f129f"/>
+        <topic label="from:error:" href="interface_gn_contributor.html#ad3c61fe852266817d670eaffeff2acda"/>
+        <topic label="genre:" href="interface_gn_contributor.html#aeb3733650a6a6a2c7a4edd077d6f4087"/>
+        <topic label="gnId" href="interface_gn_contributor.html#adf4c115810ce761ef204bb1feb9d35d8"/>
+        <topic label="gnType" href="interface_gn_contributor.html#a80c5349dcf282242d2a4096def2373e3"/>
+        <topic label="gnUId" href="interface_gn_contributor.html#a8354f9337ffe2c34e5ee158508850fb6"/>
+        <topic label="image" href="interface_gn_contributor.html#afec51aa01d3abac096b671bce62fe34e"/>
+        <topic label="init" href="interface_gn_contributor.html#aa53d4bc6300c60aa0ead4badadd6ba6e"/>
+        <topic label="init_with_GnContributor:" href="interface_gn_contributor.html#a65d5ae8d001b150e602836f3369f058d"/>
+        <topic label="initWithId:idTag:" href="interface_gn_contributor.html#a59b45210810d61cc51384a3b340178ed"/>
+        <topic label="isFullResult" href="interface_gn_contributor.html#abdee7ae653bcda5a5bb705ffd8c0108d"/>
+        <topic label="mediaSpace" href="interface_gn_contributor.html#acc844b674eb29f974499f5f1ee66eb20"/>
+        <topic label="name" href="interface_gn_contributor.html#afb9aaa1dd3c6693aa24be577f7558cac"/>
+        <topic label="namesOfficial" href="interface_gn_contributor.html#a1adae6b5491421288e3aa0b5a64686ba"/>
+        <topic label="namesRegional" href="interface_gn_contributor.html#ac96a74abd315dca226d1934880b0e551"/>
+        <topic label="origin:" href="interface_gn_contributor.html#a2c92d1e870e946a05f0d28b56fa0a337"/>
+        <topic label="productId" href="interface_gn_contributor.html#a4548fbf7fedd07e7b82acca3309fdccb"/>
+        <topic label="tui" href="interface_gn_contributor.html#a8f115c18506fac0d1ffc0ba450821b04"/>
+        <topic label="tuiTag" href="interface_gn_contributor.html#aa0721a5fcb1f004e2755f7821bab3ebb"/>
+      </topic>
+      <topic label="GnCredit" href="interface_gn_credit.html">
+        <topic label="contributor" href="interface_gn_credit.html#ac93d9b05fed1c608e9c44fc726cba240"/>
+        <topic label="cppGnCredit" href="interface_gn_credit.html#a2ddc54285d2ca034c42de57dc0176832"/>
+        <topic label="from:error:" href="interface_gn_credit.html#abf6635b05b289dc4bafa003d2bfbe759"/>
+        <topic label="gnType" href="interface_gn_credit.html#acf0e7ea0b637e6057c6299783aa85a70"/>
+        <topic label="init" href="interface_gn_credit.html#a7d1019a32be05da9f56045e335393ecf"/>
+        <topic label="init_with_GnCredit:" href="interface_gn_credit.html#a914a06103044c4628bee74e48528ce5f"/>
+        <topic label="name" href="interface_gn_credit.html#a772245bf7d61e3e05f12bdaa6ec11f7d"/>
+        <topic label="role" href="interface_gn_credit.html#a069ac9d72c06b2b6f654b6570758a583"/>
+      </topic>
+      <topic label="GnCreditEnumerator()" href="category_gn_credit_enumerator_07_08.html">
+        <topic label="init_with_credit_iterable:" href="category_gn_credit_enumerator_07_08.html#a0e7d290fe674ddaea25ef47ecea23e84"/>
+      </topic>
+      <topic label="GnDataMatch" href="interface_gn_data_match.html">
+        <topic label="cppGnDataMatch" href="interface_gn_data_match.html#a3edeea071cdf040cc4734924f860f947"/>
+        <topic label="getAsAlbum" href="interface_gn_data_match.html#a0f248a9c16d9f257e21a5b85c9da995e"/>
+        <topic label="getAsContributor" href="interface_gn_data_match.html#a7ec87ecbdb363e5197c3654cb97d4faa"/>
+        <topic label="init" href="interface_gn_data_match.html#a2fc6dd745f78f196bc3d08519da0bd97"/>
+        <topic label="init_with_GnDataMatch:" href="interface_gn_data_match.html#a46a9eefcbb47f747e7041d5a2330aded"/>
+        <topic label="isAlbum" href="interface_gn_data_match.html#a0d31fbca28a4fb85a95595d81a39b62b"/>
+        <topic label="isContributor" href="interface_gn_data_match.html#a036dfc24bfbe5811029723148c97e3a0"/>
+      </topic>
+      <topic label="GnDataMatchEnumerator()" href="category_gn_data_match_enumerator_07_08.html">
+        <topic label="init_with_datamatch_iterable:" href="category_gn_data_match_enumerator_07_08.html#a3fdb86e86c852d1173bf5e83419ac057"/>
+      </topic>
+      <topic label="GnDataObject" href="interface_gn_data_object.html">
+        <topic label="child:childOrdinal:" href="interface_gn_data_object.html#a555513750e551e2d492e8f590278743c"/>
+        <topic label="cppGnDataObject" href="interface_gn_data_object.html#ac981336ae11ecb0f4996180c66b6700b"/>
+        <topic label="createFromXml:error:" href="interface_gn_data_object.html#af82a154889d6010e077e11358f01e246"/>
+        <topic label="deserialize:error:" href="interface_gn_data_object.html#a075aebe1252385d99ba705aa5ce6bade"/>
+        <topic label="getType:" href="interface_gn_data_object.html#ae8c4b6441c22183720759a58050de3dd"/>
+        <topic label="init" href="interface_gn_data_object.html#a5339f699c42215b94fb11880adc37d28"/>
+        <topic label="init_with_GnDataObject:" href="interface_gn_data_object.html#ae6046fd421c5f90b4a78048ccc89351e"/>
+        <topic label="initWithGnDataObject:" href="interface_gn_data_object.html#afd5e5a924c9218d31bb1399dcbe07115"/>
+        <topic label="initWithId:idTag:idSrc:" href="interface_gn_data_object.html#a8a50a055f5d26f380c3fea43e7f69bb3"/>
+        <topic label="isType:error:" href="interface_gn_data_object.html#a58bd9856efa93a4463011b5ab08cd5cc"/>
+        <topic label="locale:error:" href="interface_gn_data_object.html#ad64f1e2116e76833b42c33263820e5c2"/>
+        <topic label="render:error:" href="interface_gn_data_object.html#ac9d00c2c262504c1d8ca7f05b5cb7eac"/>
+        <topic label="serialize:" href="interface_gn_data_object.html#a7e40f439915b294b062170deb02ecc81"/>
+        <topic label="stringValue:ordinal:" href="interface_gn_data_object.html#a83174e1a2527e25fa8ca000d497f20af"/>
+        <topic label="stringValueCount:" href="interface_gn_data_object.html#afd27baf6b577c09bfa734a15176e0931"/>
+        <topic label="_cppGnDataObject" href="interface_gn_data_object.html#a1ab417c36c77db2302e9324b662c1c5e"/>
+      </topic>
+      <topic label="GnExternalId" href="interface_gn_external_id.html">
+        <topic label="cppGnExternalId" href="interface_gn_external_id.html#a7a0442eb6ac29a8b749a86d4a86aa4d9"/>
+        <topic label="from:error:" href="interface_gn_external_id.html#aaa7e87f7f83e74659a8306c590ef8f71"/>
+        <topic label="gnType" href="interface_gn_external_id.html#a8736b1c41451d223eea7abdddbe21b57"/>
+        <topic label="init" href="interface_gn_external_id.html#ab6bfb0db9b4681749fc7ef96ae8d4316"/>
+        <topic label="init_with_GnExternalId:" href="interface_gn_external_id.html#a9dd89f8f39a0216788051e7c1a45c5aa"/>
+        <topic label="source" href="interface_gn_external_id.html#a9591d0a9940ff30d44fd0425eaf9e700"/>
+        <topic label="type" href="interface_gn_external_id.html#a9c0f59c82df8efb413cb459bdf8b44e8"/>
+        <topic label="value" href="interface_gn_external_id.html#a72e918a7f618e191e60edb8281a3b168"/>
+      </topic>
+      <topic label="GnExternalIdEnumerator()" href="category_gn_external_id_enumerator_07_08.html">
+        <topic label="init_with_externalid_iterable:" href="category_gn_external_id_enumerator_07_08.html#aaff206c42889f95ae8a919f071c5d8ad"/>
+      </topic>
+      <topic label="GnList" href="interface_gn_list.html">
+        <topic label="cppGnList" href="interface_gn_list.html#a4348633efa026496f77abd439e91e22c"/>
+        <topic label="descriptor:" href="interface_gn_list.html#a9769fc5735b1336b6327cf025af640b0"/>
+        <topic label="elementByGnDataObject:ordinal:level:error:" href="interface_gn_list.html#a81b3be839b9a9f2bb89bbf84dae69d90"/>
+        <topic label="elementById:error:" href="interface_gn_list.html#ad86496b979d07c562e6f09f2ea385214"/>
+        <topic label="elementByRange:error:" href="interface_gn_list.html#ae5ebaabd807dad43bb5f8b801fee874f"/>
+        <topic label="elementByString:error:" href="interface_gn_list.html#abf44b25d5fadb52660cd30e3167b3513"/>
+        <topic label="init" href="interface_gn_list.html#afa0268dc3d4484bb009c4eba427aaeab"/>
+        <topic label="init_with_GnList:" href="interface_gn_list.html#a3203c950c0b1e55906df5bb5e19e1247"/>
+        <topic label="initWithGnListType:language:region:descriptor:user:statusEventsDelegate:" href="interface_gn_list.html#a16521f365e9bd2ed562bcb84824e7940"/>
+        <topic label="initWithGnListType:locale:user:statusEventsDelegate:" href="interface_gn_list.html#abd045c71838102e29808713986990536"/>
+        <topic label="initWithSerializedList:" href="interface_gn_list.html#a84b99e1ad8e8fefdff9eebb5a95e60a8"/>
+        <topic label="language:" href="interface_gn_list.html#ad05b160e47885b9d8fc3cd0742132ef8"/>
+        <topic label="levelCount:" href="interface_gn_list.html#a0858db8fcc0fc72b334e5803688f44a3"/>
+        <topic label="listElements:" href="interface_gn_list.html#a1d4b12e009b3ec5cb0460a3557d6dbe0"/>
+        <topic label="region:" href="interface_gn_list.html#af0073b0cc113016ec00e042c92837842"/>
+        <topic label="renderToXml:renderFlags:error:" href="interface_gn_list.html#a1970f4ae88950a4985c716493d5d098d"/>
+        <topic label="revision:" href="interface_gn_list.html#ad26cf96e234796140180c84ea586255d"/>
+        <topic label="serialize:" href="interface_gn_list.html#a05d9448d1b4019f2da10cb537acf218d"/>
+        <topic label="type:" href="interface_gn_list.html#acdd343faae512df4c3509fa846de52f7"/>
+        <topic label="update:statusEventsDelegate:error:" href="interface_gn_list.html#a5ce700138bd611ffad3d1b9b46e70472"/>
+        <topic label="updateCheck:statusEventsDelegate:error:" href="interface_gn_list.html#aa539363972b4fb19bbc849cc6e7639a1"/>
+        <topic label="_cppGnList" href="interface_gn_list.html#a5aab01904dbdd9df362391ea5c6ecf4d"/>
+      </topic>
+      <topic label="GnListElement" href="interface_gn_list_element.html">
+        <topic label="children" href="interface_gn_list_element.html#a27021cf46f85954fc7edbd46406b1a17"/>
+        <topic label="cppGnListElement" href="interface_gn_list_element.html#a1f2cf52910d22dcb0163740e9e5f06d4"/>
+        <topic label="description:" href="interface_gn_list_element.html#a83f49e06fc49d433055dfd58f9f87481"/>
+        <topic label="displayString:" href="interface_gn_list_element.html#a9e369ca8f61e3c58fe5028b886610042"/>
+        <topic label="id:" href="interface_gn_list_element.html#af6ba70decc488dc43604b75e7c555c21"/>
+        <topic label="idForSubmit:" href="interface_gn_list_element.html#adb4a04f2cc5dc8ee0fed72e613bf1018"/>
+        <topic label="init" href="interface_gn_list_element.html#a281a3e7d22d13f898d174fd3401706b6"/>
+        <topic label="init_with_GnListElement:" href="interface_gn_list_element.html#aac446f3c39dc189346e4e2282966eb81"/>
+        <topic label="level:" href="interface_gn_list_element.html#ad6eaa877de16ffb96573880035586936"/>
+        <topic label="parent:" href="interface_gn_list_element.html#a03f5ad51952c0b61741581e9af6be54b"/>
+        <topic label="ratingTypeId:" href="interface_gn_list_element.html#a28ad970e19570057cb0b97157bf71f1d"/>
+        <topic label="_cppGnListElement" href="interface_gn_list_element.html#a5bd2bcfc9f9d9cb787b6913def6e1e62"/>
+      </topic>
+      <topic label="GnListElementEnumerator()" href="category_gn_list_element_enumerator_07_08.html">
+        <topic label="init_with_list_element_child_iterable:" href="category_gn_list_element_enumerator_07_08.html#a7fafa04e58f6c07d7e88c96f5727c19f"/>
+        <topic label="init_with_list_element_iterable:" href="category_gn_list_element_enumerator_07_08.html#a4bea40932ff0bfad7d9852150bca82bf"/>
+      </topic>
+      <topic label="GnLocale" href="interface_gn_locale.html">
+        <topic label="cppGnLocale" href="interface_gn_locale.html#a4f3085d755d7c86298180026caa1788d"/>
+        <topic label="init" href="interface_gn_locale.html#a6bbc369c7550e63bbf027b569b8382b9"/>
+        <topic label="init_with_GnLocale:" href="interface_gn_locale.html#a18a4ee997a48d7488aa83ed8d1ebc4df"/>
+        <topic label="initWithGnLocaleGroup:langIsoCode:region:descriptor:user:statusEventsDelegate:" href="interface_gn_locale.html#aebed2c1c7435efff399ca8706afb4161"/>
+        <topic label="initWithGnLocaleGroup:language:region:descriptor:user:statusEventsDelegate:" href="interface_gn_locale.html#a9a6c7f3367bc87daac15314d5b4ceba6"/>
+        <topic label="initWithGnLocaleInfo:user:statusEventsDelegate:" href="interface_gn_locale.html#a7e9a770f39077ba3e18104f7bdb36dd4"/>
+        <topic label="initWithSerializedLocale:" href="interface_gn_locale.html#a7f8f236f67920720f2e3a9cd60b68984"/>
+        <topic label="localeInformation" href="interface_gn_locale.html#ad218a6b0baa9a25ed29ad8abc98251d7"/>
+        <topic label="revision:" href="interface_gn_locale.html#a554bbf123bb72de3576ba6508707d62f"/>
+        <topic label="serialize:" href="interface_gn_locale.html#ac1293f72fbe97bf378f937de7fe66206"/>
+        <topic label="setGroupDefault:" href="interface_gn_locale.html#ad86612ef848fd531de1007cbb3382dc6"/>
+        <topic label="storedLocales" href="interface_gn_locale.html#ab86626bafb2fd25ef0a1ba5b1de60247"/>
+        <topic label="update:statusEventsDelegate:error:" href="interface_gn_locale.html#a4f39b0fb676d61d43aa1f981e2cbdcc0"/>
+        <topic label="updateCheck:statusEventsDelegate:error:" href="interface_gn_locale.html#a20c16263675486c9cd94a14b685050e2"/>
+        <topic label="_cppGnLocale" href="interface_gn_locale.html#ac405313395ebe9f46a4e6314e13863f5"/>
+      </topic>
+      <topic label="GnLocaleInfo" href="interface_gn_locale_info.html">
+        <topic label="cppGnLocaleInfo" href="interface_gn_locale_info.html#ab358d183c51c13eab856e45e30a647f2"/>
+        <topic label="descriptor" href="interface_gn_locale_info.html#a5b9ac41aaf0869b2bdaccf97ba1bffa7"/>
+        <topic label="group" href="interface_gn_locale_info.html#ae6029651d0710bd36cbe92796dda3e34"/>
+        <topic label="init" href="interface_gn_locale_info.html#aefca86922f8c8a0ba6847e1e324c44ac"/>
+        <topic label="init_with_GnLocaleInfo:" href="interface_gn_locale_info.html#af23dd35c26534efab9eb6c468a62cfd2"/>
+        <topic label="initWithGnLocaleGroup:language:region:descriptor:" href="interface_gn_locale_info.html#a220818caed3056732b487ba8bd3b25a9"/>
+        <topic label="language" href="interface_gn_locale_info.html#a4042983905d818f3430fa907958853fc"/>
+        <topic label="region" href="interface_gn_locale_info.html#ad93a7b2519fe5205ba0cbcc551b67811"/>
+        <topic label="_cppGnLocaleInfo" href="interface_gn_locale_info.html#accc3dfdac4fa62141abf582225bf5a04"/>
+      </topic>
+      <topic label="GnLocaleInfoEnumerator()" href="category_gn_locale_info_enumerator_07_08.html">
+        <topic label="init_with_locale_info_iterable:" href="category_gn_locale_info_enumerator_07_08.html#a574e8cb686d7866683c3e333c0807075"/>
+      </topic>
+      <topic label="GnLog" href="interface_gn_log.html">
+        <topic label="columns:" href="interface_gn_log.html#a3b1c55cca8073f2193643db8722f45da"/>
+        <topic label="disableWithCustomPackageId:error:" href="interface_gn_log.html#a2f9bdda2a00d93da8080076b5c9b75ff"/>
+        <topic label="disableWithPackage:error:" href="interface_gn_log.html#ac5f61fafcd4dbe0f37733303a6f99688"/>
+        <topic label="enableWithCustomPackageId:error:" href="interface_gn_log.html#a784b99bbfee3108d6460e6523fa8d3d3"/>
+        <topic label="enableWithPackage:error:" href="interface_gn_log.html#aa686ef73aed33a48b6ff80222e42f269"/>
+        <topic label="filters:" href="interface_gn_log.html#afbb13a4aa3fd17552459f59c9691da68"/>
+        <topic label="init_with_GnLog:" href="interface_gn_log.html#a15e12dce7b9634c7f7be5775bedc6a5d"/>
+        <topic label="initWithLogFilePath:filters:columns:options:logEventsDelegate:" href="interface_gn_log.html#a148a5de1569ede9c2a1241c7c7950076"/>
+        <topic label="initWithLogFilePath:logEventsDelegate:" href="interface_gn_log.html#a17273a8419a86f0b78555b72c97c7104"/>
+        <topic label="options:" href="interface_gn_log.html#a1ed0bb9584638e0f3b1fe97bc5778bfc"/>
+        <topic label="register:customPackageName:error:" href="interface_gn_log.html#a93a2c9303a3385e79d8c196c690b705c"/>
+        <topic label="write:fileName:customPackageId:messageType:format:" href="interface_gn_log.html#a64507cbe92c3291ab0ba4497c843062d"/>
+        <topic label="cppGnLog" href="interface_gn_log.html#a7ae2751aacf20b51ef90dcfd3ae1fa3e"/>
+      </topic>
+      <topic label="GnLogColumns" href="interface_gn_log_columns.html">
+        <topic label="all" href="interface_gn_log_columns.html#a52fbe8aab277f9377bff1f8d6c3ab89d"/>
+        <topic label="category" href="interface_gn_log_columns.html#ad1e5a5e246929d1d73856729cdfee2fe"/>
+        <topic label="cppGnLogColumns" href="interface_gn_log_columns.html#a68afb5b0099f617a7979a0bc8fc84bb6"/>
+        <topic label="init" href="interface_gn_log_columns.html#aa838d343f35c821f3be4b0114b7d320a"/>
+        <topic label="init_with_GnLogColumns:" href="interface_gn_log_columns.html#a544520a139e2b01400ec183b9647d7a9"/>
+        <topic label="newLine" href="interface_gn_log_columns.html#ae1347efe1069c473daae345bd4092472"/>
+        <topic label="none" href="interface_gn_log_columns.html#abea7ce0a5a59cb439b17b59de09c8ee8"/>
+        <topic label="packageName" href="interface_gn_log_columns.html#a954c1dc956d59d4e63f3e27618c20b2a"/>
+        <topic label="sourceInfo" href="interface_gn_log_columns.html#aac9c74373a728c10477c16204e69e941"/>
+        <topic label="thread" href="interface_gn_log_columns.html#a2cdb1ab188da62108122d3a97a1481b9"/>
+        <topic label="timeStamp" href="interface_gn_log_columns.html#a1b86256f4b13da2a24d47135a3194f01"/>
+        <topic label="_cppGnLogColumns" href="interface_gn_log_columns.html#acbe2ae13bb836e710b4c4791b25362e5"/>
+      </topic>
+      <topic label="&lt;GnLogEventsDelegate&gt;" href="protocol_gn_log_events_delegate-p.html">
+        <topic label="logMessage:filterMask:errorCode:message:" href="protocol_gn_log_events_delegate-p.html#a51c5af20210ea6dca70709c49a965461"/>
+      </topic>
+      <topic label="GnLogFilters" href="interface_gn_log_filters.html">
+        <topic label="all" href="interface_gn_log_filters.html#ada949c30d42dc91aae9c2df7da0abb9c"/>
+        <topic label="clear" href="interface_gn_log_filters.html#ad4571eb94013251328dd2a720b184108"/>
+        <topic label="cppGnLogFilters" href="interface_gn_log_filters.html#aeff2b21b19d6903f736c5c221dfcc2f1"/>
+        <topic label="debug" href="interface_gn_log_filters.html#aad9a007d94519702caf3106f098a2a01"/>
+        <topic label="error" href="interface_gn_log_filters.html#a669aa6008d66be21767c703d237dbb0f"/>
+        <topic label="info" href="interface_gn_log_filters.html#a019da53ef55985fe5b985a85bbd2b378"/>
+        <topic label="init" href="interface_gn_log_filters.html#a2261dae06a1bcb9d7d3b141616322619"/>
+        <topic label="init_with_GnLogFilters:" href="interface_gn_log_filters.html#a6dd04c9a8a4ae0f0a0b0ceb388562595"/>
+        <topic label="warning" href="interface_gn_log_filters.html#a280929cd1781b77ce6bbf8645fa11b73"/>
+        <topic label="_cppGnLogFilters" href="interface_gn_log_filters.html#a005680d7badb841d2c0e04a1c57b0d1e"/>
+      </topic>
+      <topic label="GnLogOptions" href="interface_gn_log_options.html">
+        <topic label="archive:" href="interface_gn_log_options.html#a19fba1b27abc4937235cb6536784d58b"/>
+        <topic label="archiveDaily" href="interface_gn_log_options.html#a5c7cb2ab507ef7e308c39e56ea0c6fe3"/>
+        <topic label="cppGnLogOptions" href="interface_gn_log_options.html#a6f33ead3d63ddb1d34c250c142bfa54a"/>
+        <topic label="init" href="interface_gn_log_options.html#abc59627b8e9cfbfb3d6188228e898481"/>
+        <topic label="init_with_GnLogOptions:" href="interface_gn_log_options.html#aaa9fc141db5a4a5d6abd223574a0d35d"/>
+        <topic label="maxSize:" href="interface_gn_log_options.html#ae5960f5b46d62b77639912c6add73efc"/>
+        <topic label="synchronous:" href="interface_gn_log_options.html#a3b4dd453b92f933b43f50313c6dbe61e"/>
+        <topic label="_cppGnLogOptions" href="interface_gn_log_options.html#af2c223e94bdae23356ca468803769ce6"/>
+      </topic>
+      <topic label="GnLookupLocalStream" href="interface_gn_lookup_local_stream.html">
+        <topic label="buildDate" href="interface_gn_lookup_local_stream.html#a8ba6fb5ff608c1dc7a99d6c960bc800b"/>
+        <topic label="enable:" href="interface_gn_lookup_local_stream.html#a81c739bd51b7fde43bb56aaa27a2b93f"/>
+        <topic label="engineType:" href="interface_gn_lookup_local_stream.html#aca7c5050dc8fc393738c1ef2e34039ce"/>
+        <topic label="engineTypeWithEngineType:error:" href="interface_gn_lookup_local_stream.html#a5da3427e6760cc42f1bdba4304ff5d42"/>
+        <topic label="storageClear:" href="interface_gn_lookup_local_stream.html#aa9cc1f6cfd48a17a0d2f8dc0cfa1a8e8"/>
+        <topic label="storageLocation:error:" href="interface_gn_lookup_local_stream.html#ab4ac8a977286b0a812e285091842af5a"/>
+        <topic label="storageRemove:error:" href="interface_gn_lookup_local_stream.html#a2da6da515408e33e185835f692d5d347"/>
+        <topic label="version" href="interface_gn_lookup_local_stream.html#af91b8767e88ad086f59fff339ac67bcb"/>
+        <topic label="cppGnLookupLocalStream" href="interface_gn_lookup_local_stream.html#acc7e6c0b2db3d26ecb62337169b51580"/>
+      </topic>
+      <topic label="GnLookupLocalStreamIngest" href="interface_gn_lookup_local_stream_ingest.html">
+        <topic label="flush:" href="interface_gn_lookup_local_stream_ingest.html#a73ee33699ea3d6821977862a583f9815"/>
+        <topic label="initWithGnLookupLocalStreamIngestEventsDelegate:" href="interface_gn_lookup_local_stream_ingest.html#a4befe3191d3c8c12d6e2d8a01ed6a286"/>
+        <topic label="write:dataSize:error:" href="interface_gn_lookup_local_stream_ingest.html#abe837ab847720a44f3cabb4e8b1fc56f"/>
+        <topic label="cppGnLookupLocalStreamIngest" href="interface_gn_lookup_local_stream_ingest.html#a45fa0db161e6ded3c0bbc8d95ab5fff3"/>
+      </topic>
+      <topic label="&lt;GnLookupLocalStreamIngestEventsDelegate&gt;" href="protocol_gn_lookup_local_stream_ingest_events_delegate-p.html">
+        <topic label="statusEvent:bundleId:cancellableDelegate:" href="protocol_gn_lookup_local_stream_ingest_events_delegate-p.html#a49d14aee6b3f432cfa3270631dc020a7"/>
+      </topic>
+      <topic label="GnManager" href="interface_gn_manager.html">
+        <topic label="buildDate" href="interface_gn_manager.html#a834f245d8fb676669f08c0ddaff5306c"/>
+        <topic label="contentCacheStore" href="interface_gn_manager.html#a3f1b7a3bec44861551a7c6caadee7cb0"/>
+        <topic label="globalIdMagic" href="interface_gn_manager.html#a4a0e08f8c23595f71e64b95e8d5b57cd"/>
+        <topic label="initWithLicense:licenseInputMode:" href="interface_gn_manager.html#a0c92ff237abcf41b3e4eca7d491871d3"/>
+        <topic label="localesStore" href="interface_gn_manager.html#aa5106c9701e8d55215d76e2f7e5a0770"/>
+        <topic label="productVersion" href="interface_gn_manager.html#a3ef33fcae6a9b00d51bade50e70c443a"/>
+        <topic label="queryCacheStore" href="interface_gn_manager.html#a9512fa2d9e1acf969a92ad094060ccb3"/>
+        <topic label="systemEventHandler:" href="interface_gn_manager.html#a78fb42174097a77da6c24aadef8f0142"/>
+        <topic label="systemMemoryCurrent" href="interface_gn_manager.html#afe40e6875325b17c80d8c828cb5f0cc6"/>
+        <topic label="systemMemoryEvent:" href="interface_gn_manager.html#a9fab85b9d5da1c29ce6e9013c7774eca"/>
+        <topic label="systemMemoryHighWater:" href="interface_gn_manager.html#a7799ebda583c969c74e2e640c1ace9c9"/>
+        <topic label="testGracenoteConnection:error:" href="interface_gn_manager.html#a6cef3e32646095dabe4b6b6d1d093af7"/>
+        <topic label="userRegister:clientId:clientTag:applicationVersion:error:" href="interface_gn_manager.html#ac2a12bc1151167f6989ef0fde6d7f5ac"/>
+        <topic label="version" href="interface_gn_manager.html#aafff4e719565b39bb8b2509cdc98fab1"/>
+        <topic label="cppGnManager" href="interface_gn_manager.html#ac622bb59b98b37125c925d8888f8b6ac"/>
+      </topic>
+      <topic label="GnMic" href="interface_gn_mic.html">
+        <topic label="initWithSampleRate:bitsPerChannel:numberOfChannels:" href="interface_gn_mic.html#a667a5bc5f12abc90cb6421260a99dd4c"/>
+      </topic>
+      <topic label="GnMoodgrid" href="interface_gn_moodgrid.html">
+        <topic label="buildDate" href="interface_gn_moodgrid.html#ab7ba93956e1b86528142f3a27c30fae6"/>
+        <topic label="createPresentation:type:coordinate:error:" href="interface_gn_moodgrid.html#addcab3414463ba7b17a349be560976ad"/>
+        <topic label="dimensions:error:" href="interface_gn_moodgrid.html#ad3b0ee8e028f3bd09be1c846ba6c51ef"/>
+        <topic label="init" href="interface_gn_moodgrid.html#a9ca8991d2676d80854a9007eb04d3166"/>
+        <topic label="init_with_GnMoodgrid:" href="interface_gn_moodgrid.html#a19c6af403a53efdcb2e9c8049527e27c"/>
+        <topic label="providers" href="interface_gn_moodgrid.html#a7e9a6b28fe72affcaa3092ca6ba87f0f"/>
+        <topic label="version" href="interface_gn_moodgrid.html#aa172ebb70102d8c5e1a8e2e4a8c7a8e6"/>
+        <topic label="cppGnMoodgrid" href="interface_gn_moodgrid.html#ab92b9b739c2f0c5f15ef7ea3c4e3731b"/>
+      </topic>
+      <topic label="GnMoodgridDataPoint" href="interface_gn_moodgrid_data_point.html">
+        <topic label="cppGnMoodgridDataPoint" href="interface_gn_moodgrid_data_point.html#a25584c266dfa5ceba7fcdbce4d72f014"/>
+        <topic label="init" href="interface_gn_moodgrid_data_point.html#aad470c780cee16d4e0b273106745506c"/>
+        <topic label="init_with_GnMoodgridDataPoint:" href="interface_gn_moodgrid_data_point.html#a163d2c946e18c5878f5f942f63262a1b"/>
+        <topic label="initWithX:y:" href="interface_gn_moodgrid_data_point.html#ae6f44d1c72f13cb4e5ed5c207faf132f"/>
+        <topic label="_cppGnMoodgridDataPoint" href="interface_gn_moodgrid_data_point.html#a4b5823aeb88cadfe81082af76d33fa6b"/>
+        <topic label="x" href="interface_gn_moodgrid_data_point.html#a1cc15f58a978875d2361d7900f5cf493"/>
+        <topic label="y" href="interface_gn_moodgrid_data_point.html#ae50bf71560cd8dbf1e7f4cc42e617ee6"/>
+      </topic>
+      <topic label="GnMoodgridDataPointEnumerator()" href="category_gn_moodgrid_data_point_enumerator_07_08.html">
+        <topic label="init_with_mooddatapoint_iterable:" href="category_gn_moodgrid_data_point_enumerator_07_08.html#a49c3339fc0201ee81f7c30aab111f22a"/>
+      </topic>
+      <topic label="GnMoodgridIdentifier" href="interface_gn_moodgrid_identifier.html">
+        <topic label="cppGnMoodgridIdentifier" href="interface_gn_moodgrid_identifier.html#a8fc9d34b7f7f7e4802b45cca912b59a1"/>
+        <topic label="group" href="interface_gn_moodgrid_identifier.html#a02c60a846fed97f2021a4a3d8d8972f1"/>
+        <topic label="init" href="interface_gn_moodgrid_identifier.html#a1574c1425345e52104894d9e7a5b30bd"/>
+        <topic label="init_with_GnMoodgridIdentifier:" href="interface_gn_moodgrid_identifier.html#acda72cf3faef6629fdf98bf64d352c24"/>
+        <topic label="mediaIdentifier" href="interface_gn_moodgrid_identifier.html#aacfe3a1efe7383b61838408bae6afe7a"/>
+        <topic label="_cppGnMoodgridIdentifier" href="interface_gn_moodgrid_identifier.html#aa646e22db6677c4936fe573fba83dbb0"/>
+      </topic>
+      <topic label="GnMoodgridIdentifierEnumerator()" href="category_gn_moodgrid_identifier_enumerator_07_08.html">
+        <topic label="init_with_moodidentifier_iterable:" href="category_gn_moodgrid_identifier_enumerator_07_08.html#a600cbed79446cedd4965ef7708f6793b"/>
+      </topic>
+      <topic label="GnMoodgridPresentation" href="interface_gn_moodgrid_presentation.html">
+        <topic label="addFilter:elistType:strValueId:eConditionType:error:" href="interface_gn_moodgrid_presentation.html#a38698bf629f45774b540f7ddecb7e058"/>
+        <topic label="coordinateType" href="interface_gn_moodgrid_presentation.html#adf810cfffffbb79a1080d7cec6125372"/>
+        <topic label="cppGnMoodgridPresentation" href="interface_gn_moodgrid_presentation.html#a5653250cd730343c9344f643e3502372"/>
+        <topic label="findRecommendations:position:error:" href="interface_gn_moodgrid_presentation.html#a3900d285c12596a1d8ee2edd88c0462c"/>
+        <topic label="findRecommendationsEstimate:position:error:" href="interface_gn_moodgrid_presentation.html#a1cba4b99b808b1deab7c5fd9f820d95c"/>
+        <topic label="init" href="interface_gn_moodgrid_presentation.html#a052984fbdd80a290f6c23bc07cd22040"/>
+        <topic label="init_with_GnMoodgridPresentation:" href="interface_gn_moodgrid_presentation.html#a1292b5ad01cba4745b8d8602f267e8d8"/>
+        <topic label="layoutType:" href="interface_gn_moodgrid_presentation.html#a7d40d92958e03c7fc45842a4dc5d1de7"/>
+        <topic label="moodId:error:" href="interface_gn_moodgrid_presentation.html#ab1aa13da89509fcd2b09b4017e598ac6"/>
+        <topic label="moodName:error:" href="interface_gn_moodgrid_presentation.html#a17e117a09f9de808f163bb203b9c884c"/>
+        <topic label="moods:" href="interface_gn_moodgrid_presentation.html#a931351668225c2edca86a033f0a59307"/>
+        <topic label="removeAllFilters:" href="interface_gn_moodgrid_presentation.html#a62a8064a8654eb4a567d751d7169ff76"/>
+        <topic label="removeFilter:error:" href="interface_gn_moodgrid_presentation.html#a1b922483f544294d448974ba0b2338d7"/>
+        <topic label="_cppGnMoodgridPresentation" href="interface_gn_moodgrid_presentation.html#a0601e1f8759b52ef991dcb2bfb11becc"/>
+      </topic>
+      <topic label="GnMoodgridProvider" href="interface_gn_moodgrid_provider.html">
+        <topic label="cppGnMoodgridProvider" href="interface_gn_moodgrid_provider.html#aedf6bef6758a00edcde5e6b7aebfb242"/>
+        <topic label="init" href="interface_gn_moodgrid_provider.html#a1aa576a0fc363bcdabdda4c746d37456"/>
+        <topic label="init_with_GnMoodgridProvider:" href="interface_gn_moodgrid_provider.html#a443519b22590e892aa91f591c594de80"/>
+        <topic label="name:" href="interface_gn_moodgrid_provider.html#a86b9481a37df123c5f5921368932c154"/>
+        <topic label="requiresNetwork:" href="interface_gn_moodgrid_provider.html#a13c420e62126ee0de901a199510235cc"/>
+        <topic label="type:" href="interface_gn_moodgrid_provider.html#af4297bbaa962ba8103c501cb9f16f369"/>
+        <topic label="_cppGnMoodgridProvider" href="interface_gn_moodgrid_provider.html#ad2f2203f10dd69378506303d88f1bd0e"/>
+      </topic>
+      <topic label="GnMoodgridProviderEnumerator()" href="category_gn_moodgrid_provider_enumerator_07_08.html">
+        <topic label="init_with_moodprovider_iterable:" href="category_gn_moodgrid_provider_enumerator_07_08.html#a09c73883e8d83220e95b629586752d04"/>
+      </topic>
+      <topic label="GnMoodgridResult" href="interface_gn_moodgrid_result.html">
+        <topic label="count:" href="interface_gn_moodgrid_result.html#a24f3191273a594559102aa3058792389"/>
+        <topic label="cppGnMoodgridResult" href="interface_gn_moodgrid_result.html#a0804314c695a88b4e0bd915413325aa0"/>
+        <topic label="identifiers" href="interface_gn_moodgrid_result.html#a6197078f770ac6ba13a2207a4048eea5"/>
+        <topic label="init" href="interface_gn_moodgrid_result.html#a09c0b53437aae96672606174755f3e63"/>
+        <topic label="init_with_GnMoodgridResult:" href="interface_gn_moodgrid_result.html#ab5a4368e90fe8b3eb95d1c5f391b6f44"/>
+        <topic label="_cppGnMoodgridResult" href="interface_gn_moodgrid_result.html#ab6671b83c812f3afede2bd6eaaf847e8"/>
+      </topic>
+      <topic label="GnMusicId" href="interface_gn_music_id.html">
+        <topic label="buildDate" href="interface_gn_music_id.html#ac2c762d5c6306490a619ae44797f6838"/>
+        <topic label="findAlbumsWithAlbumTitle:trackTitle:albumArtistName:trackArtistName:composerName:error:" href="interface_gn_music_id.html#ad3eb93e0d73d7ce9b5c445c6f42dc319"/>
+        <topic label="findAlbumsWithAudioSource:fpType:error:" href="interface_gn_music_id.html#a09686adc1082e8776841ee01a62605ee"/>
+        <topic label="findAlbumsWithCDTOC:error:" href="interface_gn_music_id.html#a6f247d3644fec4465ef59b6bdd0903ae"/>
+        <topic label="findAlbumsWithCDTOC:strFingerprintData:fpType:error:" href="interface_gn_music_id.html#a8561ba6c0947c148aa6402ad8f185031"/>
+        <topic label="findAlbumsWithFingerprintData:fpType:error:" href="interface_gn_music_id.html#a3a701b29191d13ccc9f0a2b5d7488c04"/>
+        <topic label="findAlbumsWithGnDataObject:error:" href="interface_gn_music_id.html#ad283a2222b9e0c6c0110f702484d390b"/>
+        <topic label="findMatches:trackTitle:albumArtistName:trackArtistName:composerName:error:" href="interface_gn_music_id.html#a45d2d30eb10a2c42561d2f5c929715a7"/>
+        <topic label="fingerprintBegin:audioSampleRate:audioSampleSize:audioChannels:error:" href="interface_gn_music_id.html#a53c3a887ff5e10f215d8354a862b5169"/>
+        <topic label="fingerprintDataGet:" href="interface_gn_music_id.html#ab29eafb2dd47c4c3b02d24601810fd81"/>
+        <topic label="fingerprintEnd:" href="interface_gn_music_id.html#a6d11b6daf3197967e3882a7d8aa6ee71"/>
+        <topic label="fingerprintFromSource:fpType:error:" href="interface_gn_music_id.html#a20ff9eccbcf5048afb7cf17dec1fa930"/>
+        <topic label="fingerprintWrite:audioDataSize:error:" href="interface_gn_music_id.html#a8236accb15a3d28ee4981f17c12ab28e"/>
+        <topic label="initWithGnUser:locale:statusEventsDelegate:" href="interface_gn_music_id.html#a6efc31d8e0192163f19463c887eeae14"/>
+        <topic label="initWithGnUser:statusEventsDelegate:" href="interface_gn_music_id.html#a5f9b582b18946517c789820cdf76b49c"/>
+        <topic label="isCancelled" href="interface_gn_music_id.html#a0912798443ed1057d13fe19bf4ea1cd3"/>
+        <topic label="options" href="interface_gn_music_id.html#a0cf324a324d056a2185b0e6337488a54"/>
+        <topic label="setCancel:" href="interface_gn_music_id.html#acf8bf731fae063d68faf03923dd4dd65"/>
+        <topic label="version" href="interface_gn_music_id.html#a8429c79fab3c73a0efb9132c8ed992ec"/>
+        <topic label="cppGnMusicId" href="interface_gn_music_id.html#a4755929f645fd717de5103d58541bbfa"/>
+      </topic>
+      <topic label="GnMusicIdFile" href="interface_gn_music_id_file.html">
+        <topic label="buildDate" href="interface_gn_music_id_file.html#a78588ffbd4ef56720861e9c32ec32db5"/>
+        <topic label="cancel" href="interface_gn_music_id_file.html#a247bafae30274b1a1f8afb142ef56537"/>
+        <topic label="doAlbumId:responseType:error:" href="interface_gn_music_id_file.html#a303829033be5299d75df52aaca6d21fc"/>
+        <topic label="doAlbumIdAsync:responseType:error:" href="interface_gn_music_id_file.html#a7278a65e86cee4ddc72cc72c3a8fac16"/>
+        <topic label="doLibraryId:error:" href="interface_gn_music_id_file.html#ac3c5cc3074e7057951655fc34f2a9da2"/>
+        <topic label="doLibraryIdAsync:error:" href="interface_gn_music_id_file.html#adf7b7f8ff4d80dfc60cf973aa54bb6f9"/>
+        <topic label="doTrackId:responseType:error:" href="interface_gn_music_id_file.html#a527ad2c91fb546107e853196d212f991"/>
+        <topic label="doTrackIdAsync:responseType:error:" href="interface_gn_music_id_file.html#a61322cfb8aa6158f657959a76678db6e"/>
+        <topic label="fileInfos" href="interface_gn_music_id_file.html#aeb864dc67ce9a8165a027fec25f85b09"/>
+        <topic label="initWithGnUser:musicIdFileEventsDelegate:" href="interface_gn_music_id_file.html#a8ea5d471a50107680180a1258afe5de1"/>
+        <topic label="options" href="interface_gn_music_id_file.html#a7b9f3769af20d97b869d5a9baa393df1"/>
+        <topic label="version" href="interface_gn_music_id_file.html#a047ecdd6056be930f13ed9516cec3125"/>
+        <topic label="waitForComplete:" href="interface_gn_music_id_file.html#a00656d0db57d3df6c37ad1e1edfc1d5f"/>
+        <topic label="waitForCompleteWithTimeoutValue:error:" href="interface_gn_music_id_file.html#ad7519fb02adba247ba78359b7bc56c41"/>
+        <topic label="cppGnMusicIdFile" href="interface_gn_music_id_file.html#a9feb1ddac81b9c6d98c9b7f8eab843d9"/>
+        <topic label="gnMusicIdFileInfoManager" href="interface_gn_music_id_file.html#a165ca3900bbc0c8eaab524d95769e23a"/>
+      </topic>
+      <topic label="&lt;GnMusicIdFileEventsDelegate&gt;" href="protocol_gn_music_id_file_events_delegate-p.html">
+        <topic label="gatherFingerprint:currentFile:totalFiles:cancellableDelegate:" href="protocol_gn_music_id_file_events_delegate-p.html#ae40513d4fa1f0f24c35c459d3359e0f5"/>
+        <topic label="gatherMetadata:currentFile:totalFiles:cancellableDelegate:" href="protocol_gn_music_id_file_events_delegate-p.html#ac8ee4ed7ff9cd65b83f8ded661d91252"/>
+        <topic label="musicIdFileAlbumResult:currentAlbum:totalAlbums:cancellableDelegate:" href="protocol_gn_music_id_file_events_delegate-p.html#aae0cb5757f6a54b28332ed4acee2eb16"/>
+        <topic label="musicIdFileComplete:" href="protocol_gn_music_id_file_events_delegate-p.html#a473665f04747046bad8d1ea42a86e527"/>
+        <topic label="musicIdFileMatchResult:currentAlbum:totalAlbums:cancellableDelegate:" href="protocol_gn_music_id_file_events_delegate-p.html#a5ba495200201c74fc452b6138ac2404e"/>
+        <topic label="musicIdFileResultNotFound:currentFile:totalFiles:cancellableDelegate:" href="protocol_gn_music_id_file_events_delegate-p.html#a4e21f85843446103099d63f2fe0b3ede"/>
+        <topic label="musicIdFileStatusEvent:status:currentFile:totalFiles:cancellableDelegate:" href="protocol_gn_music_id_file_events_delegate-p.html#aef4fe3806f9567823a5de44e9ec4ebdc"/>
+      </topic>
+      <topic label="GnMusicIdFileInfo" href="interface_gn_music_id_file_info.html">
+        <topic label="albumArtist:" href="interface_gn_music_id_file_info.html#a64b24cc5befe69b2173ec41a627497e4"/>
+        <topic label="albumArtistWithValue:error:" href="interface_gn_music_id_file_info.html#a1188c27e4c00898bf2af5519a2c826f9"/>
+        <topic label="albumResponse:" href="interface_gn_music_id_file_info.html#aadcf450ce7aa98d12f28cfc1c7bd8384"/>
+        <topic label="albumTitle:" href="interface_gn_music_id_file_info.html#ab85d8811e6a04b1e4e57d88f96fdda9c"/>
+        <topic label="albumTitleWithValue:error:" href="interface_gn_music_id_file_info.html#aa7a97e2cd6f8f4e31ad1abea9cf657c1"/>
+        <topic label="cddbId:" href="interface_gn_music_id_file_info.html#a8a8b9631526d6639b6b435ecba5bd70a"/>
+        <topic label="cddbIdWithValue:error:" href="interface_gn_music_id_file_info.html#a018e099c61510bcc53c59b772ded6c7a"/>
+        <topic label="cdToc:" href="interface_gn_music_id_file_info.html#a62195b0fca8431ce4f4564ad09e361a5"/>
+        <topic label="cdTocWithValue:error:" href="interface_gn_music_id_file_info.html#ac3a8a4598d53db9e5d0bb38a67f87085"/>
+        <topic label="cppGnMusicIdFileInfo" href="interface_gn_music_id_file_info.html#a66c2432cef5125caaf5911b9261c24d8"/>
+        <topic label="dataMatchResponse:" href="interface_gn_music_id_file_info.html#a8f2f1315c300c312faf749e3dbd626fa"/>
+        <topic label="discNumber:" href="interface_gn_music_id_file_info.html#ab4beb4e57c4094344bf98954a949107f"/>
+        <topic label="discNumberWithDiscNumber:error:" href="interface_gn_music_id_file_info.html#a88551ce912cdabb80b15c23767d12c52"/>
+        <topic label="errorInformation:" href="interface_gn_music_id_file_info.html#aafdecdcdba871247053108ecf89f0bc8"/>
+        <topic label="fileName:" href="interface_gn_music_id_file_info.html#add326e41f94ad05cf43d28d7fdee2fa1"/>
+        <topic label="fileNameWithValue:error:" href="interface_gn_music_id_file_info.html#a2464b07654e4469c56e35922e072c7ad"/>
+        <topic label="fingerprint:" href="interface_gn_music_id_file_info.html#a2f6bee729ccc97ecf6be5e4d04706e87"/>
+        <topic label="fingerprintBegin:audioSampleSize:audioChannels:error:" href="interface_gn_music_id_file_info.html#abe73de6b5689e51ec54362051a5b2181"/>
+        <topic label="fingerprintEnd:" href="interface_gn_music_id_file_info.html#ad23d49b6fee35a33130c0b9adb2fc768"/>
+        <topic label="fingerprintFromSource:error:" href="interface_gn_music_id_file_info.html#a143e88327715673cbfb28f2330e8ce8b"/>
+        <topic label="fingerprintWithValue:error:" href="interface_gn_music_id_file_info.html#a0b620eb20384ee6bf38b2db371d4e4a3"/>
+        <topic label="fingerprintWrite:audioDataSize:error:" href="interface_gn_music_id_file_info.html#ab7f214710ca9ad9bb8d365bb4ef4e9a5"/>
+        <topic label="identifier:" href="interface_gn_music_id_file_info.html#a1707f0cafbbcaa30276f7a314f8a1a6c"/>
+        <topic label="init" href="interface_gn_music_id_file_info.html#a174277c88598de39c03d684acf8f552d"/>
+        <topic label="init_with_GnMusicIdFileInfo:" href="interface_gn_music_id_file_info.html#ad7adde04e92ec21e793ba4a19de32e07"/>
+        <topic label="mediaId:" href="interface_gn_music_id_file_info.html#a646f9bb557c666ba89ce36a23e8f02e0"/>
+        <topic label="mediaIdWithValue:error:" href="interface_gn_music_id_file_info.html#ae226bf563fa030b6e2de50b001783bd5"/>
+        <topic label="mui:" href="interface_gn_music_id_file_info.html#a0b6351d914c157a7a4abe0aa1c699a19"/>
+        <topic label="muiWithValue:error:" href="interface_gn_music_id_file_info.html#a93b391ea73763cb3d93bf7b7c4d83d1d"/>
+        <topic label="status:" href="interface_gn_music_id_file_info.html#ad46790dfb286843afcd42efaaa45a5bf"/>
+        <topic label="tagId:" href="interface_gn_music_id_file_info.html#a911822286ee0e69d6175a5f854f8d4e2"/>
+        <topic label="tagIdWithValue:error:" href="interface_gn_music_id_file_info.html#a51f77b602beef28028d7ad0db83921ff"/>
+        <topic label="trackArtist:" href="interface_gn_music_id_file_info.html#a8dace1d05729d6301d5e2983854cd39f"/>
+        <topic label="trackArtistWithValue:error:" href="interface_gn_music_id_file_info.html#a63175ff981e4848852c285f31e1d5fae"/>
+        <topic label="trackNumber:" href="interface_gn_music_id_file_info.html#a2a97c8c9eb1234a3a833eb438f0fca00"/>
+        <topic label="trackNumberWithTrackNumber:error:" href="interface_gn_music_id_file_info.html#a1ab106edb078575ea8ce3dfe0ffaae96"/>
+        <topic label="trackTitle:" href="interface_gn_music_id_file_info.html#a326308895ae70ca8ea1b11b3d2a49a53"/>
+        <topic label="trackTitleWithValue:error:" href="interface_gn_music_id_file_info.html#a943fc7e74db07aeb4f3501bb6cecaee4"/>
+        <topic label="tui:" href="interface_gn_music_id_file_info.html#a0ff18ed4b279c6d146dbae72c791dc46"/>
+        <topic label="tuiTag:" href="interface_gn_music_id_file_info.html#a1886a06f6651cd6e341796a3615ede18"/>
+        <topic label="tuiTagWithValue:error:" href="interface_gn_music_id_file_info.html#af7b7c463316e3731cee853b9078a139a"/>
+        <topic label="tuiWithValue:error:" href="interface_gn_music_id_file_info.html#aac912304002745800012f815953e222e"/>
+        <topic label="_cppGnMusicIdFileInfo" href="interface_gn_music_id_file_info.html#a8a91653d23018419e8f11e8c55aa1f2c"/>
+      </topic>
+      <topic label="GnMusicIdFileInfoEnumerator()" href="category_gn_music_id_file_info_enumerator_07_08.html"/>
+      <topic label="&lt;GnMusicIdFileInfoEventsDelegate&gt;" href="protocol_gn_music_id_file_info_events_delegate-p.html">
+        <topic label="gatherFingerprint:currentFile:totalFiles:cancellableDelegate:" href="protocol_gn_music_id_file_info_events_delegate-p.html#ae58c8bed8d5b3fba10994a2d8b25eecd"/>
+        <topic label="gatherMetadata:currentFile:totalFiles:cancellableDelegate:" href="protocol_gn_music_id_file_info_events_delegate-p.html#ac76b9bcf89ba3128c5e374c3af56898d"/>
+      </topic>
+      <topic label="GnMusicIdFileInfoManager" href="interface_gn_music_id_file_info_manager.html">
+        <topic label="add:musicIdFileInfoEventsDelegate:error:" href="interface_gn_music_id_file_info_manager.html#aca6ac777299802b31378f535ee3760e3"/>
+        <topic label="addFromXml:error:" href="interface_gn_music_id_file_info_manager.html#ab81749f53dd63fb3595427dd0c6b602b"/>
+        <topic label="at:" href="interface_gn_music_id_file_info_manager.html#adcd05f47216e843d59c1fc3ecd5396c4"/>
+        <topic label="count" href="interface_gn_music_id_file_info_manager.html#a41c2e42973af6e0d5e6d6a5793a8a602"/>
+        <topic label="getByFilename:error:" href="interface_gn_music_id_file_info_manager.html#af8d6a31821e6f2bf013dac8930fe99b6"/>
+        <topic label="getByFolder:index:error:" href="interface_gn_music_id_file_info_manager.html#a764a7e9b79450f9473bb90daf555478d"/>
+        <topic label="getByIdentifier:error:" href="interface_gn_music_id_file_info_manager.html#aa3f69b0f630f0982cc5084fa3ea6a06b"/>
+        <topic label="init_with_GnMusicIdFileInfoManager:" href="interface_gn_music_id_file_info_manager.html#aaeb3c313d5fa2c5b8384acfb4ad67a0d"/>
+        <topic label="remove:error:" href="interface_gn_music_id_file_info_manager.html#a25bf3c8b41c8f7f166c85d0a5b529c03"/>
+        <topic label="renderToXml:" href="interface_gn_music_id_file_info_manager.html#aa985c1e1cacadb5b5466267a721cea0e"/>
+        <topic label="cppGnMusicIdFileInfoManager" href="interface_gn_music_id_file_info_manager.html#a1d9433a20dd9767787dbbaf3d2f0f9c4"/>
+      </topic>
+      <topic label="GnMusicIdFileOptions" href="interface_gn_music_id_file_options.html">
+        <topic label="batchSize:error:" href="interface_gn_music_id_file_options.html#aaebce10db0c2f0f7bbe61f2668778cbf"/>
+        <topic label="customWithOption:value:error:" href="interface_gn_music_id_file_options.html#a3597392fdf01b8fe2574518f936cfd80"/>
+        <topic label="customWithOptionKey:enable:error:" href="interface_gn_music_id_file_options.html#a8ced51cf951ca139f09d1e144f05bc98"/>
+        <topic label="init_with_GnMusicIdFileOptions:" href="interface_gn_music_id_file_options.html#a70f87fc2920ac9357f195f393b9989b8"/>
+        <topic label="lookupData:enable:error:" href="interface_gn_music_id_file_options.html#adceb5b28e83980ca0dd13ba4ade3e41f"/>
+        <topic label="lookupMode:error:" href="interface_gn_music_id_file_options.html#a0e9efcf203d063c1d3360afdeecb71cb"/>
+        <topic label="onlineProcessing:error:" href="interface_gn_music_id_file_options.html#a475d5a5e78c88310e55d40d853618e3f"/>
+        <topic label="preferResultExternalId:error:" href="interface_gn_music_id_file_options.html#a4afa62a5b2e242d201ad498aa001f2b8"/>
+        <topic label="preferResultLanguage:error:" href="interface_gn_music_id_file_options.html#aa1509462fefa967cbf301d615e449872"/>
+        <topic label="threadPriority:error:" href="interface_gn_music_id_file_options.html#acd4d99e06593b998ff19d4c09909ad2c"/>
+        <topic label="cppGnMusicIdFileOptions" href="interface_gn_music_id_file_options.html#afcbfee75a6ddf65a10373aac4732f2ca"/>
+      </topic>
+      <topic label="GnMusicIdOptions" href="interface_gn_music_id_options.html">
+        <topic label="customWithOption:bEnable:error:" href="interface_gn_music_id_options.html#a1f97160adf5327760c0009ddbc48ecfd"/>
+        <topic label="customWithOption:value:error:" href="interface_gn_music_id_options.html#a6cf0d823a4f0b6227d3c094a6a8855f8"/>
+        <topic label="init_with_GnMusicIdOptions:" href="interface_gn_music_id_options.html#a7e4645fd9c04edcf143f249ec490b72c"/>
+        <topic label="lookupData:bEnable:error:" href="interface_gn_music_id_options.html#a2e5c40e10c5bfaf7dfb670eb9f71f3e6"/>
+        <topic label="lookupMode:error:" href="interface_gn_music_id_options.html#ac563f3c7b2bc9e353a9c4aedf346b3d4"/>
+        <topic label="preferResultCoverart:error:" href="interface_gn_music_id_options.html#adc4636f4a8e9869c37633d34f176ae7a"/>
+        <topic label="preferResultExternalId:error:" href="interface_gn_music_id_options.html#a4a112d3b87898aaf2798a8bbd7b1c157"/>
+        <topic label="preferResultLanguage:error:" href="interface_gn_music_id_options.html#ae0e96f4bf940d69860595d00ecad4931"/>
+        <topic label="resultCount:error:" href="interface_gn_music_id_options.html#a885edb6ddace3ee6e0f4d29222ae20b4"/>
+        <topic label="resultRangeStart:error:" href="interface_gn_music_id_options.html#ae566f3e44c2bbf0cdf335ab38754f586"/>
+        <topic label="resultSingle:error:" href="interface_gn_music_id_options.html#a591ad312a0973087420d58d7dec43101"/>
+        <topic label="revisionCheck:error:" href="interface_gn_music_id_options.html#ab903e33b30656b374997921deb266ec1"/>
+        <topic label="cppGnMusicIdOptions" href="interface_gn_music_id_options.html#a2b8b2d81b32172a59b2a226154d3fddd"/>
+      </topic>
+      <topic label="GnMusicIdStream" href="interface_gn_music_id_stream.html">
+        <topic label="audioProcess:audioDataLength:error:" href="interface_gn_music_id_stream.html#accea202b1b0e004cebd75537a4880425"/>
+        <topic label="audioProcessStartWithAudioSource:error:" href="interface_gn_music_id_stream.html#aac64d32269fcf6e6f0fb5e03d96deaad"/>
+        <topic label="audioProcessStartWithSamplesPerSecond:bitsPerSample:numberOfChannels:error:" href="interface_gn_music_id_stream.html#a77fa7518255063649417fd8f32f08395"/>
+        <topic label="audioProcessStop:" href="interface_gn_music_id_stream.html#a34996dfa9d3f3122e22bf3389f870f97"/>
+        <topic label="broadcastMetadata:broadcastMetadataValue:error:" href="interface_gn_music_id_stream.html#abd294c6ff3b973dc29ed3afd439b796b"/>
+        <topic label="buildDate" href="interface_gn_music_id_stream.html#a1ea98454f8210899e963b2ddd3fa1c01"/>
+        <topic label="event:error:" href="interface_gn_music_id_stream.html#af4972b756c3573f24c903839c8a9dd6d"/>
+        <topic label="identifyAlbum:" href="interface_gn_music_id_stream.html#a53b821eb016b650b90c0d60c7cd99902"/>
+        <topic label="identifyAlbumAsync:" href="interface_gn_music_id_stream.html#aa2ca3674403db59be6b6562d11a452b7"/>
+        <topic label="identifyCancel:" href="interface_gn_music_id_stream.html#a38cffd25fb1384ceb1e0793f6a3bf4f4"/>
+        <topic label="initWithGnUser:preset:locale:musicIdStreamEventsDelegate:" href="interface_gn_music_id_stream.html#a863d5cf2c37b1157bd6ac4a10a43aacb"/>
+        <topic label="initWithGnUser:preset:musicIdStreamEventsDelegate:" href="interface_gn_music_id_stream.html#ae01b53c8c5a3649a0b60fcdb4f76931e"/>
+        <topic label="options" href="interface_gn_music_id_stream.html#a00cd19fcc3bf25e2e7985f9826294e72"/>
+        <topic label="version" href="interface_gn_music_id_stream.html#ad01ef9c4de6f524ab04c66b1d620d2d8"/>
+        <topic label="waitForIdentify:error:" href="interface_gn_music_id_stream.html#a7ad770915b58df977c0ac956bccc6775"/>
+        <topic label="cppGnMusicIdStream" href="interface_gn_music_id_stream.html#af8424038cedcf81d910675d8a48acde4"/>
+      </topic>
+      <topic label="&lt;GnMusicIdStreamEventsDelegate&gt;" href="protocol_gn_music_id_stream_events_delegate-p.html">
+        <topic label="musicIdStreamAlbumResult:cancellableDelegate:" href="protocol_gn_music_id_stream_events_delegate-p.html#a782ed101348b22ef93456a833c50ff65"/>
+        <topic label="musicIdStreamIdentifyCompletedWithError:" href="protocol_gn_music_id_stream_events_delegate-p.html#a5fe8e866a5cdc862c4081d2dab862bde"/>
+        <topic label="musicIdStreamIdentifyingStatusEvent:cancellableDelegate:" href="protocol_gn_music_id_stream_events_delegate-p.html#ac2e5f25c1ff6814cefc3937efef5bf14"/>
+        <topic label="musicIdStreamProcessingStatusEvent:cancellableDelegate:" href="protocol_gn_music_id_stream_events_delegate-p.html#a12dfac0ad897c7949f41d65c896ba8bb"/>
+      </topic>
+      <topic label="GnMusicIdStreamOptions" href="interface_gn_music_id_stream_options.html">
+        <topic label="custom:value:error:" href="interface_gn_music_id_stream_options.html#a6bf2e33f09d77b223ddfccbd7ba69dbe"/>
+        <topic label="init_with_GnMusicIdStreamOptions:" href="interface_gn_music_id_stream_options.html#ad9cb657f46acbbb20dec09e7048bb04d"/>
+        <topic label="lookupData:enable:error:" href="interface_gn_music_id_stream_options.html#acdf4f78acc10449b845674adbfd0ab5a"/>
+        <topic label="lookupMode:error:" href="interface_gn_music_id_stream_options.html#ab042dad16785aec34255dd38a1948ad7"/>
+        <topic label="preferResultCoverart:error:" href="interface_gn_music_id_stream_options.html#afcf9d17e16d17af1f9a06d95d1775557"/>
+        <topic label="preferResultExternalId:error:" href="interface_gn_music_id_stream_options.html#aead1f6b8b067152425be0a75f49fbb25"/>
+        <topic label="preferResultLanguage:error:" href="interface_gn_music_id_stream_options.html#a77a7efcd09014a07f8dbfd1d726b6d16"/>
+        <topic label="resultCount:error:" href="interface_gn_music_id_stream_options.html#a2a00f291b24a945e7fc5f0b4f86a8540"/>
+        <topic label="resultRangeStart:error:" href="interface_gn_music_id_stream_options.html#a1c45fb58a1029df291a74c5201b429de"/>
+        <topic label="resultSingle:error:" href="interface_gn_music_id_stream_options.html#aa5f0a303b77089462bd3047cd26f19d4"/>
+        <topic label="cppGnMusicIdStreamOptions" href="interface_gn_music_id_stream_options.html#a3f42884725fabda0e1af954e3683840d"/>
+      </topic>
+      <topic label="GnName" href="interface_gn_name.html">
+        <topic label="cppGnName" href="interface_gn_name.html#a36df6363ffadebcc21c9ff3f75e8043d"/>
+        <topic label="display" href="interface_gn_name.html#aa6e7cd26f6fe9e285de72589c12e8133"/>
+        <topic label="family" href="interface_gn_name.html#a259e0bcd256fbb17a6bc0eb1123a297b"/>
+        <topic label="from:error:" href="interface_gn_name.html#a2fb16b40098bb72dfb57603a600e6d39"/>
+        <topic label="given" href="interface_gn_name.html#a55ef0989bcb5af5c2b56492516f1c931"/>
+        <topic label="globalId" href="interface_gn_name.html#aeffce31618dfd72c1a33b3c10c8c0ddd"/>
+        <topic label="gnType" href="interface_gn_name.html#a6b73478bfc48226086ccfad79d943ed0"/>
+        <topic label="init" href="interface_gn_name.html#a0741d2ad6d9571c326c0b4751a134048"/>
+        <topic label="init_with_GnName:" href="interface_gn_name.html#a60761ae988d85ec80f6c0fcacc720955"/>
+        <topic label="language" href="interface_gn_name.html#a5738c8c997806f3d633a18fe358ecd48"/>
+        <topic label="languageCode" href="interface_gn_name.html#a2bd184356bff4fe57cb0af8a482c640a"/>
+        <topic label="prefix" href="interface_gn_name.html#a237663232f0e77946a1d14258eeef6b0"/>
+        <topic label="sortable" href="interface_gn_name.html#a46f184dfbdd7b99e4119280f26d62829"/>
+        <topic label="sortableScheme" href="interface_gn_name.html#a9d033d5bc7f7e51d31c199e6502e36be"/>
+      </topic>
+      <topic label="GnNameEnumerator()" href="category_gn_name_enumerator_07_08.html">
+        <topic label="init_with_name_iterable:" href="category_gn_name_enumerator_07_08.html#a7edceb66c94c11cde558f3c893fa226b"/>
+      </topic>
+      <topic label="GnPlaylist" href="interface_gn_playlist.html">
+        <topic label="attributesSupported" href="interface_gn_playlist.html#a55eb25a7395b04ac22a5c7d63cc4a145"/>
+        <topic label="buildDate" href="interface_gn_playlist.html#af5a35af0ffafa18641158752b1b8863e"/>
+        <topic label="cppGnPlaylist" href="interface_gn_playlist.html#ae137c81a1cc64a6a04f2a9562f3fe632"/>
+        <topic label="init" href="interface_gn_playlist.html#aee93cfba8e98be27ff3eb6e1784f0eac"/>
+        <topic label="init_with_GnPlaylist:" href="interface_gn_playlist.html#a0dbd6b0a2709859948127807f69340b3"/>
+        <topic label="version" href="interface_gn_playlist.html#a8b51f2eefd464a2ffad975a3f3d2671d"/>
+        <topic label="_cppGnPlaylist" href="interface_gn_playlist.html#aac0f5225a929ba553a34178c7892aed1"/>
+      </topic>
+      <topic label="GnPlaylistAttributes" href="interface_gn_playlist_attributes.html">
+        <topic label="albumName" href="interface_gn_playlist_attributes.html#a41a1a34e10934a4b5b344529a3322a43"/>
+        <topic label="artistName" href="interface_gn_playlist_attributes.html#acdbe3e1fc112ba91ae9faa4f771245de"/>
+        <topic label="artistType" href="interface_gn_playlist_attributes.html#ab8e51b1c0eeec93348b0b0c549cac3bd"/>
+        <topic label="cppGnPlaylistAttributes" href="interface_gn_playlist_attributes.html#a676afe790d7b3bd139ee2a9c4de6afb9"/>
+        <topic label="era" href="interface_gn_playlist_attributes.html#a46a1bf76aecb1fec9af856db7ebbe6b2"/>
+        <topic label="genre" href="interface_gn_playlist_attributes.html#a928d2174b37ae41aa594d79081491164"/>
+        <topic label="init" href="interface_gn_playlist_attributes.html#a6bf9d18ca54412c435caa0903c16b878"/>
+        <topic label="init_with_GnPlaylistAttributes:" href="interface_gn_playlist_attributes.html#a7a580a84729d5c72e56f53f1a0dbe9ed"/>
+        <topic label="initWithGnPlaylistAttributes:" href="interface_gn_playlist_attributes.html#a4281fb94c7b6301aac5941380f380963"/>
+        <topic label="mood" href="interface_gn_playlist_attributes.html#ad62749c5ad7d0297115c7172b39055f4"/>
+        <topic label="origin" href="interface_gn_playlist_attributes.html#abf691f220ead96cab33a173ba90d8c0d"/>
+        <topic label="tempo" href="interface_gn_playlist_attributes.html#a4e235e4cee4202fdf74aa74ab78e5271"/>
+      </topic>
+      <topic label="GnPlaylistCollection" href="interface_gn_playlist_collection.html">
+        <topic label="addWithMediaIdentifier:album:error:" href="interface_gn_playlist_collection.html#a1b5c54c97f7a6ad90de05b28d1fb5984"/>
+        <topic label="addWithMediaIdentifier:contributor:error:" href="interface_gn_playlist_collection.html#a0ec498361963d93a3082b3efdca8f5a0"/>
+        <topic label="addWithMediaIdentifier:error:" href="interface_gn_playlist_collection.html#a76e5c112f404fb25613d1c3a8ed92608"/>
+        <topic label="addWithMediaIdentifier:listElement:error:" href="interface_gn_playlist_collection.html#a1e4d9d7123390ce51f6681278e42027d"/>
+        <topic label="addWithMediaIdentifier:playlistAttributes:error:" href="interface_gn_playlist_collection.html#a82a11b7026742d3c570759fe19c4a38a"/>
+        <topic label="addWithMediaIdentifier:track:error:" href="interface_gn_playlist_collection.html#a20de94d8663f8bffe3bd0283236bace2"/>
+        <topic label="attributesSupported" href="interface_gn_playlist_collection.html#a2ad3bff28847b142fc371e3c34a544fc"/>
+        <topic label="attributesWithUser:mediaIdentifier:error:" href="interface_gn_playlist_collection.html#a5c8fb3e5f2fdf72dbf4afd7b9dffdb7e"/>
+        <topic label="attributesWithUser:mediaIdentifier:joinedCollectionName:error:" href="interface_gn_playlist_collection.html#a5512c733e7822a64ea2c187a11b30e79"/>
+        <topic label="contains:error:" href="interface_gn_playlist_collection.html#a5e3a87dcf9fda8b3b83b3b037a5f19c3"/>
+        <topic label="generateMoreLikeThis:musicDataObj:error:" href="interface_gn_playlist_collection.html#a8e28208fe4320552f8a6646e759f862a"/>
+        <topic label="generatePlaylistWithUser:pdlStatement:error:" href="interface_gn_playlist_collection.html#aa529190c29d2308016b3ac2a073ea67a"/>
+        <topic label="generatePlaylistWithUser:pdlStatement:playlistSeed:error:" href="interface_gn_playlist_collection.html#a7fd9623992b6d77260931b51820db5f6"/>
+        <topic label="init" href="interface_gn_playlist_collection.html#a26261007c3e2ad52efe71e7686a78fdf"/>
+        <topic label="init_with_GnPlaylistCollection:" href="interface_gn_playlist_collection.html#ac35993156ce0dddeb8c4025d0e021b2d"/>
+        <topic label="initWithCollData:dataSize:" href="interface_gn_playlist_collection.html#a5d810ea11a0ab1453e00c91e23f69d77"/>
+        <topic label="initWithGnPlaylistCollection:" href="interface_gn_playlist_collection.html#ad27f7602d1e2df50fe404035ff0fdc8c"/>
+        <topic label="initWithName:" href="interface_gn_playlist_collection.html#ae7bdb684eeebfbb3b366b7b957184390"/>
+        <topic label="join:error:" href="interface_gn_playlist_collection.html#a78bf7a8cb4524fd8a4961ee81905fd70"/>
+        <topic label="joinFindByName:error:" href="interface_gn_playlist_collection.html#a813487eac62da6e510a8210c325af860"/>
+        <topic label="joinRemove:error:" href="interface_gn_playlist_collection.html#a62f90964e25b32b5b1cdfcdc8f51cf14"/>
+        <topic label="joins" href="interface_gn_playlist_collection.html#a94b24b7505818e1d31ad693fb87ef8b8"/>
+        <topic label="mediaIdentifiers" href="interface_gn_playlist_collection.html#a803eb8ebbe32a0de06aa28fe3038a8c7"/>
+        <topic label="moreLikeThisOptions" href="interface_gn_playlist_collection.html#a1f7e500a38038d9ad00097b6048a4a5e"/>
+        <topic label="name:" href="interface_gn_playlist_collection.html#a434c428bd07df18f33f2271202a94127"/>
+        <topic label="nameWithUpdatedName:error:" href="interface_gn_playlist_collection.html#a35db7d2e6087350c9177ad361ec71612"/>
+        <topic label="remove:error:" href="interface_gn_playlist_collection.html#ad0e51f61fadb0576bcaad544624ac418"/>
+        <topic label="serialize:dataSize:error:" href="interface_gn_playlist_collection.html#a359d7c443f7547a069ccfd22073879f2"/>
+        <topic label="serializeSize:" href="interface_gn_playlist_collection.html#a174e568730da6745d743894715a3dd51"/>
+        <topic label="statementAnalyzeIdent:mediaIdentifier:error:" href="interface_gn_playlist_collection.html#a1ad18b33f97f2705885d81a0f644a76e"/>
+        <topic label="statementRequiresSeed:error:" href="interface_gn_playlist_collection.html#a01b781dff3969753ead4def7728566b2"/>
+        <topic label="statementValidate:" href="interface_gn_playlist_collection.html#af54288aaf2c7e23f7385da13ecb328df"/>
+        <topic label="syncProcessAdd:error:" href="interface_gn_playlist_collection.html#aaf7a66f2c951ea81fdb76d610d0f3781"/>
+        <topic label="syncProcessExecute:error:" href="interface_gn_playlist_collection.html#a3c9766472fbd4f471c8348097cabbb62"/>
+        <topic label="cppGnPlaylistCollection" href="interface_gn_playlist_collection.html#a692813450db520425eb92c95803dd06a"/>
+      </topic>
+      <topic label="GnPlaylistCollectionEnumerator()" href="category_gn_playlist_collection_enumerator_07_08.html">
+        <topic label="init_with_join_iterable:" href="category_gn_playlist_collection_enumerator_07_08.html#a1c0272e1cbae1729174a5765560d3026"/>
+      </topic>
+      <topic label="&lt;GnPlaylistCollectionSyncEventsDelegate&gt;" href="protocol_gn_playlist_collection_sync_events_delegate-p.html">
+        <topic label="onUpdate:identifier:status:cancellableDelegate:" href="protocol_gn_playlist_collection_sync_events_delegate-p.html#a9310b2b259c78d2e385ee36789c21ad7"/>
+      </topic>
+      <topic label="GnPlaylistIdentifier" href="interface_gn_playlist_identifier.html">
+        <topic label="collectionName" href="interface_gn_playlist_identifier.html#aa3885bea5ded15b78978f2c76df7a55d"/>
+        <topic label="cppGnPlaylistIdentifier" href="interface_gn_playlist_identifier.html#a8bcc0d8b17791abf305e483dcff41945"/>
+        <topic label="init" href="interface_gn_playlist_identifier.html#abc67c7ca0e378aa133e2dc9a021b19d3"/>
+        <topic label="init_with_GnPlaylistIdentifier:" href="interface_gn_playlist_identifier.html#a94d1a1417c89cb9c5a42dcee2bf1fc2a"/>
+        <topic label="mediaIdentifier" href="interface_gn_playlist_identifier.html#a06d6d24c1ce905f9c49f0604331285a9"/>
+        <topic label="_cppGnPlaylistIdentifier" href="interface_gn_playlist_identifier.html#a5b8853d5ec92a5d9167890fd2ebeefb1"/>
+      </topic>
+      <topic label="GnPlaylistIdentifierEnumerator()" href="category_gn_playlist_identifier_enumerator_07_08.html">
+        <topic label="init_with_ident_iterable:" href="category_gn_playlist_identifier_enumerator_07_08.html#ab533418567fbb4c26dbc151dc2c6c06a"/>
+        <topic label="init_with_result_iterable:" href="category_gn_playlist_identifier_enumerator_07_08.html#ab2a8880fba5bfa1573ffc192656b64bd"/>
+      </topic>
+      <topic label="GnPlaylistMoreLikeThisOptions" href="interface_gn_playlist_more_like_this_options.html">
+        <topic label="init_with_GnPlaylistMoreLikeThisOptions:" href="interface_gn_playlist_more_like_this_options.html#a22331062b580cb23818839b72915d4ee"/>
+        <topic label="maxPerAlbum:" href="interface_gn_playlist_more_like_this_options.html#a310dd692ebf42ea4a0b6e75e85ed595f"/>
+        <topic label="maxPerAlbumWithValue:error:" href="interface_gn_playlist_more_like_this_options.html#ab0f5eb92c43ff25f97dcf3013d361706"/>
+        <topic label="maxPerArtist:" href="interface_gn_playlist_more_like_this_options.html#ab1c546f352808a604269294e12cc3c9c"/>
+        <topic label="maxPerArtistWithValue:error:" href="interface_gn_playlist_more_like_this_options.html#aa69ad47cd41e3993bc966cccb12de543"/>
+        <topic label="maxTracks:" href="interface_gn_playlist_more_like_this_options.html#a5cf7c7de82a0347403c5c0f60b0f70b8"/>
+        <topic label="maxTracksWithValue:error:" href="interface_gn_playlist_more_like_this_options.html#a7219210655d952e0ff78430865945262"/>
+        <topic label="randomSeed:" href="interface_gn_playlist_more_like_this_options.html#ad150bb1803c26b5e62fa3fa3bb8d2efc"/>
+        <topic label="randomSeedWithValue:error:" href="interface_gn_playlist_more_like_this_options.html#a34e9cf8f996d5265434e93cc5c3c45ac"/>
+        <topic label="cppGnPlaylistMoreLikeThisOptions" href="interface_gn_playlist_more_like_this_options.html#a65071e3d59ee0288fd618b75585763e9"/>
+      </topic>
+      <topic label="GnPlaylistResult" href="interface_gn_playlist_result.html">
+        <topic label="cppGnPlaylistResult" href="interface_gn_playlist_result.html#af3a01946feb52d83a0a7c2ea416b64a3"/>
+        <topic label="identifiers" href="interface_gn_playlist_result.html#a75149bd26b52b980847eaf08e121b9b2"/>
+        <topic label="init" href="interface_gn_playlist_result.html#ac6e65ad170f2f97958721846ce402b98"/>
+        <topic label="init_with_GnPlaylistResult:" href="interface_gn_playlist_result.html#aa76099d4a2149c4b1184da8f71a3d86e"/>
+        <topic label="_cppGnPlaylistResult" href="interface_gn_playlist_result.html#ad31c0a397854bf88953ad2353629791d"/>
+      </topic>
+      <topic label="GnPlaylistStorage" href="interface_gn_playlist_storage.html">
+        <topic label="compact:" href="interface_gn_playlist_storage.html#ac44bae3888bec9f7873dc97f4231c60d"/>
+        <topic label="cppGnPlaylistStorage" href="interface_gn_playlist_storage.html#a5d9d468e55380a82dfbff69d64d1c7b4"/>
+        <topic label="init" href="interface_gn_playlist_storage.html#a84c408d75fc4aa607941a9f73f39cb73"/>
+        <topic label="init_with_GnPlaylistStorage:" href="interface_gn_playlist_storage.html#ad32b147ee968648293df76f705488f4f"/>
+        <topic label="isValid" href="interface_gn_playlist_storage.html#a9241e3a1b1a38634c6022a0c5a8b192b"/>
+        <topic label="loadWithCollectionName:error:" href="interface_gn_playlist_storage.html#aab629233ec9a0219fb1a2a06c37b40b2"/>
+        <topic label="location:error:" href="interface_gn_playlist_storage.html#ae34c8b69a1ad655e5c5e0eefbeaf488c"/>
+        <topic label="names" href="interface_gn_playlist_storage.html#a45f12a937c5d6816c53aeec8c99720a2"/>
+        <topic label="removeWithCollection:error:" href="interface_gn_playlist_storage.html#affcbf86522c60d5400cad68c591fc397"/>
+        <topic label="removeWithCollectionName:error:" href="interface_gn_playlist_storage.html#a4c65438a189d6359fc7efdb4c6707b7b"/>
+        <topic label="store:error:" href="interface_gn_playlist_storage.html#aa0deb8f01495ae4f4f2f1e91c1f9ada8"/>
+        <topic label="_cppGnPlaylistStorage" href="interface_gn_playlist_storage.html#ac0a74cb98914667afa5b30719f6c4b22"/>
+      </topic>
+      <topic label="GnRenderOptions" href="interface_gn_render_options.html">
+        <topic label="clear" href="interface_gn_render_options.html#ab9fa81c882c68e1d8280f641377f369f"/>
+        <topic label="cppGnRenderOptions" href="interface_gn_render_options.html#a43b9d951f87ff0f14a4bd6171791f500"/>
+        <topic label="credits" href="interface_gn_render_options.html#ac94ef8d5098b03a6ca6afb761e192210"/>
+        <topic label="default" href="interface_gn_render_options.html#abb589f4e65ff0eaf63f794dc7b731817"/>
+        <topic label="full" href="interface_gn_render_options.html#a5de84c20b2c6757c5c0fb70ad2a313ed"/>
+        <topic label="genres:" href="interface_gn_render_options.html#a3cb00a8baa3c83848a10a8db127b3510"/>
+        <topic label="gnIds" href="interface_gn_render_options.html#a2fc0d245db0c17bc92bcddd68b7e467e"/>
+        <topic label="gnUIds" href="interface_gn_render_options.html#a10cca32449bd947a60153231093b440f"/>
+        <topic label="init" href="interface_gn_render_options.html#a97659a727a3c338bf6790b94b30f3b03"/>
+        <topic label="init_with_GnRenderOptions:" href="interface_gn_render_options.html#ae04daa4a24c0193e2f0d6495190816e2"/>
+        <topic label="json" href="interface_gn_render_options.html#a11e8fda1c9d47954ff69d2ddb23322d3"/>
+        <topic label="productIds" href="interface_gn_render_options.html#a142837844cf1aefa30b3c42decae3b5b"/>
+        <topic label="rawTuis" href="interface_gn_render_options.html#a40cc424747f8141e2430e5f3e8fb7cf8"/>
+        <topic label="serialGdos" href="interface_gn_render_options.html#ae5863b3a6e0c196c16cb90dfd3f4a926"/>
+        <topic label="sortable" href="interface_gn_render_options.html#a4c18536638a212554caf8515d5925896"/>
+        <topic label="standard" href="interface_gn_render_options.html#ad2e52944edb506a09e64517993ada4bc"/>
+        <topic label="xml" href="interface_gn_render_options.html#ac5a6094f53ef6aaeba8f2fad759381de"/>
+        <topic label="_cppGnRenderOptions" href="interface_gn_render_options.html#a581cfd181a8381d09a880a7f48772fbb"/>
+      </topic>
+      <topic label="GnResponseAlbums" href="interface_gn_response_albums.html">
+        <topic label="albums" href="interface_gn_response_albums.html#a5e6e916432baf6afc5aba8cba5c6e100"/>
+        <topic label="cppGnResponseAlbums" href="interface_gn_response_albums.html#ad4787c9ab04c5a0fe23638b38f223262"/>
+        <topic label="from:error:" href="interface_gn_response_albums.html#a7f25d8877fceed3b084654a7c73061e0"/>
+        <topic label="gnType" href="interface_gn_response_albums.html#ad052d9bb45f352c7ebda9255769658e6"/>
+        <topic label="init" href="interface_gn_response_albums.html#a6391aa69bd7905560139ea8c1f6d7cfc"/>
+        <topic label="init_with_GnResponseAlbums:" href="interface_gn_response_albums.html#a8ba2af33e912ea08df0a0adb3eed51ea"/>
+        <topic label="needsDecision" href="interface_gn_response_albums.html#a583d3193c1d0d36db7797ae043482f88"/>
+        <topic label="rangeEnd" href="interface_gn_response_albums.html#a88038c5b73b5d940c4521fa5bf9d3385"/>
+        <topic label="rangeStart" href="interface_gn_response_albums.html#a0117ba0f9d3ece58760e67a5ce01a513"/>
+        <topic label="rangeTotal" href="interface_gn_response_albums.html#ad759dec08fa8d94679d0e4af6a4f21ff"/>
+        <topic label="resultCount" href="interface_gn_response_albums.html#ad6e82da0cded313df8d8b4e57e965e67"/>
+      </topic>
+      <topic label="GnResponseDataMatches" href="interface_gn_response_data_matches.html">
+        <topic label="cppGnResponseDataMatches" href="interface_gn_response_data_matches.html#a4f69d94b7a6f6cc523b18381bb9b8827"/>
+        <topic label="dataMatches" href="interface_gn_response_data_matches.html#ab247b2e846a5e74bdbbd4e5502cdefb4"/>
+        <topic label="init" href="interface_gn_response_data_matches.html#a2f5c8a4445112870625e9f63d31c2e87"/>
+        <topic label="init_with_GnResponseDataMatches:" href="interface_gn_response_data_matches.html#a5e067fc2062582815e9b6f3bb0f9363f"/>
+        <topic label="needsDecision" href="interface_gn_response_data_matches.html#aed96ce5bdf778d5ec991e843efb9d1c9"/>
+        <topic label="rangeEnd" href="interface_gn_response_data_matches.html#a39c2ebda1f8f8e6fb5348497ce6a03b4"/>
+        <topic label="rangeStart" href="interface_gn_response_data_matches.html#a506829e566f453d6faceeae1a71cde98"/>
+        <topic label="rangeTotal" href="interface_gn_response_data_matches.html#a5919833879bdec75cd390aa66532ef6d"/>
+        <topic label="resultCount" href="interface_gn_response_data_matches.html#a81d9e617c2a8a8c65af1a89439d1616b"/>
+      </topic>
+      <topic label="GnResponseTracks" href="interface_gn_response_tracks.html">
+        <topic label="cppGnResponseTracks" href="interface_gn_response_tracks.html#a28fceb17e391b4fe58c082148bdd1c95"/>
+        <topic label="from:error:" href="interface_gn_response_tracks.html#afc9bb57e0b38ac046d4caaaddc8b207e"/>
+        <topic label="gnType" href="interface_gn_response_tracks.html#a8b2d37af3a24ec6b6efea4e9a991dfd4"/>
+        <topic label="init" href="interface_gn_response_tracks.html#a8fe9aab369a80bfc5aeaa7c66cf55ee2"/>
+        <topic label="init_with_GnResponseTracks:" href="interface_gn_response_tracks.html#a6d836d59bd79becfc65b0a9a9cff812b"/>
+        <topic label="needsDecision" href="interface_gn_response_tracks.html#ae24d5eeff49a9d69ebd3f3aa7e611048"/>
+        <topic label="rangeEnd" href="interface_gn_response_tracks.html#ac5ed21b0ec9b103290ea75b4e20ec102"/>
+        <topic label="rangeStart" href="interface_gn_response_tracks.html#a9881fbe880424a249c5eaca65dd64759"/>
+        <topic label="rangeTotal" href="interface_gn_response_tracks.html#a836e0f3924618c4c5348b9904df9e89e"/>
+        <topic label="resultCount" href="interface_gn_response_tracks.html#a4c75e9c952ba44a6d5ef7cc66fb7500f"/>
+        <topic label="tracks" href="interface_gn_response_tracks.html#afed3401aa54d30b453ca67a6e24951cb"/>
+      </topic>
+      <topic label="GnRole" href="interface_gn_role.html">
+        <topic label="category" href="interface_gn_role.html#aab4a27a2c3a9ee120711fa0ee4900184"/>
+        <topic label="cppGnRole" href="interface_gn_role.html#ab1425d1306fc8227c11d142dfc8674ec"/>
+        <topic label="init" href="interface_gn_role.html#a3785ae026d879676cd5cd564bc0ab2b7"/>
+        <topic label="init_with_GnRole:" href="interface_gn_role.html#a1e5a15afdb073acc023ea96a7dae4ddb"/>
+        <topic label="role" href="interface_gn_role.html#ac626629033239755e45a1d6a8ece7591"/>
+      </topic>
+      <topic label="&lt;GnStatusEventsDelegate&gt;" href="protocol_gn_status_events_delegate-p.html">
+        <topic label="statusEvent:percentComplete:bytesTotalSent:bytesTotalReceived:cancellableDelegate:" href="protocol_gn_status_events_delegate-p.html#ab39cc1cd202f921ad333391ded263795"/>
+      </topic>
+      <topic label="GnStorageSqlite" href="interface_gn_storage_sqlite.html">
+        <topic label="buildDate" href="interface_gn_storage_sqlite.html#a65ad090a589f2d1aed3ced621faded4a"/>
+        <topic label="enable:" href="interface_gn_storage_sqlite.html#ab7b719227ecc107803cdbb9d84294150"/>
+        <topic label="journalMode:" href="interface_gn_storage_sqlite.html#aabea5321f278d1a96a5872fb0e25461c"/>
+        <topic label="journalModeWithMode:error:" href="interface_gn_storage_sqlite.html#a176e830f4d5a7dd836d52fd40b94d55d"/>
+        <topic label="maximumCacheFileSize:" href="interface_gn_storage_sqlite.html#a82150e21330c95669563ffc0bdca6d21"/>
+        <topic label="maximumCacheFileSizeWithMaxCacheSize:error:" href="interface_gn_storage_sqlite.html#ab26f6c0a23b1fa0125f58e0828356e1d"/>
+        <topic label="maximumCacheMemory:" href="interface_gn_storage_sqlite.html#a7e2cd881097b54dfbf49de0b903820b2"/>
+        <topic label="maximumCacheMemoryWithMaxMemSize:error:" href="interface_gn_storage_sqlite.html#a64d3f24fd85f46a5c9ee642fcf34b9dd"/>
+        <topic label="sqliteVersion" href="interface_gn_storage_sqlite.html#a864b02724f1de74b340c70cd3126c9bd"/>
+        <topic label="storageLocation:" href="interface_gn_storage_sqlite.html#a960cf67c90ab193c61d19104451fd087"/>
+        <topic label="storageLocationWithFolderPath:error:" href="interface_gn_storage_sqlite.html#a315fa9423a17bdfd5ab5764b6f0b3475"/>
+        <topic label="synchronousMode:" href="interface_gn_storage_sqlite.html#a1ac152a5e6389beaad6c5fda40a08486"/>
+        <topic label="synchronousModeWithMode:error:" href="interface_gn_storage_sqlite.html#a7c3ed3ddb7ba9bf42c5c1375c32926bc"/>
+        <topic label="temporaryStorageLocation:" href="interface_gn_storage_sqlite.html#af0ded20bf22aa5ccd64efbfbc54fd143"/>
+        <topic label="temporaryStorageLocationWithFolderPath:error:" href="interface_gn_storage_sqlite.html#a90fdc7c5d2a46b258222c4f37b3762e6"/>
+        <topic label="version" href="interface_gn_storage_sqlite.html#ac68a64f794ddbc83bd02d44573996fe2"/>
+        <topic label="cppGnStorageSqlite" href="interface_gn_storage_sqlite.html#a49926cb4e6ae5da8d9372bf8ef17be6b"/>
+      </topic>
+      <topic label="GnStoreOps" href="interface_gn_store_ops.html">
+        <topic label="cleanup:error:" href="interface_gn_store_ops.html#a6d4a150c91e520041854f91c2f7657f1"/>
+        <topic label="compact:error:" href="interface_gn_store_ops.html#a29828fd186a9334861b704efa3368ed5"/>
+        <topic label="flush:error:" href="interface_gn_store_ops.html#a9d60cbed0717ca05fa4d5ec86b0db336"/>
+        <topic label="init_with_GnStoreOps:" href="interface_gn_store_ops.html#a78b72b164b159d2b24b041c69534310e"/>
+        <topic label="location:error:" href="interface_gn_store_ops.html#add693abe46730cf57bb2d29e1de280e3"/>
+        <topic label="cppGnStoreOps" href="interface_gn_store_ops.html#aac8e4141ca1dcebe9781f10854981336"/>
+      </topic>
+      <topic label="GnStringEnumerator()" href="category_gn_string_enumerator_07_08.html">
+        <topic label="init_with_attribute_iterable:" href="category_gn_string_enumerator_07_08.html#a758460ef2a174371306b24562b2e8341"/>
+        <topic label="init_with_storage_iterable:" href="category_gn_string_enumerator_07_08.html#ab9fd9967e62450eeebfa5dda4498c7d4"/>
+        <topic label="init_with_string_iterable:" href="category_gn_string_enumerator_07_08.html#abb5664075e95665e2f4af1c02fce2c5b"/>
+      </topic>
+      <topic label="&lt;GnSystemEventsDelegate&gt;" href="protocol_gn_system_events_delegate-p.html">
+        <topic label="listUpdateNeeded:" href="protocol_gn_system_events_delegate-p.html#a7d483eb29e29d849b4bc4d826335f3e1"/>
+        <topic label="localeUpdateNeeded:" href="protocol_gn_system_events_delegate-p.html#a4c134eb5debaef62fc03a68eb357d204"/>
+        <topic label="systemMemoryWarning:memoryWarnSize:" href="protocol_gn_system_events_delegate-p.html#a306586527c2e42b8efb630672f400f70"/>
+      </topic>
+      <topic label="GnTitle" href="interface_gn_title.html">
+        <topic label="cppGnTitle" href="interface_gn_title.html#a341496f9ab66b399913b2a942a92c9fb"/>
+        <topic label="display" href="interface_gn_title.html#a306af235f5e030fc5b2284c3b8cf2757"/>
+        <topic label="edition" href="interface_gn_title.html#a3fde719783ff9aa2469378ca3c6e0c41"/>
+        <topic label="from:error:" href="interface_gn_title.html#a067a6a5fda6ac56ab1378ea69ead5120"/>
+        <topic label="gnType" href="interface_gn_title.html#a196433e2cd4c8db609cb8f0052709934"/>
+        <topic label="init" href="interface_gn_title.html#aaa920c092d5106bba7449dc2410c13df"/>
+        <topic label="init_with_GnTitle:" href="interface_gn_title.html#a81c4cdafc5cd7cb77763cb666961586d"/>
+        <topic label="language" href="interface_gn_title.html#a9ad79373161fd09f800bae3e147e87cc"/>
+        <topic label="languageCode" href="interface_gn_title.html#a32c111a871f866329d24686e099dfbc0"/>
+        <topic label="mainTitle" href="interface_gn_title.html#a0a9540949009738254cda16fb9595edc"/>
+        <topic label="prefix" href="interface_gn_title.html#af5800b46eec043fe3c1d3cc47c85e0fd"/>
+        <topic label="sortable" href="interface_gn_title.html#ae9c880c02f6e12ae25ec31980e404ff8"/>
+        <topic label="sortableScheme" href="interface_gn_title.html#a82d298ecc9ec776b6178b1ff1c1a52aa"/>
+      </topic>
+      <topic label="GnTrack" href="interface_gn_track.html">
+        <topic label="artist" href="interface_gn_track.html#a5fa0ad78332bf1c197ea4246c53298fe"/>
+        <topic label="content:" href="interface_gn_track.html#a9ea1a3300150eea0e3714d28829c46a0"/>
+        <topic label="contents" href="interface_gn_track.html#ac2f32651ec0d72e333ce2afc9de1c5bc"/>
+        <topic label="cppGnTrack" href="interface_gn_track.html#a637a65b67b697eacd5358d4879c0056d"/>
+        <topic label="credits" href="interface_gn_track.html#a8a0ab416566f3f23f17cc778c7d48d2b"/>
+        <topic label="currentPosition" href="interface_gn_track.html#acfbef38bc5ed0d0ce7ec21cc9de1a4bc"/>
+        <topic label="duration" href="interface_gn_track.html#a852bd4cc53fe15c7bab5ca2bbdfff0c8"/>
+        <topic label="externalIds" href="interface_gn_track.html#a0f783b57601c49fd03d639fbe883460f"/>
+        <topic label="from:error:" href="interface_gn_track.html#ad909c2ec6b8aea19783e2bf2c7a72c26"/>
+        <topic label="genre:" href="interface_gn_track.html#ab9eade59ec323dac373763f36962f034"/>
+        <topic label="gnId" href="interface_gn_track.html#ab23bb1bec8c9d66487c02808948d61b2"/>
+        <topic label="gnType" href="interface_gn_track.html#a7c3e17daa819e999401a0c4a62925994"/>
+        <topic label="gnUId" href="interface_gn_track.html#aa1c9363310024fbac9723c3b46529bb5"/>
+        <topic label="init" href="interface_gn_track.html#a53054088b8f8009d4bd9c6e140721ad6"/>
+        <topic label="init_with_GnTrack:" href="interface_gn_track.html#a3652e31115a6797a1089d84768ea45f1"/>
+        <topic label="initWithId:idTag:" href="interface_gn_track.html#a76c4638d478b1de0ae8e352cdee4d732"/>
+        <topic label="isFullResult" href="interface_gn_track.html#a43638755f9c0eca3edc1f918e5e63162"/>
+        <topic label="matchConfidence" href="interface_gn_track.html#a7786348452bb69b14b12ae5cdceabc2b"/>
+        <topic label="matchDuration" href="interface_gn_track.html#a57d73e03f237d7ff429d81c507d2ba6b"/>
+        <topic label="matched" href="interface_gn_track.html#a83eda924b2dd861f00e70f753f123e5b"/>
+        <topic label="matchedIdents" href="interface_gn_track.html#a94faeae06d339e663a6428f698b3bf34"/>
+        <topic label="matchLookupType" href="interface_gn_track.html#ad9016eb83ac352b72ed960afd0f08741"/>
+        <topic label="matchPosition" href="interface_gn_track.html#a44c984e4dc04e14408e9f909a78edf84"/>
+        <topic label="matchScore" href="interface_gn_track.html#adc3cbb745ec193b027c0dfe595e93ff8"/>
+        <topic label="mood:" href="interface_gn_track.html#ab532195b5721e5965b1ef540f6dfc0a9"/>
+        <topic label="review" href="interface_gn_track.html#af1274da10f05de8da7bc193086e8f5d2"/>
+        <topic label="tagId" href="interface_gn_track.html#a101a84353f7355c693f157b359034a2c"/>
+        <topic label="tempo:" href="interface_gn_track.html#a66ca3a7b5b7341244b832b9662d7f037"/>
+        <topic label="title" href="interface_gn_track.html#a4214ec1c7e7deed2bd5bb50d9f1bda37"/>
+        <topic label="titleClassical" href="interface_gn_track.html#aae09fb6a31373ddd87652a4568336ceb"/>
+        <topic label="titleRegional" href="interface_gn_track.html#ab42fde956d07cc4ce195d269c4e1631e"/>
+        <topic label="trackNumber" href="interface_gn_track.html#a764936f3e19500dd2123c9cf1b3bebdf"/>
+        <topic label="tui" href="interface_gn_track.html#abb885cd51e104f2e97a7a607a6fc2931"/>
+        <topic label="tuiTag" href="interface_gn_track.html#a589067413b65eade2583249b6cda2df2"/>
+        <topic label="work" href="interface_gn_track.html#a053fd2bbf394ea29eaedaee2e58c56f8"/>
+        <topic label="year" href="interface_gn_track.html#a4ebd288b1b23c1b2544823e442dc5fc0"/>
+      </topic>
+      <topic label="GnTrackEnumerator()" href="category_gn_track_enumerator_07_08.html">
+        <topic label="init_with_track_iterable:" href="category_gn_track_enumerator_07_08.html#aa0e1ac89ba3a100719c281bbf1e7160f"/>
+      </topic>
+      <topic label="GnUser" href="interface_gn_user.html">
+        <topic label="cppGnUser" href="interface_gn_user.html#ac6bb78859549a1a093c05ea3f6187208"/>
+        <topic label="init" href="interface_gn_user.html#a130202caf579c31594ae0f963c0c2913"/>
+        <topic label="init_with_GnUser:" href="interface_gn_user.html#ac94c87a12a4fd73a280d871fb8307201"/>
+        <topic label="initWithGnUserStoreDelegate:clientId:clientTag:applicationVersion:" href="interface_gn_user.html#a527d82be7d5f0dbea33ede874ded91d2"/>
+        <topic label="initWithSerializedUser:clientIdTest:" href="interface_gn_user.html#afca16e1a8e8b0cf42c1446cb6749c5c8"/>
+        <topic label="isLocalOnly:" href="interface_gn_user.html#a092bd44cb56707e38b10facf0866ac59"/>
+        <topic label="options" href="interface_gn_user.html#a87ee00c2eeaa56bc561c36ad54084a9e"/>
+        <topic label="_cppGnUser" href="interface_gn_user.html#ac88a0891e204fea62a268903c4ea6a3f"/>
+      </topic>
+      <topic label="GnUserOptions" href="interface_gn_user_options.html">
+        <topic label="cacheExpiration:" href="interface_gn_user_options.html#abb7d94c4bf1a76e3cd2a92f32007c0bd"/>
+        <topic label="cacheExpirationWithDurationSec:error:" href="interface_gn_user_options.html#a378d481fc7517be0061f23d68968a9ea"/>
+        <topic label="cppGnUserOptions" href="interface_gn_user_options.html#a817c607ccd75c9bc4d28b8fa9febb78e"/>
+        <topic label="customWithKey:error:" href="interface_gn_user_options.html#a06dc491ac667f9112fbd88c010af2dc3"/>
+        <topic label="customWithKey:value:error:" href="interface_gn_user_options.html#a196349781210fda676b97bf998a67c33"/>
+        <topic label="init" href="interface_gn_user_options.html#a20a181248fdfd9cfbd695505f5aa7098"/>
+        <topic label="init_with_GnUserOptions:" href="interface_gn_user_options.html#a274195a321c3a8a309871e0236eb2f3e"/>
+        <topic label="lookupMode:" href="interface_gn_user_options.html#a3a2ed2e811f8850be8f9b1dcdba65a30"/>
+        <topic label="lookupModeWithLookupMode:error:" href="interface_gn_user_options.html#a68b76addcbb81bf1972360dbf1c934e9"/>
+        <topic label="networkInterface:" href="interface_gn_user_options.html#a183d32f980ab1dce2657af1096bf81c2"/>
+        <topic label="networkInterfaceWithNicIpAddress:error:" href="interface_gn_user_options.html#a6f698e043674a78dcd2339e7658bbbd7"/>
+        <topic label="networkLoadBalance:" href="interface_gn_user_options.html#a91ca4656a558481d46ae4efe297f2b73"/>
+        <topic label="networkLoadBalanceWithBEnable:error:" href="interface_gn_user_options.html#a3840bd2c4bd31767ffbbd7c4bdbbccd3"/>
+        <topic label="networkProxy:" href="interface_gn_user_options.html#aff005eb63b858b90f2797068a3ed9739"/>
+        <topic label="networkProxyWithHostname:username:password:error:" href="interface_gn_user_options.html#a97484d7d68b51a91b98bfc688420d841"/>
+        <topic label="networkTimeout:" href="interface_gn_user_options.html#ae0121b213993480e694ac5a99b7995d4"/>
+        <topic label="networkTimeoutWithTimeout_ms:error:" href="interface_gn_user_options.html#ad4a435571541ce4a5b3bfbd80a2e428c"/>
+        <topic label="userInfo:mfg:os:uid:error:" href="interface_gn_user_options.html#ac2142301b3eacbaa5e3a9af33d753eac"/>
+        <topic label="_cppGnUserOptions" href="interface_gn_user_options.html#a1a51d7dc6a5158c4d32db0d2f1c7739e"/>
+      </topic>
+      <topic label="GnUserStore" href="interface_gn_user_store.html"/>
+      <topic label="&lt;GnUserStoreDelegate&gt;" href="protocol_gn_user_store_delegate-p.html">
+        <topic label="loadSerializedUser:" href="protocol_gn_user_store_delegate-p.html#a60532df1ef9121c871ae7637d0f52b0a"/>
+        <topic label="storeSerializedUser:userData:" href="protocol_gn_user_store_delegate-p.html#a50139a4408b8df69ca15053ac5d6dfb8"/>
+      </topic>
+      <topic label="NSMutableArray(NSQueue)" href="category_n_s_mutable_array_07_n_s_queue_08.html">
+        <topic label="dequeue" href="category_n_s_mutable_array_07_n_s_queue_08.html#a86043ebd8211bcbb5b6bc1bec2bfc74c"/>
+        <topic label="dequeueObjects:" href="category_n_s_mutable_array_07_n_s_queue_08.html#abb92d425037c9f0c11c9a343155f88b5"/>
+        <topic label="enqueueObj:" href="category_n_s_mutable_array_07_n_s_queue_08.html#a4c29e537d28694e273f7811dba002ac3"/>
+        <topic label="enqueueObjects:" href="category_n_s_mutable_array_07_n_s_queue_08.html#a8eb742b8794dcb891bea15e64dcc3fc5"/>
+      </topic>
+      <topic label="NSObject" href="class_n_s_object.html"/>
+      <topic label="&lt;NSObject&gt;" href="class_n_s_object-p.html"/>
+    </topic>
+    <topic label="Class Hierarchy" href="hierarchy.html">
+      <topic label="GnAlbum()"/>
+      <topic label="GnAlbumEnumerator()" href="category_gn_album_enumerator_07_08.html"/>
+      <topic label="GnArtist()"/>
+      <topic label="GnAsset()"/>
+      <topic label="GnAssetEnumerator()" href="category_gn_asset_enumerator_07_08.html"/>
+      <topic label="GnAudioWork()"/>
+      <topic label="GnContent()"/>
+      <topic label="GnContentEnumerator()" href="category_gn_content_enumerator_07_08.html"/>
+      <topic label="GnContributor()"/>
+      <topic label="GnCredit()"/>
+      <topic label="GnCreditEnumerator()" href="category_gn_credit_enumerator_07_08.html"/>
+      <topic label="GnDataMatch()"/>
+      <topic label="GnDataMatchEnumerator()" href="category_gn_data_match_enumerator_07_08.html"/>
+      <topic label="GnDataObject()"/>
+      <topic label="GnExternalId()"/>
+      <topic label="GnExternalIdEnumerator()" href="category_gn_external_id_enumerator_07_08.html"/>
+      <topic label="GnList()"/>
+      <topic label="GnListElement()"/>
+      <topic label="GnListElementEnumerator()" href="category_gn_list_element_enumerator_07_08.html"/>
+      <topic label="GnLocale()"/>
+      <topic label="GnLocaleInfo()"/>
+      <topic label="GnLocaleInfoEnumerator()" href="category_gn_locale_info_enumerator_07_08.html"/>
+      <topic label="GnLog()"/>
+      <topic label="GnLogColumns()"/>
+      <topic label="GnLogFilters()"/>
+      <topic label="GnLogOptions()"/>
+      <topic label="GnLookupLocalStream()"/>
+      <topic label="GnLookupLocalStreamIngest()"/>
+      <topic label="GnManager()"/>
+      <topic label="GnMoodgrid()"/>
+      <topic label="GnMoodgridDataPoint()"/>
+      <topic label="GnMoodgridDataPointEnumerator()" href="category_gn_moodgrid_data_point_enumerator_07_08.html"/>
+      <topic label="GnMoodgridIdentifier()"/>
+      <topic label="GnMoodgridIdentifierEnumerator()" href="category_gn_moodgrid_identifier_enumerator_07_08.html"/>
+      <topic label="GnMoodgridPresentation()"/>
+      <topic label="GnMoodgridProvider()"/>
+      <topic label="GnMoodgridProviderEnumerator()" href="category_gn_moodgrid_provider_enumerator_07_08.html"/>
+      <topic label="GnMoodgridResult()"/>
+      <topic label="GnMusicId()"/>
+      <topic label="GnMusicIdFile()"/>
+      <topic label="GnMusicIdFileInfo()"/>
+      <topic label="GnMusicIdFileInfoEnumerator()" href="category_gn_music_id_file_info_enumerator_07_08.html"/>
+      <topic label="GnMusicIdFileInfoManager()"/>
+      <topic label="GnMusicIdFileOptions()"/>
+      <topic label="GnMusicIdOptions()"/>
+      <topic label="GnMusicIdStream()"/>
+      <topic label="GnMusicIdStreamOptions()"/>
+      <topic label="GnName()"/>
+      <topic label="GnNameEnumerator()" href="category_gn_name_enumerator_07_08.html"/>
+      <topic label="GnPlaylist()"/>
+      <topic label="GnPlaylistAttributes()"/>
+      <topic label="GnPlaylistCollection()"/>
+      <topic label="GnPlaylistCollectionEnumerator()" href="category_gn_playlist_collection_enumerator_07_08.html"/>
+      <topic label="GnPlaylistIdentifier()"/>
+      <topic label="GnPlaylistIdentifierEnumerator()" href="category_gn_playlist_identifier_enumerator_07_08.html"/>
+      <topic label="GnPlaylistMoreLikeThisOptions()"/>
+      <topic label="GnPlaylistResult()"/>
+      <topic label="GnPlaylistStorage()"/>
+      <topic label="GnRenderOptions()"/>
+      <topic label="GnResponseAlbums()"/>
+      <topic label="GnResponseDataMatches()"/>
+      <topic label="GnResponseTracks()"/>
+      <topic label="GnRole()"/>
+      <topic label="GnStorageSqlite()"/>
+      <topic label="GnStoreOps()"/>
+      <topic label="GnStringEnumerator()" href="category_gn_string_enumerator_07_08.html"/>
+      <topic label="GnTitle()"/>
+      <topic label="GnTrack()"/>
+      <topic label="GnTrackEnumerator()" href="category_gn_track_enumerator_07_08.html"/>
+      <topic label="GnUser()"/>
+      <topic label="GnUserOptions()"/>
+      <topic label="NSMutableArray(NSQueue)" href="category_n_s_mutable_array_07_n_s_queue_08.html"/>
+      <topic label="NSObject" href="class_n_s_object.html">
+        <topic label="GnAudioFile" href="interface_gn_audio_file.html"/>
+        <topic label="GnCancellableDelegateImpl" href="interface_gn_cancellable_delegate_impl.html"/>
+        <topic label="GnDataObject" href="interface_gn_data_object.html">
+          <topic label="GnAlbum" href="interface_gn_album.html"/>
+          <topic label="GnArtist" href="interface_gn_artist.html"/>
+          <topic label="GnAsset" href="interface_gn_asset.html"/>
+          <topic label="GnAudioWork" href="interface_gn_audio_work.html"/>
+          <topic label="GnContent" href="interface_gn_content.html"/>
+          <topic label="GnContributor" href="interface_gn_contributor.html"/>
+          <topic label="GnCredit" href="interface_gn_credit.html"/>
+          <topic label="GnDataMatch" href="interface_gn_data_match.html"/>
+          <topic label="GnExternalId" href="interface_gn_external_id.html"/>
+          <topic label="GnName" href="interface_gn_name.html"/>
+          <topic label="GnPlaylistAttributes" href="interface_gn_playlist_attributes.html"/>
+          <topic label="GnResponseAlbums" href="interface_gn_response_albums.html"/>
+          <topic label="GnResponseDataMatches" href="interface_gn_response_data_matches.html"/>
+          <topic label="GnResponseTracks" href="interface_gn_response_tracks.html"/>
+          <topic label="GnRole" href="interface_gn_role.html"/>
+          <topic label="GnTitle" href="interface_gn_title.html"/>
+          <topic label="GnTrack" href="interface_gn_track.html"/>
+        </topic>
+        <topic label="GnList" href="interface_gn_list.html"/>
+        <topic label="GnListElement" href="interface_gn_list_element.html"/>
+        <topic label="GnLocale" href="interface_gn_locale.html"/>
+        <topic label="GnLocaleInfo" href="interface_gn_locale_info.html"/>
+        <topic label="GnLog" href="interface_gn_log.html"/>
+        <topic label="GnLogColumns" href="interface_gn_log_columns.html"/>
+        <topic label="GnLogFilters" href="interface_gn_log_filters.html"/>
+        <topic label="GnLogOptions" href="interface_gn_log_options.html"/>
+        <topic label="GnLookupLocalStream" href="interface_gn_lookup_local_stream.html"/>
+        <topic label="GnLookupLocalStreamIngest" href="interface_gn_lookup_local_stream_ingest.html"/>
+        <topic label="GnManager" href="interface_gn_manager.html"/>
+        <topic label="GnMic" href="interface_gn_mic.html"/>
+        <topic label="GnMoodgrid" href="interface_gn_moodgrid.html"/>
+        <topic label="GnMoodgridDataPoint" href="interface_gn_moodgrid_data_point.html"/>
+        <topic label="GnMoodgridIdentifier" href="interface_gn_moodgrid_identifier.html"/>
+        <topic label="GnMoodgridPresentation" href="interface_gn_moodgrid_presentation.html"/>
+        <topic label="GnMoodgridProvider" href="interface_gn_moodgrid_provider.html"/>
+        <topic label="GnMoodgridResult" href="interface_gn_moodgrid_result.html"/>
+        <topic label="GnMusicId" href="interface_gn_music_id.html"/>
+        <topic label="GnMusicIdFile" href="interface_gn_music_id_file.html"/>
+        <topic label="GnMusicIdFileInfo" href="interface_gn_music_id_file_info.html"/>
+        <topic label="GnMusicIdFileInfoManager" href="interface_gn_music_id_file_info_manager.html"/>
+        <topic label="GnMusicIdFileOptions" href="interface_gn_music_id_file_options.html"/>
+        <topic label="GnMusicIdOptions" href="interface_gn_music_id_options.html"/>
+        <topic label="GnMusicIdStream" href="interface_gn_music_id_stream.html"/>
+        <topic label="GnMusicIdStreamOptions" href="interface_gn_music_id_stream_options.html"/>
+        <topic label="GnPlaylist" href="interface_gn_playlist.html"/>
+        <topic label="GnPlaylistCollection" href="interface_gn_playlist_collection.html"/>
+        <topic label="GnPlaylistIdentifier" href="interface_gn_playlist_identifier.html"/>
+        <topic label="GnPlaylistMoreLikeThisOptions" href="interface_gn_playlist_more_like_this_options.html"/>
+        <topic label="GnPlaylistResult" href="interface_gn_playlist_result.html"/>
+        <topic label="GnPlaylistStorage" href="interface_gn_playlist_storage.html"/>
+        <topic label="GnRenderOptions" href="interface_gn_render_options.html"/>
+        <topic label="GnStorageSqlite" href="interface_gn_storage_sqlite.html"/>
+        <topic label="GnStoreOps" href="interface_gn_store_ops.html"/>
+        <topic label="GnUser" href="interface_gn_user.html"/>
+        <topic label="GnUserOptions" href="interface_gn_user_options.html"/>
+        <topic label="GnUserStore" href="interface_gn_user_store.html"/>
+      </topic>
+      <topic label="&lt;NSObject&gt;" href="class_n_s_object-p.html">
+        <topic label="&lt;GnAudioSourceDelegate&gt;" href="protocol_gn_audio_source_delegate-p.html">
+          <topic label="GnAudioFile" href="interface_gn_audio_file.html"/>
+          <topic label="GnMic" href="interface_gn_mic.html"/>
+        </topic>
+        <topic label="&lt;GnCancellableDelegate&gt;" href="protocol_gn_cancellable_delegate-p.html">
+          <topic label="GnCancellableDelegateImpl" href="interface_gn_cancellable_delegate_impl.html"/>
+        </topic>
+        <topic label="&lt;GnLogEventsDelegate&gt;" href="protocol_gn_log_events_delegate-p.html"/>
+        <topic label="&lt;GnLookupLocalStreamIngestEventsDelegate&gt;" href="protocol_gn_lookup_local_stream_ingest_events_delegate-p.html"/>
+        <topic label="&lt;GnMusicIdFileInfoEventsDelegate&gt;" href="protocol_gn_music_id_file_info_events_delegate-p.html"/>
+        <topic label="&lt;GnPlaylistCollectionSyncEventsDelegate&gt;" href="protocol_gn_playlist_collection_sync_events_delegate-p.html"/>
+        <topic label="&lt;GnStatusEventsDelegate&gt;" href="protocol_gn_status_events_delegate-p.html">
+          <topic label="&lt;GnMusicIdFileEventsDelegate&gt;" href="protocol_gn_music_id_file_events_delegate-p.html"/>
+          <topic label="&lt;GnMusicIdStreamEventsDelegate&gt;" href="protocol_gn_music_id_stream_events_delegate-p.html"/>
+        </topic>
+        <topic label="&lt;GnSystemEventsDelegate&gt;" href="protocol_gn_system_events_delegate-p.html"/>
+        <topic label="&lt;GnUserStoreDelegate&gt;" href="protocol_gn_user_store_delegate-p.html">
+          <topic label="GnUserStore" href="interface_gn_user_store.html"/>
+        </topic>
+      </topic>
+      <topic label="GnList"/>
+      <topic label="GnListElement"/>
+      <topic label="GnLocale"/>
+      <topic label="GnLocaleInfo"/>
+      <topic label="GnLog *"/>
+      <topic label="GnLogColumns"/>
+      <topic label="GnLogFilters"/>
+      <topic label="GnLogOptions"/>
+      <topic label="GnManager *"/>
+      <topic label="GnStoreOps *"/>
+      <topic label="GnUser"/>
+      <topic label="GnUserOptions"/>
+      <topic label="IGnCancellable *"/>
+      <topic label="GnLookupLocalStream *"/>
+      <topic label="GnLookupLocalStreamIngest *"/>
+      <topic label="GnDataObject"/>
+      <topic label="GnRenderOptions"/>
+      <topic label="GnMoodgrid *"/>
+      <topic label="GnMoodgridDataPoint"/>
+      <topic label="GnMoodgridIdentifier"/>
+      <topic label="GnMoodgridPresentation"/>
+      <topic label="GnMoodgridProvider"/>
+      <topic label="GnMoodgridResult"/>
+      <topic label="GnMusicId *"/>
+      <topic label="GnMusicIdOptions *"/>
+      <topic label="GnMusicIdFile *"/>
+      <topic label="GnMusicIdFileInfo"/>
+      <topic label="GnMusicIdFileInfoManager *"/>
+      <topic label="GnMusicIdFileOptions *"/>
+      <topic label="GnMusicIdStream *"/>
+      <topic label="GnMusicIdStreamOptions *"/>
+      <topic label="GnPlaylist"/>
+      <topic label="GnPlaylistCollection *"/>
+      <topic label="GnPlaylistIdentifier"/>
+      <topic label="GnPlaylistMoreLikeThisOptions *"/>
+      <topic label="GnPlaylistResult"/>
+      <topic label="GnPlaylistStorage"/>
+      <topic label="GnStorageSqlite *"/>
+      <topic label="NSUInteger"/>
+      <topic label="NSURL *"/>
+    </topic>
+  </topic>
+</toc>

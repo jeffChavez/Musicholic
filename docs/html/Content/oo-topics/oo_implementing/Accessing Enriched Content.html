@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Implementing Applications (All Platforms)">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Accessing Enriched Content</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#oo-topics/oo_implementing/Accessing Enriched Content.html">Open topic with navigation</a>
+        </p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Implementing Applications (All Platforms)</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Accessing Enriched Content</span>
+        </div>
+        <h1>Accessing Enriched Content</h1>
+        <p>To access enriched metadata content, such as cover art and artist images, you can purchase additional metadata entitlements and use the content URLs returned from queries in your application. Enriched content URLs can be returned in every result object (<code>GnAlbum</code>, <code>GnTrack</code>, etc). </p>
+        <p><b>To access enriched content:</b>
+        </p>
+        <ul>
+            <li value="1">Purchase additional entitlements for enriched content</li>
+            <li value="2">Enable the query option for retrieving enriched content</li>
+            <li value="3">For each match object returned, iterate through its <code>GnContent</code> objects</li>
+            <li value="4">For each <code>GnContent</code> object, iterate through its <code>GnAsset</code> objects</li>
+            <li value="5">For each <code>GnAsset</code> object, get its content URL and use that for accessing the Gracenote service</li>
+        </ul>
+        <h2>Setting the Query Option for Enriched Content</h2>
+        <p>To get enriched content returned from your queries, you need to enable the query option for this. You can do this using the <code>LookupData</code> method and the <code>kLookupDataContent</code> enum.</p>
+        <p>C++ example:</p><pre>/* Enable retrieval of enriched content */
+musicid.Options().LookupData(kLookupDataContent, true);
+</pre>
+        <p>Objective-C example:</p><pre>GnMusicIdStreamOptions *options = [self.gnMusicIDStream options];
+[options lookupData:kLookupDataContent enable:YES error:&amp;musicIDStreamError];</pre>
+        <h2>Processing Enriched Content</h2>
+        <p>Enriched content is returned in <code>GnContent</code> objects. As indicated with these <code>GnContentType</code> enums, the following types of content can be returned:</p>
+        <ul>
+            <li value="1"><b><code>kContentTypeImageCover</code></b>—Cover art</li>
+            <li value="2"><b><code>kContentTypeImageArtist</code></b>—Artist image</li>
+            <li value="3"><b><code>kContentTypeImageVideo</code></b>—Video image</li>
+            <li value="4"><b><code>kContentTypeBiography</code></b>—Artist biography</li>
+            <li value="5"><b><code>kContentTypeReview</code></b>—Review</li>
+        </ul>
+        <p>Each <code>GnContent</code> object can contain one or more elements of that type as represented with a <code>GnAsset</code> object.</p>
+        <p>Note that not all enriched content can be retrieved from every metadata object. Different objects have different types of enriched content available. The following object methods are available for accessing content:</p>
+        <ul>
+            <li value="1"><code>GnContent GnTrack::Review() const;</code>
+            </li>
+            <li value="2"><code>GnContent GnAlbum::CoverArt() const;</code>
+            </li>
+            <li value="3"><code>GnContent GnAlbum::Review() const;</code>
+            </li>
+            <li value="4"><code>GnContent GnContributor::Image() const;</code>
+            </li>
+            <li value="5"><code>GnContent GnContributor::Biography() const;</code>
+            </li>
+            <li value="6"><code>gnsdk_cstr_t GnContributor::BiographyVideo() const;</code>—For video only</li>
+        </ul>
+        <p>Each <code>GnAsset</code> object contains the following fields:</p>
+        <ul>
+            <li value="1"><b><code>Dimension</code></b>—Asset dimension</li>
+            <li value="2"><b><code>Bytes</code></b>—Size of content asset in bytes</li>
+            <li value="3"><b><code>Size</code></b>—Pixel image size as defined with a <code>GnImageSize</code> enum, e.g., <code>kImageSize110</code> (110x110) </li>
+            <li value="4"><b><code>Url</code></b>—URL for retrieval of asset from Gracenote service.</li>
+        </ul>
+        <p>Retrieving and parsing enriched content code samples:</p>
+        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Android Java code sample</a></span>
+            <div class="MCDropDownBody dropDownBody"><pre>	/**
+	 * Helpers to load and set cover art image in the application display
+	 */
+	private void loadAndDisplayCoverArt( GnAlbum album, ImageView imageView ){
+		Thread runThread = new Thread( new CoverArtLoaderRunnable( album, imageView ) );
+		runThread.start();
+	}
+	class CoverArtLoaderRunnable implements Runnable {
+		GnAlbum 	album;
+		ImageView 	imageView;
+		CoverArtLoaderRunnable( GnAlbum album, ImageView imageView){
+			this.album = album;
+			this.imageView = imageView;
+		}
+		@Override
+		public void run() {
+			String coverArtUrl = album.content(GnContentType.
+					     kContentTypeImageCover).
+					     asset(GnImageSize.
+					     kImageSizeSmall).url();
+			Drawable coverArt = null;
+			if (coverArtUrl != null &amp;&amp; !coverArtUrl.isEmpty()) {
+			    URL url;
+			    try {
+    			        url = new URL("http://" + 
+					        coverArtUrl);
+				InputStream input = new 
+			          BufferedInputStream(url.openStream());
+				coverArt = 
+				  Drawable.createFromStream(input, "src");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (coverArt != null) {
+				setCoverArt(coverArt, imageView);
+			} else {
+				setCoverArt(getResources().getDrawable(R.drawable.no_cover_art),imageView);
+			}
+		}
+	}
+	private void setCoverArt( Drawable coverArt, ImageView coverArtImage ){
+		activity.runOnUiThread(new SetCoverArtRunnable(coverArt, coverArtImage));
+	}
+	class SetCoverArtRunnable implements Runnable {
+		Drawable coverArt;
+		ImageView coverArtImage;
+		SetCoverArtRunnable( Drawable locCoverArt, ImageView locCoverArtImage) {
+			coverArt = locCoverArt;
+			coverArtImage = locCoverArtImage;
+		}
+		@Override
+		public void run() {
+			coverArtImage.setImageDrawable(coverArt);
+		}
+	}</pre>
+            </div>
+        </div>
+        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Objective-C code sample</a></span>
+            <div class="MCDropDownBody dropDownBody"><pre>for(GnAlbum* album in albums)
+{
+   /* Get CoverArt */
+   GnContent *coverArtContent = [album content:kContentTypeImageCover];
+   GnAsset *coverArtAsset = [coverArtContent asset:kImageSizeSmall];
+   NSString *URLString = [NSString stringWithFormat:@"http://%@", [coverArtAsset url]];
+   GnContent *artistImageContent = nil;//[album content:kContentTypeImageArtist];
+   GnAsset *artistImageAsset = [artistImageContent asset:kImageSizeSmall];
+   NSString *artistImageURLString = [NSString stringWithFormat:@"http://%@", [artistImageAsset url]];
+   GnContent *artistBiographyContent = [album content:kContentTypeBiography];
+   NSString *artistBiographyURLString = [NSString stringWithFormat:@"http://%@", [[[artistBiographyContent assets] nextObject] url]];
+   GnContent *albumReviewContent = [album content:kContentTypeReview];
+   NSString *albumReviewURLString = [NSString stringWithFormat:@"http://%@", [[[albumReviewContent assets] nextObject] url]];
+}</pre>
+            </div>
+        </div>
+        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Windows Phone C# code sample</a></span>
+            <div class="MCDropDownBody dropDownBody"><pre>public RespAlbum(gnsdk_cppcx.GnAlbum gnAlbum, bool bTakeMachedTrack)
+{
+   this.Title = gnAlbum.Title.Display;
+   if (false == bTakeMachedTrack)
+   {
+      if(0 != gnAlbum.Tracks.Count())
+         this.TrackTitle = gnAlbum.Tracks.ElementAt(0).Title.Display;
+      else
+         this.TrackTitle = "";
+   }
+   else
+   {
+      if(0 != gnAlbum.TracksMatched.Count())
+         this.TrackTitle = gnAlbum.TracksMatched.ElementAt(0).Title.Display;
+      else
+         this.TrackTitle = "";
+   }
+   this.ArtistName = gnAlbum.Artist.Name.Display;
+   this.<a href="javascript:void(0);" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup #text #textPopup">Genre<span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"></span>A categorization of a musical composition characterized by a particular style.</span></a> = gnAlbum.Genre(gnsdk_cppcx.GnDataLevel.kDataLevel_1);
+   this.ImageUrl = "http://" + gnAlbum.Content(gnsdk_cppcx.GnContentType.kContentTypeImageCover).Asset(gnsdk_cppcx.GnImageSize.kImageSizeSmall).Url;
+   if ("http://" == ImageUrl)
+   {
+      this.ImageUrl =  "/Assets/emptyImage.png";
+   }
+}</pre>
+            </div>
+        </div>
+        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />C++ code sample</a></span>
+            <div class="MCDropDownBody dropDownBody"><pre>static void
+displayContentUrls(GnAlbum&amp; album)
+{
+	/* content urls for album */
+	content_iterator itr = album.Contents().begin();
+	for (; itr != album.Contents().end(); ++itr)
+	{
+		GnContent content = *itr;
+		switch (content.ContentType())
+		{
+		case kContentTypeImageCover:
+			std::cout &lt;&lt; "cover art: " &lt;&lt; std::endl;
+			break;
+		case kContentTypeImageArtist:
+			std::cout &lt;&lt; "artist image: " &lt;&lt; std::endl;
+			break;
+		case kContentTypeImageVideo:
+			std::cout &lt;&lt; "video image: " &lt;&lt; std::endl;
+			break;
+		case kContentTypeBiography:
+			std::cout &lt;&lt; "biography: " &lt;&lt; std::endl;
+			break;
+		case kContentTypeReview:
+			std::cout &lt;&lt; "review: " &lt;&lt; std::endl;
+			break;
+		default:
+			break;
+		}
+		asset_iterator aItr = content.Assets().begin();
+		for (; aItr != content.Assets().end(); ++aItr)
+		{
+			GnAsset asset = *aItr;
+			switch (content.ContentType())
+			{
+			case kContentTypeImageCover:
+			case kContentTypeImageArtist:
+			case kContentTypeImageVideo:
+				switch (asset.Size())
+				{
+				default:
+					break;
+				}
+			}
+			std::cout &lt;&lt; "\turl: " &lt;&lt; asset.Url() &lt;&lt; std::endl;
+			std::cout &lt;&lt; std::endl;
+		}
+	}
+}</pre>
+            </div>
+        </div>
+        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />C# code sample</a></span>
+            <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve">Under construction</pre>
+            </div>
+        </div>
+        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Java code sample</a></span>
+            <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve">Under construction</pre>
+            </div>
+        </div>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>
