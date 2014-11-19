@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 typedef NS_ENUM(NSInteger, Mode)
 {
     UnknownMode=-1,
@@ -30,10 +31,14 @@ typedef NS_ENUM(NSInteger, Mode)
 
 @property (weak, nonatomic) IBOutlet UILabel *statusCaptionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *busyIndicator;
-//@property (weak, nonatomic) IBOutlet UITableView *searchFieldsTableView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelOperationsButton;
 @property (weak, nonatomic) IBOutlet UIButton *idNowButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *testImage;
+@property (weak, nonatomic) IBOutlet UILabel *testLABEL;
+
+
+
 
 - (IBAction) idNow:(id) sender;
 - (IBAction) findDrink:(id) sender;

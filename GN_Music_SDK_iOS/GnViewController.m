@@ -54,6 +54,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 @interface GnViewController ()<GnMusicIdStreamEventsDelegate, GnMusicIdFileEventsDelegate, UITabBarDelegate, UIGestureRecognizerDelegate, GnMusicIdFileInfoEventsDelegate, GnAudioVisualizerDelegate, GnLookupLocalStreamIngestEventsDelegate>
 
+
+
+//TEST
+@property (strong, nonatomic) GnDataModel *currentDataModel;
+
+
+
 /*GnSDK properties*/
 @property (strong) GnMusicIdStream *gnMusicIDStream;
 @property (strong) GnMic *gnMic;
@@ -579,7 +586,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         [self.cancellableObjects addObject: self.gnMusicIDStream];
         [self.gnMusicIDStream identifyAlbumAsync:&error];
         [self updateStatus: @"Identifying"];
-        [self.busyIndicator startAnimating];
 
         if (error)
         {
@@ -616,7 +622,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         }
     }
     
-    [self stopBusyIndicator];
 }
 
 
@@ -668,21 +673,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         NSString *albumTrackCount = [NSString stringWithFormat:@"%lu", (unsigned long)[album trackCount]];
         NSString *albumLanguage = [album language];
         
-        /* Get CoverArt */
-        GnContent *coverArtContent = [album coverArt];
-        GnAsset *coverArtAsset = [coverArtContent asset:kImageSizeSmall];
-        NSString *URLString = [NSString stringWithFormat:@"http://%@", [coverArtAsset url]];
-
-        GnContent *artistImageContent = [[[album artist] contributor] image];
-        GnAsset *artistImageAsset = [artistImageContent asset:kImageSizeSmall];
-        NSString *artistImageURLString = [NSString stringWithFormat:@"http://%@", [artistImageAsset url]];
-
-        GnContent *artistBiographyContent = [[[album artist] contributor] biography];
-        NSString *artistBiographyURLString = [NSString stringWithFormat:@"http://%@", [[[artistBiographyContent assets] nextObject] url]];
-
-        GnContent *albumReviewContent = [album review];
-        NSString *albumReviewURLString = [NSString stringWithFormat:@"http://%@", [[[albumReviewContent assets] nextObject] url]];
-
         __block GnDataModel *gnDataModelObject = [[GnDataModel alloc] init];
         gnDataModelObject.albumArtist = albumArtist;
         gnDataModelObject.albumGenre = albumGenre;
@@ -693,6 +683,14 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         gnDataModelObject.albumTrackCount = albumTrackCount;
         gnDataModelObject.albumLanguage = albumLanguage;
 
+
+        
+        
+        /* Get CoverArt */
+        GnContent *coverArtContent = [album coverArt];
+        GnAsset *coverArtAsset = [coverArtContent asset:kImageSizeSmall];
+        NSString *URLString = [NSString stringWithFormat:@"http://%@", [coverArtAsset url]];
+        
         NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
         __weak GnViewController *weakSelf = self;
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error)
@@ -701,10 +699,17 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             if(data && !error)
             {
                gnDataModelObject.albumImageData = data;
+                
+                // HERE IS WHERE WE CAN LOAD THE DATA INTO OUR OWN VIEWS
                [weakSelf.resultsTableView reloadData];
             }
         }];
 
+        
+        GnContent *artistImageContent = [[[album artist] contributor] image];
+        GnAsset *artistImageAsset = [artistImageContent asset:kImageSizeSmall];
+        NSString *artistImageURLString = [NSString stringWithFormat:@"http://%@", [artistImageAsset url]];
+        
         NSURLRequest *artistImageFetchRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:artistImageURLString]];
         [NSURLConnection sendAsynchronousRequest:artistImageFetchRequest queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error){
 
@@ -715,6 +720,12 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                 [self refreshArtistImage];
             }
         }];
+        
+        
+        
+        
+        
+        
         
         NSLog(@"Matched Album = %@", [[album title]display]);
         
@@ -759,11 +770,12 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         }
 
         [self.results addObject:gnDataModelObject];
+        self.currentDataModel = gnDataModelObject;
+        
         
     }
 
-    [self  performSelectorOnMainThread:@selector(refreshResults) withObject:nil waitUntilDone:NO];
-    [self stopBusyIndicator];
+    [self performSelectorOnMainThread:@selector(refreshResults) withObject:nil waitUntilDone:NO];
 }
 
 
@@ -802,7 +814,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     dispatch_async( dispatch_get_main_queue(), ^{
         
         [self enableOrDisableControls:YES];
-        [self.busyIndicator stopAnimating];
         
 	});
 }
@@ -1137,8 +1148,8 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 			[additionalContentView addSubview:additionalContentAlbumLabel];
 			[additionalContentView addSubview:additionalContentArtistLabel];
 			[additionalContentView addSubview:additionalContentTextView];
-			//
-
+			
+            
 			[cell.contentView addSubview:imageView];
 			[cell.contentView addSubview:albumTitleLabel];
 			[cell.contentView addSubview:trackTitleLabel];
@@ -1249,26 +1260,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 					moodLabel.text = [NSString stringWithFormat:@"Mood: %@", datamodelObject.trackMood];
 					moodLabel.font = [UIFont systemFontOfSize:12];
 
-					UISegmentedControl *artistBiographyControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Artist Biography"]];
-					artistBiographyControl.frame = CGRectMake(moodLabel.frame.origin.x+(UI_USER_INTERFACE_IDIOM()?100:0),  moodLabel.frame.origin.y+moodLabel.frame.size.height+10, 150, 30);
-					[artistBiographyControl.layer setMasksToBounds:YES];
-					[artistBiographyControl setMomentary:YES];
-					[artistBiographyControl setBackgroundColor:[UIColor darkGrayColor]];
-					artistBiographyControl.tintColor = [UIColor whiteColor];
-					artistBiographyControl.layer.cornerRadius = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?5.0f:5.0f;
-					artistBiographyControl.layer.borderColor = [UIColor greenColor].CGColor;
-					[artistBiographyControl addTarget:self action:@selector(showArtistBiography:) forControlEvents:UIControlEventValueChanged];
-
-
-					UISegmentedControl *albumReviewControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Album Review"]];
-					albumReviewControl.frame = CGRectMake(artistBiographyControl.frame.origin.x+artistBiographyControl.frame.size.width+(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad?150:10),  artistBiographyControl.frame.origin.y, 150, 30);
-					[albumReviewControl.layer setMasksToBounds:YES];
-					[albumReviewControl setMomentary:YES];
-					[albumReviewControl setBackgroundColor:[UIColor darkGrayColor]];
-					albumReviewControl.tintColor = [UIColor whiteColor];
-					albumReviewControl.layer.cornerRadius = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?5.0f:5.0f;
-					albumReviewControl.layer.borderColor = [UIColor greenColor].CGColor;
-					[albumReviewControl addTarget:self action:@selector(showAlbumReview:) forControlEvents:UIControlEventValueChanged];
 
 					[additionalMetadataView addSubview:trackMatchPositionLabel];
 					[additionalMetadataView addSubview:lookupSourceLabel];
@@ -1278,8 +1269,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 					[additionalMetadataView addSubview:tempoLabel];
 					[additionalMetadataView addSubview:originLabel];
 					[additionalMetadataView addSubview:moodLabel];
-					[additionalMetadataView addSubview:artistBiographyControl];
-					[additionalMetadataView addSubview:albumReviewControl];
 
 					[cell.contentView addSubview:additionalMetadataView];
 				}
@@ -1389,9 +1378,17 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 	}
 
     [self.resultsTableView reloadData];
-    [self.busyIndicator stopAnimating];
+    [self loadTestViews];
 }
 
+-(void) loadTestViews {
+    UIImage *testImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
+//    self.testImage.backgroundColor = [UIColor redColor];
+    self.testImage.image = testImage;
+    
+//    self.testLABEL.text = @"THE TEST LABEL WAS UPDATED";
+    self.testLABEL.text = [NSString stringWithFormat:@"%@",self.currentDataModel.trackTitle];
+}
 
 
 -(void) gatherFingerprint: (GnMusicIdFileInfo*) fileInfo
