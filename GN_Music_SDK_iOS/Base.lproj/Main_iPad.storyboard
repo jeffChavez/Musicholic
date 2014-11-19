@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Gn View Controller-->
@@ -67,16 +67,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EF8-V4-RJW">
-                                        <rect key="frame" x="30" y="0.0" width="65" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="AlbumID">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="doAlbumID:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BaV-D8-pok"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lWW-hW-e8m">
                                         <rect key="frame" x="103" y="39" width="112" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -84,16 +74,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l5j-Bh-OHx">
-                                        <rect key="frame" x="103" y="2" width="112" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="AlbumID">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="doRecognizeMedia:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QrT-LQ-9R3"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rh5-qb-Jn3">
                                         <rect key="frame" x="505" y="39" width="76" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,16 +81,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t6q-QF-P6V">
-                                        <rect key="frame" x="505" y="2" width="76" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="textSearch">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showTextSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="awp-wc-zTt"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OG6-8C-Nbd">
                                         <rect key="frame" x="661" y="37" width="76" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,16 +88,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dKg-5q-fig">
-                                        <rect key="frame" x="680" y="0.0" width="37" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="history">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LGV-Mh-nvh"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -163,9 +123,6 @@
                                         <rect key="frame" x="696" y="121" width="63" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Settings"/>
-                                        <connections>
-                                            <action selector="showSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="prv-xu-6UE"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HDh-bt-Pkl">
                                         <rect key="frame" x="14" y="121" width="41" height="34"/>
@@ -187,57 +144,15 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="Console"/>
-                                        <connections>
-                                            <action selector="showDebugConsole:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RAl-GS-k6G"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                             </view>
-                            <view contentMode="scaleToFill" id="Nzi-sl-9sj" userLabel="View - Text Search">
-                                <rect key="frame" x="7" y="173" width="754" height="764"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JAp-1X-bFy">
-                                        <rect key="frame" x="13" y="20" width="729" height="288"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="TOW-rr-fX2"/>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="tsh-us-oXh"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow.png" id="vhN-sV-jYc">
                                 <rect key="frame" x="513" y="936" width="56" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="dlH-T2-jzo" userLabel="View - Debug">
-                                <rect key="frame" x="0.0" y="525" width="768" height="906"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug Console" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ueQ-9u-h4B">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="69"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" id="zHA-Hy-J2Z">
-                                        <rect key="frame" x="0.0" y="69" width="775" height="837"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -245,22 +160,14 @@
                         <outlet property="arrowImageView" destination="vhN-sV-jYc" id="M1E-dO-Fh7"/>
                         <outlet property="cancelOperationsButton" destination="HDh-bt-Pkl" id="WV6-7e-4P4"/>
                         <outlet property="coloredRingImageView" destination="dY9-wr-odg" id="QFs-es-WdD"/>
-                        <outlet property="debugTextView" destination="zHA-Hy-J2Z" id="wtw-rg-fkf"/>
-                        <outlet property="debugView" destination="dlH-T2-jzo" id="Cdd-Qc-RhP"/>
-                        <outlet property="debugViewTitleLabel" destination="ueQ-9u-h4B" id="SGe-Vh-3zl"/>
-                        <outlet property="doAlbumIdButton" destination="EF8-V4-RJW" id="E43-kS-HBJ"/>
-                        <outlet property="doRecognizeButton" destination="l5j-Bh-OHx" id="NFD-FY-vlc"/>
                         <outlet property="gracenoteLogoImageView" destination="Fy3-AN-tXo" id="Yng-DB-91T"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
                         <outlet property="resultsTableView" destination="W4x-jI-Mnt" id="GjK-ib-uc6"/>
-                        <outlet property="searchFieldsTableView" destination="JAp-1X-bFy" id="gX4-Va-UCV"/>
                         <outlet property="settingsButton" destination="CLB-3e-qKb" id="2oy-gl-PdA"/>
                         <outlet property="showOrHideVisualizationButton" destination="ekR-At-UIa" id="xzp-Bx-Vuv"/>
                         <outlet property="showOrHideVisualizationButtonView" destination="slf-em-6jT" id="ewr-9M-roW"/>
-                        <outlet property="showTextSearchButton" destination="dKg-5q-fig" id="69c-2M-eBE"/>
                         <outlet property="statusCaptionLabel" destination="hYC-sN-Yet" id="bps-0L-b1g"/>
                         <outlet property="statusLabel" destination="P5N-m7-9U4" id="ZTZ-28-HCc"/>
-                        <outlet property="textSearchView" destination="Nzi-sl-9sj" id="PpN-f5-5RB"/>
                         <outlet property="titleLabel" destination="aCX-dc-5nD" id="yJf-IE-eAu"/>
                         <outlet property="visualizationView" destination="kAg-Qh-xzK" id="P5e-kH-pL5"/>
                     </connections>
@@ -271,7 +178,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AlbumID" width="28" height="28"/>
         <image name="Cancel" width="28" height="28"/>
         <image name="Console" width="28" height="28"/>
         <image name="GracenoteLogo" width="200" height="200"/>
@@ -279,8 +185,6 @@
         <image name="Settings" width="28" height="28"/>
         <image name="coloredRing" width="300" height="300"/>
         <image name="downArrow.png" width="80" height="40"/>
-        <image name="history" width="28" height="28"/>
-        <image name="textSearch" width="28" height="28"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

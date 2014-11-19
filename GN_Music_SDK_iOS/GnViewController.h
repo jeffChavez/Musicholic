@@ -15,7 +15,6 @@ typedef NS_ENUM(NSInteger, Mode)
     TextSearchMode=0,
     SettingsMode,
     HistoryMode,
-    DebugMode,
     AdditionalContentMode
 };
 
@@ -45,30 +44,17 @@ typedef NS_ENUM(NSInteger, Mode)
 @property (weak, nonatomic) IBOutlet UITabBarItem *recognizeMediaTabBarItem;
 @property (weak, nonatomic) IBOutlet UITabBarItem *textSearchTabBarItem;
 @property (weak, nonatomic) IBOutlet UITabBarItem *historyTabBarItem;
-@property (weak, nonatomic) IBOutlet UIView *textSearchView;
 @property (weak, nonatomic) IBOutlet UITableView *searchFieldsTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelOperationsButton;
-@property (weak, nonatomic) IBOutlet UIView *debugView;
-@property (weak, nonatomic) IBOutlet UILabel *debugViewTitleLabel;
-@property (weak, nonatomic) IBOutlet UITextView *debugTextView;
-@property (weak, nonatomic) IBOutlet UIButton *doAlbumIdButton;
-@property (weak, nonatomic) IBOutlet UIButton *doRecognizeButton;
-@property (weak, nonatomic) IBOutlet UIButton *showTextSearchButton;
-@property (weak, nonatomic) IBOutlet UIButton *showHistoryButton;
 @property (weak, nonatomic) IBOutlet UIButton *idNowButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *bundleLoadingProgressView;
 
-- (IBAction)actionButtonTapped:(id)sender;
 - (IBAction) idNow:(id) sender;
 - (IBAction)cancelAllOperations:(id)sender;
-- (IBAction)doAlbumID:(id)sender;
-- (IBAction)doRecognizeMedia:(id)sender;
 - (IBAction)doTextSearch:(id)sender;
-- (IBAction)showHistory:(id)sender;
-- (IBAction)showTextSearch:(id)sender;
 - (IBAction)showVisualization:(id)sender;
 
 -(void) stopRecording;

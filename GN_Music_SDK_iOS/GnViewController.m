@@ -34,7 +34,6 @@
 #define TRACKDURATIONLABELTAG 7003
 #define CAPTIONLABELTAG 7004
 #define TEXTFIELDTAG 7005
-#define SETTINGSSWITCHTAG 7006
 #define ALBUMIDACTIONSHEETTAG 7007
 #define ALBUMCOVERARTIMAGETAG 7008
 #define ADDITIONALMETADATAVIEWTAG 7009
@@ -50,13 +49,12 @@
 #define LABELWIDTHIPAD    420
 
 
-#define DEBUGMODEKEY                        @"debug-mode-on"
 #define LOCALLOOKUPOPTIONONLY               @"local-lookupoption-only"
 
 
 static NSString *gnsdkLicenseFilename = @"license.txt";
 
-@interface GnViewController ()<GnMusicIdStreamEventsDelegate, MPMediaPickerControllerDelegate, GnMusicIdFileEventsDelegate, UITabBarDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, GnLogEventsDelegate, GnMusicIdFileInfoEventsDelegate, GnAudioVisualizerDelegate, GnLookupLocalStreamIngestEventsDelegate>
+@interface GnViewController ()<GnMusicIdStreamEventsDelegate, MPMediaPickerControllerDelegate, GnMusicIdFileEventsDelegate, UITabBarDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, GnMusicIdFileInfoEventsDelegate, GnAudioVisualizerDelegate, GnLookupLocalStreamIngestEventsDelegate>
 
 /*GnSDK properties*/
 @property (strong) GnMusicIdStream *gnMusicIDStream;
@@ -71,11 +69,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property (strong) NSArray *history;
 @property (strong) NSMutableArray *albumDataMatches;
 @property (strong) GnLocale *locale;
-
-/*Debug Logging*/
-@property (strong) GnLog *gnLog;
-@property (strong) NSMutableArray *arrayOfLogStrings;
-@property dispatch_source_t debugRefreshTimer;
 
 /*Sample App properties*/
 @property (strong) UISegmentedControl *searchSegmentedControl;
@@ -104,9 +97,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     [super viewDidLoad];
     
-    [NetworkController networkController] fetchDrinkForSong:@"Billie%20Jean" withArtist:@"Michael%20Jackson" withCompletionHandler:^(NSString *, NSData *) {
-        <#code#>
-    }
+//    [NetworkController networkController] fetchDrinkForSong:@"Billie%20Jean" withArtist:@"Michael%20Jackson" withCompletionHandler:^(NSString *, NSData *) {
+//        
+//    }
     
     self.recordingIsPaused = NO;
     __block NSError * error = nil;
@@ -172,7 +165,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 	{
         self.titleLabel.text =  [NSString stringWithFormat:@"Gracenote SDK %@", [GnManager productVersion] ];
         
-        [self initializeDebugLogging];
 
 		@try
 		{
@@ -284,29 +276,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }
 }
 
--(void) initializeDebugLogging
-{
-    NSString *docsDir = [GnAppDelegate applicationDocumentsDirectory];
-    docsDir = [docsDir stringByAppendingPathComponent:@"log.txt"];
-    
-    self.gnLog = [[GnLog alloc] initWithLogFilePath:docsDir
-                                filters:[[[GnLogFilters alloc]init]all]
-                                columns:[[[GnLogColumns alloc]init]all]
-                                options:[[[GnLogOptions alloc]init]maxSize:0]
-                                logEventsDelegate:self];
-
-    // Max size of log: 0 means a new log file will be created each run
-    [self.gnLog options: [[[GnLogOptions alloc] init]maxSize:0]];
-
-    if([[NSUserDefaults standardUserDefaults] boolForKey:DEBUGMODEKEY]==YES)
-    {
-        NSError *error = nil;
-        if(error)
-        {
-            NSLog( @"Error: 0x%zx %@ - %@", [error code], [error domain], [error localizedDescription] );
-        }
-    }
-}
 
 -(void) setupLocationServices
 {
@@ -321,9 +290,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 -(void) setupInterface
 {
 	// Hide Search View and Arrow.
-    self.textSearchView.alpha = 0.0f;
     self.arrowImageView.alpha = 0.0f;
-    self.textSearchView.layer.cornerRadius = 5.0f;
     self.searchFieldsTableView.layer.cornerRadius = 5.0f;
     
     //Setup Dynamic Animator.
@@ -363,7 +330,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.searchSegmentedControl.layer.borderColor = [UIColor greenColor].CGColor;
     [self.searchSegmentedControl addTarget:self action:@selector(doTextSearch:) forControlEvents:UIControlEventValueChanged];
 
-    [self.textSearchView addSubview:self.searchSegmentedControl];
 
     self.cancelSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Cancel"]];
     self.cancelSegmentedControl.frame = CGRectMake(self.searchSegmentedControl.frame.origin.x+self.searchSegmentedControl.frame.size.width+((UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?80:40),  self.searchSegmentedControl.frame.origin.y, width,height);
@@ -372,9 +338,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.cancelSegmentedControl.tintColor = [UIColor whiteColor];
     self.cancelSegmentedControl.layer.borderColor = [UIColor greenColor].CGColor;
     self.cancelSegmentedControl.layer.cornerRadius = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?5.0f:5.0f;
-    [self.cancelSegmentedControl addTarget:self action:@selector(closeTextSearchView:) forControlEvents:UIControlEventValueChanged];
 
-    [self.textSearchView addSubview:self.cancelSegmentedControl];
 
     [self.idNowButton.layer setShadowColor:[UIColor darkGrayColor].CGColor];
     [self.idNowButton.layer setShadowOffset:CGSizeMake(0, 0)];
@@ -382,31 +346,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [self.idNowButton.layer setShadowOpacity:1];
     [self.idNowButton.layer setMasksToBounds:NO];
 
-    [self.textSearchView.layer setShadowColor:[UIColor darkGrayColor].CGColor];
-    [self.textSearchView.layer setShadowOffset:CGSizeMake(0, 0)];
-    [self.textSearchView.layer setShadowRadius:25.0f];
-    [self.textSearchView.layer setShadowOpacity:1];
-    [self.textSearchView.layer setMasksToBounds:NO];
-
     self.currentlySelectedIndexPath = nil;
 
-
-    //Setup Debug View.
-    [self.debugView.layer setCornerRadius:5.0f];
-    [self.debugViewTitleLabel.layer setCornerRadius:5.0f];
-    [self.debugView setAlpha:0.0f];
-    [self.debugTextView setTextColor:[UIColor blackColor]];
-    [self.debugTextView setBackgroundColor:[UIColor whiteColor]];
-    self.arrayOfLogStrings = [NSMutableArray arrayWithCapacity:1];
 
 }
 
 -(void) enableOrDisableControls:(BOOL) enable
 {
-    self.doAlbumIdButton.enabled = enable;
-    self.doRecognizeButton.enabled = enable;
-    self.showHistoryButton.enabled = enable;
-    self.showTextSearchButton.enabled = enable;
     self.idNowButton.enabled = enable && self.audioProcessingStarted;
     self.settingsButton.enabled = enable;
     self.cancelOperationsButton.enabled = !enable;
@@ -418,23 +364,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 #pragma mark - Display Overlay View's
 
--(void) closeTextSearchView:(id) sender
-{
-    NSArray *visibleCells = [self.searchFieldsTableView visibleCells];
 
-    for(UITableViewCell *cell in visibleCells)
-    {
-        UITextField *textField = (UITextField*) [cell.contentView viewWithTag:TEXTFIELDTAG];
-        if ([textField isEditing])
-        {
-            [textField resignFirstResponder];
-        }
-    }
-
-    self.currentMode = UnknownMode;
-    [self.textSearchView setAlpha:0];
-    [self.arrowImageView setAlpha:0];
-}
 
 -(void) closeAdditionalContentView:(id) sender
 {
@@ -452,193 +382,11 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 
-- (IBAction)showSettings:(id)sender
-{
-    if (self.currentMode == SettingsMode)
-    {
-        [self closeTextSearchView:sender];
-        return;
-    }
-
-    self.currentMode = SettingsMode;
-
-    [self positionArrowForItem:sender isUp:YES];
-    self.searchSegmentedControl.hidden = YES;
-    self.cancelSegmentedControl.hidden = YES;
-
-    [self.searchFieldsTableView reloadData];
-    [self.searchFieldsTableView setBounces:YES];
-    [self.searchFieldsTableView setAlwaysBounceVertical:YES];
-    [self.searchFieldsTableView setScrollEnabled:YES];
-
-    // change the table view height to fill the entire container, centered vertically
-    CGRect searchFieldsTableViewFrame = self.searchFieldsTableView.frame;
-    searchFieldsTableViewFrame.size.height = self.textSearchView.frame.size.height-(searchFieldsTableViewFrame.origin.y*2);
-    self.searchFieldsTableView.frame = searchFieldsTableViewFrame;
-
-    [((UIButton*)sender) setTintColor:[UIColor blueColor]];
-
-    [UIView animateWithDuration:0.5 animations:^{
-
-        self.textSearchView.alpha = 1.0;
-        self.arrowImageView.alpha = 1.0;
-
-    }];
-
-}
 
 
-- (IBAction)showHistory:(id)sender
-{
-    if (self.currentMode == HistoryMode)
-    {
-        [self closeTextSearchView:sender];
-        self.currentMode = UnknownMode;
-        return;
-    }
 
 
-    self.currentMode = HistoryMode;
-    NSError *error = nil;
-    NSManagedObjectContext *context = [GnAppDelegate sharedContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription
-								   entityForName:@"History" inManagedObjectContext:context];
-	[fetchRequest setEntity:entity];
 
-	NSSortDescriptor *dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"current_date" ascending:NO];
-
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:dateSortDescriptor]];
-
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-
-    self.history = fetchedObjects;
-
-    [self positionArrowForItem:sender isUp:NO];
-
-    self.searchSegmentedControl.hidden = YES;
-    self.cancelSegmentedControl.hidden = YES;
-
-    [self.searchFieldsTableView reloadData];
-    [self.searchFieldsTableView setBounces:YES];
-    [self.searchFieldsTableView setAlwaysBounceVertical:YES];
-    [self.searchFieldsTableView setScrollEnabled:YES];
-
-    // change the table view height to fill the entire container, centered vertically
-    CGRect searchFieldsTableViewFrame = self.searchFieldsTableView.frame;
-    searchFieldsTableViewFrame.size.height = self.textSearchView.frame.size.height-(searchFieldsTableViewFrame.origin.y*2);
-    self.searchFieldsTableView.frame = searchFieldsTableViewFrame;
-
-    [((UIButton*)sender) setTintColor:[UIColor blueColor]];
-
-    [UIView animateWithDuration:0.5 animations:^{
-
-        self.textSearchView.alpha = 1.0;
-        self.arrowImageView.alpha = 1.0;
-
-    }];
-}
-
-- (IBAction)showTextSearch:(id)sender
-{
-
-    if (self.currentMode == TextSearchMode)
-    {
-        [self closeTextSearchView:sender];
-        self.currentMode = UnknownMode;
-        return;
-    }
-
-    [self positionArrowForItem:sender isUp:NO];
-    [((UIButton*)sender) setTintColor:[UIColor blueColor]];
-
-    self.searchSegmentedControl.hidden = NO;
-    self.cancelSegmentedControl.hidden = NO;
-
-    [self.searchFieldsTableView setBounces:NO];
-    [self.searchFieldsTableView setAlwaysBounceVertical:NO];
-    [self.searchFieldsTableView setScrollEnabled:NO];
-
-    self.currentMode = TextSearchMode;
-
-    [self.searchFieldsTableView reloadData];
-    
-    
-    // adjust the height of the table view so it's snug to the three text rows
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    CGFloat rowHeight = [self tableView:self.searchFieldsTableView heightForRowAtIndexPath:indexPath];
-    if ( rowHeight > 0.0 )
-    {
-        CGRect searchFieldsTableViewFrame = self.searchFieldsTableView.frame;
-        searchFieldsTableViewFrame.size.height = rowHeight*3;
-        self.searchFieldsTableView.frame = searchFieldsTableViewFrame;
-    }
-    
-    
-    [UIView animateWithDuration:0.5 animations:^{
-
-        self.textSearchView.alpha = 1.0;
-        self.arrowImageView.alpha = 1.0;
-
-    } completion:^(BOOL finished){
-
-        if (finished)
-        {
-            UITableViewCell *cell = nil;
-            
-            if([[self.searchFieldsTableView visibleCells] count])
-                cell  = [[self.searchFieldsTableView visibleCells] objectAtIndex:0];
-            
-            UITextField *textField = (UITextField*) [cell.contentView viewWithTag:TEXTFIELDTAG];
-            [textField becomeFirstResponder];
-        }
-
-    }];
-}
-
-- (IBAction)showDebugConsole:(id)sender
-{
-    if(self.currentMode!=DebugMode)
-    {
-        __block CGRect frame = self.debugView.frame;
-        frame.origin.y = [UIScreen mainScreen].bounds.size.height+20;
-        self.debugView.frame = frame;
-        self.debugView.alpha = 1.0f;
-        self.currentMode = DebugMode;
-
-        [UIView animateWithDuration:0.5 animations:^{
-
-            frame = self.debugView.frame;
-            frame.origin.y = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?120:80;
-            self.debugView.frame = frame;
-        } completion:^(BOOL finished){
-            
-               if(finished)
-               {
-                   [self enableDebugRefreshTimer:YES];
-               }
-        
-        }];
-    }
-    else
-    {
-
-        [UIView animateWithDuration:0.5 animations:^{
-
-            CGRect frame = self.debugView.frame;
-            frame.origin.y = [UIScreen mainScreen].bounds.size.height+20;;
-            self.debugView.frame = frame;
-        } completion:^(BOOL finished){
-
-            if(finished)
-            {
-                self.debugView.alpha = 0.0f;
-                self.currentMode = UnknownMode;
-                [self enableDebugRefreshTimer:NO];
-            }
-        }];
-    }
-}
 
 - (IBAction)showVisualization:(id)sender {
     
@@ -997,15 +745,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 #pragma mark - Do Operation Methods
 
-- (IBAction)doAlbumID:(id)sender
-{
-    [self albumIdButtonTapped:sender];
-}
 
-- (IBAction)doRecognizeMedia:(id)sender
-{
-    [self actionButtonTapped:sender];
-}
 
 - (IBAction)doTextSearch:(id)sender
 {
@@ -1067,7 +807,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 			});
 		});
 
-		[self closeTextSearchView:sender];
 	}
 	@catch (NSException *exception)
 	{
@@ -1476,64 +1215,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     return NO;
 }
 
--(void) enableDebugRefreshTimer:(BOOL) flag
-{
-    if(flag)
-    {
-       if(!self.debugRefreshTimer)
-       {
-        /* Start IdNow Timer */
-        self.debugRefreshTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
-        
-        if(self.debugRefreshTimer)
-        {
-            // start 5 seconds for now
-            dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, 1ull * NSEC_PER_SEC);
-            uint64_t interval = 500 * NSEC_PER_MSEC; // every 500 mseconds
-            
-            // leeway:8 microseconds
-            dispatch_source_set_timer(self.debugRefreshTimer, startTime, interval, 8000ull);
-            
-            GnViewController * __weak weakSelf = self;
-            dispatch_source_set_event_handler(self.debugRefreshTimer, ^{
-                
-                @synchronized(weakSelf.arrayOfLogStrings)
-                {
-                    NSString *strings = weakSelf.debugTextView.text;
-                    
-                    if(strings.length>10000 && UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-                        strings = [strings substringFromIndex:5000];
-                    else if(strings.length>50000 && UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-                         strings = [strings substringFromIndex:30000];
-                    
-                    for(NSString *str in self.arrayOfLogStrings)
-                    {
-                        strings = [strings stringByAppendingString:str];
-                    }
-                    
-                    [weakSelf.arrayOfLogStrings removeAllObjects];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                          weakSelf.debugTextView.text = strings;
-                        [weakSelf.debugTextView scrollRangeToVisible:NSMakeRange(weakSelf.debugTextView.text.length-2, 2)];
-                    });
-                    
-                }
-                
-            }); // block is passed in
-        }
 
-        }
-        
-        dispatch_resume(self.debugRefreshTimer);
-    }
-    else
-    {
-        dispatch_suspend(self.debugRefreshTimer);
-        [self.arrayOfLogStrings removeAllObjects];
-    }
-}
 
 #pragma mark - Table View Data Source Methods
 
@@ -1676,33 +1358,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 			[cell.contentView addSubview:artistLabel];
 			[cell.contentView addSubview:trackDurationLabel];
 			[cell.contentView addSubview:additionalContentView];
-		}
-		else if (tableView==self.searchFieldsTableView && self.currentMode==TextSearchMode)
-		{
-			UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 100, 25)];
-			captionLabel.tag = CAPTIONLABELTAG;
-
-			UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(captionLabel.frame.origin.x+captionLabel.frame.size.width+5, 5, cell.contentView.bounds.size.width-(captionLabel.frame.origin.x+captionLabel.frame.size.width+5), 25)];
-
-			textField.tag = TEXTFIELDTAG;
-
-			[cell.contentView addSubview:captionLabel];
-			[cell.contentView addSubview:textField];
-
-			[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-		}
-		else if (tableView==self.searchFieldsTableView && self.currentMode==SettingsMode)
-		{
-			UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 12, tableView.frame.size.width/2, 25)];
-			captionLabel.tag = CAPTIONLABELTAG;
-
-			UISwitch *settingsSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(tableView.frame.size.width-62, 12, 50, 25)];
-
-			[settingsSwitch addTarget:self action:@selector(settingsSwitchValueChanged:) forControlEvents:UIControlEventValueChanged];
-
-			settingsSwitch.tag = SETTINGSSWITCHTAG;
-			[cell.contentView addSubview:captionLabel];
-			[cell.contentView addSubview:settingsSwitch];
 		}
     }
 
@@ -1852,157 +1507,8 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 		[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
 	}
-	else if (tableView==self.searchFieldsTableView && self.currentMode==HistoryMode)
-	{
-		UILabel *albumTitleLabel = (UILabel *)[cell.contentView viewWithTag:ALBUMTITLELABELTAG];
-		UIImageView *imageView = nil;
-		UILabel *trackTitleLabel = nil;
-		UILabel *artistLabel = nil;
-		UILabel *trackMatchPositionLabel = nil;
-
-		if (!albumTitleLabel)
-		{
-			[cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-
-			imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 56, 56)];
-			imageView.tag = ALBUMCOVERARTIMAGETAG;
-
-			albumTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 5, 250, 40)];
-			albumTitleLabel.font = [UIFont boldSystemFontOfSize:16];
-			albumTitleLabel.textColor = [UIColor colorWithRed:0.7f green:0 blue:0.7f alpha:1];
-			albumTitleLabel.tag=ALBUMTITLELABELTAG;
-			albumTitleLabel.numberOfLines = 2;
-			albumTitleLabel.lineBreakMode = NSLineBreakByCharWrapping;
-
-			trackTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(albumTitleLabel.frame.origin.x, albumTitleLabel.frame.origin.y+albumTitleLabel.frame.size.height+5, 250, albumTitleLabel.frame.size.height)];
-			trackTitleLabel.font = [UIFont systemFontOfSize:12];
-			trackTitleLabel.textColor = [UIColor darkGrayColor];
-			trackTitleLabel.tag = TRACKTITLELABELTAG;
-			trackTitleLabel.numberOfLines = 2;
-			trackTitleLabel.lineBreakMode = NSLineBreakByCharWrapping;
-
-			UILabel *artistLabel = [[UILabel alloc] initWithFrame:CGRectMake(trackTitleLabel.frame.origin.x, trackTitleLabel.frame.origin.y+trackTitleLabel.frame.size.height, 250, 40)];
-			artistLabel.font = [UIFont systemFontOfSize:12];
-			artistLabel.textColor = [UIColor darkGrayColor];
-			artistLabel.tag = ARTISTLABELTAG;
-			artistLabel.numberOfLines = 2;
-			artistLabel.lineBreakMode = NSLineBreakByCharWrapping;
-
-			UILabel *trackMatchPositionLabel = [[UILabel alloc] initWithFrame:CGRectMake(artistLabel.frame.origin.x, artistLabel.frame.origin.y+trackTitleLabel.frame.size.height+5, 250, 40)];
-			trackMatchPositionLabel.font = [UIFont boldSystemFontOfSize:10];
-			trackMatchPositionLabel.textColor = [UIColor grayColor];
-			trackMatchPositionLabel.tag = TRACKMATCHPOSITIONLABELTAG;
-			trackMatchPositionLabel.numberOfLines = 2;
-			trackMatchPositionLabel.lineBreakMode = NSLineBreakByCharWrapping;
-
-			[cell.contentView addSubview:imageView];
-			[cell.contentView addSubview:albumTitleLabel];
-			[cell.contentView addSubview:trackTitleLabel];
-			[cell.contentView addSubview:artistLabel];
-			[cell.contentView addSubview:trackMatchPositionLabel];
-		}
-
-		imageView = (UIImageView*) [cell.contentView viewWithTag:ALBUMCOVERARTIMAGETAG];
-		trackTitleLabel = (UILabel *)[cell.contentView viewWithTag:TRACKTITLELABELTAG];
-		artistLabel = (UILabel *)[cell.contentView viewWithTag:ARTISTLABELTAG];
-		trackMatchPositionLabel = (UILabel *)[cell.contentView viewWithTag:TRACKMATCHPOSITIONLABELTAG];
-
-		History *history =  nil;
-        CoverArt *coverArt = nil;
-        
-        if(self.history && [self.history count])
-        {
-            history = (History*)[self.history objectAtIndex:(NSUInteger) indexPath.row];
-            coverArt = (CoverArt *) [[history metadata] coverArt];
-        }
-        
-		albumTitleLabel.text = [[history metadata] albumTitle];
-		trackTitleLabel.text = [[history metadata] trackTitle];
-		artistLabel.text = [[history metadata] artist];
-		imageView.image = [UIImage imageNamed:@"emptyImage.png"];
-        
-        if(history && coverArt && [coverArt data])
-        {
-            imageView.image = [UIImage imageWithData:[coverArt data]];
-        }
-
-		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	}
-	else if (tableView==self.searchFieldsTableView && self.currentMode==TextSearchMode)
-	{
-
-		UILabel *captionLabel = (UILabel *)[cell.contentView viewWithTag:CAPTIONLABELTAG];
-		UITextField *textField = (UITextField*) [cell.contentView viewWithTag:TEXTFIELDTAG];
-
-		if (!textField)
-		{
-			[cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-
-			captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 100, 25)];
-			captionLabel.tag = CAPTIONLABELTAG;
-
-			textField = [[UITextField alloc] initWithFrame:CGRectMake(captionLabel.frame.origin.x+captionLabel.frame.size.width+5, 5, cell.contentView.frame.size.width-(captionLabel.frame.origin.x+captionLabel.frame.size.width+5)-12, 25)];
-
-			textField.tag = TEXTFIELDTAG;
-
-			[cell.contentView addSubview:captionLabel];
-			[cell.contentView addSubview:textField];
-
-			[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-		}
-
-		switch (indexPath.row)
-		{
-			case 0:
-				captionLabel.text = @"Artist";
-				break;
-			case 1:
-				captionLabel.text = @"Album";
-				break;
-			case 2:
-				captionLabel.text = @"Track";
-				break;
-			default:
-				break;
-		}
-
-		textField.placeholder = captionLabel.text;
-	}
-	else if (tableView==self.searchFieldsTableView && self.currentMode==SettingsMode)
-	{
-		UILabel *captionLabel = (UILabel *)[cell.contentView viewWithTag:CAPTIONLABELTAG];
-		UISwitch *settingsSwitch = (UISwitch *) [cell.contentView viewWithTag:SETTINGSSWITCHTAG];
-
-		if (!settingsSwitch)
-		{
-			[cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-
-			captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 200, 25)];
-			captionLabel.tag = CAPTIONLABELTAG;
-
-			settingsSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(captionLabel.frame.origin.x+captionLabel.frame.size.width+5, 5, 50, 25)];
-
-			[settingsSwitch addTarget:self action:@selector(settingsSwitchValueChanged:) forControlEvents:UIControlEventValueChanged];
-
-			settingsSwitch.tag = SETTINGSSWITCHTAG;
-			[cell.contentView addSubview:captionLabel];
-			[cell.contentView addSubview:settingsSwitch];
-		}
-
-		switch (indexPath.row)
-		{
-			case 0:
-				captionLabel.text = @"Debug Logging";
-				settingsSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DEBUGMODEKEY];
-				break;
-			case 1:
-				captionLabel.text = @"Local Search Only";
-                settingsSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:LOCALLOOKUPOPTIONONLY];
-				break;
-		}
-
-		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	}
+	
+	
 
     return cell;
 }
@@ -2059,20 +1565,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 #pragma mark - Action Methods
 
-- (IBAction)actionButtonTapped:(id)sender
-{
-    // clear the results from the previous identification
-    [self.results removeAllObjects];
-    [self performSelectorOnMainThread:@selector(refreshResults) withObject:nil waitUntilDone:NO];
-    self.currentlySelectedIndexPath = nil;
-    
-    MPMediaPickerController *pickerController =	[[MPMediaPickerController alloc]
-                                                 initWithMediaTypes: MPMediaTypeMusic];
-    pickerController.prompt = @"Choose songs to identify";
-    pickerController.allowsPickingMultipleItems = YES;
-    pickerController.delegate = self;
-    [self presentViewController:pickerController animated:YES completion:nil];
-}
+
 
 - (IBAction)albumIdButtonTapped:(id)sender
 {
@@ -2102,70 +1595,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     }
 }
 
-#pragma mark - Settings Switch
 
--(void)settingsSwitchValueChanged:(id) sender
-{
-    UISwitch *settingsSwitch = (UISwitch*) sender;
-    NSError * error = nil;
-
-    if (settingsSwitch)
-    {
-        // two possible locations for this cell based on various iOS versions, check both
-        for ( int ivar = 0 ; ivar < 2 ; ivar++ )
-        {
-            UITableViewCell* cell = nil;
-        
-            if (ivar == 0 ) cell = (UITableViewCell*)[[settingsSwitch superview] superview];
-            else if (ivar == 1)cell = (UITableViewCell*)[[[settingsSwitch superview] superview] superview];
-            
-            if ( !cell )
-                break;
-            
-            NSIndexPath *indexPath = [self.searchFieldsTableView indexPathForCell: cell];
-			if ( !indexPath )
-                continue;
-			
-			switch (indexPath.row)
-			{
-                case 0://Debug Logs
-					[[NSUserDefaults standardUserDefaults] setBool:settingsSwitch.isOn forKey:DEBUGMODEKEY];
-
-                    if ( [settingsSwitch isOn] )
-                    {
-                        [self.gnLog enableWithPackage:kLogPackageAllGNSDK error:nil];
-                    }
-                    else
-                    {
-                        [self.gnLog disableWithPackage:kLogPackageAllGNSDK error:nil];
-                    }
-
-                    if(error)
-                    {
-                           NSLog( @"Error: 0x%zx %@ - %@", [error code], [error domain], [error localizedDescription] );
-                    }
-					break;
-
-				case 1://Local lookup ONLY.
-					if (self.gnMusicIDStream )
-					{
-						GnMusicIdStreamOptions *options = [self.gnMusicIDStream options];
-
-						if ([settingsSwitch isOn])
-						{
-							[options lookupMode:kLookupModeLocal error:&error];
-						}
-                        else
-						{
-							[options lookupMode:kLookupModeOnline error:&error];
-						}
-						[[NSUserDefaults standardUserDefaults] setBool:settingsSwitch.isOn forKey:LOCALLOOKUPOPTIONONLY];
-					}
-					break;
-			}
-        }
-    }
-}
 
 
 #pragma mark -
@@ -2494,31 +1924,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 
 
--(void) positionArrowForItem:(UIButton*) item isUp:(BOOL) isUp
-{
-    CGRect itemFrame = [item frame];
-    itemFrame = [item.superview convertRect:itemFrame toView:self.view];
-
-    CGRect arrowFrame = [self.arrowImageView frame];
-    arrowFrame.origin.x = CGRectGetMidX(itemFrame) - arrowFrame.size.width/2;
-    arrowFrame.origin.y = (isUp)? (itemFrame.origin.y + itemFrame.size.height):(itemFrame.origin.y - arrowFrame.size.height);
-    self.arrowImageView.frame = arrowFrame;
-
-    if (isUp)
-    {
-        self.arrowImageView.image = [UIImage imageNamed:@"upArrow.png"];
-        CGRect textSearchFrame = self.textSearchView.frame;
-        textSearchFrame.origin.y = self.arrowImageView.frame.origin.y+self.arrowImageView.frame.size.height-5;
-        self.textSearchView.frame = textSearchFrame;
-    }
-    else
-    {
-         self.arrowImageView.image = [UIImage imageNamed:@"downArrow.png"];
-         CGRect textSearchFrame = self.textSearchView.frame;
-         textSearchFrame.origin.y = self.arrowImageView.frame.origin.y-textSearchFrame.size.height;
-         self.textSearchView.frame = textSearchFrame;
-    }
-}
 
 
 #pragma mark - Save History
@@ -2704,20 +2109,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 }
 
 
-#pragma mark - GnLogEventsDelegate Methods
 
--(BOOL) logMessage:(NSUInteger) packageId filterMask:(NSUInteger) filterMask errorCode:(NSUInteger) errorCode message:(NSString*) message
-{
-    NSString *debugString = [NSString stringWithFormat:@"Package Id:[%lu] filter Mask:[%lu] error Code: [%lu] Message:[%@]",(unsigned long)packageId, (unsigned long)filterMask, (unsigned long)errorCode, message];
-    
-    @synchronized(self.arrayOfLogStrings)
-    {
-       [self.arrayOfLogStrings addObject:@"\n"];
-       [self.arrayOfLogStrings addObject:debugString];
-    }
-    
-    return YES;
-}
 
 #pragma mark - GnLookupLocalStreamIngestEventsDelegate
 
