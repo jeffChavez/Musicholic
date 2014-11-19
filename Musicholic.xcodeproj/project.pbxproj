@@ -238,7 +238,7 @@
 				ORGANIZATIONNAME = CodeFellows;
 				TargetAttributes = {
 					F6BBF97F17CD10BC00E9814E = {
-						DevelopmentTeam = T337VCC9XQ;
+						DevelopmentTeam = J42Q5AV837;
 					};
 				};
 			};
