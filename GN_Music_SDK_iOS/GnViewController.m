@@ -95,11 +95,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    [NetworkController networkController] fetchDrinkForSong:@"Billie%20Jean" withArtist:@"Michael%20Jackson" withCompletionHandler:^(NSString *, NSData *) {
-//        
-//    }
-    
+
     self.recordingIsPaused = NO;
     __block NSError * error = nil;
 

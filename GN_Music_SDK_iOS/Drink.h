@@ -11,8 +11,10 @@
 @interface Drink : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *imageURLString;
+@property (nonatomic, strong) NSString *imageURL;
+@property (nonatomic, strong) UIImage *image;
 
-- (instancetype) initDrink;
+- (instancetype) initWithDictionary: (NSDictionary *) drinkDictionary;
+- (NSObject *) parseJSONDataIntoDrink: (NSData *) data;
 
 @end
