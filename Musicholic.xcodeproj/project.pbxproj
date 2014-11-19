@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BA157A71A1C2BD800005950 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA157A61A1C2BD800005950 /* NetworkController.m */; };
+		6BA157AA1A1C2C8E00005950 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA157A91A1C2C8E00005950 /* Drink.m */; };
 		6BBC53FC1A1AD15D0077C373 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6BBC53FB1A1AD15D0077C373 /* license.txt */; };
 		F631B9F317E902FE00A932A1 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F631B9F217E902FE00A932A1 /* libstdc++.dylib */; };
 		F63C7CC9182C1A1E009F60D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F63C7CC8182C1A1E009F60D2 /* Images.xcassets */; };
@@ -42,6 +44,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6BA157A51A1C2BD800005950 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
+		6BA157A61A1C2BD800005950 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
+		6BA157A81A1C2C8E00005950 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
+		6BA157A91A1C2C8E00005950 /* Drink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
 		6BBC53FB1A1AD15D0077C373 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = license.txt; path = docs/license.txt; sourceTree = SOURCE_ROOT; };
 		F631B9F217E902FE00A932A1 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		F63C7CC8182C1A1E009F60D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GN_Music_SDK_iOS/Images.xcassets; sourceTree = "<group>"; };
@@ -170,6 +176,10 @@
 				F6FE703717FB3C4700369F16 /* GnDataModel.m */,
 				F6DC0ACE1937DBF60096B555 /* GnAudioVisualizeAdapter.h */,
 				F6DC0ACF1937DBF60096B555 /* GnAudioVisualizeAdapter.m */,
+				6BA157A51A1C2BD800005950 /* NetworkController.h */,
+				6BA157A61A1C2BD800005950 /* NetworkController.m */,
+				6BA157A81A1C2C8E00005950 /* Drink.h */,
+				6BA157A91A1C2C8E00005950 /* Drink.m */,
 				F6BBF99517CD10BC00E9814E /* Main_iPhone.storyboard */,
 				F6BBF99817CD10BC00E9814E /* Main_iPad.storyboard */,
 				F6BBF98A17CD10BC00E9814E /* Supporting Files */,
@@ -280,8 +290,10 @@
 			files = (
 				F68849D3183C768E00DA28E6 /* Metadata.m in Sources */,
 				F68849D6183C768E00DA28E6 /* CoverArt.m in Sources */,
+				6BA157AA1A1C2C8E00005950 /* Drink.m in Sources */,
 				F6FE703817FB3C4700369F16 /* GnDataModel.m in Sources */,
 				F6BBF99D17CD10BC00E9814E /* GnViewController.m in Sources */,
+				6BA157A71A1C2BD800005950 /* NetworkController.m in Sources */,
 				F68849D0183C750B00DA28E6 /* Model.xcdatamodeld in Sources */,
 				F6BBF99017CD10BC00E9814E /* main.m in Sources */,
 				F6DC0AD01937DBF60096B555 /* GnAudioVisualizeAdapter.m in Sources */,

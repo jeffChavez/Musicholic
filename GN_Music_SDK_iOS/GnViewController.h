@@ -63,14 +63,12 @@ typedef NS_ENUM(NSInteger, Mode)
 
 - (IBAction)actionButtonTapped:(id)sender;
 - (IBAction) idNow:(id) sender;
-- (IBAction)showSettings:(id)sender;
 - (IBAction)cancelAllOperations:(id)sender;
 - (IBAction)doAlbumID:(id)sender;
 - (IBAction)doRecognizeMedia:(id)sender;
 - (IBAction)doTextSearch:(id)sender;
 - (IBAction)showHistory:(id)sender;
 - (IBAction)showTextSearch:(id)sender;
-- (IBAction)showDebugConsole:(id)sender;
 - (IBAction)showVisualization:(id)sender;
 
 -(void) stopRecording;
