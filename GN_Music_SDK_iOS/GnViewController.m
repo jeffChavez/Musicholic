@@ -11,7 +11,6 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <CoreData/CoreData.h>
-#import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
 
 #import <GnSDKObjC/Gn.h>
@@ -53,7 +52,7 @@
 
 static NSString *gnsdkLicenseFilename = @"license.txt";
 
-@interface GnViewController ()<GnMusicIdStreamEventsDelegate, GnMusicIdFileEventsDelegate, UITabBarDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, GnMusicIdFileInfoEventsDelegate, GnAudioVisualizerDelegate, GnLookupLocalStreamIngestEventsDelegate>
+@interface GnViewController ()<GnMusicIdStreamEventsDelegate, GnMusicIdFileEventsDelegate, UITabBarDelegate, UIGestureRecognizerDelegate, GnMusicIdFileInfoEventsDelegate, GnAudioVisualizerDelegate, GnLookupLocalStreamIngestEventsDelegate>
 
 /*GnSDK properties*/
 @property (strong) GnMusicIdStream *gnMusicIDStream;
@@ -64,14 +63,11 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property (strong) GnUserStore *gnUserStore;
 @property (strong) GnStorageSqlite *gnStorageSqlite;
 @property (strong) GnLookupLocalStream* gnLookupLocalStream;
-@property (strong) CLLocation *currentLocation;
 @property (strong) NSArray *history;
 @property (strong) NSMutableArray *albumDataMatches;
 @property (strong) GnLocale *locale;
 
 /*Sample App properties*/
-@property (strong) UISegmentedControl *searchSegmentedControl;
-@property (strong) UISegmentedControl *cancelSegmentedControl;
 @property (assign) BOOL lookupSourceIsLocal;
 @property (assign) BOOL audioProcessingStarted;
 @property (assign) NSTimeInterval queryBeginTimeInterval;
@@ -109,7 +105,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.albumDataMatches = [NSMutableArray arrayWithCapacity:2];
 
     [self setupInterface];
-    [self setupLocationServices];
 
     self.results = [NSMutableArray arrayWithCapacity:2];
 
@@ -271,15 +266,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 
--(void) setupLocationServices
-{
-    //Create locationManager to get latitude,longitude for search history record.
-	self.locationManager = [[CLLocationManager alloc] init];
-	self.locationManager.delegate = self; // Tells the location manager to send updates to this object
-	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-	self.locationManager.distanceFilter = 20.0;
-	[self.locationManager startUpdatingLocation];
-}
 
 -(void) setupInterface
 {
@@ -297,37 +283,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.showOrHideVisualizationButtonView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.visualizationView.layer.cornerRadius = 5.0f;
 
-	//Add Search and Cancel Buttons.
-    self.searchSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Search"]];
-
-    NSInteger offset = 20;
-    NSInteger width = 100;
-    NSInteger height = 35;
-
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        offset = 100;
-        width = 200;
-        height = 50;
-    }
-
-    self.searchSegmentedControl.frame = CGRectMake(self.searchFieldsTableView.frame.origin.x+offset,  self.searchFieldsTableView.frame.origin.y+self.searchFieldsTableView.frame.size.height+10, width, height);
-    [self.searchSegmentedControl.layer setMasksToBounds:YES];
-    [self.searchSegmentedControl setMomentary:YES];
-    [self.searchSegmentedControl setBackgroundColor:[UIColor redColor]];
-    self.searchSegmentedControl.tintColor = [UIColor whiteColor];
-    self.searchSegmentedControl.layer.cornerRadius = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?5.0f:5.0f;
-    self.searchSegmentedControl.layer.borderColor = [UIColor greenColor].CGColor;
-//    [self.searchSegmentedControl addTarget:self action:@selector(doTextSearch:) forControlEvents:UIControlEventValueChanged];
-
-
-    self.cancelSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Cancel"]];
-    self.cancelSegmentedControl.frame = CGRectMake(self.searchSegmentedControl.frame.origin.x+self.searchSegmentedControl.frame.size.width+((UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?80:40),  self.searchSegmentedControl.frame.origin.y, width,height);
-    [self.cancelSegmentedControl setMomentary:YES];
-    [self.cancelSegmentedControl setBackgroundColor:[UIColor blackColor]];
-    self.cancelSegmentedControl.tintColor = [UIColor whiteColor];
-    self.cancelSegmentedControl.layer.borderColor = [UIColor greenColor].CGColor;
-    self.cancelSegmentedControl.layer.cornerRadius = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?5.0f:5.0f;
 
 
     [self.idNowButton.layer setShadowColor:[UIColor darkGrayColor].CGColor];
@@ -431,47 +386,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 
--(void) showArtistBiography:(id) sender
-{
-   UITableViewCell *cell = [self.resultsTableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
-   __block UIView *additionalContentView = (UIView*) [cell.contentView viewWithTag:ADDITIONALCONTENTVIEWTAG];
-    UIImageView *additionalContentImageView = (UIImageView*) [additionalContentView viewWithTag:ADDITIONALCONTENTIMAGEVIEWTAG];
-    UILabel *additionalContentAlbumLabel = (UILabel*) [additionalContentView viewWithTag:ADDITIONALCONTENTALBUMLABELTAG];
-    UILabel *additionalContentArtistLabel = (UILabel*) [additionalContentView viewWithTag:ADDITIONALCONTENTARTISTLABELTAG];
-    UITextView *additionalContentTextView = (UITextView*) [additionalContentView viewWithTag:ADDITIONALCONTENTTEXTVIEWTAG];
-    UILabel *additionalContentTitleLabel = (UILabel*) [additionalContentView viewWithTag:ADDITIONALCONTENTTITLELABELTAG];
-    additionalContentTitleLabel.text = @"Artist Biography";
 
-    [cell.contentView  bringSubviewToFront:additionalContentView];
-
-    GnDataModel *datamodelObject = nil;
-    
-    if(self.results && self.results.count> (NSUInteger) self.currentlySelectedIndexPath.row)
-        datamodelObject =  (GnDataModel *)[self.results objectAtIndex:(NSUInteger) self.currentlySelectedIndexPath.row];
-    
-    UIImage *artistImage = [UIImage imageWithData:datamodelObject.artistImageData];
-
-    if(artistImage)
-    {
-        additionalContentImageView.image = artistImage;
-    }
-    else
-    {
-        additionalContentImageView.image = [UIImage imageNamed:@"emptyImage.png"];
-    }
-
-    additionalContentAlbumLabel.text = datamodelObject.albumTitle;
-    additionalContentArtistLabel.text = datamodelObject.albumArtist?datamodelObject.albumArtist:datamodelObject.trackArtist;
-    additionalContentTextView.text = datamodelObject.artistBiography?datamodelObject.artistBiography:@"Artist Biography is not currently available.";
-
-    [UIView animateWithDuration:0.5 animations:^{
-
-        CGRect frame = additionalContentView.frame;
-        frame.origin.x = 0;
-        additionalContentView.frame = frame;
-    }];
-
-}
 
 -(void) refreshArtistImage
 {
@@ -499,46 +414,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }
 }
 
--(void) showAlbumReview:(id) sender
-{
-    UITableViewCell *cell = [self.resultsTableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
-    __block UIView *additionalContentView = (UIView*) [cell.contentView viewWithTag:ADDITIONALCONTENTVIEWTAG];
-    UIImageView *additionalContentImageView = (UIImageView*) [additionalContentView viewWithTag:ADDITIONALCONTENTIMAGEVIEWTAG];
-    UILabel *additionalContentAlbumLabel = (UILabel*) [additionalContentView viewWithTag:ADDITIONALCONTENTALBUMLABELTAG];
-    UILabel *additionalContentArtistLabel = (UILabel*) [additionalContentView viewWithTag:ADDITIONALCONTENTARTISTLABELTAG];
-    UITextView *additionalContentTextView = (UITextView*) [additionalContentView viewWithTag:ADDITIONALCONTENTTEXTVIEWTAG];
-    UILabel *additionalContentTitleLabel = (UILabel*) [additionalContentView viewWithTag:ADDITIONALCONTENTTITLELABELTAG];
-    additionalContentTitleLabel.text = @"Album Review";
-
-    [cell.contentView  bringSubviewToFront:additionalContentView];
-
-    GnDataModel *datamodelObject =  nil;
-    
-    if(self.results && self.results.count> (NSUInteger) self.currentlySelectedIndexPath.row)
-        datamodelObject = (GnDataModel *)[self.results objectAtIndex:(NSUInteger) self.currentlySelectedIndexPath.row];
-    
-    UIImage *artistImage = [UIImage imageWithData:datamodelObject.albumImageData];
-
-    if(artistImage)
-    {
-        additionalContentImageView.image = artistImage;
-    }
-    else
-    {
-        additionalContentImageView.image = [UIImage imageNamed:@"emptyImage.png"];
-    }
-
-    additionalContentAlbumLabel.text = datamodelObject.albumTitle;
-    additionalContentArtistLabel.text = datamodelObject.albumArtist?datamodelObject.albumArtist:datamodelObject.trackArtist;
-    additionalContentTextView.text = datamodelObject.albumReview?datamodelObject.albumReview:@"Album Review is not currently available.";
-
-    [UIView animateWithDuration:0.5 animations:^{
-
-        CGRect frame = additionalContentView.frame;
-        frame.origin.x = 0;
-        additionalContentView.frame = frame;
-    }];
-}
 
 #pragma mark - Music ID Stream Setup
 
@@ -675,7 +550,20 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark - Id Now
+
+
+- (IBAction) findDrink:(id) sender {
+    NSLog(@"FIND DRINK!!");
+
+    [[NetworkController networkController] fetchDrinkForSong:@"Billie Jean" withArtist:@"Michael Jackson" withCompletionHandler:^(NSString *errorString, NSObject *drinkInfo) {
+        NSLog(@"test");
+    }];
+}
+
+
+
 
 -(void) idNow:(id) sender
 {
@@ -749,17 +637,23 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 -(void) processAlbumResponseAndUpdateResultsTable:(id) responseAlbums
 {
     // THIS POPULATES THE DATA MODEL OBJECT
+    // Fire the network request to get drink info
     
     
     id albums = nil;
     
-    if([responseAlbums isKindOfClass:[GnResponseAlbums class]])
+    if([responseAlbums isKindOfClass:[GnResponseAlbums class]]) {
         albums = [responseAlbums albums];
-    else
+        NSLog(@"responseAlbums is Kind of Class GnResponseAlbums");
+    }
+    else {
         albums = responseAlbums;
+    }
+    
     
     for(GnAlbum* album in albums)
     {
+        NSLog(@"going through for loop");
 		GnTrackEnumerator *tracksMatched  = [album tracksMatched];
         NSString *albumArtist = [[[album artist] name] display];
         NSString *albumTitle = [[album title] display];
@@ -821,26 +715,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                 [self refreshArtistImage];
             }
         }];
-
-        NSURLRequest *artistBiographyFetchRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:artistBiographyURLString]];
-        [NSURLConnection sendAsynchronousRequest:artistBiographyFetchRequest queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error){
-
-            if(data && !error)
-            {
-                gnDataModelObject.artistBiography = [[NSString alloc] initWithBytes:data.bytes length:data.length encoding:NSUTF8StringEncoding];
-
-            }
-        }];
-
-        NSURLRequest *albumReviewFetchRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:albumReviewURLString]];
-        [NSURLConnection sendAsynchronousRequest:albumReviewFetchRequest queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error){
-
-            if(data && !error)
-            {
-                gnDataModelObject.albumReview = [[NSString alloc] initWithBytes:data.bytes length:data.length encoding:NSUTF8StringEncoding];
-
-            }
-        }];
         
         NSLog(@"Matched Album = %@", [[album title]display]);
         
@@ -856,8 +730,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
@@ -890,12 +764,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
     [self  performSelectorOnMainThread:@selector(refreshResults) withObject:nil waitUntilDone:NO];
     [self stopBusyIndicator];
-    
-    if ([[albums allObjects] count])
-    {
-        [self performSelectorOnMainThread:@selector(saveResultsForHistory:) withObject:responseAlbums waitUntilDone:YES];
-    }
-    
 }
 
 
@@ -1055,6 +923,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
         case  kStatusComplete:
             statusString = @"Status Complete";
+            NSLog(@"FOUND MATCH - STATUS COMPLETE");
             break;
 
         case kStatusErrorInfo:
@@ -1097,6 +966,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 -(void) musicIdStreamAlbumResult: (GnResponseAlbums*)result cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
     // A RESULT WAS FOUND. processAlbumResponseAndUpdateResultsTable called
+    NSLog(@"musicIdStreamAlbumResult fired.");
     [self.cancellableObjects removeObject:self.gnMusicIDStream];
 
     if(self.cancellableObjects.count==0)
@@ -1149,17 +1019,18 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 - (NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (tableView==self.resultsTableView)
-	{
-		if (self.results.count==0)
-			tableView.separatorColor = [UIColor clearColor];
-		else
-			tableView.separatorColor = [UIColor lightGrayColor];
+    if (self.results.count==0)
+        tableView.separatorColor = [UIColor clearColor];
+    else
+        tableView.separatorColor = [UIColor lightGrayColor];
 
-		return (NSInteger)self.results.count;
-	}
-
-    return 0;
+    if (self.results.count == 0) {
+        NSLog(@"THERE IS NO RESULT IN THE TABLEVIEW SO DO NOT FIRE DRINK");
+    }
+    if (self.results.count == 1) {
+        NSLog(@"THERE IS A RESULT IN THE TABLEVIEW");
+    }
+    return (NSInteger)self.results.count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -1432,13 +1303,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if(tableView==self.resultsTableView && self.currentlySelectedIndexPath!=nil && self.currentlySelectedIndexPath.row==indexPath.row)
-		return (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?kHeightOfAdditionalMetadataCellPad : kHeightOfAdditionalMetadataCell;
-
-	if (tableView==self.resultsTableView)
-		return 100.0f;
-
-    return 45;
+    return 100;
 }
 
 
@@ -1474,10 +1339,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     [self.resultsTableView scrollRectToVisible:cell.frame animated:YES];
 }
 
-#pragma mark - Action Methods
-
-
-
 
 
 
@@ -1508,6 +1369,9 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) musicIdFileAlbumResult: (GnResponseAlbums*)albumResult currentAlbum: (NSUInteger)currentAlbum totalAlbums: (NSUInteger)totalAlbums cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
+    NSLog(@"MusicIdFileEventsDelegate fired.");
+
+    
     [self processAlbumResponseAndUpdateResultsTable:albumResult];
 }
 
@@ -1575,6 +1439,9 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 -(void) musicIdFileMatchResult: (GnResponseDataMatches*)matchesResult currentAlbum: (NSUInteger)currentAlbum totalAlbums: (NSUInteger)totalAlbums cancellableDelegate: (id <GnCancellableDelegate>)canceller;
 
 {
+    NSLog(@"musicIdFileMatchResult fired.");
+
+    
     GnDataMatchEnumerator *matches = [matchesResult dataMatches];
     
     for (GnDataMatch * match in matches)
@@ -1763,191 +1630,12 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 
 
-#pragma mark - Save History
-
-    // Save the user's MusicID-Stream query incase of search by
-    // RecognizeFromMic or RecognizeFromPCM or Fingerprint
-
--(void)saveResultsForHistory:(GnResponseAlbums*) responseAlbums
-{
-    NSError *error = nil;
-	NSDate *currentDate = [NSDate date];
-	NSDateFormatter *gmtDF = [[NSDateFormatter alloc] init];
-	[gmtDF setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
-	[gmtDF setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
-	NSString *dateStr = [gmtDF stringFromDate:currentDate];
-	NSDate *gmtDate = [gmtDF dateFromString:dateStr];
-
-    NSManagedObjectContext *context = [GnAppDelegate sharedContext];
-    
-    for(GnAlbum* album in [responseAlbums albums])
-    {
-        Metadata *metadata = [NSEntityDescription insertNewObjectForEntityForName:@"Metadata" inManagedObjectContext:context];
-        CoverArt *coverArt = [NSEntityDescription insertNewObjectForEntityForName:@"CoverArt" inManagedObjectContext:context];
-        History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:context];
-
-        //Setup metadata entity attributes.
-        metadata.albumTitle = [[album title] display];
-        metadata.albumTitleYomi = [[album title] display];
-        metadata.artist = [[[album artist] name] display];
-        metadata.artistYomi = [[[album artist] name] display];
-        metadata.artistBetsumei = [[[album artist] name] display];
-        metadata.trackTitle = [[[album trackMatched:1] title] display];
-        metadata.trackTitleYomi = [[[album trackMatched:1] title] display];
-        metadata.albumId = [album gnUId];
-        metadata.albumTrackCount = [NSNumber numberWithUnsignedInteger:[album trackCount]];
-        metadata.trackNumber = [NSNumber numberWithUnsignedInteger:[album trackMatchNumber:1]];
-
-        GnContent *coverArtContent = [album content:kContentTypeImageCover];
-        GnAsset *coverArtAsset = [coverArtContent asset:kImageSizeSmall];
-        NSString *URLString = [NSString stringWithFormat:@"http://%@", [coverArtAsset url]];
-    
-        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error)
-         {
-         
-             if(data && !error)
-             {
-                 coverArt.size = @"170";
-                 coverArt.mimeType = [URLString lastPathComponent];
-                 coverArt.data = data;
-             
-             }
-         }];
-
-
-        //Setup history entity attributes
-        history.auto_id = [NSNumber numberWithUnsignedInt:[GnAppDelegate getLastInsertedAuto_id]];
-        history.current_date = gmtDate;
-
-        CLLocation *location = [self currentLocation];
-
-        if (location)
-        {
-            history.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
-            history.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
-        }
-        else
-        {
-            history.latitude = [NSNumber numberWithDouble:0.0];
-            history.longitude = [NSNumber numberWithDouble:0.0];
-        }
-
-        // Setup relationships
-        metadata.coverArt = coverArt;
-        coverArt.metaData = metadata;
-        history.metadata = metadata;
-    
-        // Save new record.
-        unsigned int newId = (unsigned int)[GnAppDelegate getLastInsertedAuto_id]+1;
-
-        [GnAppDelegate setLastInsertedAuto_id:newId];
-        [context save:&error];
-
-        if (error)
-        {
-            NSLog(@"Could not save the data after inserting.");
-        }
-
-        error = nil;
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription
-								   entityForName:@"History" inManagedObjectContext:context];
-        [fetchRequest setEntity:entity];
-
-        NSSortDescriptor *dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"current_date" ascending:YES];
-
-        [fetchRequest setSortDescriptors:[NSArray arrayWithObject:dateSortDescriptor]];
-
-        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-
-        if (error)
-        {
-            NSLog(@"Could not fetch objects to delete");
-        }
-
-        error = nil;
-
-        if (fetchedObjects.count>CAP_LIMIT)
-        {
-            NSUInteger noOfExtraObjects = fetchedObjects.count - CAP_LIMIT;
-            for(NSUInteger i = 0;i<noOfExtraObjects;i++)
-            {
-                History *historyToDelete = (History *)[fetchedObjects objectAtIndex:i];
-                [context deleteObject:historyToDelete];
-            }
-
-            [context save:&error];
-
-            if (error)
-            {
-                NSLog(@"Could not save the context after deleting.");
-            }
-        }
-    }
-}
-
-#pragma mark  - CLLocationManagerDelegate Mrethods
-
-- (void)locationManager: (CLLocationManager *)manager
-	didUpdateToLocation: (CLLocation *)newLocation
-		   fromLocation: (CLLocation *)oldLocation
-{
-	NSComparisonResult result = [newLocation.timestamp compare:[NSDate dateWithTimeIntervalSinceNow:-10]];
-	if (result == NSOrderedDescending || result == NSOrderedSame)
-	{
-		[manager stopUpdatingLocation];
-		@synchronized(self)
-		{
-			self.currentLocation = [[CLLocation alloc] initWithLatitude: newLocation.coordinate.latitude
-															  longitude:newLocation.coordinate.longitude];
-		}
-	}
-}
-
-- (void)locationManager: (CLLocationManager *)manager
-	   didFailWithError: (NSError *)error
-{
-	[manager stopUpdatingLocation];
-	@synchronized(self)
-	{
-
-            //Failed to get correct location, store that entry as(0,0) and at the time of display show proper message
-		self.currentLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
-	}
-	switch([error code])
-	{
-		case kCLErrorNetwork: // general, network-related error
-		{
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please check your network connection or that you are not in airplane mode" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-			[alert show];
-
-			break;
-		}
-		case kCLErrorDenied:
-		{
-
-			break;
-		}
-		case kCLErrorLocationUnknown:
-		{
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
-}
-
-
-
 
 #pragma mark - GnLookupLocalStreamIngestEventsDelegate
 
 -(void) statusEvent: (GnLookupLocalStreamIngestStatus)status bundleId: (NSString*)bundleId cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
-    NSLog(@"status = %ld", status);
+    NSLog(@"status = %d", status);
 }
 
 #pragma mark - GnAudioVisualizerDelegate Methods
