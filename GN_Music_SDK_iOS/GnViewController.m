@@ -106,7 +106,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [super viewDidLoad];
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
-    self.drinkView.layer.anchorPoint = CGPointMake(self.drinkView.frame.size.width / 2, self.drinkView.frame.size.height);
     self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
     self.drinkView.labelView.text = @"Martini";
     self.drinkView.imageView.image = [UIImage imageNamed:@"martini.jpg"];
@@ -114,7 +113,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.drinkView.imageView.layer.masksToBounds = YES;
     
     [UIView animateWithDuration:0.4 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
-        self.drinkView.frame = CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2 , 200 , 200);
+        self.drinkView.frame = CGRectMake(self.view.frame.size.width / 2 - (self.drinkView.frame.size.width / 2), self.view.frame.size.height / 2 , 200 , 200);
     } completion:^(BOOL finished) {
         NSLog(@"123");
     }];
@@ -122,9 +121,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.drinkView addGestureRecognizer:tapGesture];
     [self.view addSubview:self.drinkView];
-    
-    
-    
     
     self.recordingIsPaused = NO;
     __block NSError * error = nil;
