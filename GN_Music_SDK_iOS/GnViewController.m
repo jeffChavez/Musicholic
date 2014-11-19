@@ -224,6 +224,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 	return error;
 }
 
+
+
 -(void) downloadLatestBundle
 {
     NSError *	error = nil;
@@ -308,32 +310,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.idNowButton.enabled = enable && self.audioProcessingStarted;
     self.cancelOperationsButton.enabled = !enable;
 
-    self.resultsTableView.userInteractionEnabled = enable;
-    self.resultsTableView.scrollEnabled = enable;
-
 }
 
 #pragma mark - Display Overlay View's
-
-
-
--(void) closeAdditionalContentView:(id) sender
-{
-    if(self.currentlySelectedIndexPath)
-    {
-        UITableViewCell *cell = [self.resultsTableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
-
-        [UIView animateWithDuration:0.5 animations:^{
-            UIView *additionalContentView = (UIView*) [cell.contentView viewWithTag:ADDITIONALCONTENTVIEWTAG];
-            CGRect frame = additionalContentView.frame;
-            frame.origin.x = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad?768:320);
-            additionalContentView.frame = frame;
-       }];
-    }
-}
-
-
-
 
 
 
@@ -395,31 +374,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 
--(void) refreshArtistImage
-{
-    UITableViewCell *cell = [self.resultsTableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
-    __block UIView *additionalContentView = (UIView*) [cell.contentView viewWithTag:ADDITIONALCONTENTVIEWTAG];
-    UIImageView *additionalContentImageView = (UIImageView*) [additionalContentView viewWithTag:ADDITIONALCONTENTIMAGEVIEWTAG];
-    
-    GnDataModel *datamodelObject = nil;
-    
-    if(self.results && self.results.count> (NSUInteger) self.currentlySelectedIndexPath.row)
-    {
-        datamodelObject = (GnDataModel *)[self.results objectAtIndex:(NSUInteger) self.currentlySelectedIndexPath.row];
-        
-        
-        UIImage *artistImage = [UIImage imageWithData:datamodelObject.artistImageData];
-        
-        if(artistImage)
-        {
-            additionalContentImageView.image = artistImage;
-        }
-        else
-        {
-            additionalContentImageView.image = [UIImage imageNamed:@"emptyImage.png"];
-        }
-    }
-}
 
 
 #pragma mark - Music ID Stream Setup
@@ -692,16 +646,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         NSString *URLString = [NSString stringWithFormat:@"http://%@", [coverArtAsset url]];
         
         NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
-        __weak GnViewController *weakSelf = self;
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error)
-        {
-
-            if(data && !error)
-            {
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error) {
+            if(data && !error) {
                gnDataModelObject.albumImageData = data;
-                
-                // HERE IS WHERE WE CAN LOAD THE DATA INTO OUR OWN VIEWS
-               [weakSelf.resultsTableView reloadData];
             }
         }];
 
@@ -716,8 +663,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             if(data && !error)
             {
                 gnDataModelObject.artistImageData = data;
-                [weakSelf.resultsTableView reloadData];
-                [self refreshArtistImage];
             }
         }];
         
@@ -1026,309 +971,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 
 
-#pragma mark - Table View Data Source Methods
-
-- (NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (self.results.count==0)
-        tableView.separatorColor = [UIColor clearColor];
-    else
-        tableView.separatorColor = [UIColor lightGrayColor];
-
-    if (self.results.count == 0) {
-        NSLog(@"THERE IS NO RESULT IN THE TABLEVIEW SO DO NOT FIRE DRINK");
-    }
-    if (self.results.count == 1) {
-        NSLog(@"THERE IS A RESULT IN THE TABLEVIEW");
-    }
-    return (NSInteger)self.results.count;
-}
-
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"CellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-
-    if (!cell)
-    {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-
-		if (tableView==self.resultsTableView)
-		{
-			UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10,  (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?112:56, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?112:56)];
-			imageView.tag = ALBUMCOVERARTIMAGETAG;
-
-			UILabel *albumTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.frame.origin.x+imageView.frame.size.width+12, 5, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 40)];
-			albumTitleLabel.font = [UIFont boldSystemFontOfSize:16];
-			albumTitleLabel.textColor = [UIColor colorWithRed:0.7f green:0 blue:0.7f alpha:1];
-			albumTitleLabel.tag=ALBUMTITLELABELTAG;
-			albumTitleLabel.numberOfLines = 2;
-			albumTitleLabel.lineBreakMode = NSLineBreakByCharWrapping;
-			[albumTitleLabel setBackgroundColor:[UIColor clearColor]];
-
-			UILabel *trackTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(albumTitleLabel.frame.origin.x+albumTitleLabel.frame.size.width+5, albumTitleLabel.frame.origin.y, 120, albumTitleLabel.frame.size.height)];
-			trackTitleLabel.font = [UIFont systemFontOfSize:12];
-			trackTitleLabel.textColor = [UIColor darkGrayColor];
-			trackTitleLabel.tag = TRACKTITLELABELTAG;
-			trackTitleLabel.numberOfLines = 2;
-			trackTitleLabel.lineBreakMode = NSLineBreakByCharWrapping;
-			[trackTitleLabel setBackgroundColor:[UIColor clearColor]];
-
-			UILabel *artistLabel = [[UILabel alloc] initWithFrame:CGRectMake(albumTitleLabel.frame.origin.x, albumTitleLabel.frame.origin.y+albumTitleLabel.frame.size.height, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 40)];
-			artistLabel.font = [UIFont systemFontOfSize:12];
-			artistLabel.textColor = [UIColor darkGrayColor];
-			artistLabel.tag = ARTISTLABELTAG;
-			artistLabel.numberOfLines = 2;
-			artistLabel.lineBreakMode = NSLineBreakByCharWrapping;
-			[artistLabel setBackgroundColor:[UIColor clearColor]];
-
-			UILabel *trackDurationLabel = [[UILabel alloc] initWithFrame:CGRectMake(artistLabel.frame.origin.x+artistLabel.frame.size.width+5, artistLabel.frame.origin.y, 120, 40)];
-			trackDurationLabel.font = [UIFont boldSystemFontOfSize:10];
-			trackDurationLabel.textColor = [UIColor grayColor];
-			trackDurationLabel.tag = TRACKDURATIONLABELTAG;
-			[trackDurationLabel setBackgroundColor:[UIColor clearColor]];
-
-			UIView *additionalContentView = [[UIView alloc] initWithFrame:CGRectMake((UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?768:320, 0, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?768:cell.contentView.bounds.size.width,  (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?kHeightOfAdditionalMetadataCellPad:kHeightOfAdditionalMetadataCell)];
-
-			additionalContentView.tag = ADDITIONALCONTENTVIEWTAG;
-			additionalContentView.backgroundColor = [UIColor blueColor];
-
-			//Add content views to additional content view
-			UILabel *additionalContentTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, additionalContentView.frame.size.width, 20)];
-			additionalContentTitleLabel.tag = ADDITIONALCONTENTTITLELABELTAG;
-			additionalContentTitleLabel.layer.cornerRadius = 2.0f;
-			additionalContentTitleLabel.backgroundColor = [UIColor darkGrayColor];
-			additionalContentTitleLabel.textColor = [UIColor blackColor];
-			additionalContentTitleLabel.textAlignment = NSTextAlignmentCenter;
-			additionalContentTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-			[additionalContentTitleLabel setUserInteractionEnabled:YES];
-
-			UISegmentedControl *closeAdditionalSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
-			[closeAdditionalSegment setMomentary:YES];
-			[closeAdditionalSegment setUserInteractionEnabled:YES];
-			[closeAdditionalSegment setFrame:CGRectMake(additionalContentTitleLabel.frame.origin.x+additionalContentTitleLabel.frame.size.width-50, 0, 50, 20)];
-			[closeAdditionalSegment setBackgroundColor:[UIColor redColor]];
-			closeAdditionalSegment.tintColor = [UIColor whiteColor];
-			[closeAdditionalSegment addTarget:self action:@selector(closeAdditionalContentView:) forControlEvents:UIControlEventValueChanged];
-			[additionalContentTitleLabel addSubview:closeAdditionalSegment];
-
-			UIImageView *additionalContentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 25, 56, 56)];
-			additionalContentImageView.tag = ADDITIONALCONTENTIMAGEVIEWTAG;
-
-
-			UILabel *additionalContentAlbumLabel = [[UILabel alloc] initWithFrame:CGRectMake(additionalContentImageView.frame.origin.x+additionalContentImageView.frame.size.width+5, additionalContentImageView.frame.origin.y, additionalContentView.bounds.size.width-(additionalContentImageView.frame.size.width+additionalContentImageView.frame.origin.x+5), 40)];
-			additionalContentAlbumLabel.numberOfLines = 2;
-			additionalContentAlbumLabel.lineBreakMode = NSLineBreakByCharWrapping;
-			[additionalContentAlbumLabel setBackgroundColor:[UIColor clearColor]];
-			additionalContentAlbumLabel.tag = ADDITIONALCONTENTALBUMLABELTAG;
-			additionalContentAlbumLabel.textColor = [UIColor whiteColor];
-			additionalContentAlbumLabel.backgroundColor = [UIColor clearColor];
-
-			UILabel *additionalContentArtistLabel = [[UILabel alloc] initWithFrame:CGRectMake(additionalContentAlbumLabel.frame.origin.x, additionalContentAlbumLabel.frame.origin.y+additionalContentAlbumLabel.frame.size.height+5, additionalContentView.bounds.size.width-(additionalContentImageView.frame.size.width+additionalContentImageView.frame.origin.x+5), 40)];
-			additionalContentArtistLabel.numberOfLines = 2;
-			additionalContentArtistLabel.lineBreakMode = NSLineBreakByCharWrapping;
-			[additionalContentArtistLabel setBackgroundColor:[UIColor clearColor]];
-			additionalContentArtistLabel.tag = ADDITIONALCONTENTARTISTLABELTAG;
-			additionalContentArtistLabel.textColor = [UIColor whiteColor];
-
-			UITextView *additionalContentTextView = [[UITextView alloc] initWithFrame:CGRectMake(additionalContentImageView.frame.origin.x, additionalContentArtistLabel.frame.origin.y+additionalContentArtistLabel.frame.size.height+5, additionalContentView.bounds.size.width-10, additionalContentView.bounds.size.height - (additionalContentArtistLabel.frame.origin.y+additionalContentArtistLabel.frame.size.height + 10) )];
-			[additionalContentTextView setEditable:NO];
-			additionalContentTextView.text = nil;
-			additionalContentTextView.tag = ADDITIONALCONTENTTEXTVIEWTAG;
-			additionalContentTextView.layer.cornerRadius = 5.0f;
-			additionalContentTextView.font = [UIFont italicSystemFontOfSize:14.0f];
-			additionalContentTextView.textColor = [UIColor darkGrayColor];
-			additionalContentTextView.showsVerticalScrollIndicator = YES;
-
-			[additionalContentView addSubview:additionalContentTitleLabel];
-			[additionalContentView addSubview:additionalContentImageView];
-			[additionalContentView addSubview:additionalContentAlbumLabel];
-			[additionalContentView addSubview:additionalContentArtistLabel];
-			[additionalContentView addSubview:additionalContentTextView];
-			
-            
-			[cell.contentView addSubview:imageView];
-			[cell.contentView addSubview:albumTitleLabel];
-			[cell.contentView addSubview:trackTitleLabel];
-			[cell.contentView addSubview:artistLabel];
-			[cell.contentView addSubview:trackDurationLabel];
-			[cell.contentView addSubview:additionalContentView];
-		}
-    }
-
-	if (tableView==self.resultsTableView)
-	{
-		GnDataModel *datamodelObject = nil;
-        
-        if(self.results && [self.results count])
-        datamodelObject = [self.results objectAtIndex:(NSUInteger) indexPath.row];
-
-		UILabel *albumTitleLabel = (UILabel *)[cell.contentView viewWithTag:ALBUMTITLELABELTAG];
-		UILabel *trackTitleLabel = (UILabel *)[cell.contentView viewWithTag:TRACKTITLELABELTAG];
-		UILabel *artistLabel = (UILabel *)[cell.contentView viewWithTag:ARTISTLABELTAG];
-		UILabel *trackDurationLabel = (UILabel *)[cell.contentView viewWithTag:TRACKDURATIONLABELTAG];
-
-		UIImageView *imageView = (UIImageView*) [cell.contentView viewWithTag:ALBUMCOVERARTIMAGETAG];
-
-		albumTitleLabel.text = datamodelObject.albumTitle;
-		trackTitleLabel.text = datamodelObject.trackTitle;
-		artistLabel.text = datamodelObject.albumArtist?datamodelObject.albumArtist:datamodelObject.trackArtist;
-        NSString *durationText = datamodelObject.trackDuration;
-        if ( (nil == durationText) || ([durationText isEqualToString:@"0"]))
-            trackDurationLabel.text = @"";
-        else
-            trackDurationLabel.text = [NSString stringWithFormat:@"Duration: %@s", durationText];
-
-		if (datamodelObject.albumImageData)
-		{
-			imageView.image = [UIImage imageWithData:datamodelObject.albumImageData];
-		}
-		else
-		{
-			imageView.image = [UIImage imageNamed:@"emptyImage.png"];
-		}
-
-		if(self.currentlySelectedIndexPath && indexPath.row!=self.currentlySelectedIndexPath.row )
-		{
-			[[cell.contentView viewWithTag:ADDITIONALMETADATAVIEWTAG] removeFromSuperview];
-
-			[albumTitleLabel setEnabled:NO];
-			[trackTitleLabel setEnabled:NO];
-			[artistLabel setEnabled:NO];
-			[trackDurationLabel setEnabled:NO];
-			[imageView setAlpha:0.5];
-		}
-		else
-		{
-            if(!self.currentlySelectedIndexPath)
-			{
-				[cell.contentView setBackgroundColor: [UIColor whiteColor]];
-				[[cell.contentView viewWithTag:ADDITIONALMETADATAVIEWTAG] removeFromSuperview];
-			}
-			else if(self.currentlySelectedIndexPath && indexPath.row==self.currentlySelectedIndexPath.row)
-			{
-				[cell.contentView setBackgroundColor: [UIColor whiteColor]];
-
-				//Add Playback and sharing view.
-				UIView *additionalMetadataView = [cell.contentView viewWithTag:ADDITIONALMETADATAVIEWTAG];
-
-				if(!additionalMetadataView)
-				{
-					additionalMetadataView = [[UIView alloc] initWithFrame:CGRectMake(cell.contentView.frame.origin.x, imageView.frame.origin.y+imageView.frame.size.height+12, cell.contentView.frame.size.width-10, kHeightOfAdditionalMetadataCell - (artistLabel.frame.origin.y+artistLabel.frame.size.height+12) )];
-
-
-					additionalMetadataView.tag = ADDITIONALMETADATAVIEWTAG;
-
-					//Add additional metadata labels.
-					UILabel *trackMatchPositionLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 20)];
-					trackMatchPositionLabel.text = [NSString stringWithFormat:@"Match Pos: %@s", datamodelObject.trackMatchPosition];
-					trackMatchPositionLabel.font = [UIFont systemFontOfSize:12];
-
-
-					UILabel *lookupSourceLabel = [[UILabel alloc] initWithFrame:CGRectMake(trackMatchPositionLabel.frame.origin.x+trackMatchPositionLabel.frame.size.width+5, trackMatchPositionLabel.frame.origin.y, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, trackMatchPositionLabel.frame.size.height)];
-					lookupSourceLabel.text = [NSString stringWithFormat:@"Lookup Source:%@", self.lookupSourceIsLocal?@"Local":@"Online"];
-					lookupSourceLabel.font = [UIFont systemFontOfSize:12];
-
-
-					UILabel *currentPositionLabel = [[UILabel alloc] initWithFrame:CGRectMake(trackMatchPositionLabel.frame.origin.x, trackMatchPositionLabel.frame.origin.y+trackMatchPositionLabel.frame.size.height+5, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 20)];
-					currentPositionLabel.text = [NSString stringWithFormat:@"Current Pos:%@s", datamodelObject.currentPosition ];
-					currentPositionLabel.font = [UIFont systemFontOfSize:12];
-
-
-					UILabel *genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(currentPositionLabel.frame.origin.x+currentPositionLabel.frame.size.width+5, currentPositionLabel.frame.origin.y, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 20)];
-					genreLabel.text = [NSString stringWithFormat:@"Genre: %@", (datamodelObject.trackGenre && datamodelObject.trackGenre.length>0)?datamodelObject.trackGenre:datamodelObject.albumGenre];
-					genreLabel.font = [UIFont systemFontOfSize:12];
-
-					NSTimeInterval diff = self.queryEndTimeInterval - self.queryBeginTimeInterval;
-
-					UILabel* timeToMatchLabel = [[UILabel alloc] initWithFrame:CGRectMake(currentPositionLabel.frame.origin.x, currentPositionLabel.frame.origin.y+currentPositionLabel.frame.size.height+5, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 20)];
-					timeToMatchLabel.text = [NSString stringWithFormat:@"Time to Match(ms): %0.4lf",  diff];
-					timeToMatchLabel.font = [UIFont systemFontOfSize:12];
-
-					UILabel *tempoLabel = [[UILabel alloc] initWithFrame:CGRectMake(timeToMatchLabel.frame.origin.x, timeToMatchLabel.frame.origin.y+timeToMatchLabel.frame.size.height+5, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 20)];
-					tempoLabel.text = [NSString stringWithFormat:@"Tempo: %@", datamodelObject.trackTempo];
-					tempoLabel.font = [UIFont systemFontOfSize:12];
-
-					UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(timeToMatchLabel.frame.origin.x+timeToMatchLabel.frame.size.width+5, timeToMatchLabel.frame.origin.y+timeToMatchLabel.frame.size.height+5, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 40)];
-					originLabel.text = [NSString stringWithFormat:@"Origin: %@", (datamodelObject.trackOrigin)];
-					originLabel.font = [UIFont systemFontOfSize:12];
-
-					UILabel *moodLabel = [[UILabel alloc] initWithFrame:CGRectMake(tempoLabel.frame.origin.x, tempoLabel.frame.origin.y+tempoLabel.frame.size.height+5, (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)?LABELWIDTHIPAD:LABELWIDTHIPHONE, 20)];
-					moodLabel.text = [NSString stringWithFormat:@"Mood: %@", datamodelObject.trackMood];
-					moodLabel.font = [UIFont systemFontOfSize:12];
-
-
-					[additionalMetadataView addSubview:trackMatchPositionLabel];
-					[additionalMetadataView addSubview:lookupSourceLabel];
-					[additionalMetadataView addSubview:currentPositionLabel];
-					[additionalMetadataView addSubview:genreLabel];
-					[additionalMetadataView addSubview:timeToMatchLabel];
-					[additionalMetadataView addSubview:tempoLabel];
-					[additionalMetadataView addSubview:originLabel];
-					[additionalMetadataView addSubview:moodLabel];
-
-					[cell.contentView addSubview:additionalMetadataView];
-				}
-			}
-
-			[albumTitleLabel setEnabled:YES];
-			[trackTitleLabel setEnabled:YES];
-			[artistLabel setEnabled:YES];
-			[trackDurationLabel setEnabled:YES];
-			[imageView setAlpha:1.0f];
-		}
-
-		[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	}
-	
-	
-
-    return cell;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100;
-}
-
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//    else
-//    {
-//        UITableViewCell* cell = [tableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
-//
-//        self.currentlySelectedIndexPath = nil;
-//
-//		UIView *additionalContentView = (UIView*) [cell.contentView viewWithTag:ADDITIONALCONTENTVIEWTAG];
-//        CGRect frame = additionalContentView.frame;
-//        frame.origin.x = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad?768:320);
-//        additionalContentView.frame = frame;
-//    }
-//
-//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-//    [tableView beginUpdates];
-//    [tableView reloadData];
-//
-//    [self performSelector:@selector(scrollPlaybackViewToVisibleRect) withObject:nil afterDelay:0.1 ];
-//    [tableView endUpdates];
-//}
-
-#pragma mark - Table View Positioning
-
--(void) scrollPlaybackViewToVisibleRect
-{
-    UITableViewCell *cell = [self.resultsTableView cellForRowAtIndexPath:self.currentlySelectedIndexPath];
-
-    [self.resultsTableView scrollRectToVisible:cell.frame animated:YES];
-}
-
-
 
 
 
@@ -1377,16 +1019,13 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 		[self updateStatus: [NSString stringWithFormat: @"Found %lu", (unsigned long)self.results.count]];
 	}
 
-    [self.resultsTableView reloadData];
     [self loadTestViews];
 }
 
 -(void) loadTestViews {
     UIImage *testImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
-//    self.testImage.backgroundColor = [UIColor redColor];
     self.testImage.image = testImage;
     
-//    self.testLABEL.text = @"THE TEST LABEL WAS UPDATED";
     self.testLABEL.text = [NSString stringWithFormat:@"%@",self.currentDataModel.trackTitle];
 }
 

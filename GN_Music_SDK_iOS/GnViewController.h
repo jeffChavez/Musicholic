@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, Mode)
 #define kHeightOfRowPad 140
 #define kHeightOfRow 100
 
-@interface GnViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, UIActionSheetDelegate>
+@interface GnViewController : UIViewController<UINavigationBarDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIView *showOrHideVisualizationButtonView;
@@ -30,7 +30,6 @@ typedef NS_ENUM(NSInteger, Mode)
 @property (weak, nonatomic) IBOutlet UIImageView *gracenoteLogoImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *statusCaptionLabel;
-@property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelOperationsButton;
 @property (weak, nonatomic) IBOutlet UIButton *idNowButton;
 
