@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C53B1381A1D765D00ECB907 /* musicholic_cancelButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C53B1371A1D765D00ECB907 /* musicholic_cancelButton.pdf */; };
+		2CE1235C1A1E7D1D009D62F2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1235B1A1E7D1D009D62F2 /* User.m */; };
 		6B2E860D1A1D3D6F003FBAD0 /* DrinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */; };
 		6B2E86101A1D3F43003FBAD0 /* DrinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */; };
 		6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E86111A1D4784003FBAD0 /* martini.jpg */; };
@@ -51,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		2C53B1371A1D765D00ECB907 /* musicholic_cancelButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = musicholic_cancelButton.pdf; sourceTree = "<group>"; };
+		2CE1235A1A1E7D1D009D62F2 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		2CE1235B1A1E7D1D009D62F2 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrinkView.xib; sourceTree = "<group>"; };
 		6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkView.h; sourceTree = "<group>"; };
 		6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkView.m; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				F6DC0ACF1937DBF60096B555 /* GnAudioVisualizeAdapter.m */,
 				6BA157A51A1C2BD800005950 /* NetworkController.h */,
 				6BA157A61A1C2BD800005950 /* NetworkController.m */,
+				2CE1235A1A1E7D1D009D62F2 /* User.h */,
+				2CE1235B1A1E7D1D009D62F2 /* User.m */,
 				6BA6012E1A1D9A1A008B981A /* Song.h */,
 				6BA6012F1A1D9A1A008B981A /* Song.m */,
 				6BA157A81A1C2C8E00005950 /* Drink.h */,
@@ -261,7 +266,7 @@
 				ORGANIZATIONNAME = CodeFellows;
 				TargetAttributes = {
 					F6BBF97F17CD10BC00E9814E = {
-						DevelopmentTeam = T337VCC9XQ;
+						DevelopmentTeam = J42Q5AV837;
 					};
 				};
 			};
@@ -322,6 +327,7 @@
 				F6FE703817FB3C4700369F16 /* GnDataModel.m in Sources */,
 				F6BBF99D17CD10BC00E9814E /* GnViewController.m in Sources */,
 				6BA157A71A1C2BD800005950 /* NetworkController.m in Sources */,
+				2CE1235C1A1E7D1D009D62F2 /* User.m in Sources */,
 				F68849D0183C750B00DA28E6 /* Model.xcdatamodeld in Sources */,
 				F6BBF99017CD10BC00E9814E /* main.m in Sources */,
 				F6DC0AD01937DBF60096B555 /* GnAudioVisualizeAdapter.m in Sources */,
