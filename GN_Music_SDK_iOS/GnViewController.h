@@ -23,15 +23,14 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *songAlbumImage;
 @property (weak, nonatomic) IBOutlet UILabel *songInfoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *artistInfoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusIdNowLabel;
 
 
-
-
+- (IBAction) login:(id) sender;
 - (IBAction) idNow:(id) sender;
 - (IBAction) findDrink:(id) sender;
-- (IBAction)cancelAllOperations:(id)sender;
-- (IBAction)showVisualization:(id)sender;
+- (IBAction) cancelAllOperations:(id)sender;
+- (IBAction) showVisualization:(id)sender;
 
 -(void) stopRecording;
 

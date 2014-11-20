@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -70,9 +69,9 @@
                                     <action selector="idNow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yeb-RL-1cy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-vN-C0D">
-                                <rect key="frame" x="9" y="208" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" preferredMaxLayoutWidth="48" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-vN-C0D">
+                                <rect key="frame" x="8" y="208" width="202" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -104,8 +103,8 @@
                                     <action selector="cancelAllOperations:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hzx-xg-xIn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="xu6-03-2IW">
-                                <rect key="frame" x="9" y="229" width="41" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="xu6-03-2IW">
+                                <rect key="frame" x="275" y="259" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -120,6 +119,15 @@
                                     <action selector="findDrink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kls-7e-GuF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qo-CZ-kU5">
+                                <rect key="frame" x="538" y="562" width="47" height="30"/>
+                                <state key="normal" title="LOGIN">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ikl-ci-5JB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -127,11 +135,12 @@
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="16" id="8lZ-W5-ITJ"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="hYC-sN-Yet" secondAttribute="bottom" id="KSI-Ry-kYg"/>
                             <constraint firstItem="hYC-sN-Yet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="KZi-sA-vFA"/>
-                            <constraint firstItem="xu6-03-2IW" firstAttribute="top" secondItem="AC3-vN-C0D" secondAttribute="bottom" id="NKo-NR-kZZ"/>
+                            <constraint firstAttribute="trailing" secondItem="7qo-CZ-kU5" secondAttribute="trailing" constant="15" id="OKh-lO-cT4"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
-                            <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="9" id="R45-LB-sqp"/>
+                            <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="R45-LB-sqp"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="UzK-cQ-Cgk"/>
                             <constraint firstItem="AC3-vN-C0D" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="8" id="VSy-Fd-NyG"/>
+                            <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
                             <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="8" id="Zcd-Yh-7zB"/>
                             <constraint firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="b94-Zu-iKU"/>
                             <constraint firstAttribute="centerY" secondItem="1pw-PF-b3I" secondAttribute="centerY" constant="-65" id="bkf-i1-feA"/>
@@ -139,15 +148,18 @@
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cdP-KM-7Ld"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="fSV-Cf-XJi"/>
                             <constraint firstAttribute="trailing" secondItem="kAg-Qh-xzK" secondAttribute="trailing" constant="-1000" id="fzA-32-VAk"/>
+                            <constraint firstItem="1pw-PF-b3I" firstAttribute="leading" secondItem="AC3-vN-C0D" secondAttribute="trailing" constant="20" id="mVV-g4-cwZ"/>
                             <constraint firstItem="P5N-m7-9U4" firstAttribute="leading" secondItem="hYC-sN-Yet" secondAttribute="trailing" constant="8" id="pOB-By-n1V"/>
                             <constraint firstAttribute="centerX" secondItem="igl-3p-5U5" secondAttribute="centerX" id="pXD-TM-5gN"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="rSs-Vh-6b9"/>
                             <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1000" id="th6-Xz-Pmh"/>
-                            <constraint firstItem="xu6-03-2IW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="xt0-od-duL"/>
+                            <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="7qo-CZ-kU5" secondAttribute="bottom" constant="8" id="wHT-0d-GuT"/>
+                            <constraint firstItem="1pw-PF-b3I" firstAttribute="top" secondItem="xu6-03-2IW" secondAttribute="bottom" constant="15" id="z4r-8G-FVG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelOperationsButton" destination="u9i-Yk-EHZ" id="rJx-Ps-Lx3"/>
                         <outlet property="coloredRingImageView" destination="dY9-wr-odg" id="QFs-es-WdD"/>
                         <outlet property="gracenoteLogoImageView" destination="Fy3-AN-tXo" id="Yng-DB-91T"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
@@ -156,6 +168,7 @@
                         <outlet property="songAlbumImage" destination="t4o-ty-FOZ" id="ifO-Bc-UYF"/>
                         <outlet property="songInfoLabel" destination="AC3-vN-C0D" id="t54-qX-EZl"/>
                         <outlet property="statusCaptionLabel" destination="hYC-sN-Yet" id="bps-0L-b1g"/>
+                        <outlet property="statusIdNowLabel" destination="xu6-03-2IW" id="KN5-c7-yQu"/>
                         <outlet property="statusLabel" destination="P5N-m7-9U4" id="ZTZ-28-HCc"/>
                         <outlet property="visualizationView" destination="kAg-Qh-xzK" id="P5e-kH-pL5"/>
                     </connections>

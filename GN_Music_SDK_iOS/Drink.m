@@ -12,8 +12,8 @@
 
 - (instancetype) initWithDictionary: (NSDictionary *) drinkDictionary {
     self = [super init];
-    self.name = @"drank title";
-    self.imageURL = @"www.draaaaaank.com";
+    self.name = drinkDictionary[@"name"];
+    self.imageURL = drinkDictionary[@"imageUrl"];
     return self;
 }
 
