@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -48,16 +49,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GracenoteLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Fy3-AN-tXo">
                                         <rect key="frame" x="1300" y="29" width="170" height="170"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igl-3p-5U5">
-                                        <rect key="frame" x="465" y="123" width="86" height="30"/>
-                                        <color key="backgroundColor" red="0.22515914710000001" green="0.99134206830000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="FIND DRINK">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="findDrink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kls-7e-GuF"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -79,20 +70,20 @@
                                     <action selector="idNow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yeb-RL-1cy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song info label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-vN-C0D">
-                                <rect key="frame" x="10" y="210" width="210" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-vN-C0D">
+                                <rect key="frame" x="9" y="208" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYC-sN-Yet">
-                                <rect key="frame" x="0.0" y="576" width="62" height="24"/>
+                                <rect key="frame" x="6" y="576" width="62" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Changing status" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="P5N-m7-9U4">
-                                <rect key="frame" x="72" y="576" width="250" height="24"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Changing status" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="P5N-m7-9U4">
+                                <rect key="frame" x="76" y="576" width="250" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="Q9q-tD-FtR"/>
                                 </constraints>
@@ -101,10 +92,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9i-Yk-EHZ">
-                                <rect key="frame" x="536" y="216" width="40" height="40"/>
+                                <rect key="frame" x="560" y="216" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="q27-tS-J9W"/>
-                                    <constraint firstAttribute="width" constant="40" id="zUO-ve-h08"/>
+                                    <constraint firstAttribute="height" constant="24" id="q27-tS-J9W"/>
+                                    <constraint firstAttribute="width" constant="24" id="zUO-ve-h08"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="CancelButtonImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,28 +104,47 @@
                                     <action selector="cancelAllOperations:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hzx-xg-xIn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="xu6-03-2IW">
+                                <rect key="frame" x="9" y="229" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igl-3p-5U5">
+                                <rect key="frame" x="257" y="443" width="86" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="FIND DRINK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="findDrink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kls-7e-GuF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" id="4e0-Ex-jJE"/>
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="16" id="8lZ-W5-ITJ"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="hYC-sN-Yet" secondAttribute="bottom" id="KSI-Ry-kYg"/>
-                            <constraint firstItem="hYC-sN-Yet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KZi-sA-vFA"/>
+                            <constraint firstItem="hYC-sN-Yet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="KZi-sA-vFA"/>
+                            <constraint firstItem="xu6-03-2IW" firstAttribute="top" secondItem="AC3-vN-C0D" secondAttribute="bottom" id="NKo-NR-kZZ"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
-                            <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="R45-LB-sqp"/>
-                            <constraint firstItem="1pw-PF-b3I" firstAttribute="leading" secondItem="AC3-vN-C0D" secondAttribute="trailing" constant="10" id="TXB-Rg-K3v"/>
+                            <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="9" id="R45-LB-sqp"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="UzK-cQ-Cgk"/>
-                            <constraint firstItem="AC3-vN-C0D" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="10" id="VSy-Fd-NyG"/>
+                            <constraint firstItem="AC3-vN-C0D" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="8" id="VSy-Fd-NyG"/>
+                            <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="8" id="Zcd-Yh-7zB"/>
                             <constraint firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="b94-Zu-iKU"/>
                             <constraint firstAttribute="centerY" secondItem="1pw-PF-b3I" secondAttribute="centerY" constant="-65" id="bkf-i1-feA"/>
                             <constraint firstAttribute="trailing" secondItem="t4o-ty-FOZ" secondAttribute="trailing" id="cQb-t5-5oF"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cdP-KM-7Ld"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="fSV-Cf-XJi"/>
                             <constraint firstAttribute="trailing" secondItem="kAg-Qh-xzK" secondAttribute="trailing" constant="-1000" id="fzA-32-VAk"/>
-                            <constraint firstItem="P5N-m7-9U4" firstAttribute="leading" secondItem="hYC-sN-Yet" secondAttribute="trailing" constant="10" id="pOB-By-n1V"/>
+                            <constraint firstItem="P5N-m7-9U4" firstAttribute="leading" secondItem="hYC-sN-Yet" secondAttribute="trailing" constant="8" id="pOB-By-n1V"/>
+                            <constraint firstAttribute="centerX" secondItem="igl-3p-5U5" secondAttribute="centerX" id="pXD-TM-5gN"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="rSs-Vh-6b9"/>
-                            <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="24" id="tUi-Zf-kHf"/>
+                            <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1000" id="th6-Xz-Pmh"/>
+                            <constraint firstItem="xu6-03-2IW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="xt0-od-duL"/>
                         </constraints>
                     </view>
                     <connections>
@@ -160,6 +170,6 @@
         <image name="GracenoteLogo" width="200" height="200"/>
         <image name="coloredRing" width="300" height="300"/>
         <image name="martini.jpg" width="450" height="419"/>
-        <image name="musicholic_mocklogo.png" width="250" height="250"/>
+        <image name="musicholic_mocklogo.png" width="300" height="300"/>
     </resources>
 </document>

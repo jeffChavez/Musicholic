@@ -23,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *songAlbumImage;
 @property (weak, nonatomic) IBOutlet UILabel *songInfoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *artistInfoLabel;
 
 
 
