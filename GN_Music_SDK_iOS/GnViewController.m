@@ -521,7 +521,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
         // Set the currentDrink property with the result from the mongodb
         self.currentDrink = drink;
-        [self loadSongDataIntoViews];
         
     }];
 }
@@ -717,15 +716,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             gnDataModelObject.trackDuration = trackDuration;
             gnDataModelObject.currentPosition = currentPosition;
         }
-
         [self.results addObject:gnDataModelObject];
         self.currentDataModel = gnDataModelObject;
-//        [self loadTestViews];
-
-        
     }
-
-    [self performSelectorOnMainThread:@selector(refreshResults) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(loadSongDataIntoViews) withObject:nil waitUntilDone:NO];
 }
 
 
@@ -1006,32 +1000,16 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 -(void) musicIdFileAlbumResult: (GnResponseAlbums*)albumResult currentAlbum: (NSUInteger)currentAlbum totalAlbums: (NSUInteger)totalAlbums cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
     NSLog(@"MusicIdFileEventsDelegate fired.");
-
-    
     [self processAlbumResponseAndUpdateResultsTable:albumResult];
 }
 
 
 
--(void) refreshResults
-{
-    if (self.results.count==0)
-	{
-		[self updateStatus: @"No Match"];
-	}
-    else
-	{
-		[self updateStatus: [NSString stringWithFormat: @"Found %lu", (unsigned long)self.results.count]];
-	}
-
-    [self loadSongDataIntoViews];
-}
-
 -(void) loadSongDataIntoViews {
     UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
     self.songAlbumImage.image = songAlbumImage;
     
-    self.songInfoLabel.text = [NSString stringWithFormat:@"%@",self.currentDataModel.trackTitle];
+    self.songInfoLabel.text = [NSString stringWithFormat:@"Track: %@\nAlbum: %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
     
     
     [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
@@ -1064,7 +1042,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) musicIdFileComplete:(NSError*) completeError
 {
-    [self performSelectorOnMainThread:@selector(refreshResults) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(loadSongDataIntoViews) withObject:nil waitUntilDone:NO];
 
     // mechanism assumes app only has one GnMusicIdFile operation at a time, so it
     // can remove the GnMusicIdFile object is finds in the cancellable objects

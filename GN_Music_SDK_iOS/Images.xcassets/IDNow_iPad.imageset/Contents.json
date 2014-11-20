@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "IDNow_iPad.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "IDNow_iPad@2x.png"
+      "filename" : "musicholic_mocklogo.png"
     },
     {
       "idiom" : "universal",

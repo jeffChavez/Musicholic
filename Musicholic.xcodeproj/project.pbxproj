@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C53B1361A1D6BB400ECB907 /* musicholic_cancel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C53B1351A1D6BB400ECB907 /* musicholic_cancel.pdf */; };
+		2C53B1381A1D765D00ECB907 /* musicholic_cancelButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C53B1371A1D765D00ECB907 /* musicholic_cancelButton.pdf */; };
+		2C53B13A1A1D779500ECB907 /* musicholic_mocklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C53B1391A1D779500ECB907 /* musicholic_mocklogo.png */; };
 		6B2E860D1A1D3D6F003FBAD0 /* DrinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */; };
 		6B2E86101A1D3F43003FBAD0 /* DrinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */; };
 		6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E86111A1D4784003FBAD0 /* martini.jpg */; };
@@ -47,7 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C53B1351A1D6BB400ECB907 /* musicholic_cancel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = musicholic_cancel.pdf; sourceTree = "<group>"; };
+		2C53B1371A1D765D00ECB907 /* musicholic_cancelButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = musicholic_cancelButton.pdf; sourceTree = "<group>"; };
+		2C53B1391A1D779500ECB907 /* musicholic_mocklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicholic_mocklogo.png; sourceTree = "<group>"; };
 		6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrinkView.xib; sourceTree = "<group>"; };
 		6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkView.h; sourceTree = "<group>"; };
 		6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkView.m; sourceTree = "<group>"; };
@@ -199,14 +201,15 @@
 		F6BBF98A17CD10BC00E9814E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2C53B1351A1D6BB400ECB907 /* musicholic_cancel.pdf */,
+				2C53B1391A1D779500ECB907 /* musicholic_mocklogo.png */,
+				F651AFEC182ACA6100B0D688 /* IDNow@2x.png */,
+				2C53B1371A1D765D00ECB907 /* musicholic_cancelButton.pdf */,
 				6B2E86111A1D4784003FBAD0 /* martini.jpg */,
 				6BBC53FB1A1AD15D0077C373 /* license.txt */,
 				F648A64118A80B0500B303ED /* 1557.b */,
 				F68FEA25183D665B008F59EA /* emptyImage.png */,
 				F651AFFA182AD70C00B0D688 /* downArrow.png */,
 				F651AFFB182AD70C00B0D688 /* upArrow.png */,
-				F651AFEC182ACA6100B0D688 /* IDNow@2x.png */,
 				F650377D17FDD24A0058F9BB /* idNowButtonImage.png */,
 				F650377517FDC96D0058F9BB /* 320x568h.png */,
 				F650376D17FD566C0058F9BB /* NavBarImage.png */,
@@ -276,10 +279,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C53B1361A1D6BB400ECB907 /* musicholic_cancel.pdf in Resources */,
 				6BBC53FC1A1AD15D0077C373 /* license.txt in Resources */,
+				2C53B1381A1D765D00ECB907 /* musicholic_cancelButton.pdf in Resources */,
 				F68FEA26183D665B008F59EA /* emptyImage.png in Resources */,
 				F6BBF99A17CD10BC00E9814E /* MainStoryboard.storyboard in Resources */,
+				2C53B13A1A1D779500ECB907 /* musicholic_mocklogo.png in Resources */,
 				F651AFFD182AD70C00B0D688 /* upArrow.png in Resources */,
 				F651AFFC182AD70C00B0D688 /* downArrow.png in Resources */,
 				F63C7CC9182C1A1E009F60D2 /* Images.xcassets in Resources */,
