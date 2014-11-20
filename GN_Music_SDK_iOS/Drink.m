@@ -17,7 +17,7 @@
     return self;
 }
 
-- (NSObject *) parseJSONDataIntoDrink: (NSData *) data {
+- (Drink *) parseJSONDataIntoDrink: (NSData *) data {
     NSError *error = nil;
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     Drink *newDrink = [[Drink alloc] initWithDictionary:jsonDictionary];
