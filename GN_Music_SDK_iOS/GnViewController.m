@@ -64,6 +64,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property (strong) NSMutableArray *results;
 
 @property NSIndexPath *currentlySelectedIndexPath;
+@property NSInteger idNowCount;
 
 @property DrinkView *drinkView;
 
@@ -153,8 +154,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 	}
 	else
 	{
-        
-
 		@try
 		{
 			self.gnStorageSqlite = [GnStorageSqlite enable: &error];
@@ -200,6 +199,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 		}
 	}
 }
+
+
 
 - (NSError *) setupLocalLookup
 {
@@ -298,22 +299,17 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [self.idNowButton.layer setBorderColor:[UIColor whiteColor].CGColor];
 
     self.currentlySelectedIndexPath = nil;
-
-
 }
+
 
 -(void) enableOrDisableControls:(BOOL) enable
 {
     self.idNowButton.enabled = enable && self.audioProcessingStarted;
     self.cancelOperationsButton.enabled = !enable;
-
 }
 
+
 #pragma mark - Display Overlay View's
-
-
-
-
 
 - (IBAction)showVisualization:(id)sender {
     
@@ -359,17 +355,11 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                     CATransform3D rotTransform = CATransform3DMakeRotation (0, 0,
                                                                             0, 1);
                     self.gracenoteLogoImageView.layer.transform = rotTransform;
-
                 }
             }];
         }
-    
     }];
-   
 }
-
-
-
 
 
 
@@ -576,6 +566,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) idNow:(id) sender
 {
+    NSLog(@"ID NOW BUTTON");
+    self.idNowCount ++;
     if(self.gnMusicIDStream)
     {
         self.cancelOperationsButton.enabled = YES;
@@ -600,6 +592,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         }
     }
 }
+
 
 - (IBAction)cancelAllOperations:(id)sender
 {
@@ -645,8 +638,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     // THIS POPULATES THE DATA MODEL OBJECT
     // Fire the network request to get drink info
-    
-    
     id albums = nil;
     
     if([responseAlbums isKindOfClass:[GnResponseAlbums class]]) {
@@ -735,8 +726,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
@@ -768,6 +759,29 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [self performSelectorOnMainThread:@selector(loadSongDataIntoViews) withObject:nil waitUntilDone:NO];
 }
 
+
+-(void) loadSongDataIntoViews {
+    if (self.idNowCount < 5 && self.currentDataModel == nil) {
+        [self.idNowButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+        return;
+    }
+    if (self.currentDataModel == nil) {
+        self.songInfoLabel.text = @"Sorry, no result found";
+        self.idNowCount = 0;
+        return;
+    } else {
+        self.songInfoLabel.text = [NSString stringWithFormat:@"Track: %@\nAlbum: %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
+
+        UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
+        self.songAlbumImage.image = songAlbumImage;
+        
+        // call a new func to get the drink stuff
+        
+        [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
+            self.drinkView.imageView.image = drinkImage;
+        }];
+    }
+}
 
 
 #pragma mark - Recording Interruptions
@@ -924,7 +938,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
         case  kStatusComplete:
             statusString = @"Status Complete";
-            NSLog(@"FOUND MATCH - STATUS COMPLETE");
             break;
 
         case kStatusErrorInfo:
@@ -979,6 +992,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
    [self processAlbumResponseAndUpdateResultsTable:result];
 }
 
+
 -(void) musicIdStreamIdentifyCompletedWithError: (NSError*)completeError
 {
     NSString *statusString = [NSString stringWithFormat:@"%@ - [%zx]", [completeError localizedDescription], (long)[completeError code] ];
@@ -1001,25 +1015,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 
 #pragma mark - Other Methods
-
-
--(BOOL)is4InchRetina
-{
-    if ((![UIApplication sharedApplication].statusBarHidden && (int)[[UIScreen mainScreen] applicationFrame].size.height == 548 )
-	||  ( [UIApplication sharedApplication].statusBarHidden && (int)[[UIScreen mainScreen] applicationFrame].size.height == 568))
-	{
-        return YES;
-	}
-
-    return NO;
-}
-
-
-
-
-
-
-#pragma mark -
 
 -(BOOL)isFileFormatSupported:(NSURL*)filePath
 {
@@ -1050,20 +1045,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 }
 
 
-
--(void) loadSongDataIntoViews {
-    UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
-    self.songAlbumImage.image = songAlbumImage;
-    
-    self.songInfoLabel.text = [NSString stringWithFormat:@"Track: %@\nAlbum: %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
-    
-    
-    [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
-        self.drinkView.imageView.image = drinkImage;
-    }];
-}
-
-
 -(void) gatherFingerprint: (GnMusicIdFileInfo*) fileInfo
 			  currentFile: (NSUInteger)currentFile
 			   totalFiles: (NSUInteger) totalFiles
@@ -1083,8 +1064,8 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     }
     else
         NSLog(@"GnAudioFile Error - %@", [error localizedDescription]);
-    
 }
+
 
 -(void) musicIdFileComplete:(NSError*) completeError
 {
@@ -1108,9 +1089,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 -(void) musicIdFileMatchResult: (GnResponseDataMatches*)matchesResult currentAlbum: (NSUInteger)currentAlbum totalAlbums: (NSUInteger)totalAlbums cancellableDelegate: (id <GnCancellableDelegate>)canceller;
 
 {
-    NSLog(@"musicIdFileMatchResult fired.");
-
-    
     GnDataMatchEnumerator *matches = [matchesResult dataMatches];
     
     for (GnDataMatch * match in matches)
@@ -1131,6 +1109,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     [self stopBusyIndicator];
 }
 
+
 -(void) musicIdFileResultNotFound: (GnMusicIdFileInfo*) fileinfo
 					  currentFile: (NSUInteger) currentFile
 					   totalFiles: (NSUInteger) totalFiles
@@ -1138,6 +1117,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 {
 	[self updateStatus: @"No Match"];
 }
+
 
 -(void) gatherMetadata: (GnMusicIdFileInfo*) fileInfo
 		   currentFile: (NSUInteger) currentFile
@@ -1204,6 +1184,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     }
 }
 
+
 -(void) musicIdFileStatusEvent: (GnMusicIdFileInfo*) fileinfo
 						status: (GnMusicIdFileCallbackStatus) status
 				   currentFile: (NSUInteger) currentFile
@@ -1235,12 +1216,16 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 }
 
 
+
+
 #pragma mark - NavigationBar delegate methods
 
 - (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar
 {
     return UIBarPositionTopAttached;
 }
+
+
 
 
 #pragma mark - Application Notifications
@@ -1258,9 +1243,9 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
     dispatch_sync(self.internalQueue, ^
         {
               self.recordingIsPaused = YES;
-                    
     });
 }
+
 
 -(void) applicationDidBecomeActive:(NSNotification*) notification
 {
@@ -1273,11 +1258,9 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
        dispatch_async(self.internalQueue, ^
        {
            [self.gnMusicIDStream audioProcessStartWithAudioSource:(id <GnAudioSourceDelegate>)self.gnAudioVisualizeAdapter error:&musicIDStreamError];
-                          
            if (musicIDStreamError)
            {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                                                 
                    NSLog(@"Error while starting Audio Process With AudioSource - %@", [musicIDStreamError localizedDescription]);
                 });
             }
@@ -1298,14 +1281,15 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 
 
-
-
 #pragma mark - GnLookupLocalStreamIngestEventsDelegate
 
 -(void) statusEvent: (GnLookupLocalStreamIngestStatus)status bundleId: (NSString*)bundleId cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
-    NSLog(@"status = %ld", status);
+    NSLog(@"status = %d", status);
 }
+
+
+
 
 #pragma mark - GnAudioVisualizerDelegate Methods
 
