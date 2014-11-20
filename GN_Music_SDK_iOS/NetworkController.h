@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Drink.h"
 #import "Song.h"
+#import "User.h"
 
 @interface NetworkController : NSObject
 

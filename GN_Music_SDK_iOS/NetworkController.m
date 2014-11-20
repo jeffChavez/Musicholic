@@ -7,8 +7,6 @@
 //
 
 #import "NetworkController.h"
-#import "Song.h"
-#import "User.h"
 
 
 @interface NetworkController()
@@ -38,20 +36,21 @@
 - (void) requestOauthAccessForUser: (User *) user {
     
     // Encode user info
-    NSString *encodedScreenname = [[user.screenname dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
-    NSString *encodedEmail = [[user.email dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
-    NSString *encodedPassword = [[user.password dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+//    NSString *encodedScreenname = [[user.screenname dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+//    NSString *encodedEmail = [[user.email dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+//    NSString *encodedPassword = [[user.password dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
 
     // Make dictionary
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          encodedScreenname, @"screenname",
-                          encodedEmail, @"email",
-                          encodedPassword, @"password",
+                          user.screenname, @"screenname",
+                          user.email, @"email",
+                          user.password, @"password",
                          nil];
 
     // Make dictionary into JSON
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    [jsonData base64EncodedDataWithOptions:0];
     
     
     // Set up NSMutableURLRequest
