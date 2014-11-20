@@ -21,8 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelOperationsButton;
 @property (weak, nonatomic) IBOutlet UIButton *idNowButton;
 
-@property (weak, nonatomic) IBOutlet UIImageView *testImage;
-@property (weak, nonatomic) IBOutlet UILabel *testLABEL;
+@property (weak, nonatomic) IBOutlet UIImageView *songAlbumImage;
+@property (weak, nonatomic) IBOutlet UILabel *songInfoLabel;
 
 
 

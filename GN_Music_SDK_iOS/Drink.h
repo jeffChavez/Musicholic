@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UIImage *image;
 
 - (instancetype) initWithDictionary: (NSDictionary *) drinkDictionary;
-- (NSObject *) parseJSONDataIntoDrink: (NSData *) data;
+- (Drink *) parseJSONDataIntoDrink: (NSData *) data;
 
 @end

@@ -14,7 +14,7 @@
 
 + (id) networkController;
 
-- (void) fetchDrinkForSong: (NSString *)title withArtist:(NSString *)artist withCompletionHandler:(void (^)(NSString *, NSObject *))success;
+- (void) fetchDrinkForSong: (NSString *)title withArtist:(NSString *)artist withCompletionHandler:(void (^)(NSString *, Drink *))success;
 
 - (void) fetchImageForDrink: (Drink *)drink withCompletionHandler:(void (^)(UIImage *)) success;
 

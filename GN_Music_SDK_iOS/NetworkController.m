@@ -34,7 +34,7 @@
 
 
 
-- (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, NSObject *))success; {
+- (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Drink *))success; {
     
     // Construct correct URL as a string
     // What is a sample URL I can test?
@@ -57,7 +57,7 @@
             NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
             NSLog(@"status code is %ld",(long)[httpResponse statusCode]);
             if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
-                NSObject *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
+                Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     success(nil, drink);
                 }];

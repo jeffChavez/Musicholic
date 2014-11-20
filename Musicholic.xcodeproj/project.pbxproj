@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C53B1361A1D6BB400ECB907 /* musicholic_cancel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C53B1351A1D6BB400ECB907 /* musicholic_cancel.pdf */; };
 		6B2E860D1A1D3D6F003FBAD0 /* DrinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */; };
 		6B2E86101A1D3F43003FBAD0 /* DrinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */; };
 		6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E86111A1D4784003FBAD0 /* martini.jpg */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C53B1351A1D6BB400ECB907 /* musicholic_cancel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = musicholic_cancel.pdf; sourceTree = "<group>"; };
 		6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrinkView.xib; sourceTree = "<group>"; };
 		6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkView.h; sourceTree = "<group>"; };
 		6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkView.m; sourceTree = "<group>"; };
@@ -188,8 +190,6 @@
 				6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */,
 				6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */,
 				6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */,
-				F6BBF99517CD10BC00E9814E /* Main_iPhone.storyboard */,
-				F6BBF99817CD10BC00E9814E /* Main_iPad.storyboard */,
 				F6BBF99817CD10BC00E9814E /* MainStoryboard.storyboard */,
 				F6BBF98A17CD10BC00E9814E /* Supporting Files */,
 			);
@@ -199,6 +199,7 @@
 		F6BBF98A17CD10BC00E9814E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C53B1351A1D6BB400ECB907 /* musicholic_cancel.pdf */,
 				6B2E86111A1D4784003FBAD0 /* martini.jpg */,
 				6BBC53FB1A1AD15D0077C373 /* license.txt */,
 				F648A64118A80B0500B303ED /* 1557.b */,
@@ -275,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C53B1361A1D6BB400ECB907 /* musicholic_cancel.pdf in Resources */,
 				6BBC53FC1A1AD15D0077C373 /* license.txt in Resources */,
 				F68FEA26183D665B008F59EA /* emptyImage.png in Resources */,
 				F6BBF99A17CD10BC00E9814E /* MainStoryboard.storyboard in Resources */,

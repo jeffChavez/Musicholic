@@ -34,7 +34,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 //TEST
 @property (strong, nonatomic) GnDataModel *currentDataModel;
-
+@property (strong, nonatomic) Drink *currentDrink;
 
 
 /*GnSDK properties*/
@@ -516,8 +516,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (IBAction) findDrink:(id) sender {
     NSLog(@"FIND DRINK!!");
 
-    [[NetworkController networkController] fetchDrinkForSong:@"Billie Jean" withArtist:@"Michael Jackson" withCompletionHandler:^(NSString *errorString, NSObject *drinkInfo) {
-        NSLog(@"test");
+    // MAKE URL
+    [[NetworkController networkController] fetchDrinkForSong:@"Billie Jean" withArtist:@"Michael Jackson" withCompletionHandler:^(NSString *errorString, Drink *drink) {
+
+        // Set the currentDrink property with the result from the mongodb
+        self.currentDrink = drink;
+        [self loadSongDataIntoViews];
+        
     }];
 }
 
@@ -647,6 +652,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler: ^(NSURLResponse *response, NSData* data, NSError* error) {
             if(data && !error) {
                gnDataModelObject.albumImageData = data;
+                [self loadSongDataIntoViews];
             }
         }];
 
@@ -714,7 +720,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
         [self.results addObject:gnDataModelObject];
         self.currentDataModel = gnDataModelObject;
-        
+//        [self loadTestViews];
+
         
     }
 
@@ -1017,14 +1024,19 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 		[self updateStatus: [NSString stringWithFormat: @"Found %lu", (unsigned long)self.results.count]];
 	}
 
-    [self loadTestViews];
+    [self loadSongDataIntoViews];
 }
 
--(void) loadTestViews {
-    UIImage *testImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
-    self.testImage.image = testImage;
+-(void) loadSongDataIntoViews {
+    UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
+    self.songAlbumImage.image = songAlbumImage;
     
-    self.testLABEL.text = [NSString stringWithFormat:@"%@",self.currentDataModel.trackTitle];
+    self.songInfoLabel.text = [NSString stringWithFormat:@"%@",self.currentDataModel.trackTitle];
+    
+    
+    [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
+        self.drinkView.imageView.image = drinkImage;
+    }];
 }
 
 
@@ -1065,8 +1077,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
         }
     }
     
-    [self stopBusyIndicator];
-    
+    [self stopBusyIndicator];    
 }
 
 
