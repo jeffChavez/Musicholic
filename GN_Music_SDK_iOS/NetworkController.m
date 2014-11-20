@@ -57,10 +57,11 @@
     NSString *herokuURLString = @"https://musicholic.herokuapp.com/login/oauth"; // is this the right url to send the request to?
     NSURL *url = [NSURL URLWithString:herokuURLString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-
-    
-    // DO WE PUT THE JSON IN THE REQUEST HEADER OR HTTPBODY?????
-//    request setValue:jsonData forHTTPHeaderField:
+    request.HTTPMethod = @"POST";
+    NSUInteger length = jsonData.length;
+    NSString *contentLengthString = [NSString stringWithFormat:@"%ldl", (long)length];
+    [request setValue:contentLengthString forHTTPHeaderField: @"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
     request.HTTPBody = jsonData;
     
     
@@ -68,12 +69,13 @@
         if (error != nil ) {
             NSLog(@"error in oauth request");
         } else {
-            // store token???
+            NSString *tokenParsed = @"access_token";
+            [[NSUserDefaults standardUserDefaults] setValue:tokenParsed forKey:@"OAuthToken"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }];
     [dataRequest resume];
 }
-
 
 - (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Drink *))success; {
     
@@ -81,16 +83,29 @@
     NSString *songTitleNoSpaces = [title stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     NSString *songArtistNoSpaces = [artist stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     NSString *api_key = @"FGSG5VYMGP92BYLA8";
-    NSString *urlString = [NSString stringWithFormat: @"http://musicholic.herokuapp.com/api/http://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@&format=json", api_key, songArtistNoSpaces, songTitleNoSpaces];
-    NSURL *requestURL = [NSURL URLWithString:urlString];
-
-    
-    
-    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:requestURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSString *urlString = [NSString stringWithFormat: @"http://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@", api_key, songArtistNoSpaces, songTitleNoSpaces];
+    NSLog(@"%@", urlString);
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          urlString, @"url",
+                          nil];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    [jsonData base64EncodedDataWithOptions:0];
+    NSString *herokuURLString = @"https://musicholic.herokuapp.com/api";
+    NSURL *url = [NSURL URLWithString:herokuURLString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    NSUInteger length = jsonData.length;
+    NSString *contentLengthString = [NSString stringWithFormat:@"%ldl", (long)length];
+    [request setValue:contentLengthString forHTTPHeaderField: @"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
+    request.HTTPBody = jsonData;
+    NSURLSessionDataTask *dataRequest = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
             NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
             NSLog(@"status code is %ld",(long)[httpResponse statusCode]);
             if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
+                NSLog(@"status code 200");
                 Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     success(nil, drink);
@@ -103,7 +118,7 @@
             }
         }
     }];
-    [dataTask resume];
+    [dataRequest resume];
 }
 
 
