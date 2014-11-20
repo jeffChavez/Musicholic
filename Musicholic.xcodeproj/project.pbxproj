@@ -16,6 +16,8 @@
 		6BA6012B1A1D8769008B981A /* musicholic_mocklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA6012A1A1D8769008B981A /* musicholic_mocklogo.png */; };
 		6BA6012D1A1D8BA9008B981A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6012C1A1D8BA9008B981A /* CoreImage.framework */; };
 		6BA601301A1D9A1A008B981A /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6012F1A1D9A1A008B981A /* Song.m */; };
+		6BA601331A1E7F14008B981A /* UserSignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BA601321A1E7F14008B981A /* UserSignInView.xib */; };
+		6BA601361A1E81E4008B981A /* UserSignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA601351A1E81E4008B981A /* UserSignInView.m */; };
 		6BBC53FC1A1AD15D0077C373 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6BBC53FB1A1AD15D0077C373 /* license.txt */; };
 		F631B9F317E902FE00A932A1 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F631B9F217E902FE00A932A1 /* libstdc++.dylib */; };
 		F63C7CC9182C1A1E009F60D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F63C7CC8182C1A1E009F60D2 /* Images.xcassets */; };
@@ -63,6 +65,9 @@
 		6BA6012C1A1D8BA9008B981A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6BA6012E1A1D9A1A008B981A /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		6BA6012F1A1D9A1A008B981A /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		6BA601321A1E7F14008B981A /* UserSignInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSignInView.xib; sourceTree = "<group>"; };
+		6BA601341A1E81E4008B981A /* UserSignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSignInView.h; sourceTree = "<group>"; };
+		6BA601351A1E81E4008B981A /* UserSignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSignInView.m; sourceTree = "<group>"; };
 		6BBC53FB1A1AD15D0077C373 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = license.txt; path = docs/license.txt; sourceTree = SOURCE_ROOT; };
 		F631B9F217E902FE00A932A1 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		F63C7CC8182C1A1E009F60D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GN_Music_SDK_iOS/Images.xcassets; sourceTree = "<group>"; };
@@ -198,6 +203,9 @@
 				6BA6012F1A1D9A1A008B981A /* Song.m */,
 				6BA157A81A1C2C8E00005950 /* Drink.h */,
 				6BA157A91A1C2C8E00005950 /* Drink.m */,
+				6BA601321A1E7F14008B981A /* UserSignInView.xib */,
+				6BA601341A1E81E4008B981A /* UserSignInView.h */,
+				6BA601351A1E81E4008B981A /* UserSignInView.m */,
 				6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */,
 				6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */,
 				6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */,
@@ -301,6 +309,7 @@
 				F651AFED182ACA6100B0D688 /* IDNow@2x.png in Resources */,
 				F648A64218A80B0500B303ED /* 1557.b in Resources */,
 				F6BBF98E17CD10BC00E9814E /* InfoPlist.strings in Resources */,
+				6BA601331A1E7F14008B981A /* UserSignInView.xib in Resources */,
 				6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */,
 				F650377617FDC96D0058F9BB /* 320x568h.png in Resources */,
 				F650377E17FDD24A0058F9BB /* idNowButtonImage.png in Resources */,
@@ -318,6 +327,7 @@
 				F68849D3183C768E00DA28E6 /* Metadata.m in Sources */,
 				6B2E86101A1D3F43003FBAD0 /* DrinkView.m in Sources */,
 				F68849D6183C768E00DA28E6 /* CoverArt.m in Sources */,
+				6BA601361A1E81E4008B981A /* UserSignInView.m in Sources */,
 				6BA157AA1A1C2C8E00005950 /* Drink.m in Sources */,
 				F6FE703817FB3C4700369F16 /* GnDataModel.m in Sources */,
 				F6BBF99D17CD10BC00E9814E /* GnViewController.m in Sources */,

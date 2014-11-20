@@ -117,7 +117,6 @@
     [dataTask resume];
 }
 
-
 - (void) fetchImageForDrink: (Drink *)drink withCompletionHandler:(void (^)(UIImage *)) success; {
     self.imageQueue = [[NSOperationQueue alloc] init];
     [self.imageQueue addOperationWithBlock:^{
