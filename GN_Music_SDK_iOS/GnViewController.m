@@ -24,6 +24,7 @@
 #import "NetworkController.h"
 #import "DrinkView.h"
 #import "Song.h"
+#import "UserSignInView.h"
 
 static NSString *gnsdkLicenseFilename = @"license.txt";
 
@@ -67,32 +68,59 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property NSInteger idNowCount;
 
 @property DrinkView *drinkView;
+@property NSInteger *randomY;
+@property NSInteger *randomX;
+
+@property UserSignInView *userSignInView;
 
 @property NSOperationQueue *imageFilterQueue;
 @end
 
 @implementation GnViewController
 
+
+- (void) launchSignIn {
+    self.userSignInView = [[UserSignInView alloc] init];
+    self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
+    self.userSignInView.frame = CGRectMake(self.view.frame.size.width - self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
+    
+    [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
+        self.userSignInView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void) didSignIn: (id) sender {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.userSignInView.frame = CGRectMake(self.userSignInView.frame.origin.x - 1000, 0, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
+    }];
+}
+
 -(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
     
     [UIView animateWithDuration:0.4 animations:^{
-        self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.width);
+        self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
     }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //MOVE THIS METHOD INSIDE THE IBACTION OF SIGN IN BUTTON
+    [self launchSignIn];
+    
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
     self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
-    self.drinkView.labelView.text = @"Martini";
     self.drinkView.imageView.layer.cornerRadius = self.drinkView.frame.size.width / 4;
     self.drinkView.imageView.layer.masksToBounds = YES;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.drinkView addGestureRecognizer:tapGesture];
     [self.view addSubview:self.drinkView];
+    [self.view addSubview:self.userSignInView];
     
     self.recordingIsPaused = NO;
     __block NSError * error = nil;
@@ -294,7 +322,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 //    [self.idNowButton.layer setShadowOpacity:1];
 //    [self.idNowButton.layer setMasksToBounds:NO];
     [self.idNowButton.layer setBorderWidth: 3];
-    [self.idNowButton.layer setCornerRadius:self.idNowButton.frame.size.width /2];
+    [self.idNowButton.layer setCornerRadius:self.idNowButton.frame.size.width / 2];
     self.idNowButton.layer.masksToBounds = YES;
     [self.idNowButton.layer setBorderColor:[UIColor whiteColor].CGColor];
 
@@ -551,6 +579,14 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                             self.currentDrink.image = [UIImage imageNamed:@"10"];
                             self.currentDrink.name = @":X";
                     }
+                    
+                    self.drinkView.labelView.text = self.currentDrink.name;
+                    self.drinkView.imageView.image = self.currentDrink.image;
+                    NSLog(@"%@", self.currentSong.title);
+                    NSLog(@"%@", self.currentSong.artist);
+                    NSLog(@"%@", self.currentSong.energy);
+                    NSLog(@"%@", self.currentSong.danceability);
+                    NSLog(@"%@", self.currentSong.tempo);
                     [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
                         self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
                     } completion:^(BOOL finished) {
