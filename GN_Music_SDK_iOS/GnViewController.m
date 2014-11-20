@@ -526,7 +526,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [[NetworkController networkController] ECHONESTfetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.trackArtist withCompletionHandler:^(NSString *errorDescription, Song *song) {
         if (errorDescription == nil) {
             self.currentSong = song;
-            [[NetworkController networkController] ECHONESTfetchDrinkForSongSummary:@"SONWCPE12B3A138A4E" withCompletionHandler:^(NSString *errorDescription, Song *song) {
+            [[NetworkController networkController] ECHONESTfetchDrinkForSongSummary:self.currentSong.songId withCompletionHandler:^(NSString *errorDescription, Song *song) {
                 if (errorDescription == nil) {
                     self.currentSong = song;
 
@@ -536,7 +536,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                     } else if (self.currentSong.energy <=.2) {
                             self.currentDrink.image = [UIImage imageNamed:@"2"];
                             self.currentDrink.name = @"Sad Face";
-                    } else if  (self.currentSong.energy <=.3) {
+                    } else if (self.currentSong.energy <=.3) {
                             self.currentDrink.image = [UIImage imageNamed:@"3"];
                             self.currentDrink.name = @"This should be a Taylor Swift song?";
                     } else if (self.currentSong.energy <=4) {
