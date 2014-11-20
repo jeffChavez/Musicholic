@@ -596,9 +596,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                     self.drinkView.imageView.image = self.currentDrink.image;
                     NSLog(@"%@", self.currentSong.title);
                     NSLog(@"%@", self.currentSong.artist);
-                    NSLog(@"%@", self.currentSong.energy);
-                    NSLog(@"%@", self.currentSong.danceability);
-                    NSLog(@"%@", self.currentSong.tempo);
+                    NSLog(@"%ld", (long)self.currentSong.energy);
+                    NSLog(@"%ld", (long)self.currentSong.danceability);
+                    NSLog(@"%ld", (long)self.currentSong.tempo);
                     [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
                         self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
                     } completion:^(BOOL finished) {
@@ -646,6 +646,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (IBAction)cancelAllOperations:(id)sender
 {
     self.statusIdNowLabel.text = @"Cancelled";
+    [self enableOrDisableControls:YES];
     for(id obj in self.cancellableObjects)
     {
         if([obj isKindOfClass:[GnMusicIdStream class]])
@@ -821,7 +822,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         self.idNowCount = 0;
         return;
     } else {
-        self.songInfoLabel.text = [NSString stringWithFormat:@"Track: %@\nAlbum: %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
+        self.statusIdNowLabel.text = @"MATCH FOUND!";
+        self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
 
         UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
         self.songAlbumImage.image = songAlbumImage;
