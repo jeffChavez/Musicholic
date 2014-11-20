@@ -25,6 +25,7 @@
 #import "DrinkView.h"
 #import "Song.h"
 #import "UserSignInView.h"
+#import "User.h"
 
 static NSString *gnsdkLicenseFilename = @"license.txt";
 
@@ -72,30 +73,15 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property NSInteger *randomX;
 
 @property UserSignInView *userSignInView;
+@property User *currentUser;
 
 @property NSOperationQueue *imageFilterQueue;
 @end
 
 @implementation GnViewController
 
-
 - (void) launchSignIn {
-    self.userSignInView = [[UserSignInView alloc] init];
-    self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
-    self.userSignInView.frame = CGRectMake(self.view.frame.size.width - self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
 
-    [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
-
-    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
-        self.userSignInView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-    } completion:^(BOOL finished) {
-    }];
-}
-
-- (void) didSignIn: (id) sender {
-    [UIView animateWithDuration:0.4 animations:^{
-        self.userSignInView.frame = CGRectMake(self.userSignInView.frame.origin.x - 1000, 0, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
-    }];
 }
 
 -(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
@@ -108,20 +94,22 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.songInfoLabel.text = @"";
-    self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
 
+    self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
+    self.songInfoLabel.text = @"";
     self.statusIdNowLabel.text = @"";
 
-    //MOVE THIS METHOD INSIDE THE IBACTION OF SIGN IN BUTTON
-    [self launchSignIn];
+    self.currentUser = [[User alloc] init];
+
+    self.userSignInView = [[UserSignInView alloc] init];
+    self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
+    self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
 
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
     self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
-    self.drinkView.imageView.layer.cornerRadius = self.drinkView.frame.size.width / 4;
+    self.drinkView.imageView.layer.cornerRadius = self.drinkView.frame.size.width / 2;
     self.drinkView.imageView.layer.masksToBounds = YES;
-
 
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.drinkView addGestureRecognizer:tapGesture];
@@ -236,9 +224,28 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 - (void)login:(id)sender {
-    // present view with the three textfields
-//    [[NetworkController networkController] requestOauthAccessForUser:<#(id)#>
 
+    //set frame offscreen
+
+    [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
+
+    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
+        self.userSignInView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void) didSignIn: (id) sender {
+
+    self.currentUser.screenname = self.userSignInView.usernameTextField.text;
+    self.currentUser.email = self.userSignInView.emailTextField.text;
+    self.currentUser.password = self.userSignInView.passwordTextField.text;
+
+    [[NetworkController networkController] requestOauthAccessForUser:self.currentUser];
+
+    [UIView animateWithDuration:0.4 animations:^{
+        self.userSignInView.frame = CGRectMake(self.userSignInView.frame.origin.x - 1000, 0, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
+    }];
 }
 
 
@@ -553,63 +560,65 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }];
 
 
-    [[NetworkController networkController] ECHONESTfetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.trackArtist withCompletionHandler:^(NSString *errorDescription, Song *song) {
-        if (errorDescription == nil) {
-            self.currentSong = song;
-            [[NetworkController networkController] ECHONESTfetchDrinkForSongSummary:self.currentSong.songId withCompletionHandler:^(NSString *errorDescription, Song *song) {
-                if (errorDescription == nil) {
-                    self.currentSong = song;
 
-                    if (self.currentSong.energy <= 0.1) {
-                        self.currentDrink.image = [UIImage imageNamed:@"1"];
-                        self.currentDrink.name = @"Most Sad Drink";
-                    } else if (self.currentSong.energy <=.2) {
-                            self.currentDrink.image = [UIImage imageNamed:@"2"];
-                            self.currentDrink.name = @"Sad Face";
-                    } else if (self.currentSong.energy <=.3) {
-                            self.currentDrink.image = [UIImage imageNamed:@"3"];
-                            self.currentDrink.name = @"This should be a Taylor Swift song?";
-                    } else if (self.currentSong.energy <=4) {
-                            self.currentDrink.image = [UIImage imageNamed:@"4"];
-                            self.currentDrink.name = @"Feelin goooood";
-                    } else if (self.currentSong.energy <=5) {
-                            self.currentDrink.image = [UIImage imageNamed:@"5"];
-                            self.currentDrink.name = @"Dat buzz tho";
-                    } else if (self.currentSong.energy <=6) {
-                            self.currentDrink.image = [UIImage imageNamed:@"6"];
-                            self.currentDrink.name = @"Imma Happeh! :)";
-                    } else if (self.currentSong.energy <=7) {
-                            self.currentDrink.image = [UIImage imageNamed:@"7"];
-                            self.currentDrink.name = @"Suuupa Happeh! :D";
-                    } else if (self.currentSong.energy <=8) {
-                            self.currentDrink.image = [UIImage imageNamed:@"8"];
-                            self.currentDrink.name = @"Itsa Happeh Draaaank :O";
-                    } else if (self.currentSong.energy <=9) {
-                            self.currentDrink.image = [UIImage imageNamed:@"9"];
-                            self.currentDrink.name = @"Let's get CRUNKED UP";
-                    } else if (self.currentSong.energy <=10) {
-                            self.currentDrink.image = [UIImage imageNamed:@"10"];
-                            self.currentDrink.name = @":X";
-                    }
+    [[NetworkController networkController] fetchDrinkForSong:@"billie jean" withArtist:@"michael jackson" withCompletionHandler:^(NSString *errorString, Drink *drink) {
+        if (errorString == nil && drink != nil) {
+            // Set the currentDrink property with the result from the mongodb
+            self.currentDrink = drink;
+            self.drinkView.labelView.text = self.currentDrink.name;
+            self.drinkView.imageView.image = self.currentDrink.image;
 
-                    self.drinkView.labelView.text = self.currentDrink.name;
-                    self.drinkView.imageView.image = self.currentDrink.image;
-                    NSLog(@"%@", self.currentSong.title);
-                    NSLog(@"%@", self.currentSong.artist);
-                    NSLog(@"%ld", (long)self.currentSong.energy);
-                    NSLog(@"%ld", (long)self.currentSong.danceability);
-                    NSLog(@"%ld", (long)self.currentSong.tempo);
-                    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
-                        self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-                    } completion:^(BOOL finished) {
-                        NSLog(@"123");
-                    }];
-
-                }
+            [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
+                self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+            } completion:^(BOOL finished) {
             }];
+        } else {
         }
-
     }];
+
+//    [[NetworkController networkController] ECHONESTfetchDrinkForSong:@"Michael Jackson" withArtist:@"Billie Jean" withCompletionHandler:^(NSString *errorDescription, Song *song) {
+//        if (errorDescription == nil) {
+//            self.currentSong = song;
+//            [[NetworkController networkController] ECHONESTfetchDrinkForSongSummary:self.currentSong.songId withCompletionHandler:^(NSString *errorDescription, Song *song) {
+//                if (errorDescription == nil) {
+//                    self.currentSong = song;
+//                    NSLog(@"%ld", (long)self.currentSong.energy);
+//                    NSLog(@"%@", self.currentSong.title);
+//                    if (self.currentSong.energy <= 0.1) {
+//                        self.currentDrink.image = [UIImage imageNamed:@"1"];
+//                        self.currentDrink.name = @"Most Sad Drink";
+//                    } else if (self.currentSong.energy <=.2) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"2"];
+//                            self.currentDrink.name = @"Sad Face";
+//                    } else if (self.currentSong.energy <=.3) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"3"];
+//                            self.currentDrink.name = @"This should be a Taylor Swift song?";
+//                    } else if (self.currentSong.energy <=4) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"4"];
+//                            self.currentDrink.name = @"Feelin goooood";
+//                    } else if (self.currentSong.energy <=5) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"5"];
+//                            self.currentDrink.name = @"Dat buzz tho";
+//                    } else if (self.currentSong.energy <=6) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"6"];
+//                            self.currentDrink.name = @"Imma Happeh! :)";
+//                    } else if (self.currentSong.energy <=7) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"7"];
+//                            self.currentDrink.name = @"Suuupa Happeh! :D";
+//                    } else if (self.currentSong.energy <=8) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"8"];
+//                            self.currentDrink.name = @"Itsa Happeh Draaaank :O";
+//                    } else if (self.currentSong.energy <=9) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"9"];
+//                            self.currentDrink.name = @"Let's get CRUNKED UP";
+//                    } else if (self.currentSong.energy <=10) {
+//                            self.currentDrink.image = [UIImage imageNamed:@"10"];
+//                            self.currentDrink.name = @":X";
+//                    }
+//                }
+//            }];
+//        }
+//    }];
 }
 
 -(void) idNow:(id) sender
