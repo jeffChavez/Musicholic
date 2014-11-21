@@ -101,13 +101,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.gpuContext = [CIContext contextWithOptions:nil];
 
     self.covertArtSmallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.20f, self.view.frame.size.width * 0.20f)];
-//    CAGradientLayer *coverArtSmallGradient = [CAGradientLayer layer];
-//    coverArtSmallGradient.frame = self.songAlbumImage.frame;
-//    coverArtSmallGradient.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor, nil];
-//    coverArtSmallGradient.startPoint = CGPointMake(0.8f, 1.0f);
-//    coverArtSmallGradient.endPoint = CGPointMake(1.0f, 1.0f);
-//    self.songAlbumImage.layer.mask = coverArtSmallGradient;
-//
+
     // Create a gradient layer that goes transparent -&gt; opaque
     CAGradientLayer *alphaGradientLayer = [CAGradientLayer layer];
     NSArray *colors = [NSArray arrayWithObjects:
@@ -123,7 +117,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // Create a image view for the topImage we created above and apply the mask
 
     [alphaGradientLayer setFrame:[self.songAlbumImage bounds]];
-    [[self.songAlbumImage layer] setMask:alphaGradientLayer];
+//    [[self.songAlbumImage layer] setMask:alphaGradientLayer];
 
 
 
@@ -613,7 +607,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             // Set the currentDrink property with the result from the mongodb
             self.currentDrink = drink;
             self.drinkView.labelView.text = self.currentDrink.name;
-            self.drinkView.imageView.image = self.currentDrink.image;
+            [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
+                self.drinkView.imageView.image = drinkImage;
+            }];
+//            self.drinkView.imageView.image = self.currentDrink.image;
 
             [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
                 self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
@@ -920,9 +917,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * 0.17f);
         }];
 
-        [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
-            self.drinkView.imageView.image = drinkImage;
-        }];
+//        [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
+//            self.drinkView.imageView.image = drinkImage;
+//        }];
     }
 }
 
