@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusCaptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelOperationsButton;
 @property (weak, nonatomic) IBOutlet UIButton *idNowButton;
+@property (weak, nonatomic) IBOutlet UIButton *findDrinkButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *songAlbumImage;
 @property (weak, nonatomic) IBOutlet UILabel *songInfoLabel;

@@ -66,7 +66,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property (strong) NSMutableArray *results;
 
 @property NSIndexPath *currentlySelectedIndexPath;
-@property NSInteger idNowCount;
 
 @property DrinkView *drinkView;
 @property NSInteger *randomY;
@@ -552,14 +551,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (IBAction) findDrink:(id) sender {
     NSLog(@"FIND DRINK!!");
 
-    [[NetworkController networkController] fetchDrinkForSong:@"Billie Jean" withArtist:@"Michael Jackson" withCompletionHandler:^(NSString *errorString, Drink *drink) {
-
-        // Set the currentDrink property with the result from the mongodb
-        self.currentDrink = drink;
-
-    }];
-
-
 
     [[NetworkController networkController] fetchDrinkForSong:@"billie jean" withArtist:@"michael jackson" withCompletionHandler:^(NSString *errorString, Drink *drink) {
         if (errorString == nil && drink != nil) {
@@ -623,9 +614,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) idNow:(id) sender
 {
-    NSLog(@"ID NOW BUTTON");
     self.statusIdNowLabel.text = @"LISTENING...";
-    self.idNowCount ++;
     if(self.gnMusicIDStream)
     {
         self.cancelOperationsButton.enabled = YES;
@@ -822,17 +811,12 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 -(void) loadSongDataIntoViews {
-    if (self.idNowCount < 5 && self.currentDataModel == nil) {
-        [self.idNowButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-        return;
-    }
     if (self.currentDataModel == nil) {
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
-        self.idNowCount = 0;
         return;
     } else {
-        self.statusIdNowLabel.text = @"MATCH FOUND!";
+        self.statusIdNowLabel.text = @"Match Found!";
         self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
 
         UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
@@ -1037,8 +1021,10 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
             break;
     }
 
+    
 	[self updateStatus: [NSString stringWithFormat:@"%@ [%zu%%]", statusString?statusString:@"", (unsigned long)percentComplete]];
 }
+
 
 -(void) musicIdStreamAlbumResult: (GnResponseAlbums*)result cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
