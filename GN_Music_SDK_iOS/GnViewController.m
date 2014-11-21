@@ -94,13 +94,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
     self.songInfoLabel.text = @"";
     self.statusIdNowLabel.text = @"";
-    
+
     self.currentUser = [[User alloc] init];
-    
+
     self.userSignInView = [[UserSignInView alloc] init];
     self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
     self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
@@ -224,11 +224,11 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 - (void)login:(id)sender {
-    
+
     //set frame offscreen
-    
+
     [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
         self.userSignInView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     } completion:^(BOOL finished) {
@@ -236,13 +236,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 - (void) didSignIn: (id) sender {
-    
+
     self.currentUser.screenname = self.userSignInView.usernameTextField.text;
     self.currentUser.email = self.userSignInView.emailTextField.text;
     self.currentUser.password = self.userSignInView.passwordTextField.text;
-    
+
     [[NetworkController networkController] requestOauthAccessForUser:self.currentUser];
-    
+
     [UIView animateWithDuration:0.4 animations:^{
         self.userSignInView.frame = CGRectMake(self.userSignInView.frame.origin.x - 1000, 0, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
     }];
@@ -550,14 +550,24 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 - (IBAction) findDrink:(id) sender {
-    
+    NSLog(@"FIND DRINK!!");
+
+    [[NetworkController networkController] fetchDrinkForSong:@"Billie Jean" withArtist:@"Michael Jackson" withCompletionHandler:^(NSString *errorString, Drink *drink) {
+
+        // Set the currentDrink property with the result from the mongodb
+        self.currentDrink = drink;
+
+    }];
+
+
+
     [[NetworkController networkController] fetchDrinkForSong:@"billie jean" withArtist:@"michael jackson" withCompletionHandler:^(NSString *errorString, Drink *drink) {
         if (errorString == nil && drink != nil) {
             // Set the currentDrink property with the result from the mongodb
             self.currentDrink = drink;
             self.drinkView.labelView.text = self.currentDrink.name;
             self.drinkView.imageView.image = self.currentDrink.image;
-            
+
             [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
                 self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
             } completion:^(BOOL finished) {
@@ -645,27 +655,29 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (IBAction)cancelAllOperations:(id)sender
 {
     self.statusIdNowLabel.text = @"Cancelled";
-    for(id obj in self.cancellableObjects)
-    {
-        if([obj isKindOfClass:[GnMusicIdStream class]])
+    [self enableOrDisableControls:YES];
+    if (self.cancellableObjects.count > 0) {
+        for(id obj in self.cancellableObjects)
         {
-            NSError *error = nil;
-            [obj identifyCancel:&error];
-            if(error)
+            if([obj isKindOfClass:[GnMusicIdStream class]])
             {
-                NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
+                NSError *error = nil;
+                [obj identifyCancel:&error];
+                if(error)
+                {
+                    NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
+                }
+            }
+            else if ([obj isKindOfClass:[GnMusicIdFile class]])
+            {
+                [obj cancel];
+            }
+            else
+            {
+                [obj setCancel:YES];
             }
         }
-        else if ([obj isKindOfClass:[GnMusicIdFile class]])
-        {
-            [obj cancel];
-        }
-        else
-        {
-            [obj setCancel:YES];
-        }
     }
-
 }
 
 
@@ -820,7 +832,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         self.idNowCount = 0;
         return;
     } else {
-        self.songInfoLabel.text = [NSString stringWithFormat:@"Track: %@\nAlbum: %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
+        self.statusIdNowLabel.text = @"MATCH FOUND!";
+        self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
 
         UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
         self.songAlbumImage.image = songAlbumImage;
