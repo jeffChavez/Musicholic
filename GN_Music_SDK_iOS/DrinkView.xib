@@ -8,36 +8,42 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DrinkView">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="340"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXN-e6-fVY">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="300" id="ACK-sG-lx4"/>
-                        <constraint firstAttribute="width" constant="300" id="vQ2-Bz-Q6I"/>
+                        <constraint firstAttribute="height" constant="200" id="ACK-sG-lx4"/>
+                        <constraint firstAttribute="width" constant="200" id="vQ2-Bz-Q6I"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cg-ao-NDU">
-                    <rect key="frame" x="110" y="308" width="80" height="24"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <rect key="frame" x="62" y="208" width="76" height="17"/>
+                    <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="sXN-e6-fVY" secondAttribute="centerY" constant="20" id="0Di-BI-0XA"/>
-                <constraint firstItem="9Cg-ao-NDU" firstAttribute="top" secondItem="sXN-e6-fVY" secondAttribute="bottom" constant="8" id="De8-Ty-pBV"/>
-                <constraint firstAttribute="centerX" secondItem="9Cg-ao-NDU" secondAttribute="centerX" id="Lt6-M1-lKy"/>
+                <constraint firstAttribute="centerX" secondItem="9Cg-ao-NDU" secondAttribute="centerX" constant="-50" id="Lt6-M1-lKy"/>
                 <constraint firstAttribute="centerX" secondItem="sXN-e6-fVY" secondAttribute="centerX" id="pyr-ly-2OR"/>
+                <constraint firstItem="9Cg-ao-NDU" firstAttribute="top" secondItem="sXN-e6-fVY" secondAttribute="bottom" constant="8" id="uC6-GG-BDn"/>
+                <constraint firstAttribute="centerX" secondItem="9Cg-ao-NDU" secondAttribute="centerX" id="xoT-ao-gu7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Lt6-M1-lKy"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="imageView" destination="sXN-e6-fVY" id="VcH-2O-LLX"/>
                 <outlet property="labelView" destination="9Cg-ao-NDU" id="aUb-d1-UuJ"/>
             </connections>
-            <point key="canvasLocation" x="177" y="172"/>
+            <point key="canvasLocation" x="178" y="196"/>
         </view>
     </objects>
 </document>
