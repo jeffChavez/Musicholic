@@ -75,6 +75,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property User *currentUser;
 
 @property NSOperationQueue *imageFilterQueue;
+@property UIImageView *covertArtSmallImageView;
+
+@property CIContext *gpuContext;
 @end
 
 @implementation GnViewController
@@ -89,11 +92,35 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.gpuContext = [CIContext contextWithOptions:nil];
 
-    self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
-    self.songInfoLabel.text = @"";
+    self.covertArtSmallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.20f, self.view.frame.size.width * 0.20f)];
+//    CAGradientLayer *coverArtSmallGradient = [CAGradientLayer layer];
+//    coverArtSmallGradient.frame = self.songAlbumImage.frame;
+//    coverArtSmallGradient.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor, nil];
+//    coverArtSmallGradient.startPoint = CGPointMake(0.8f, 1.0f);
+//    coverArtSmallGradient.endPoint = CGPointMake(1.0f, 1.0f);
+//    self.songAlbumImage.layer.mask = coverArtSmallGradient;
+//    
+    // Create a gradient layer that goes transparent -&gt; opaque
+    CAGradientLayer *alphaGradientLayer = [CAGradientLayer layer];
+    NSArray *colors = [NSArray arrayWithObjects:
+                       (id)[[UIColor colorWithWhite:0 alpha:0] CGColor],
+                       (id)[[UIColor colorWithWhite:0 alpha:1] CGColor],
+                       nil];
+    [alphaGradientLayer setColors:colors];
+    
+    // Start the gradient at the bottom and go almost half way up.
+    [alphaGradientLayer setStartPoint:CGPointMake(0.0f, 0.9f)];
+    [alphaGradientLayer setEndPoint:CGPointMake(0.0f, 0.1f)];
+    
+    // Create a image view for the topImage we created above and apply the mask
+    
+    [alphaGradientLayer setFrame:[self.songAlbumImage bounds]];
+    [[self.songAlbumImage layer] setMask:alphaGradientLayer];
+    
     self.statusIdNowLabel.text = @"";
-
+    self.songInfoLabel.text = @"";
     self.currentUser = [[User alloc] init];
 
     self.userSignInView = [[UserSignInView alloc] init];
@@ -618,7 +645,12 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) idNow:(id) sender
 {
+    self.songInfoLabel.text = @"";
     self.statusIdNowLabel.text = @"LISTENING...";
+    [UIView animateWithDuration:0.4 animations:^{
+        self.songAlbumImage.alpha = 0;
+        self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
+    }];
     if(self.gnMusicIDStream)
     {
         self.cancelOperationsButton.enabled = YES;
@@ -819,13 +851,28 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         return;
     } else {
         self.statusIdNowLabel.text = @"Match Found!";
-        self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
+        self.songInfoLabel.text = [NSString stringWithFormat:@"%@\n%@",self.currentDataModel.trackTitle, self.currentDataModel.albumArtist];
 
-        UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
-        self.songAlbumImage.image = songAlbumImage;
+        UIImage *songAlbumImageFromData = [UIImage imageWithData: self.currentDataModel.albumImageData];
+        CIImage *image = [CIImage imageWithCGImage:songAlbumImageFromData.CGImage];
+        CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+        [imageFilter setDefaults];
+        [imageFilter setValue:image forKey:kCIInputImageKey];
+        NSNumber *radius = [NSNumber numberWithInt:5];
+        [imageFilter setValue:radius forKey:kCIInputRadiusKey];
+        CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
+        CGRect extent = [result extent];
+        CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
+        self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
 
-        // call a new func to get the drink stuff
-
+        self.covertArtSmallImageView.image = songAlbumImageFromData;
+        self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
+        [self.view addSubview:self.covertArtSmallImageView];
+        [UIView animateWithDuration:0.4 animations:^{
+            self.songAlbumImage.alpha = 1;
+            self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * 0.17f);
+        }];
+        
         [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
             self.drinkView.imageView.image = drinkImage;
         }];
