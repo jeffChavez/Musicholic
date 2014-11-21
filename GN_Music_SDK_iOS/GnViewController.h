@@ -29,6 +29,7 @@
 - (IBAction) login:(id) sender;
 - (IBAction) idNow:(id) sender;
 - (IBAction) findDrink:(id) sender;
+- (IBAction) echoNest:(id)sender;
 - (IBAction) cancelAllOperations:(id)sender;
 - (IBAction) showVisualization:(id)sender;
 
