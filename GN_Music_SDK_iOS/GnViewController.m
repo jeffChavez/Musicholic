@@ -131,7 +131,11 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // Set up userSignInView
     self.userSignInView = [[UserSignInView alloc] init];
     self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
-    self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
+    self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.view.frame.size.width * 0.8f, self.view.frame.size.width * 0.5f);
+    self.userSignInView.center = CGPointMake(self.idNowButton.center.x + 1500, self.idNowButton.center.y);
+    self.userSignInView.usernameTextField.delegate = self;
+    self.userSignInView.emailTextField.delegate = self;
+    self.userSignInView.passwordTextField.delegate = self;
 
     
     // Set up drinkView
@@ -259,6 +263,11 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 	}
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
 
 -(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
 
@@ -278,7 +287,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
 
     [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
-        self.userSignInView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+        self.userSignInView.center = CGPointMake(self.idNowButton.center.x, self.idNowButton.center.y);
     } completion:^(BOOL finished) {
     }];
 }
@@ -293,7 +302,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [[NetworkController networkController] requestOauthAccessForUser:self.currentUser];
 
     [UIView animateWithDuration:0.4 animations:^{
-        self.userSignInView.frame = CGRectMake(self.userSignInView.frame.origin.x - 1000, 0, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
+        self.userSignInView.center = CGPointMake(self.idNowButton.center.x + 1500, self.idNowButton.center.y);
     }];
 }
 
@@ -854,8 +863,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
