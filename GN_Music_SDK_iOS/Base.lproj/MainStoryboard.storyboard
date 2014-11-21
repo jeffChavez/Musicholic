@@ -179,6 +179,7 @@
                     <connections>
                         <outlet property="cancelOperationsButton" destination="u9i-Yk-EHZ" id="rJx-Ps-Lx3"/>
                         <outlet property="coloredRingImageView" destination="dY9-wr-odg" id="QFs-es-WdD"/>
+                        <outlet property="echoNestFindDrinkButton" destination="ZTD-zj-0JB" id="LLW-FD-84k"/>
                         <outlet property="findDrinkButton" destination="igl-3p-5U5" id="Oxi-5A-iZa"/>
                         <outlet property="gracenoteLogoImageView" destination="Fy3-AN-tXo" id="Yng-DB-91T"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
