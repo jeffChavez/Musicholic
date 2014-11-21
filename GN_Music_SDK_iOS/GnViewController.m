@@ -94,7 +94,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.findDrinkButton.hidden = YES;
     self.findDrinkButton.enabled = NO;
 
-
     // Instantiate currentUser
     self.currentUser = [[User alloc] init];
 
@@ -389,7 +388,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 //    [self.idNowButton.layer setShadowRadius:10.0f];
 //    [self.idNowButton.layer setShadowOpacity:1];
 //    [self.idNowButton.layer setMasksToBounds:NO];
-    [self.idNowButton.layer setBorderWidth: 3];
+    [self.idNowButton.layer setBorderWidth: 1];
     [self.idNowButton.layer setCornerRadius:self.idNowButton.frame.size.width / 2];
     self.idNowButton.layer.masksToBounds = YES;
     [self.idNowButton.layer setBorderColor:[UIColor whiteColor].CGColor];
@@ -602,6 +601,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) idNow:(id) sender
 {
+    self.idNowButtonCenterYAlignmentConstraint.constant = 0;
+    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+    
     self.findDrinkButton.hidden = YES;
     self.findDrinkButton.enabled = NO;
     
@@ -639,6 +645,15 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction)cancelAllOperations:(id)sender
 {
+    
+    self.idNowButtonCenterYAlignmentConstraint.constant = -65.0f;
+    
+    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+    
     NSLog(@"CANCEL BUTTON TAPPED");
     self.statusIdNowLabel.text = @"Cancelled";
     [self enableOrDisableControls:YES];
@@ -889,7 +904,16 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 -(void) loadSongDataIntoViews {
+    
+    self.idNowButtonCenterYAlignmentConstraint.constant = -65.0f;
+    
+    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
     if (self.currentDataModel == nil) {
+        
         //TODO: WHAT TO SHOW FOR THE TOP IMAGE IN THIS CASE???
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";

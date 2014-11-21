@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="musicholic_logo_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="GNF-aI-6de">
+                    <rect key="frame" x="225" y="212" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="qww-3Q-WSv"/>
+                        <constraint firstAttribute="width" constant="150" id="uhr-Wd-OSB"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TextLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-DR-Rgv">
+                    <rect key="frame" x="199" y="370" width="203" height="54"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="0bR-M3-EJf"/>
+                        <constraint firstAttribute="width" constant="203" id="iz4-qx-Qdc"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="GNF-aI-6de" secondAttribute="centerX" id="6gz-B6-EKh"/>
+                <constraint firstItem="1q5-DR-Rgv" firstAttribute="top" secondItem="GNF-aI-6de" secondAttribute="bottom" constant="8" id="Cc5-sA-5AQ"/>
+                <constraint firstAttribute="centerX" secondItem="1q5-DR-Rgv" secondAttribute="centerX" id="XbQ-tQ-J47"/>
+                <constraint firstItem="GNF-aI-6de" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="212" id="gIZ-Q5-kbJ"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="TextLogo" width="316" height="47"/>
+        <image name="musicholic_logo_circle.png" width="1024" height="1024"/>
+    </resources>
+</document>
