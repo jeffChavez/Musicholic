@@ -656,27 +656,28 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     self.statusIdNowLabel.text = @"Cancelled";
     [self enableOrDisableControls:YES];
-    for(id obj in self.cancellableObjects)
-    {
-        if([obj isKindOfClass:[GnMusicIdStream class]])
+    if (self.cancellableObjects.count > 0) {
+        for(id obj in self.cancellableObjects)
         {
-            NSError *error = nil;
-            [obj identifyCancel:&error];
-            if(error)
+            if([obj isKindOfClass:[GnMusicIdStream class]])
             {
-                NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
+                NSError *error = nil;
+                [obj identifyCancel:&error];
+                if(error)
+                {
+                    NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
+                }
+            }
+            else if ([obj isKindOfClass:[GnMusicIdFile class]])
+            {
+                [obj cancel];
+            }
+            else
+            {
+                [obj setCancel:YES];
             }
         }
-        else if ([obj isKindOfClass:[GnMusicIdFile class]])
-        {
-            [obj cancel];
-        }
-        else
-        {
-            [obj setCancel:YES];
-        }
     }
-
 }
 
 
