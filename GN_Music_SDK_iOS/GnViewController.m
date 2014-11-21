@@ -82,26 +82,26 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 @implementation GnViewController
 
--(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
-
-    [UIView animateWithDuration:0.4 animations:^{
-        self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
-    }];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.cancelOperationsButton.alpha = 0.0;
+
+    // Instantiate currentUser
+    self.currentUser = [[User alloc] init];
+
+    // Clear labels
+    self.songInfoLabel.text = @"";
+    self.statusIdNowLabel.text = @"";
+
+
+    // Gradient set up
     self.gpuContext = [CIContext contextWithOptions:nil];
 
     self.covertArtSmallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.20f, self.view.frame.size.width * 0.20f)];
-//    CAGradientLayer *coverArtSmallGradient = [CAGradientLayer layer];
-//    coverArtSmallGradient.frame = self.songAlbumImage.frame;
-//    coverArtSmallGradient.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor, nil];
-//    coverArtSmallGradient.startPoint = CGPointMake(0.8f, 1.0f);
-//    coverArtSmallGradient.endPoint = CGPointMake(1.0f, 1.0f);
-//    self.songAlbumImage.layer.mask = coverArtSmallGradient;
-//    
+
     // Create a gradient layer that goes transparent -&gt; opaque
     CAGradientLayer *alphaGradientLayer = [CAGradientLayer layer];
     NSArray *colors = [NSArray arrayWithObjects:
@@ -109,35 +109,45 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                        (id)[[UIColor colorWithWhite:0 alpha:1] CGColor],
                        nil];
     [alphaGradientLayer setColors:colors];
-    
+
     // Start the gradient at the bottom and go almost half way up.
     [alphaGradientLayer setStartPoint:CGPointMake(0.0f, 0.9f)];
     [alphaGradientLayer setEndPoint:CGPointMake(0.0f, 0.1f)];
-    
-    // Create a image view for the topImage we created above and apply the mask
-    
-    [alphaGradientLayer setFrame:[self.songAlbumImage bounds]];
-    [[self.songAlbumImage layer] setMask:alphaGradientLayer];
-    
-    self.statusIdNowLabel.text = @"";
-    self.songInfoLabel.text = @"";
-    self.currentUser = [[User alloc] init];
 
+    // Create a image view for the topImage we created above and apply the mask
+
+    [alphaGradientLayer setFrame:[self.songAlbumImage bounds]];
+//    [[self.songAlbumImage layer] setMask:alphaGradientLayer];
+
+
+
+    // Set up userSignInView
     self.userSignInView = [[UserSignInView alloc] init];
     self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
     self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
 
+    // Set up drinkView
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
-    self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
+
+
+
+
+    CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
+    self.drinkView.frame = drinkViewFrame;
     self.drinkView.imageView.layer.cornerRadius = self.drinkView.frame.size.width / 2;
     self.drinkView.imageView.layer.masksToBounds = YES;
 
+
+    // Set up tap gesture recognizer for the drinkView
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.drinkView addGestureRecognizer:tapGesture];
     [self.view addSubview:self.drinkView];
     [self.view addSubview:self.userSignInView];
 
+
+
+    // Other setup from GraceNote
     self.recordingIsPaused = NO;
     __block NSError * error = nil;
 
@@ -245,13 +255,24 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 
+-(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
+
+
+    [UIView animateWithDuration:0.4 animations:^{
+
+        CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
+        self.drinkView.frame = drinkViewFrame;
+    }];
+}
+
+
 - (void)login:(id)sender {
 
     //set frame offscreen
 
     [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
 
-    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
+    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
         self.userSignInView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     } completion:^(BOOL finished) {
     }];
@@ -375,6 +396,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     self.idNowButton.enabled = enable && self.audioProcessingStarted;
     self.cancelOperationsButton.enabled = !enable;
+    [UIView animateWithDuration:0.3 animations:^{
+        if (!enable) {
+            self.cancelOperationsButton.alpha = 1.0;
+        } else {
+            self.cancelOperationsButton.alpha = 0.0;
+        }
+    }];
 }
 
 
@@ -579,9 +607,12 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             // Set the currentDrink property with the result from the mongodb
             self.currentDrink = drink;
             self.drinkView.labelView.text = self.currentDrink.name;
-            self.drinkView.imageView.image = self.currentDrink.image;
+            [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
+                self.drinkView.imageView.image = drinkImage;
+            }];
+//            self.drinkView.imageView.image = self.currentDrink.image;
 
-            [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
+            [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
                 self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
             } completion:^(BOOL finished) {
             }];
@@ -591,15 +622,23 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 - (void)echoNest:(id)sender {
-    [[NetworkController networkController] ECHONESTfetchDrinkForSong:@"Billie Jean" withArtist:@"Michael Jackson" withCompletionHandler:^(NSString *errorDescription, Song *song) {
+    [[NetworkController networkController] ECHONESTfetchDrinkForSong:@"All of the lights" withArtist:@"kanye west" withCompletionHandler:^(NSString *errorDescription, Song *song) {
         if (errorDescription == nil) {
             self.currentSong = song;
-            
+
             [[NetworkController networkController] ECHONESTfetchDrinkForSongSummary:self.currentSong.songId withCompletionHandler:^(NSString *errorDescription, Song *song) {
                 if (errorDescription == nil) {
+
                     self.currentSong = song;
-                    NSLog(@"%ld", (long)self.currentSong.tempo);
+                    NSLog(@"%f", self.currentSong.tempo);
+                    NSLog(@"%f", self.currentSong.energy);
+                    NSLog(@"%f", self.currentSong.danceability);
                     NSLog(@"%@", self.currentSong.title);
+
+                    self.currentDrink = [[Drink alloc] init];
+
+
+
                     if (self.currentSong.energy <= 0.1) {
                         self.currentDrink.image = [UIImage imageNamed:@"1"];
                         self.currentDrink.name = @"Most Sad Drink";
@@ -633,8 +672,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                     }
                     self.drinkView.imageView.image = self.currentDrink.image;
                     self.drinkView.labelView.text = self.currentDrink.name;
-                    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
-                        self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+
+                    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
+
+
+                        CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.view.frame.size.height * 0.35f, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
+                        self.drinkView.frame = drinkViewFrame;
+
                     } completion:^(BOOL finished) {
                     }];
                 }
@@ -653,7 +697,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }];
     if(self.gnMusicIDStream)
     {
-        self.cancelOperationsButton.enabled = YES;
         [self enableOrDisableControls:NO];
         [self.results removeAllObjects];
 
@@ -679,6 +722,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction)cancelAllOperations:(id)sender
 {
+    NSLog(@"CANCEL BUTTON TAPPED");
     self.statusIdNowLabel.text = @"Cancelled";
     [self enableOrDisableControls:YES];
     for(id obj in self.cancellableObjects)
@@ -872,10 +916,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             self.songAlbumImage.alpha = 1;
             self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * 0.17f);
         }];
-        
-        [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
-            self.drinkView.imageView.image = drinkImage;
-        }];
+
+//        [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
+//            self.drinkView.imageView.image = drinkImage;
+//        }];
     }
 }
 
@@ -1070,7 +1114,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
             break;
     }
 
-    
+
 	[self updateStatus: [NSString stringWithFormat:@"%@ [%zu%%]", statusString?statusString:@"", (unsigned long)percentComplete]];
 }
 
