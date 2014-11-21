@@ -94,7 +94,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.findDrinkButton.hidden = YES;
     self.findDrinkButton.enabled = NO;
 
-
     // Instantiate currentUser
     self.currentUser = [[User alloc] init];
 
@@ -137,7 +136,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.userSignInView.emailTextField.delegate = self;
     self.userSignInView.passwordTextField.delegate = self;
 
-    
+
     // Set up drinkView
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
@@ -398,7 +397,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 //    [self.idNowButton.layer setShadowRadius:10.0f];
 //    [self.idNowButton.layer setShadowOpacity:1];
 //    [self.idNowButton.layer setMasksToBounds:NO];
-    [self.idNowButton.layer setBorderWidth: 3];
+    [self.idNowButton.layer setBorderWidth: 1];
     [self.idNowButton.layer setCornerRadius:self.idNowButton.frame.size.width / 2];
     self.idNowButton.layer.masksToBounds = YES;
     [self.idNowButton.layer setBorderColor:[UIColor whiteColor].CGColor];
@@ -611,28 +610,35 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) idNow:(id) sender
 {
+    self.idNowButtonCenterYAlignmentConstraint.constant = 0;
+    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+
+    }];
+
     self.findDrinkButton.hidden = YES;
     self.findDrinkButton.enabled = NO;
-    
-    
+
+
     self.songInfoLabel.text = @"";
     self.statusIdNowLabel.text = @"LISTENING...";
-    
-    
+
+
 
 
     if(self.gnMusicIDStream)
     {
         [self enableOrDisableControls:NO];
         [self.results removeAllObjects];
-        
+
         self.currentlySelectedIndexPath = nil;
-        
+
         NSError *error = nil;
         [self.cancellableObjects addObject: self.gnMusicIDStream];
         [self.gnMusicIDStream identifyAlbumAsync:&error];
         [self updateStatus: @"Identifying"];
-        
+
         if (error)
         {
             NSLog(@"Identify Error = %@", [error localizedDescription]);
@@ -648,6 +654,15 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction)cancelAllOperations:(id)sender
 {
+
+    self.idNowButtonCenterYAlignmentConstraint.constant = -65.0f;
+
+    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+
+    }];
+
     NSLog(@"CANCEL BUTTON TAPPED");
     self.statusIdNowLabel.text = @"Cancelled";
     [self enableOrDisableControls:YES];
@@ -678,23 +693,23 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
     // Clear out image before downloading new one
     self.drinkView.imageView.image = nil;
-    
+
     [[NetworkController networkController] fetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.albumArtist withCompletionHandler:^(NSString *errorString, Drink *drink) {
         if (errorString == nil && drink != nil) {
-            
+
             // Set the currentDrink with the result from the mongodb
             self.currentDrink = drink;
             self.drinkView.labelView.text = [self.currentDrink.name stringByReplacingOccurrencesOfString:@"_" withString:@" "];
-            
+
             [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
-                
+
                 self.currentDrink.image = drinkImage;
                 self.drinkView.imageView.image = drinkImage;
                 [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
-                    
+
                     CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.view.frame.size.height * 0.35f, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
                     self.drinkView.frame = drinkViewFrame;
-                    
+
                 } completion:^(BOOL finished) {
                 }];
             }];
@@ -898,16 +913,24 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 -(void) loadSongDataIntoViews {
+
+    self.idNowButtonCenterYAlignmentConstraint.constant = -65.0f;
+
+    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+
+    }];
     if (self.currentDataModel == nil) {
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
         return;
     } else {
         self.statusIdNowLabel.text = @"Match Found!";
-        
+
         self.findDrinkButton.hidden = NO;
         self.findDrinkButton.enabled = YES;
-        
+
         self.songInfoLabel.text = [NSString stringWithFormat:@"%@\n%@",self.currentDataModel.trackTitle, self.currentDataModel.albumArtist];
 
         UIImage *songAlbumImageFromData = [UIImage imageWithData: self.currentDataModel.albumImageData];
@@ -920,7 +943,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
         CGRect extent = [result extent];
         CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
-        
+
         self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
         self.covertArtSmallImageView.image = songAlbumImageFromData;
         [self.view addSubview:self.covertArtSmallImageView];
@@ -936,7 +959,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                 self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * 0.17f);
             }];
         }];
-        
+
 
     }
 }

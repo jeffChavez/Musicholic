@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *songInfoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusIdNowLabel;
 
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *idNowButtonCenterYAlignmentConstraint;
 
 - (IBAction) login:(id) sender;
 - (IBAction) idNow:(id) sender;

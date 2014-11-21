@@ -14,6 +14,9 @@
 		6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B2E86111A1D4784003FBAD0 /* martini.jpg */; };
 		6BA157A71A1C2BD800005950 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA157A61A1C2BD800005950 /* NetworkController.m */; };
 		6BA157AA1A1C2C8E00005950 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA157A91A1C2C8E00005950 /* Drink.m */; };
+		6BA5EC901A1FC1620006CA6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC8F1A1FC1620006CA6C /* LaunchScreen.xib */; };
+		6BA5EC921A1FC1BA0006CA6C /* musicholic_logo_text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC911A1FC1BA0006CA6C /* musicholic_logo_text.pdf */; };
+		6BA5EC941A1FC6710006CA6C /* musicholic_logo_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC931A1FC6710006CA6C /* musicholic_logo_circle.png */; };
 		6BA6012B1A1D8769008B981A /* musicholic_mocklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA6012A1A1D8769008B981A /* musicholic_mocklogo.png */; };
 		6BA6012D1A1D8BA9008B981A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6012C1A1D8BA9008B981A /* CoreImage.framework */; };
 		6BA601301A1D9A1A008B981A /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6012F1A1D9A1A008B981A /* Song.m */; };
@@ -64,6 +67,9 @@
 		6BA157A61A1C2BD800005950 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
 		6BA157A81A1C2C8E00005950 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
 		6BA157A91A1C2C8E00005950 /* Drink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
+		6BA5EC8F1A1FC1620006CA6C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = GN_Music_SDK_iOS/LaunchScreen.xib; sourceTree = "<group>"; };
+		6BA5EC911A1FC1BA0006CA6C /* musicholic_logo_text.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = musicholic_logo_text.pdf; sourceTree = "<group>"; };
+		6BA5EC931A1FC6710006CA6C /* musicholic_logo_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicholic_logo_circle.png; sourceTree = "<group>"; };
 		6BA6012A1A1D8769008B981A /* musicholic_mocklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicholic_mocklogo.png; sourceTree = "<group>"; };
 		6BA6012C1A1D8BA9008B981A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6BA6012E1A1D9A1A008B981A /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 				F6BBF98917CD10BC00E9814E /* GN_Music_SDK_iOS */,
 				F6BBF98217CD10BC00E9814E /* Frameworks */,
 				F6BBF98117CD10BC00E9814E /* Products */,
+				6BA5EC8F1A1FC1620006CA6C /* LaunchScreen.xib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,6 +230,8 @@
 		F6BBF98A17CD10BC00E9814E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6BA5EC911A1FC1BA0006CA6C /* musicholic_logo_text.pdf */,
+				6BA5EC931A1FC6710006CA6C /* musicholic_logo_circle.png */,
 				6BA6012A1A1D8769008B981A /* musicholic_mocklogo.png */,
 				F651AFEC182ACA6100B0D688 /* IDNow@2x.png */,
 				2C53B1371A1D765D00ECB907 /* musicholic_cancelButton.pdf */,
@@ -274,7 +283,7 @@
 				ORGANIZATIONNAME = CodeFellows;
 				TargetAttributes = {
 					F6BBF97F17CD10BC00E9814E = {
-						DevelopmentTeam = J42Q5AV837;
+						DevelopmentTeam = T337VCC9XQ;
 					};
 				};
 			};
@@ -313,10 +322,13 @@
 				F650376E17FD566C0058F9BB /* NavBarImage.png in Resources */,
 				F651AFED182ACA6100B0D688 /* IDNow@2x.png in Resources */,
 				F648A64218A80B0500B303ED /* 1557.b in Resources */,
+				6BA5EC921A1FC1BA0006CA6C /* musicholic_logo_text.pdf in Resources */,
 				F6BBF98E17CD10BC00E9814E /* InfoPlist.strings in Resources */,
 				6BA601331A1E7F14008B981A /* UserSignInView.xib in Resources */,
 				6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */,
+				6BA5EC941A1FC6710006CA6C /* musicholic_logo_circle.png in Resources */,
 				F650377617FDC96D0058F9BB /* 320x568h.png in Resources */,
+				6BA5EC901A1FC1620006CA6C /* LaunchScreen.xib in Resources */,
 				F650377E17FDD24A0058F9BB /* idNowButtonImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,7 +466,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
@@ -488,7 +499,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
