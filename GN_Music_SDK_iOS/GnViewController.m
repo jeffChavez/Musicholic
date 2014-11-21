@@ -87,18 +87,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     [super viewDidLoad];
 
-    //Apply default blur to album image
-    CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
-    CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [imageFilter setDefaults];
-    [imageFilter setValue:image forKey:kCIInputImageKey];
-    NSNumber *radius = [NSNumber numberWithInt:5];
-    [imageFilter setValue:radius forKey:kCIInputRadiusKey];
-    CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
-    CGRect extent = [result extent];
-    CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
-    self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
-
+    
     
     // Set up buttons
     self.cancelOperationsButton.alpha = 0.0;
@@ -113,12 +102,25 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // Clear labels
     self.songInfoLabel.text = @"";
     self.statusIdNowLabel.text = @"";
-
-
+    
     // Gradient set up
     // TODO: this context line causes the error on iPad: BSXPCMessage received error for message: Connection interrupted
     self.gpuContext = [CIContext contextWithOptions:nil];
+        //Apply default blur to album image
+        self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
+        CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
+        CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+        [imageFilter setDefaults];
+        [imageFilter setValue:image forKey:kCIInputImageKey];
+        NSNumber *radius = [NSNumber numberWithInt:10];
+        [imageFilter setValue:radius forKey:kCIInputRadiusKey];
+        CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
+        CGRect extent = [result extent];
+        CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
+        self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
 
+    
+    
     self.covertArtSmallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.20f, self.view.frame.size.width * 0.20f)];
 
     // Create a gradient layer that goes transparent -&gt; opaque
@@ -623,8 +625,11 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) idNow:(id) sender
 {
+    
     self.idNowButtonCenterYAlignmentConstraint.constant = 0;
     [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
+        self.songAlbumImage.alpha = 0;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
 
@@ -668,9 +673,23 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (IBAction)cancelAllOperations:(id)sender
 {
 
+    self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
+    CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
+    CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [imageFilter setDefaults];
+    [imageFilter setValue:image forKey:kCIInputImageKey];
+    NSNumber *radius = [NSNumber numberWithInt:10];
+    [imageFilter setValue:radius forKey:kCIInputRadiusKey];
+    CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
+    CGRect extent = [result extent];
+    CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
+    self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+
+    
     self.idNowButtonCenterYAlignmentConstraint.constant = -65.0f;
 
     [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
+        self.songAlbumImage.alpha = 1;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
 
@@ -937,6 +956,24 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     if (self.currentDataModel == nil) {
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
+        
+        self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
+        CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
+        CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+        [imageFilter setDefaults];
+        [imageFilter setValue:image forKey:kCIInputImageKey];
+        NSNumber *radius = [NSNumber numberWithInt:10];
+        [imageFilter setValue:radius forKey:kCIInputRadiusKey];
+        CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
+        CGRect extent = [result extent];
+        CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
+        self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+
+        [UIView animateWithDuration:0.4 animations:^{
+            self.songAlbumImage.alpha = 1.0;
+        }];
+
+        
         return;
     } else {
         self.statusIdNowLabel.text = @"Match Found!";
@@ -965,8 +1002,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             self.songAlbumImage.alpha = 0.0;
             self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
         } completion:^(BOOL finished) {
-//            self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
-            self.songAlbumImage.image = songAlbumImageFromData;
+            self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+//            self.songAlbumImage.image = songAlbumImageFromData;
             [UIView animateWithDuration:0.4 animations:^{
                 self.songAlbumImage.alpha = 1.0;
                 self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * 0.17f);
