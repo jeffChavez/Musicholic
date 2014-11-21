@@ -87,6 +87,19 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     [super viewDidLoad];
 
+    //Apply default blur to album image
+    CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
+    CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [imageFilter setDefaults];
+    [imageFilter setValue:image forKey:kCIInputImageKey];
+    NSNumber *radius = [NSNumber numberWithInt:5];
+    [imageFilter setValue:radius forKey:kCIInputRadiusKey];
+    CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
+    CGRect extent = [result extent];
+    CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
+    self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+
+    
     // Set up buttons
     self.cancelOperationsButton.alpha = 0.0;
     self.echoNestFindDrinkButton.hidden = YES;
@@ -104,7 +117,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
     // Gradient set up
     // TODO: this context line causes the error on iPad: BSXPCMessage received error for message: Connection interrupted
-//    self.gpuContext = [CIContext contextWithOptions:nil];
+    self.gpuContext = [CIContext contextWithOptions:nil];
 
     self.covertArtSmallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.20f, self.view.frame.size.width * 0.20f)];
 
@@ -123,7 +136,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // Create a image view for the topImage we created above and apply the mask
 
     [alphaGradientLayer setFrame:[self.songAlbumImage bounds]];
-//    [[self.songAlbumImage layer] setMask:alphaGradientLayer];
+    [[self.songAlbumImage layer] setMask:alphaGradientLayer];
 
 
 
