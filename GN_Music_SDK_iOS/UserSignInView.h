@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GnViewController.h"
 
-@interface UserSignInView : UIView
+@interface UserSignInView : UIView 
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (strong, nonatomic) GnViewController *GnViewController;
 @property (strong, nonatomic) UserSignInView *userSignInView;
+
 
 
 @end
