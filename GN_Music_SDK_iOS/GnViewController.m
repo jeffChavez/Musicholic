@@ -33,7 +33,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 
-//TEST
+// Current items
 @property (strong, nonatomic) GnDataModel *currentDataModel;
 @property (strong, nonatomic) Drink *currentDrink;
 @property (strong, nonatomic) Song  *currentSong;
@@ -133,10 +133,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
     self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
 
+    
     // Set up drinkView
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
-    
     float width = self.view.frame.size.width * 0.7f;
     CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, width, width + 30);
     self.drinkView.frame = drinkViewFrame;
@@ -270,6 +270,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 
+// Login button pressed
 - (void)login:(id)sender {
 
     //set frame offscreen
@@ -282,6 +283,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }];
 }
 
+// User signed in to request Oauth
 - (void) didSignIn: (id) sender {
 
     self.currentUser.screenname = self.userSignInView.usernameTextField.text;
@@ -593,32 +595,88 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 	self.statusLabel.text = statusToDisplay;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 
 #pragma mark - BUTTONS PRESSED
 
+-(void) idNow:(id) sender
+{
+    self.findDrinkButton.hidden = YES;
+    self.findDrinkButton.enabled = NO;
+    
+    
+    self.songInfoLabel.text = @"";
+    self.statusIdNowLabel.text = @"LISTENING...";
+    [UIView animateWithDuration:0.4 animations:^{
+        self.songAlbumImage.alpha = 0;
+        self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
+    }];
+    if(self.gnMusicIDStream)
+    {
+        [self enableOrDisableControls:NO];
+        [self.results removeAllObjects];
+        
+        self.currentlySelectedIndexPath = nil;
+        
+        NSError *error = nil;
+        [self.cancellableObjects addObject: self.gnMusicIDStream];
+        [self.gnMusicIDStream identifyAlbumAsync:&error];
+        [self updateStatus: @"Identifying"];
+        
+        if (error)
+        {
+            NSLog(@"Identify Error = %@", [error localizedDescription]);
+            self.queryBeginTimeInterval = -1;
+        }
+        else
+        {
+            self.queryBeginTimeInterval = [[NSDate date] timeIntervalSince1970];
+        }
+    }
+}
 
-// TODO : only show find drink button if there is a currentdatamodel
+
+- (IBAction)cancelAllOperations:(id)sender
+{
+    NSLog(@"CANCEL BUTTON TAPPED");
+    self.statusIdNowLabel.text = @"Cancelled";
+    [self enableOrDisableControls:YES];
+    for(id obj in self.cancellableObjects)
+    {
+        if([obj isKindOfClass:[GnMusicIdStream class]])
+        {
+            NSError *error = nil;
+            [obj identifyCancel:&error];
+            if(error)
+            {
+                NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
+            }
+        }
+        else if ([obj isKindOfClass:[GnMusicIdFile class]])
+        {
+            [obj cancel];
+        }
+        else
+        {
+            [obj setCancel:YES];
+        }
+    }
+}
+
+
 - (IBAction) findDrink:(id) sender {
-    
+
+    // Clear out image before downloading new one
     self.drinkView.imageView.image = nil;
-
-
-
-    // TODO: make sure that self.currentDataModel.trackTitle and self.currentDataModel.albumArtist are not nil
     
-    // COMMENT THIS BACK IN TO ACTUALLY USE THE SONG THAT WAS CAPTURED BY IDNOW
-//    [[NetworkController networkController] fetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.albumArtist withCompletionHandler:^(NSString *errorString, Drink *drink) {
-    [[NetworkController networkController] fetchDrinkForSong: @"All of the lights" withArtist: @"Kanye west" withCompletionHandler:^(NSString *errorString, Drink *drink) {
+    [[NetworkController networkController] fetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.albumArtist withCompletionHandler:^(NSString *errorString, Drink *drink) {
         if (errorString == nil && drink != nil) {
-            // Set the currentDrink property with the result from the mongodb
+            
+            // Set the currentDrink with the result from the mongodb
             self.currentDrink = drink;
             self.drinkView.labelView.text = [self.currentDrink.name stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+            
             [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
                 
                 self.currentDrink.image = drinkImage;
@@ -703,82 +761,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 //    }];
 }
 
--(void) idNow:(id) sender
-{
-    self.findDrinkButton.hidden = YES;
-    self.findDrinkButton.enabled = NO;
-
-    
-    self.songInfoLabel.text = @"";
-    self.statusIdNowLabel.text = @"LISTENING...";
-    [UIView animateWithDuration:0.4 animations:^{
-        self.songAlbumImage.alpha = 0;
-        self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
-    }];
-    if(self.gnMusicIDStream)
-    {
-        [self enableOrDisableControls:NO];
-        [self.results removeAllObjects];
-
-        self.currentlySelectedIndexPath = nil;
-
-        NSError *error = nil;
-        [self.cancellableObjects addObject: self.gnMusicIDStream];
-        [self.gnMusicIDStream identifyAlbumAsync:&error];
-        [self updateStatus: @"Identifying"];
-
-        if (error)
-        {
-            NSLog(@"Identify Error = %@", [error localizedDescription]);
-            self.queryBeginTimeInterval = -1;
-        }
-        else
-        {
-            self.queryBeginTimeInterval = [[NSDate date] timeIntervalSince1970];
-        }
-    }
-}
-
-
-- (IBAction)cancelAllOperations:(id)sender
-{
-    NSLog(@"CANCEL BUTTON TAPPED");
-    self.statusIdNowLabel.text = @"Cancelled";
-    [self enableOrDisableControls:YES];
-    for(id obj in self.cancellableObjects)
-    {
-        if([obj isKindOfClass:[GnMusicIdStream class]])
-        {
-            NSError *error = nil;
-            [obj identifyCancel:&error];
-            if(error)
-            {
-                NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
-            }
-        }
-        else if ([obj isKindOfClass:[GnMusicIdFile class]])
-        {
-            [obj cancel];
-        }
-        else
-        {
-            [obj setCancel:YES];
-        }
-    }
-}
-
-
-#pragma mark - Do Operation Methods
-
-
-
-
-
-
-- (NSString*)stringWithPercentEscape:(NSString*) refStr
-{
-    return (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)refStr, NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingUTF8));
-}
 
 #pragma mark - Process Album Response
 
@@ -790,12 +772,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
     if([responseAlbums isKindOfClass:[GnResponseAlbums class]]) {
         albums = [responseAlbums albums];
-        NSLog(@"responseAlbums is Kind of Class GnResponseAlbums");
     }
     else {
         albums = responseAlbums;
     }
-
 
     for(GnAlbum* album in albums)
     {
@@ -874,8 +854,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
@@ -910,6 +890,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) loadSongDataIntoViews {
     if (self.currentDataModel == nil) {
+        //TODO: WHAT TO SHOW FOR THE TOP IMAGE IN THIS CASE???
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
         return;
@@ -1142,8 +1123,6 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) musicIdStreamAlbumResult: (GnResponseAlbums*)result cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
-    // A RESULT WAS FOUND. processAlbumResponseAndUpdateResultsTable called
-    NSLog(@"musicIdStreamAlbumResult fired.");
     [self.cancellableObjects removeObject:self.gnMusicIDStream];
 
     if(self.cancellableObjects.count==0)

@@ -87,14 +87,8 @@
     NSString *urlString = [NSString stringWithFormat: @"https://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@", api_key, songArtistNoSpaces, songTitleNoSpaces];
     NSLog(@"%@", urlString);
 
-    // Make dictionary to package into JSON.
-//    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-//                          urlString, @"url",
-//                          nil];
-
+    // Create JSON
     NSDictionary *dict = @{@"url" : urlString};
-
-    
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options: NSJSONWritingPrettyPrinted error:&error];
 
@@ -121,29 +115,7 @@
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     success(nil, drink);
                 }];
-
-            
                 
-                
-                
-//                NSString *newURLString = @"https://musicholic.herokuapp.com/out";
-//                NSURL *newURL = [NSURL URLWithString:newURLString];
-//
-//                NSURLSessionDataTask *newDataRequest = [[NSURLSession sharedSession] dataTaskWithURL:newURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//                    if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
-//                        NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
-//                        NSLog(@"NEW status code is %ld",(long)[httpResponse statusCode]);
-//                        if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
-//                            NSLog(@"NEW status code 200");
-//                        }
-//                    }
-//                }];
-//                [newDataRequest resume];
-                
-                
-                
-                
-                                                 
             } else {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     NSLog(@"There was an error: %@",error.localizedDescription);
