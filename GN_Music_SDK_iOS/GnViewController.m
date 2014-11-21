@@ -617,10 +617,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     
     self.songInfoLabel.text = @"";
     self.statusIdNowLabel.text = @"LISTENING...";
-    [UIView animateWithDuration:0.4 animations:^{
-        self.songAlbumImage.alpha = 0;
-        self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
-    }];
+    
+    
+
+
     if(self.gnMusicIDStream)
     {
         [self enableOrDisableControls:NO];
@@ -899,7 +899,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) loadSongDataIntoViews {
     if (self.currentDataModel == nil) {
-        //TODO: WHAT TO SHOW FOR THE TOP IMAGE IN THIS CASE???
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
         return;
@@ -921,15 +920,23 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
         CGRect extent = [result extent];
         CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
-        self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
-
-        self.covertArtSmallImageView.image = songAlbumImageFromData;
+        
         self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
+        self.covertArtSmallImageView.image = songAlbumImageFromData;
         [self.view addSubview:self.covertArtSmallImageView];
+
         [UIView animateWithDuration:0.4 animations:^{
-            self.songAlbumImage.alpha = 1;
-            self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * 0.17f);
+            self.songAlbumImage.alpha = 0.0;
+            self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
+        } completion:^(BOOL finished) {
+//            self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+            self.songAlbumImage.image = songAlbumImageFromData;
+            [UIView animateWithDuration:0.4 animations:^{
+                self.songAlbumImage.alpha = 1.0;
+                self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * 0.17f);
+            }];
         }];
+        
 
     }
 }
