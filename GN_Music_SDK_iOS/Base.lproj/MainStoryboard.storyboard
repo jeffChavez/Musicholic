@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -69,12 +70,6 @@
                                     <action selector="idNow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yeb-RL-1cy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" preferredMaxLayoutWidth="48" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-vN-C0D">
-                                <rect key="frame" x="8" y="208" width="202" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYC-sN-Yet">
                                 <rect key="frame" x="6" y="585" width="40" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -94,13 +89,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="xu6-03-2IW">
-                                <rect key="frame" x="275" y="259" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="276" y="263" width="49" height="17"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igl-3p-5U5">
-                                <rect key="frame" x="257" y="450" width="86" height="30"/>
+                                <rect key="frame" x="260" y="450" width="81" height="27"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="FIND DRINK">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,8 +106,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qo-CZ-kU5">
-                                <rect key="frame" x="541" y="563" width="44" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="540" y="566" width="45" height="26"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="14"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,7 +126,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTD-zj-0JB">
-                                <rect key="frame" x="267" y="466" width="67" height="30"/>
+                                <rect key="frame" x="266" y="477" width="69" height="27"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
                                 <state key="normal" title="EchoNest">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,37 +136,44 @@
                                     <action selector="echoNest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jG7-JU-0SV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-vN-C0D">
+                                <rect key="frame" x="16" y="120" width="568" height="17"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" id="4e0-Ex-jJE"/>
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="16" id="8lZ-W5-ITJ"/>
+                            <constraint firstAttribute="centerX" secondItem="AC3-vN-C0D" secondAttribute="centerX" id="Efs-0w-d18"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="hYC-sN-Yet" secondAttribute="bottom" id="KSI-Ry-kYg"/>
                             <constraint firstItem="hYC-sN-Yet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="KZi-sA-vFA"/>
                             <constraint firstAttribute="trailing" secondItem="7qo-CZ-kU5" secondAttribute="trailing" constant="15" id="OKh-lO-cT4"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
-                            <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="R45-LB-sqp"/>
                             <constraint firstAttribute="centerX" secondItem="ZTD-zj-0JB" secondAttribute="centerX" id="SEK-b9-bme"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="UzK-cQ-Cgk"/>
-                            <constraint firstItem="AC3-vN-C0D" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="8" id="VSy-Fd-NyG"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
                             <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="15" id="Zcd-Yh-7zB"/>
                             <constraint firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="b94-Zu-iKU"/>
                             <constraint firstAttribute="centerY" secondItem="1pw-PF-b3I" secondAttribute="centerY" constant="-65" id="bkf-i1-feA"/>
                             <constraint firstAttribute="trailing" secondItem="t4o-ty-FOZ" secondAttribute="trailing" id="cQb-t5-5oF"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cdP-KM-7Ld"/>
+                            <constraint firstItem="AC3-vN-C0D" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ebV-ea-cHK"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="fSV-Cf-XJi"/>
                             <constraint firstAttribute="trailing" secondItem="kAg-Qh-xzK" secondAttribute="trailing" constant="-1000" id="fzA-32-VAk"/>
-                            <constraint firstItem="1pw-PF-b3I" firstAttribute="leading" secondItem="AC3-vN-C0D" secondAttribute="trailing" constant="20" id="mVV-g4-cwZ"/>
+                            <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hTD-gh-hIC"/>
                             <constraint firstItem="P5N-m7-9U4" firstAttribute="leading" secondItem="hYC-sN-Yet" secondAttribute="trailing" constant="8" id="pOB-By-n1V"/>
                             <constraint firstAttribute="centerX" secondItem="igl-3p-5U5" secondAttribute="centerX" id="pXD-TM-5gN"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="rSs-Vh-6b9"/>
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="s4S-QL-LhG"/>
                             <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1000" id="th6-Xz-Pmh"/>
-                            <constraint firstItem="ZTD-zj-0JB" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="31" id="uHW-7h-HYn"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="7qo-CZ-kU5" secondAttribute="bottom" constant="8" id="wHT-0d-GuT"/>
+                            <constraint firstItem="AC3-vN-C0D" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="100" id="yKp-0I-l3j"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="top" secondItem="xu6-03-2IW" secondAttribute="bottom" constant="15" id="z4r-8G-FVG"/>
+                            <constraint firstItem="ZTD-zj-0JB" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="42" id="znj-pA-xcQ"/>
                         </constraints>
                     </view>
                     <connections>
