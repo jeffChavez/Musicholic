@@ -15,9 +15,9 @@
     self.artist = songDictionary[@"artist_name"];
     self.title = songDictionary[@"title"];
     self.songId = songDictionary[@"id"];
-    self.energy = [[songDictionary valueForKeyPath:@"audio_summary.energy"] integerValue];
-    self.danceability = [[songDictionary valueForKeyPath:@"audio_summary.danceability"] integerValue];
-    self.tempo = [[songDictionary valueForKeyPath:@"audio_summary.tempo"] integerValue];
+    self.energy = [[songDictionary valueForKeyPath:@"audio_summary.energy"] floatValue];
+    self.danceability = [[songDictionary valueForKeyPath:@"audio_summary.danceability"] floatValue];
+    self.tempo = [[songDictionary valueForKeyPath:@"audio_summary.tempo"] floatValue];
     return self;
 }
 

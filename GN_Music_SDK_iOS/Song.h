@@ -13,9 +13,9 @@
 @property (nonatomic, strong) NSString *artist;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *songId;
-@property (nonatomic, assign) NSInteger danceability;
-@property (nonatomic, assign) NSInteger energy;
-@property (nonatomic, assign) NSInteger tempo;
+@property (nonatomic, assign) float danceability;
+@property (nonatomic, assign) float energy;
+@property (nonatomic, assign) float tempo;
 
 
 - (instancetype) initWithDictionary: (NSDictionary *) songDictionary;
