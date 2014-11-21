@@ -129,6 +129,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTD-zj-0JB">
+                                <rect key="frame" x="267" y="466" width="67" height="30"/>
+                                <state key="normal" title="EchoNest">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="echoNest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jG7-JU-0SV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -139,6 +149,7 @@
                             <constraint firstAttribute="trailing" secondItem="7qo-CZ-kU5" secondAttribute="trailing" constant="15" id="OKh-lO-cT4"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
                             <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="R45-LB-sqp"/>
+                            <constraint firstAttribute="centerX" secondItem="ZTD-zj-0JB" secondAttribute="centerX" id="SEK-b9-bme"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="UzK-cQ-Cgk"/>
                             <constraint firstItem="AC3-vN-C0D" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="8" id="VSy-Fd-NyG"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
@@ -156,6 +167,7 @@
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="s4S-QL-LhG"/>
                             <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1000" id="th6-Xz-Pmh"/>
+                            <constraint firstItem="ZTD-zj-0JB" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="31" id="uHW-7h-HYn"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="7qo-CZ-kU5" secondAttribute="bottom" constant="8" id="wHT-0d-GuT"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="top" secondItem="xu6-03-2IW" secondAttribute="bottom" constant="15" id="z4r-8G-FVG"/>
                         </constraints>

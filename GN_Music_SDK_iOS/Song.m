@@ -26,7 +26,7 @@
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     NSDictionary *responseDictionary = jsonDictionary[@"response"];
     NSArray *songsArray = responseDictionary[@"songs"];
-    NSDictionary *songDictionary = songsArray[0];
+    NSDictionary *songDictionary = songsArray.firstObject;
     Song *newSong = [[Song alloc] initWithDictionary:songDictionary];
     return newSong;
 }
