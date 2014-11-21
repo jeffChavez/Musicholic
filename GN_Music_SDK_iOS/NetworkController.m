@@ -110,7 +110,6 @@
             if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
                 NSLog(@"status code 200");
                 
-                
                 Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     success(nil, drink);

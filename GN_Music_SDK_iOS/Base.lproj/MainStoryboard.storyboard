@@ -63,7 +63,7 @@
                                     <constraint firstAttribute="width" secondItem="1pw-PF-b3I" secondAttribute="height" multiplier="1:1" id="R3O-FH-p7O"/>
                                     <constraint firstAttribute="width" constant="140" id="RXa-N2-o5W"/>
                                 </constraints>
-                                <state key="normal" image="musicholic_mocklogo.png">
+                                <state key="normal" image="musicholic_logo_circle.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -183,6 +183,7 @@
                         <outlet property="findDrinkButton" destination="igl-3p-5U5" id="Oxi-5A-iZa"/>
                         <outlet property="gracenoteLogoImageView" destination="Fy3-AN-tXo" id="Yng-DB-91T"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
+                        <outlet property="idNowButtonCenterYAlignmentConstraint" destination="bkf-i1-feA" id="2rU-kL-pCF"/>
                         <outlet property="showOrHideVisualizationButton" destination="ekR-At-UIa" id="xzp-Bx-Vuv"/>
                         <outlet property="showOrHideVisualizationButtonView" destination="slf-em-6jT" id="ewr-9M-roW"/>
                         <outlet property="songAlbumImage" destination="t4o-ty-FOZ" id="ifO-Bc-UYF"/>
@@ -203,6 +204,6 @@
         <image name="GracenoteLogo" width="200" height="200"/>
         <image name="coloredRing" width="300" height="300"/>
         <image name="martini.jpg" width="450" height="419"/>
-        <image name="musicholic_mocklogo.png" width="300" height="300"/>
+        <image name="musicholic_logo_circle.png" width="1024" height="1024"/>
     </resources>
 </document>
