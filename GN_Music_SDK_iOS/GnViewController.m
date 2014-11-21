@@ -546,6 +546,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction) findDrink:(id) sender {
 
+
     [[NetworkController networkController] fetchDrinkForSong:@"billie jean" withArtist:@"michael jackson" withCompletionHandler:^(NSString *errorString, Drink *drink) {
         if (errorString == nil && drink != nil) {
             // Set the currentDrink property with the result from the mongodb
@@ -560,8 +561,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         } else {
         }
     }];
-
-
 }
 
 - (void)echoNest:(id)sender {
