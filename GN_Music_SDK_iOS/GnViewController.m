@@ -66,7 +66,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property (strong) NSMutableArray *results;
 
 @property NSIndexPath *currentlySelectedIndexPath;
-@property NSInteger idNowCount;
 
 @property DrinkView *drinkView;
 @property NSInteger *randomY;
@@ -620,9 +619,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) idNow:(id) sender
 {
-    NSLog(@"ID NOW BUTTON");
     self.statusIdNowLabel.text = @"LISTENING...";
-    self.idNowCount ++;
     if(self.gnMusicIDStream)
     {
         self.cancelOperationsButton.enabled = YES;
@@ -653,26 +650,24 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     self.statusIdNowLabel.text = @"Cancelled";
     [self enableOrDisableControls:YES];
-    if (self.cancellableObjects.count > 0) {
-        for(id obj in self.cancellableObjects)
+    for(id obj in self.cancellableObjects)
+    {
+        if([obj isKindOfClass:[GnMusicIdStream class]])
         {
-            if([obj isKindOfClass:[GnMusicIdStream class]])
+            NSError *error = nil;
+            [obj identifyCancel:&error];
+            if(error)
             {
-                NSError *error = nil;
-                [obj identifyCancel:&error];
-                if(error)
-                {
-                    NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
-                }
+                NSLog(@"MusicIDStream Cancel Error = %@", [error localizedDescription]);
             }
-            else if ([obj isKindOfClass:[GnMusicIdFile class]])
-            {
-                [obj cancel];
-            }
-            else
-            {
-                [obj setCancel:YES];
-            }
+        }
+        else if ([obj isKindOfClass:[GnMusicIdFile class]])
+        {
+            [obj cancel];
+        }
+        else
+        {
+            [obj setCancel:YES];
         }
     }
 }
@@ -819,17 +814,12 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 -(void) loadSongDataIntoViews {
-    if (self.idNowCount < 5 && self.currentDataModel == nil) {
-        [self.idNowButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-        return;
-    }
     if (self.currentDataModel == nil) {
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
-        self.idNowCount = 0;
         return;
     } else {
-        self.statusIdNowLabel.text = @"MATCH FOUND!";
+        self.statusIdNowLabel.text = @"Match Found!";
         self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
 
         UIImage *songAlbumImage = [UIImage imageWithData: self.currentDataModel.albumImageData];
@@ -1034,8 +1024,10 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
             break;
     }
 
+    
 	[self updateStatus: [NSString stringWithFormat:@"%@ [%zu%%]", statusString?statusString:@"", (unsigned long)percentComplete]];
 }
+
 
 -(void) musicIdStreamAlbumResult: (GnResponseAlbums*)result cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {

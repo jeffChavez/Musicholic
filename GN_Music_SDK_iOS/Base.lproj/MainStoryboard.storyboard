@@ -82,10 +82,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9i-Yk-EHZ">
-                                <rect key="frame" x="560" y="216" width="24" height="24"/>
+                                <rect key="frame" x="524" y="216" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="q27-tS-J9W"/>
-                                    <constraint firstAttribute="width" constant="24" id="zUO-ve-h08"/>
+                                    <constraint firstAttribute="width" secondItem="u9i-Yk-EHZ" secondAttribute="height" multiplier="1:1" id="qQr-gz-K60"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="CancelButtonImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,7 +100,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igl-3p-5U5">
-                                <rect key="frame" x="257" y="443" width="86" height="30"/>
+                                <rect key="frame" x="257" y="450" width="86" height="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="FIND DRINK">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -154,7 +153,7 @@
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="UzK-cQ-Cgk"/>
                             <constraint firstItem="AC3-vN-C0D" firstAttribute="top" secondItem="t4o-ty-FOZ" secondAttribute="bottom" constant="8" id="VSy-Fd-NyG"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
-                            <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="8" id="Zcd-Yh-7zB"/>
+                            <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="15" id="Zcd-Yh-7zB"/>
                             <constraint firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="b94-Zu-iKU"/>
                             <constraint firstAttribute="centerY" secondItem="1pw-PF-b3I" secondAttribute="centerY" constant="-65" id="bkf-i1-feA"/>
                             <constraint firstAttribute="trailing" secondItem="t4o-ty-FOZ" secondAttribute="trailing" id="cQb-t5-5oF"/>
@@ -165,6 +164,7 @@
                             <constraint firstItem="P5N-m7-9U4" firstAttribute="leading" secondItem="hYC-sN-Yet" secondAttribute="trailing" constant="8" id="pOB-By-n1V"/>
                             <constraint firstAttribute="centerX" secondItem="igl-3p-5U5" secondAttribute="centerX" id="pXD-TM-5gN"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="rSs-Vh-6b9"/>
+                            <constraint firstItem="u9i-Yk-EHZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="s4S-QL-LhG"/>
                             <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
                             <constraint firstItem="kAg-Qh-xzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1000" id="th6-Xz-Pmh"/>
                             <constraint firstItem="ZTD-zj-0JB" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="31" id="uHW-7h-HYn"/>
@@ -175,6 +175,7 @@
                     <connections>
                         <outlet property="cancelOperationsButton" destination="u9i-Yk-EHZ" id="rJx-Ps-Lx3"/>
                         <outlet property="coloredRingImageView" destination="dY9-wr-odg" id="QFs-es-WdD"/>
+                        <outlet property="findDrinkButton" destination="igl-3p-5U5" id="Oxi-5A-iZa"/>
                         <outlet property="gracenoteLogoImageView" destination="Fy3-AN-tXo" id="Yng-DB-91T"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
                         <outlet property="showOrHideVisualizationButton" destination="ekR-At-UIa" id="xzp-Bx-Vuv"/>

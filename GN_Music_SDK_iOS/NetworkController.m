@@ -77,29 +77,38 @@
     [dataRequest resume];
 }
 
+
 - (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Drink *))success; {
     
     // Create request URL
     NSString *songTitleNoSpaces = [title stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     NSString *songArtistNoSpaces = [artist stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     NSString *api_key = @"FGSG5VYMGP92BYLA8";
-    NSString *urlString = [NSString stringWithFormat: @"http://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@", api_key, songArtistNoSpaces, songTitleNoSpaces];
+    NSString *urlString = [NSString stringWithFormat: @"https://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@", api_key, songArtistNoSpaces, songTitleNoSpaces];
     NSLog(@"%@", urlString);
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          urlString, @"url",
-                          nil];
+
+    // Make dictionary to package into JSON.
+//    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                          urlString, @"url",
+//                          nil];
+
+    NSDictionary *dict = @{@"url" : urlString};
+
+    
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-    [jsonData base64EncodedDataWithOptions:0];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options: NSJSONWritingPrettyPrinted error:&error];
+
+    // Create and set up request
     NSString *herokuURLString = @"https://musicholic.herokuapp.com/api";
     NSURL *url = [NSURL URLWithString:herokuURLString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
-    NSUInteger length = jsonData.length;
-    NSString *contentLengthString = [NSString stringWithFormat:@"%ldl", (long)length];
+    [request setHTTPMethod:@"POST"];
+    NSString *contentLengthString = [NSString stringWithFormat:@"%d", [jsonData length]];
     [request setValue:contentLengthString forHTTPHeaderField: @"Content-Length"];
+    [request setValue:contentLengthString forHTTPHeaderField: @"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
-    request.HTTPBody = jsonData;
+    [request setHTTPBody: jsonData];
+
     NSURLSessionDataTask *dataRequest = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
             NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
