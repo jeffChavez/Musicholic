@@ -79,38 +79,42 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 @implementation GnViewController
 
--(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
-
-    [UIView animateWithDuration:0.4 animations:^{
-        self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
-    }];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.cancelOperationsButton.alpha = 0.0;
+    
+    // Instantiate currentUser
+    self.currentUser = [[User alloc] init];
 
-    self.songInfoLabel.text = [NSString stringWithFormat:@"Track:  %@\nAlbum:  %@\nArtist: %@",self.currentDataModel.trackTitle, self.currentDataModel.albumTitle, self.currentDataModel.albumArtist];
+    // Clear labels
     self.songInfoLabel.text = @"";
     self.statusIdNowLabel.text = @"";
 
-    self.currentUser = [[User alloc] init];
-
+    // Set up userSignInView
     self.userSignInView = [[UserSignInView alloc] init];
     self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
     self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.userSignInView.frame.size.width, self.userSignInView.frame.size.height);
 
+    // Set up drinkView
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
-    self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
+    CGRect drinkViewFrame =  CGRectMake(1000, self.songAlbumImage.frame.origin.y + self.songAlbumImage.frame.size.height + 20, self.view.frame.size.width * 0.7, self.view.frame.size.height * 0.5);
+    self.drinkView.frame = drinkViewFrame;
     self.drinkView.imageView.layer.cornerRadius = self.drinkView.frame.size.width / 2;
     self.drinkView.imageView.layer.masksToBounds = YES;
 
+    // Set up tap gesture recognizer for the drinkView
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.drinkView addGestureRecognizer:tapGesture];
     [self.view addSubview:self.drinkView];
     [self.view addSubview:self.userSignInView];
 
+    
+    
+    // Other setup from GraceNote
     self.recordingIsPaused = NO;
     __block NSError * error = nil;
 
@@ -215,6 +219,15 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 			return;
 		}
 	}
+}
+
+
+-(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
+    
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
+    }];
 }
 
 
@@ -348,6 +361,13 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 {
     self.idNowButton.enabled = enable && self.audioProcessingStarted;
     self.cancelOperationsButton.enabled = !enable;
+    [UIView animateWithDuration:0.3 animations:^{
+        if (!enable) {
+            self.cancelOperationsButton.alpha = 1.0;
+        } else {
+            self.cancelOperationsButton.alpha = 0.0;
+        }
+    }];
 }
 
 
@@ -564,15 +584,23 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 - (void)echoNest:(id)sender {
-    [[NetworkController networkController] ECHONESTfetchDrinkForSong:@"Billie Jean" withArtist:@"Michael Jackson" withCompletionHandler:^(NSString *errorDescription, Song *song) {
+    [[NetworkController networkController] ECHONESTfetchDrinkForSong:@"All of the lights" withArtist:@"kanye west" withCompletionHandler:^(NSString *errorDescription, Song *song) {
         if (errorDescription == nil) {
             self.currentSong = song;
             
             [[NetworkController networkController] ECHONESTfetchDrinkForSongSummary:self.currentSong.songId withCompletionHandler:^(NSString *errorDescription, Song *song) {
                 if (errorDescription == nil) {
+                    
                     self.currentSong = song;
-                    NSLog(@"%ld", (long)self.currentSong.tempo);
+                    NSLog(@"%f", self.currentSong.tempo);
+                    NSLog(@"%f", self.currentSong.energy);
+                    NSLog(@"%f", self.currentSong.danceability);
                     NSLog(@"%@", self.currentSong.title);
+                    
+                    self.currentDrink = [[Drink alloc] init];
+                    
+                    
+                    
                     if (self.currentSong.energy <= 0.1) {
                         self.currentDrink.image = [UIImage imageNamed:@"1"];
                         self.currentDrink.name = @"Most Sad Drink";
@@ -607,7 +635,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                     self.drinkView.imageView.image = self.currentDrink.image;
                     self.drinkView.labelView.text = self.currentDrink.name;
                     [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
-                        self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+                        self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.songAlbumImage.frame.origin.y + self.songAlbumImage.frame.size.height + 20 + (self.drinkView.frame.size.height / 2));
+                        
                     } completion:^(BOOL finished) {
                     }];
                 }
@@ -617,11 +646,10 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 -(void) idNow:(id) sender
-{
+{    
     self.statusIdNowLabel.text = @"LISTENING...";
     if(self.gnMusicIDStream)
     {
-        self.cancelOperationsButton.enabled = YES;
         [self enableOrDisableControls:NO];
         [self.results removeAllObjects];
 
@@ -647,6 +675,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction)cancelAllOperations:(id)sender
 {
+    NSLog(@"CANCEL BUTTON TAPPED");
     self.statusIdNowLabel.text = @"Cancelled";
     [self enableOrDisableControls:YES];
     for(id obj in self.cancellableObjects)
