@@ -101,11 +101,16 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // Set up drinkView
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
-    CGRect drinkViewFrame =  CGRectMake(1000, self.songAlbumImage.frame.origin.y + self.songAlbumImage.frame.size.height + 20, self.view.frame.size.width * 0.7, self.view.frame.size.height * 0.5);
+    
+    
+
+
+    CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
     self.drinkView.frame = drinkViewFrame;
     self.drinkView.imageView.layer.cornerRadius = self.drinkView.frame.size.width / 2;
     self.drinkView.imageView.layer.masksToBounds = YES;
 
+    
     // Set up tap gesture recognizer for the drinkView
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.drinkView addGestureRecognizer:tapGesture];
@@ -226,7 +231,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     
     
     [UIView animateWithDuration:0.4 animations:^{
-        self.drinkView.frame = CGRectMake(self.view.frame.size.width + self.drinkView.frame.size.width, self.view.frame.size.height / 2, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
+
+        CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
+        self.drinkView.frame = drinkViewFrame;
     }];
 }
 
@@ -237,7 +244,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
     [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
 
-    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
+    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
         self.userSignInView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     } completion:^(BOOL finished) {
     }];
@@ -574,7 +581,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             self.drinkView.labelView.text = self.currentDrink.name;
             self.drinkView.imageView.image = self.currentDrink.image;
 
-            [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
+            [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
                 self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
             } completion:^(BOOL finished) {
             }];
@@ -634,8 +641,12 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                     }
                     self.drinkView.imageView.image = self.currentDrink.image;
                     self.drinkView.labelView.text = self.currentDrink.name;
-                    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8 initialSpringVelocity:0.2 options:0 animations:^{
-                        self.drinkView.center = CGPointMake(self.view.frame.size.width / 2, self.songAlbumImage.frame.origin.y + self.songAlbumImage.frame.size.height + 20 + (self.drinkView.frame.size.height / 2));
+                    
+                    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
+
+                        
+                        CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.view.frame.size.height * 0.35f, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
+                        self.drinkView.frame = drinkViewFrame;
                         
                     } completion:^(BOOL finished) {
                     }];
@@ -646,7 +657,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 }
 
 -(void) idNow:(id) sender
-{    
+{
     self.statusIdNowLabel.text = @"LISTENING...";
     if(self.gnMusicIDStream)
     {
