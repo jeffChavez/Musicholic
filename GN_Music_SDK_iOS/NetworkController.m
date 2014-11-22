@@ -97,7 +97,7 @@
     NSURL *url = [NSURL URLWithString:herokuURLString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
-    NSString *contentLengthString = [NSString stringWithFormat:@"%d", [jsonData length]];
+    NSString *contentLengthString = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]];
     [request setValue:contentLengthString forHTTPHeaderField: @"Content-Length"];
     [request setValue:contentLengthString forHTTPHeaderField: @"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];

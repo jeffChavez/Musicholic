@@ -673,12 +673,14 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (IBAction)cancelAllOperations:(id)sender
 {
 
+    self.currentDataModel = nil;
+    
     self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
     CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
     CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
     [imageFilter setDefaults];
     [imageFilter setValue:image forKey:kCIInputImageKey];
-    NSNumber *radius = [NSNumber numberWithInt:10];
+    NSNumber *radius = [NSNumber numberWithInt:100];
     [imageFilter setValue:radius forKey:kCIInputRadiusKey];
     CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
     CGRect extent = [result extent];
@@ -910,8 +912,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             NSString *trackGenre =  [track genre:kDataLevel_1];
             NSString *trackID =[NSString stringWithFormat:@"%@-%@", [track tui], [track tuiTag]];
             NSString *trackDuration = [NSString stringWithFormat:@"%lu",(unsigned long) ( [track duration]/1000)];
-            NSString *currentPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track currentPosition]/1000];
-            NSString *matchPosition = [NSString stringWithFormat:@"%u", (NSUInteger) [track matchPosition]/1000];
+            NSString *currentPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track currentPosition]/1000];
+            NSString *matchPosition = [NSString stringWithFormat:@"%lu", (NSUInteger) [track matchPosition]/1000];
 
 
             if ([track externalIds] && [[track externalIds] allObjects].count)
@@ -1516,7 +1518,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller
 
 -(void) statusEvent: (GnLookupLocalStreamIngestStatus)status bundleId: (NSString*)bundleId cancellableDelegate: (id <GnCancellableDelegate>)canceller
 {
-    NSLog(@"status = %d", status);
+    NSLog(@"status = %ld", status);
 }
 
 
