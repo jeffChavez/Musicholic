@@ -18,6 +18,4 @@
 @property (strong, nonatomic) GnViewController *GnViewController;
 @property (strong, nonatomic) UserSignInView *userSignInView;
 
-
-
 @end

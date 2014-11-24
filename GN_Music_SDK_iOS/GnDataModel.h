@@ -21,14 +21,12 @@
 @property (strong) NSData* albumImageData;
 @property (strong) NSString* albumImageURLString;
 
-
-@property (strong) NSString *trackArtist;
-@property (strong) NSString *trackMood;
 @property (strong) NSData* artistImageData;
 @property (strong) NSString* artistImageURLString;
 @property (strong) NSString *artistBiography;
-
 @property (strong) NSString *currentPosition;
+@property (strong) NSString *trackArtist;
+@property (strong) NSString *trackMood;
 @property (strong) NSString *trackMatchPosition;
 @property (strong) NSString *trackDuration;
 @property (strong) NSString *trackTempo;

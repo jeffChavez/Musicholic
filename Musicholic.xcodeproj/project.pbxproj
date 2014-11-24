@@ -183,6 +183,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B79BD1C1A239137004E4056 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F6BBF99B17CD10BC00E9814E /* GnViewController.h */,
+				F6BBF99C17CD10BC00E9814E /* GnViewController.m */,
+				6BA157A51A1C2BD800005950 /* NetworkController.h */,
+				6BA157A61A1C2BD800005950 /* NetworkController.m */,
+				F6DC0ACE1937DBF60096B555 /* GnAudioVisualizeAdapter.h */,
+				F6DC0ACF1937DBF60096B555 /* GnAudioVisualizeAdapter.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6B79BD1D1A239158004E4056 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6FE703617FB3C4700369F16 /* GnDataModel.h */,
+				F6FE703717FB3C4700369F16 /* GnDataModel.m */,
+				2CE1235A1A1E7D1D009D62F2 /* User.h */,
+				2CE1235B1A1E7D1D009D62F2 /* User.m */,
+				6BA6012E1A1D9A1A008B981A /* Song.h */,
+				6BA6012F1A1D9A1A008B981A /* Song.m */,
+				6BA157A81A1C2C8E00005950 /* Drink.h */,
+				6BA157A91A1C2C8E00005950 /* Drink.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6B79BD1E1A23915E004E4056 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6BA601321A1E7F14008B981A /* UserSignInView.xib */,
+				6BA601341A1E81E4008B981A /* UserSignInView.h */,
+				6BA601351A1E81E4008B981A /* UserSignInView.m */,
+				6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */,
+				6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */,
+				6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */,
+				F6BBF99817CD10BC00E9814E /* MainStoryboard.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6BA5EC951A1FDA700006CA6C /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,27 +318,9 @@
 			children = (
 				F6BBF99217CD10BC00E9814E /* GnAppDelegate.h */,
 				F6BBF99317CD10BC00E9814E /* GnAppDelegate.m */,
-				F6BBF99B17CD10BC00E9814E /* GnViewController.h */,
-				F6BBF99C17CD10BC00E9814E /* GnViewController.m */,
-				F6FE703617FB3C4700369F16 /* GnDataModel.h */,
-				F6FE703717FB3C4700369F16 /* GnDataModel.m */,
-				F6DC0ACE1937DBF60096B555 /* GnAudioVisualizeAdapter.h */,
-				F6DC0ACF1937DBF60096B555 /* GnAudioVisualizeAdapter.m */,
-				6BA157A51A1C2BD800005950 /* NetworkController.h */,
-				6BA157A61A1C2BD800005950 /* NetworkController.m */,
-				2CE1235A1A1E7D1D009D62F2 /* User.h */,
-				2CE1235B1A1E7D1D009D62F2 /* User.m */,
-				6BA6012E1A1D9A1A008B981A /* Song.h */,
-				6BA6012F1A1D9A1A008B981A /* Song.m */,
-				6BA157A81A1C2C8E00005950 /* Drink.h */,
-				6BA157A91A1C2C8E00005950 /* Drink.m */,
-				6BA601321A1E7F14008B981A /* UserSignInView.xib */,
-				6BA601341A1E81E4008B981A /* UserSignInView.h */,
-				6BA601351A1E81E4008B981A /* UserSignInView.m */,
-				6B2E860C1A1D3D6F003FBAD0 /* DrinkView.xib */,
-				6B2E860E1A1D3F43003FBAD0 /* DrinkView.h */,
-				6B2E860F1A1D3F43003FBAD0 /* DrinkView.m */,
-				F6BBF99817CD10BC00E9814E /* MainStoryboard.storyboard */,
+				6B79BD1C1A239137004E4056 /* Controller */,
+				6B79BD1D1A239158004E4056 /* Model */,
+				6B79BD1E1A23915E004E4056 /* View */,
 				F6BBF98A17CD10BC00E9814E /* Supporting Files */,
 			);
 			path = GN_Music_SDK_iOS;
