@@ -501,6 +501,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 #pragma mark - BUTTONS PRESSED
 -(void) idNow:(id) sender {
+    self.currentDataModel = nil;
     self.idNowButtonCenterYAlignmentConstraint.constant = 0;
     [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
         self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
@@ -789,7 +790,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
         [imageFilter setDefaults];
         [imageFilter setValue:image forKey:kCIInputImageKey];
-        NSNumber *radius = [NSNumber numberWithInt:25];
+        NSNumber *radius = [NSNumber numberWithInt:5];
         [imageFilter setValue:radius forKey:kCIInputRadiusKey];
         CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
         CGRect extent = [result extent];
