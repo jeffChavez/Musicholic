@@ -17,26 +17,6 @@
 		6BA5EC901A1FC1620006CA6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC8F1A1FC1620006CA6C /* LaunchScreen.xib */; };
 		6BA5EC921A1FC1BA0006CA6C /* musicholic_logo_text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC911A1FC1BA0006CA6C /* musicholic_logo_text.pdf */; };
 		6BA5EC941A1FC6710006CA6C /* musicholic_logo_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC931A1FC6710006CA6C /* musicholic_logo_circle.png */; };
-		6BA5ECAB1A1FDA700006CA6C /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC971A1FDA700006CA6C /* Contents.json */; };
-		6BA5ECAC1A1FDA700006CA6C /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC981A1FDA700006CA6C /* Icon-40.png */; };
-		6BA5ECAD1A1FDA700006CA6C /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC991A1FDA700006CA6C /* Icon-40@2x.png */; };
-		6BA5ECAE1A1FDA700006CA6C /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC9A1A1FDA700006CA6C /* Icon-40@3x.png */; };
-		6BA5ECAF1A1FDA700006CA6C /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC9B1A1FDA700006CA6C /* Icon-60@2x.png */; };
-		6BA5ECB01A1FDA700006CA6C /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC9C1A1FDA700006CA6C /* Icon-60@3x.png */; };
-		6BA5ECB11A1FDA700006CA6C /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC9D1A1FDA700006CA6C /* Icon-76.png */; };
-		6BA5ECB21A1FDA700006CA6C /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC9E1A1FDA700006CA6C /* Icon-76@2x.png */; };
-		6BA5ECB31A1FDA700006CA6C /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5EC9F1A1FDA700006CA6C /* Icon-Small.png */; };
-		6BA5ECB41A1FDA700006CA6C /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA01A1FDA700006CA6C /* Icon-Small@2x.png */; };
-		6BA5ECB51A1FDA700006CA6C /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA11A1FDA700006CA6C /* Icon-Small@3x.png */; };
-		6BA5ECB61A1FDA700006CA6C /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA21A1FDA700006CA6C /* Icon-60.png */; };
-		6BA5ECB71A1FDA700006CA6C /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA31A1FDA700006CA6C /* Icon-72.png */; };
-		6BA5ECB81A1FDA700006CA6C /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA41A1FDA700006CA6C /* Icon-72@2x.png */; };
-		6BA5ECB91A1FDA700006CA6C /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA51A1FDA700006CA6C /* Icon-Small-50.png */; };
-		6BA5ECBA1A1FDA700006CA6C /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA61A1FDA700006CA6C /* Icon-Small-50@2x.png */; };
-		6BA5ECBB1A1FDA700006CA6C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA71A1FDA700006CA6C /* Icon.png */; };
-		6BA5ECBC1A1FDA700006CA6C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA81A1FDA700006CA6C /* Icon@2x.png */; };
-		6BA5ECBD1A1FDA700006CA6C /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECA91A1FDA700006CA6C /* iTunesArtwork.png */; };
-		6BA5ECBE1A1FDA700006CA6C /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA5ECAA1A1FDA700006CA6C /* iTunesArtwork@2x.png */; };
 		6BA6012B1A1D8769008B981A /* musicholic_mocklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BA6012A1A1D8769008B981A /* musicholic_mocklogo.png */; };
 		6BA6012D1A1D8BA9008B981A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6012C1A1D8BA9008B981A /* CoreImage.framework */; };
 		6BA601301A1D9A1A008B981A /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6012F1A1D9A1A008B981A /* Song.m */; };
@@ -90,26 +70,6 @@
 		6BA5EC8F1A1FC1620006CA6C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = GN_Music_SDK_iOS/LaunchScreen.xib; sourceTree = "<group>"; };
 		6BA5EC911A1FC1BA0006CA6C /* musicholic_logo_text.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = musicholic_logo_text.pdf; sourceTree = "<group>"; };
 		6BA5EC931A1FC6710006CA6C /* musicholic_logo_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicholic_logo_circle.png; sourceTree = "<group>"; };
-		6BA5EC971A1FDA700006CA6C /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		6BA5EC981A1FDA700006CA6C /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
-		6BA5EC991A1FDA700006CA6C /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
-		6BA5EC9A1A1FDA700006CA6C /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
-		6BA5EC9B1A1FDA700006CA6C /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
-		6BA5EC9C1A1FDA700006CA6C /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
-		6BA5EC9D1A1FDA700006CA6C /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
-		6BA5EC9E1A1FDA700006CA6C /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
-		6BA5EC9F1A1FDA700006CA6C /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		6BA5ECA01A1FDA700006CA6C /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		6BA5ECA11A1FDA700006CA6C /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
-		6BA5ECA21A1FDA700006CA6C /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
-		6BA5ECA31A1FDA700006CA6C /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		6BA5ECA41A1FDA700006CA6C /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
-		6BA5ECA51A1FDA700006CA6C /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		6BA5ECA61A1FDA700006CA6C /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
-		6BA5ECA71A1FDA700006CA6C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		6BA5ECA81A1FDA700006CA6C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		6BA5ECA91A1FDA700006CA6C /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
-		6BA5ECAA1A1FDA700006CA6C /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		6BA6012A1A1D8769008B981A /* musicholic_mocklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicholic_mocklogo.png; sourceTree = "<group>"; };
 		6BA6012C1A1D8BA9008B981A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6BA6012E1A1D9A1A008B981A /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
@@ -225,41 +185,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		6BA5EC951A1FDA700006CA6C /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				6BA5EC961A1FDA700006CA6C /* AppIcon.appiconset */,
-				6BA5ECA21A1FDA700006CA6C /* Icon-60.png */,
-				6BA5ECA31A1FDA700006CA6C /* Icon-72.png */,
-				6BA5ECA41A1FDA700006CA6C /* Icon-72@2x.png */,
-				6BA5ECA51A1FDA700006CA6C /* Icon-Small-50.png */,
-				6BA5ECA61A1FDA700006CA6C /* Icon-Small-50@2x.png */,
-				6BA5ECA71A1FDA700006CA6C /* Icon.png */,
-				6BA5ECA81A1FDA700006CA6C /* Icon@2x.png */,
-				6BA5ECA91A1FDA700006CA6C /* iTunesArtwork.png */,
-				6BA5ECAA1A1FDA700006CA6C /* iTunesArtwork@2x.png */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
-		6BA5EC961A1FDA700006CA6C /* AppIcon.appiconset */ = {
-			isa = PBXGroup;
-			children = (
-				6BA5EC971A1FDA700006CA6C /* Contents.json */,
-				6BA5EC981A1FDA700006CA6C /* Icon-40.png */,
-				6BA5EC991A1FDA700006CA6C /* Icon-40@2x.png */,
-				6BA5EC9A1A1FDA700006CA6C /* Icon-40@3x.png */,
-				6BA5EC9B1A1FDA700006CA6C /* Icon-60@2x.png */,
-				6BA5EC9C1A1FDA700006CA6C /* Icon-60@3x.png */,
-				6BA5EC9D1A1FDA700006CA6C /* Icon-76.png */,
-				6BA5EC9E1A1FDA700006CA6C /* Icon-76@2x.png */,
-				6BA5EC9F1A1FDA700006CA6C /* Icon-Small.png */,
-				6BA5ECA01A1FDA700006CA6C /* Icon-Small@2x.png */,
-				6BA5ECA11A1FDA700006CA6C /* Icon-Small@3x.png */,
-			);
-			path = AppIcon.appiconset;
-			sourceTree = "<group>";
-		};
 		F68849DA183C769500DA28E6 /* Managed Objects - History */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,7 +254,6 @@
 		F6BBF98A17CD10BC00E9814E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6BA5EC951A1FDA700006CA6C /* ios */,
 				6BA5EC911A1FC1BA0006CA6C /* musicholic_logo_text.pdf */,
 				6BA5EC931A1FC6710006CA6C /* musicholic_logo_circle.png */,
 				6BA6012A1A1D8769008B981A /* musicholic_mocklogo.png */,
@@ -413,43 +337,23 @@
 				6BBC53FC1A1AD15D0077C373 /* license.txt in Resources */,
 				2C53B1381A1D765D00ECB907 /* musicholic_cancelButton.pdf in Resources */,
 				F68FEA26183D665B008F59EA /* emptyImage.png in Resources */,
-				6BA5ECB41A1FDA700006CA6C /* Icon-Small@2x.png in Resources */,
-				6BA5ECAD1A1FDA700006CA6C /* Icon-40@2x.png in Resources */,
 				F6BBF99A17CD10BC00E9814E /* MainStoryboard.storyboard in Resources */,
 				6BA6012B1A1D8769008B981A /* musicholic_mocklogo.png in Resources */,
-				6BA5ECAF1A1FDA700006CA6C /* Icon-60@2x.png in Resources */,
 				F651AFFD182AD70C00B0D688 /* upArrow.png in Resources */,
 				F651AFFC182AD70C00B0D688 /* downArrow.png in Resources */,
-				6BA5ECB51A1FDA700006CA6C /* Icon-Small@3x.png in Resources */,
-				6BA5ECBE1A1FDA700006CA6C /* iTunesArtwork@2x.png in Resources */,
 				F63C7CC9182C1A1E009F60D2 /* Images.xcassets in Resources */,
 				6B2E860D1A1D3D6F003FBAD0 /* DrinkView.xib in Resources */,
 				F650376E17FD566C0058F9BB /* NavBarImage.png in Resources */,
-				6BA5ECB71A1FDA700006CA6C /* Icon-72.png in Resources */,
-				6BA5ECBC1A1FDA700006CA6C /* Icon@2x.png in Resources */,
 				F651AFED182ACA6100B0D688 /* IDNow@2x.png in Resources */,
 				F648A64218A80B0500B303ED /* 1557.b in Resources */,
 				6BA5EC921A1FC1BA0006CA6C /* musicholic_logo_text.pdf in Resources */,
-				6BA5ECBA1A1FDA700006CA6C /* Icon-Small-50@2x.png in Resources */,
 				F6BBF98E17CD10BC00E9814E /* InfoPlist.strings in Resources */,
 				6BA601331A1E7F14008B981A /* UserSignInView.xib in Resources */,
-				6BA5ECB11A1FDA700006CA6C /* Icon-76.png in Resources */,
-				6BA5ECBB1A1FDA700006CA6C /* Icon.png in Resources */,
-				6BA5ECB21A1FDA700006CA6C /* Icon-76@2x.png in Resources */,
-				6BA5ECB91A1FDA700006CA6C /* Icon-Small-50.png in Resources */,
-				6BA5ECB81A1FDA700006CA6C /* Icon-72@2x.png in Resources */,
 				6B2E86121A1D4784003FBAD0 /* martini.jpg in Resources */,
 				6BA5EC941A1FC6710006CA6C /* musicholic_logo_circle.png in Resources */,
 				F650377617FDC96D0058F9BB /* 320x568h.png in Resources */,
-				6BA5ECB31A1FDA700006CA6C /* Icon-Small.png in Resources */,
 				6BA5EC901A1FC1620006CA6C /* LaunchScreen.xib in Resources */,
-				6BA5ECB61A1FDA700006CA6C /* Icon-60.png in Resources */,
-				6BA5ECBD1A1FDA700006CA6C /* iTunesArtwork.png in Resources */,
 				F650377E17FDD24A0058F9BB /* idNowButtonImage.png in Resources */,
-				6BA5ECB01A1FDA700006CA6C /* Icon-60@3x.png in Resources */,
-				6BA5ECAC1A1FDA700006CA6C /* Icon-40.png in Resources */,
-				6BA5ECAE1A1FDA700006CA6C /* Icon-40@3x.png in Resources */,
-				6BA5ECAB1A1FDA700006CA6C /* Contents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
