@@ -10,7 +10,6 @@
 
 @implementation User
 
-
 - (instancetype) initWithName: (NSString *)screenname email:(NSString *)email password:(NSString *)password {
     self = [super init];
     self.screenname = screenname;
@@ -18,6 +17,5 @@
     self.password = password;
     return self;
 }
-
 
 @end

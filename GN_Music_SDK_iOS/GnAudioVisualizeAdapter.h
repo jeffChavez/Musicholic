@@ -12,7 +12,6 @@
 @interface GnAudioVisualizeAdapter : NSObject <GnAudioSourceDelegate>
 
 -(instancetype) initWithAudioSource:(id<GnAudioSourceDelegate>) audioSource audioVisualizerDelegate:(id<GnAudioVisualizerDelegate> )audioVisualizerDelegate;
-
 -(instancetype) init __attribute__((unavailable("init not available. Use initWithAudioSource: instead.")));
 
 @end

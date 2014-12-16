@@ -12,8 +12,4 @@
 
 @implementation UserSignInView
 
-
-
-
-
 @end

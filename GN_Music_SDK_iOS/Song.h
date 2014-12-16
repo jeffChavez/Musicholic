@@ -17,7 +17,6 @@
 @property (nonatomic, assign) float energy;
 @property (nonatomic, assign) float tempo;
 
-
 - (instancetype) initWithDictionary: (NSDictionary *) songDictionary;
 - (Song *) parseJSONDataIntoSong: (NSData *) data;
 
