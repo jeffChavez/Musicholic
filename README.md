@@ -3,7 +3,7 @@ Musicholic-v2
 Musicholic identifies songs being played around you and suggests an alcoholic beverage based the song's musical traits
 
 #Usage
-The user touches the circular logo button to begin listening. The app will listen for a short period of time. Upon identifying the song heard, it will display the artist, track title, and cover art, along with the "Find Drink" button. If the user touches the "Find Drink" button, the app will recommend an alchoholic beverage based on the musical traits of the song identified. For example, if listening to an energetic dance track, Musicholic may recommend a Vodka RedBull, or shots. Plese drink responsibly.
+The user touches the circular logo button to begin listening. The app will listen for a short period of time. Upon identifying the song heard, it will display the artist, track title, and cover art, along with the "Find Drink" button. If the user touches the "Find Drink" button, the app will recommend an alchoholic beverage based on the musical traits of the song identified. For example, if listening to an energetic dance track, Musicholic may recommend a Vodka RedBull, or shots. Please drink responsibly.
 
 ![Screenshot 1] (https://github.com/jeffChavez/Musicholic-v2/blob/master/ReadMeScreenshots/IMG_0607.PNG)
 ![Screenshot 1] (https://github.com/jeffChavez/Musicholic-v2/blob/master/ReadMeScreenshots/IMG_0605.PNG)
