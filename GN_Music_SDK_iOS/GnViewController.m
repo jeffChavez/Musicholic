@@ -1193,7 +1193,7 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller {
     dispatch_async(dispatch_get_main_queue(), ^{
         float scale =  value + 1.0f;
         CGAffineTransform sscale = CGAffineTransformMakeScale (scale, scale);
-        self.coloredRingImageView.transform  = sscale;
+        self.idNowButton.transform  = sscale;
     });
    }
 }
