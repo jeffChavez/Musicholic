@@ -15,9 +15,13 @@ The back end was built with Node.js, Express, and MongoDB.
 
 ##Authors
 iOS
+
 Jeff Chavez
+
 Parker Lewis
 
 JavaScript
+
 Simon Kim
+
 Joe Teo
