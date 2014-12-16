@@ -14,10 +14,12 @@ The front end of this app was built using the GraceNote iOS SDK. We gutted the s
 The back end was built with Node.js, Express, and MongoDB.
 
 ##Authors
-####iOS
+#####iOS
 Jeff Chavez
+
 Parker Lewis
 
-####JavaScript
+#####JavaScript
 Simon Kim
+
 Joe Teo
