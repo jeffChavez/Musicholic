@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -23,38 +22,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="musicholic_logo_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="t4o-ty-FOZ">
                                 <rect key="frame" x="0.0" y="20" width="600" height="180"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAg-Qh-xzK" userLabel="View - Visualization View">
-                                <rect key="frame" x="1000" y="1052" width="600" height="275"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slf-em-6jT">
-                                        <rect key="frame" x="1247" y="227" width="274" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekR-At-UIa">
-                                                <rect key="frame" x="2" y="3" width="274" height="35"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                <state key="normal" title="Show Visualization">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="showVisualization:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6TU-WT-R75"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coloredRing" translatesAutoresizingMaskIntoConstraints="NO" id="dY9-wr-odg">
-                                        <rect key="frame" x="1284" y="14" width="200" height="200"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GracenoteLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Fy3-AN-tXo">
-                                        <rect key="frame" x="1300" y="29" width="170" height="170"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="275" id="DON-m1-3Fz"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pw-PF-b3I" userLabel="IDNOW">
                                 <rect key="frame" x="230" y="295" width="140" height="140"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,7 +120,6 @@
                             <constraint firstAttribute="trailing" secondItem="7qo-CZ-kU5" secondAttribute="trailing" constant="15" id="OKh-lO-cT4"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
                             <constraint firstAttribute="centerX" secondItem="ZTD-zj-0JB" secondAttribute="centerX" id="SEK-b9-bme"/>
-                            <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="UzK-cQ-Cgk"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
                             <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="15" id="Zcd-Yh-7zB"/>
                             <constraint firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="b94-Zu-iKU"/>
@@ -162,15 +128,12 @@
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cdP-KM-7Ld"/>
                             <constraint firstItem="AC3-vN-C0D" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ebV-ea-cHK"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="fSV-Cf-XJi"/>
-                            <constraint firstAttribute="trailing" secondItem="kAg-Qh-xzK" secondAttribute="trailing" constant="-1000" id="fzA-32-VAk"/>
                             <constraint firstItem="AC3-vN-C0D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hTD-gh-hIC"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="bottom" secondItem="AC3-vN-C0D" secondAttribute="bottom" constant="5" id="hkv-RK-87Y"/>
                             <constraint firstItem="P5N-m7-9U4" firstAttribute="leading" secondItem="hYC-sN-Yet" secondAttribute="trailing" constant="8" id="pOB-By-n1V"/>
                             <constraint firstAttribute="centerX" secondItem="igl-3p-5U5" secondAttribute="centerX" id="pXD-TM-5gN"/>
-                            <constraint firstItem="kAg-Qh-xzK" firstAttribute="top" secondItem="ChT-kk-rTK" secondAttribute="bottom" constant="1032" id="rSs-Vh-6b9"/>
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="s4S-QL-LhG"/>
                             <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
-                            <constraint firstItem="kAg-Qh-xzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1000" id="th6-Xz-Pmh"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="7qo-CZ-kU5" secondAttribute="bottom" constant="8" id="wHT-0d-GuT"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="top" secondItem="xu6-03-2IW" secondAttribute="bottom" constant="15" id="z4r-8G-FVG"/>
                             <constraint firstItem="ZTD-zj-0JB" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="42" id="znj-pA-xcQ"/>
@@ -178,20 +141,15 @@
                     </view>
                     <connections>
                         <outlet property="cancelOperationsButton" destination="u9i-Yk-EHZ" id="rJx-Ps-Lx3"/>
-                        <outlet property="coloredRingImageView" destination="dY9-wr-odg" id="QFs-es-WdD"/>
                         <outlet property="echoNestFindDrinkButton" destination="ZTD-zj-0JB" id="LLW-FD-84k"/>
                         <outlet property="findDrinkButton" destination="igl-3p-5U5" id="Oxi-5A-iZa"/>
-                        <outlet property="gracenoteLogoImageView" destination="Fy3-AN-tXo" id="Yng-DB-91T"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
                         <outlet property="idNowButtonCenterYAlignmentConstraint" destination="bkf-i1-feA" id="2rU-kL-pCF"/>
-                        <outlet property="showOrHideVisualizationButton" destination="ekR-At-UIa" id="xzp-Bx-Vuv"/>
-                        <outlet property="showOrHideVisualizationButtonView" destination="slf-em-6jT" id="ewr-9M-roW"/>
                         <outlet property="songAlbumImage" destination="t4o-ty-FOZ" id="ifO-Bc-UYF"/>
                         <outlet property="songInfoLabel" destination="AC3-vN-C0D" id="t54-qX-EZl"/>
                         <outlet property="statusCaptionLabel" destination="hYC-sN-Yet" id="bps-0L-b1g"/>
                         <outlet property="statusIdNowLabel" destination="xu6-03-2IW" id="KN5-c7-yQu"/>
                         <outlet property="statusLabel" destination="P5N-m7-9U4" id="ZTZ-28-HCc"/>
-                        <outlet property="visualizationView" destination="kAg-Qh-xzK" id="P5e-kH-pL5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -201,8 +159,6 @@
     </scenes>
     <resources>
         <image name="CancelButtonImage" width="100" height="100"/>
-        <image name="GracenoteLogo" width="200" height="200"/>
-        <image name="coloredRing" width="300" height="300"/>
         <image name="musicholic_logo_circle.png" width="1024" height="1024"/>
     </resources>
 </document>

@@ -11,11 +11,6 @@
 @interface GnViewController : UIViewController<UINavigationBarDelegate, UIActionSheetDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIView *showOrHideVisualizationButtonView;
-@property (weak, nonatomic) IBOutlet UIButton *showOrHideVisualizationButton;
-@property (weak, nonatomic) IBOutlet UIView *visualizationView;
-@property (weak, nonatomic) IBOutlet UIImageView *coloredRingImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *gracenoteLogoImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *statusCaptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelOperationsButton;
@@ -34,7 +29,6 @@
 - (IBAction) findDrink:(id) sender;
 - (IBAction) echoNest:(id)sender;
 - (IBAction) cancelAllOperations:(id)sender;
-- (IBAction) showVisualization:(id)sender;
 
 -(void) stopRecording;
 

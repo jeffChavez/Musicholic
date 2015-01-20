@@ -61,7 +61,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 @property BOOL recordingIsPaused;
 @property BOOL visualizationIsVisible;
-@property UIDynamicAnimator *dynamicAnimator;
 @property dispatch_queue_t internalQueue;
 @property (strong) NSMutableArray *results;
 
@@ -338,18 +337,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 -(void) setupInterface {
 
-    //Setup Dynamic Animator.
-    self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.visualizationView];
-
-    //Resize Visualization
-    CGRect visualizationRect = self.visualizationView.frame;
-    visualizationRect.origin.y -= visualizationRect.size.height - (self.showOrHideVisualizationButtonView.frame.size.height + 10);
-    self.visualizationView.frame = visualizationRect;
-    self.showOrHideVisualizationButton.titleLabel.text = @"Show Visualization";
-    self.showOrHideVisualizationButtonView.layer.cornerRadius = 10.0f;
-    self.showOrHideVisualizationButtonView.layer.borderWidth = 1.0f;
-    self.showOrHideVisualizationButtonView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.visualizationView.layer.cornerRadius = 5.0f;
     [self.idNowButton.layer setBorderWidth: 1];
     [self.idNowButton.layer setCornerRadius:self.idNowButton.frame.size.width / 2];
     self.idNowButton.layer.masksToBounds = YES;
@@ -371,39 +358,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 #pragma mark - Display Overlay View's
 
-- (IBAction)showVisualization:(id)sender {
-    __block CGRect visualizationFrame = self.visualizationView.frame;
-   if(!self.visualizationIsVisible) {
-       visualizationFrame.origin.y += visualizationFrame.size.height - (self.showOrHideVisualizationButtonView.frame.size.height+10);
-   } else {
-       visualizationFrame.origin.y -= visualizationFrame.size.height - (self.showOrHideVisualizationButtonView.frame.size.height+10);
-   }
-    [UIView animateWithDuration:0.5 animations:^{
-        self.visualizationView.frame = visualizationFrame;
-    } completion:^(BOOL finished){
-
-        if(finished) {
-            self.visualizationIsVisible = !self.visualizationIsVisible;
-            self.showOrHideVisualizationButton.titleLabel.text = (self.visualizationIsVisible)?@"       \tClose\t":@"Show Visualization";
-            [UIView animateWithDuration:0.5 animations:^{
-
-               if(self.visualizationIsVisible) {
-                UIDynamicItemBehavior *spinBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.gracenoteLogoImageView]];
-                [spinBehavior addAngularVelocity:5 forItem:self.gracenoteLogoImageView];
-                [spinBehavior setAngularResistance:0];
-                   // [self.dynamicAnimator addBehavior:spinBehavior];
-               } else {
-                    float scale = 1.0f;
-                    CGAffineTransform sscale = CGAffineTransformMakeScale (scale, scale);
-                    self.coloredRingImageView.transform  = sscale;
-                    [self.dynamicAnimator removeAllBehaviors];
-                    CATransform3D rotTransform = CATransform3DMakeRotation (0, 0, 0, 1);
-                    self.gracenoteLogoImageView.layer.transform = rotTransform;
-                }
-            }];
-        }
-    }];
-}
 
 #pragma mark - Music ID Stream Setup
 
