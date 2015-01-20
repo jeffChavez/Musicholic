@@ -24,7 +24,6 @@
 #import "NetworkController.h"
 #import "DrinkView.h"
 #import "Song.h"
-#import "UserSignInView.h"
 #import "User.h"
 
 static NSString *gnsdkLicenseFilename = @"license.txt";
@@ -70,7 +69,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property NSInteger *randomY;
 @property NSInteger *randomX;
 
-@property UserSignInView *userSignInView;
 @property User *currentUser;
 
 @property NSOperationQueue *imageFilterQueue;
@@ -133,15 +131,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [alphaGradientLayer setFrame:[self.songAlbumImage bounds]];
     [[self.songAlbumImage layer] setMask:alphaGradientLayer];
 
-    // Set up userSignInView
-    self.userSignInView = [[UserSignInView alloc] init];
-    self.userSignInView = [[[NSBundle mainBundle] loadNibNamed:@"UserSignInView" owner:self options:nil]objectAtIndex:0];
-    self.userSignInView.frame = CGRectMake(self.view.frame.size.width + self.userSignInView.frame.size.width, self.view.frame.size.height / 2, self.view.frame.size.width * 0.8f, self.view.frame.size.width * 0.5f);
-    self.userSignInView.center = CGPointMake(self.idNowButton.center.x + 1500, self.idNowButton.center.y);
-    self.userSignInView.usernameTextField.delegate = self;
-    self.userSignInView.emailTextField.delegate = self;
-    self.userSignInView.passwordTextField.delegate = self;
-
+    
     // Set up drinkView
     self.drinkView = [[DrinkView alloc] init];
     self.drinkView = [[[NSBundle mainBundle] loadNibNamed:@"DrinkView" owner:self options:nil] objectAtIndex:0];
@@ -155,7 +145,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.drinkView addGestureRecognizer:tapGesture];
     [self.view addSubview:self.drinkView];
-    [self.view addSubview:self.userSignInView];
 
     // Other setup from GraceNote
     self.recordingIsPaused = NO;
@@ -262,19 +251,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }];
 }
 
-
-// User signed in to request Oauth
-- (void) didSignIn: (id) sender {
-    self.currentUser.screenname = self.userSignInView.usernameTextField.text;
-    self.currentUser.email = self.userSignInView.emailTextField.text;
-    self.currentUser.password = self.userSignInView.passwordTextField.text;
-
-    [[NetworkController networkController] requestOauthAccessForUser:self.currentUser];
-
-    [UIView animateWithDuration:0.4 animations:^{
-        self.userSignInView.center = CGPointMake(self.idNowButton.center.x + 1500, self.idNowButton.center.y);
-    }];
-}
 
 - (NSError *) setupLocalLookup {
 	NSError *	error = nil;
