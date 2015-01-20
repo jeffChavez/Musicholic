@@ -24,7 +24,6 @@
 
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *idNowButtonCenterYAlignmentConstraint;
 
-- (IBAction) login:(id) sender;
 - (IBAction) idNow:(id) sender;
 - (IBAction) findDrink:(id) sender;
 - (IBAction) echoNest:(id)sender;

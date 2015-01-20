@@ -72,17 +72,6 @@
                                     <action selector="findDrink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kls-7e-GuF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qo-CZ-kU5">
-                                <rect key="frame" x="540" y="566" width="45" height="26"/>
-                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="14"/>
-                                <state key="normal" title="LOGIN">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ikl-ci-5JB"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Changing status" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5N-m7-9U4">
                                 <rect key="frame" x="-452" y="585" width="250" height="15"/>
                                 <constraints>
@@ -117,7 +106,6 @@
                             <constraint firstAttribute="centerX" secondItem="AC3-vN-C0D" secondAttribute="centerX" id="Efs-0w-d18"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="hYC-sN-Yet" secondAttribute="bottom" id="KSI-Ry-kYg"/>
                             <constraint firstItem="hYC-sN-Yet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-500" id="KZi-sA-vFA"/>
-                            <constraint firstAttribute="trailing" secondItem="7qo-CZ-kU5" secondAttribute="trailing" constant="15" id="OKh-lO-cT4"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
                             <constraint firstAttribute="centerX" secondItem="ZTD-zj-0JB" secondAttribute="centerX" id="SEK-b9-bme"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
@@ -134,7 +122,6 @@
                             <constraint firstAttribute="centerX" secondItem="igl-3p-5U5" secondAttribute="centerX" id="pXD-TM-5gN"/>
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="s4S-QL-LhG"/>
                             <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
-                            <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="7qo-CZ-kU5" secondAttribute="bottom" constant="8" id="wHT-0d-GuT"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="top" secondItem="xu6-03-2IW" secondAttribute="bottom" constant="15" id="z4r-8G-FVG"/>
                             <constraint firstItem="ZTD-zj-0JB" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="42" id="znj-pA-xcQ"/>
                         </constraints>

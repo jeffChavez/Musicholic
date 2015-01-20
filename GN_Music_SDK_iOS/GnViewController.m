@@ -262,16 +262,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }];
 }
 
-// Login button pressed
-- (void)login:(id)sender {
-
-    //set frame offscreen
-    [self.userSignInView.signInButton addTarget:self action:@selector(didSignIn:) forControlEvents:UIControlEventTouchUpInside];
-    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
-        self.userSignInView.center = CGPointMake(self.idNowButton.center.x, self.idNowButton.center.y);
-    } completion:^(BOOL finished) {
-    }];
-}
 
 // User signed in to request Oauth
 - (void) didSignIn: (id) sender {
