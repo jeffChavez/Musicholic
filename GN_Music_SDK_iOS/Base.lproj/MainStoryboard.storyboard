@@ -81,17 +81,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTD-zj-0JB">
-                                <rect key="frame" x="266" y="477" width="69" height="27"/>
-                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
-                                <state key="normal" title="EchoNest">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="echoNest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jG7-JU-0SV"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" preferredMaxLayoutWidth="568" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-vN-C0D">
                                 <rect key="frame" x="16" y="178" width="568" height="17"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
@@ -108,7 +97,6 @@
                             <constraint firstItem="hYC-sN-Yet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-500" id="KZi-sA-vFA"/>
                             <constraint firstItem="igl-3p-5U5" firstAttribute="width" secondItem="1pw-PF-b3I" secondAttribute="width" multiplier="0.8" id="NVw-q6-0r0"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
-                            <constraint firstAttribute="centerX" secondItem="ZTD-zj-0JB" secondAttribute="centerX" id="SEK-b9-bme"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
                             <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="15" id="Zcd-Yh-7zB"/>
                             <constraint firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="b94-Zu-iKU"/>
@@ -124,12 +112,10 @@
                             <constraint firstItem="u9i-Yk-EHZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="s4S-QL-LhG"/>
                             <constraint firstAttribute="trailing" secondItem="u9i-Yk-EHZ" secondAttribute="trailing" constant="16" id="tUi-Zf-kHf"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="top" secondItem="xu6-03-2IW" secondAttribute="bottom" constant="15" id="z4r-8G-FVG"/>
-                            <constraint firstItem="ZTD-zj-0JB" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="42" id="znj-pA-xcQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelOperationsButton" destination="u9i-Yk-EHZ" id="rJx-Ps-Lx3"/>
-                        <outlet property="echoNestFindDrinkButton" destination="ZTD-zj-0JB" id="LLW-FD-84k"/>
                         <outlet property="findDrinkButton" destination="igl-3p-5U5" id="Oxi-5A-iZa"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
                         <outlet property="idNowButtonCenterYAlignmentConstraint" destination="bkf-i1-feA" id="2rU-kL-pCF"/>

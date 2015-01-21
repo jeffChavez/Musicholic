@@ -85,8 +85,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
     // Set up buttons
     self.cancelOperationsButton.alpha = 0.0;
-    self.echoNestFindDrinkButton.hidden = YES;
-    self.echoNestFindDrinkButton.enabled = NO;
 
     [self.findDrinkButton.layer setBorderColor:[UIColor whiteColor].CGColor];
     [self.findDrinkButton.layer setBorderWidth: 1.5];
@@ -517,71 +515,6 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     }];
 }
 
-- (void)echoNest:(id)sender {
-//    [[NetworkController networkController] ECHONESTfetchDrinkForSong:@"All of the lights" withArtist:@"kanye west" withCompletionHandler:^(NSString *errorDescription, Song *song) {
-//        if (errorDescription == nil) {
-//            self.currentSong = song;
-//
-//            [[NetworkController networkController] ECHONESTfetchDrinkForSongSummary:self.currentSong.songId withCompletionHandler:^(NSString *errorDescription, Song *song) {
-//                if (errorDescription == nil) {
-//
-//                    self.currentSong = song;
-//                    NSLog(@"%f", self.currentSong.tempo);
-//                    NSLog(@"%f", self.currentSong.energy);
-//                    NSLog(@"%f", self.currentSong.danceability);
-//                    NSLog(@"%@", self.currentSong.title);
-//
-//                    self.currentDrink = [[Drink alloc] init];
-//
-//
-//
-//                    if (self.currentSong.energy <= 0.1) {
-//                        self.currentDrink.image = [UIImage imageNamed:@"1"];
-//                        self.currentDrink.name = @"Most Sad Drink";
-//                    } else if (self.currentSong.energy <=.2) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"2"];
-//                            self.currentDrink.name = @"Sad Face";
-//                    } else if (self.currentSong.energy <=.3) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"3"];
-//                            self.currentDrink.name = @"This should be a Taylor Swift song?";
-//                    } else if (self.currentSong.energy <=.4) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"4"];
-//                            self.currentDrink.name = @"Feelin goooood";
-//                    } else if (self.currentSong.energy <=.5) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"5"];
-//                            self.currentDrink.name = @"Dat buzz tho";
-//                    } else if (self.currentSong.energy <=.6) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"6"];
-//                            self.currentDrink.name = @"Imma Happeh! :)";
-//                    } else if (self.currentSong.energy <=.7) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"7"];
-//                            self.currentDrink.name = @"Suuupa Happeh! :D";
-//                    } else if (self.currentSong.energy <=.8) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"8"];
-//                            self.currentDrink.name = @"Itsa Happeh Draaaank :O";
-//                    } else if (self.currentSong.energy <=.9) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"9"];
-//                            self.currentDrink.name = @"Let's get CRUNKED UP";
-//                    } else if (self.currentSong.energy <=1) {
-//                            self.currentDrink.image = [UIImage imageNamed:@"10"];
-//                            self.currentDrink.name = @":X";
-//                    }
-//                    self.drinkView.imageView.image = self.currentDrink.image;
-//                    self.drinkView.labelView.text = self.currentDrink.name;
-//
-//                    [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
-//
-//
-//                        CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.view.frame.size.height * 0.35f, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
-//                        self.drinkView.frame = drinkViewFrame;
-//
-//                    } completion:^(BOOL finished) {
-//                    }];
-//                }
-//            }];
-//        }
-//    }];
-}
 
 #pragma mark - Process Album Response
 

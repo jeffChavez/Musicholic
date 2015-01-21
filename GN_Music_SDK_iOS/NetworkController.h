@@ -19,8 +19,6 @@
 - (void) requestOauthAccessForUser: (User *) user;
 
 - (void) fetchDrinkForSong: (NSString *)title withArtist:(NSString *)artist withCompletionHandler:(void (^)(NSString *, Drink *))success;
-- (void) ECHONESTfetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Song *))success;
-- (void) ECHONESTfetchDrinkForSongSummary:(NSString *)songID withCompletionHandler:(void (^)(NSString *, Song *))success;
 
 - (void) fetchImageForDrink: (Drink *)drink withCompletionHandler:(void (^)(UIImage *)) success;
 
