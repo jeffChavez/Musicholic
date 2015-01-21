@@ -251,8 +251,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 
 -(void) handleTap: (UITapGestureRecognizer *)tapGestureRecognizer {
+    self.findDrinkButton.alpha = 1;
     [UIView animateWithDuration:0.4 animations:^{
-        CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
+        CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
         self.drinkView.frame = drinkViewFrame;
     }];
 }
@@ -496,6 +497,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 - (IBAction) findDrink:(id) sender {
     // Clear out image before downloading new one
     self.drinkView.imageView.image = nil;
+    
+    
+    
     [[NetworkController networkController] fetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.albumArtist withCompletionHandler:^(NSString *errorString, Drink *drink) {
         if (errorString == nil && drink != nil) {
 
@@ -505,8 +509,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
                 self.currentDrink.image = drinkImage;
                 self.drinkView.imageView.image = drinkImage;
-                [UIView animateWithDuration:1.5 delay:0.4 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
-                    CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.view.frame.size.height * 0.35f, self.view.frame.size.width * 0.7f, self.view.frame.size.height * 0.5f);
+                [UIView animateWithDuration:1.5 delay:0.0 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
+                    self.findDrinkButton.alpha = 0;
+                    CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.statusIdNowLabel.frame.origin.y - 5, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
                     self.drinkView.frame = drinkViewFrame;
                 } completion:^(BOOL finished) {
                 }];
