@@ -87,6 +87,14 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.cancelOperationsButton.alpha = 0.0;
     self.echoNestFindDrinkButton.hidden = YES;
     self.echoNestFindDrinkButton.enabled = NO;
+
+    [self.findDrinkButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.findDrinkButton.layer setBorderWidth: 1.5];
+    [self.findDrinkButton.layer setCornerRadius:self.findDrinkButton.frame.size.width / 10];
+    self.findDrinkButton.layer.masksToBounds = YES;
+
+    
+    
     self.findDrinkButton.hidden = YES;
     self.findDrinkButton.enabled = NO;
 

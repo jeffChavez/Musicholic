@@ -62,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igl-3p-5U5">
-                                <rect key="frame" x="260" y="450" width="81" height="27"/>
+                                <rect key="frame" x="244" y="450" width="112" height="27"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="FIND DRINK">
@@ -106,6 +106,7 @@
                             <constraint firstAttribute="centerX" secondItem="AC3-vN-C0D" secondAttribute="centerX" id="Efs-0w-d18"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="hYC-sN-Yet" secondAttribute="bottom" id="KSI-Ry-kYg"/>
                             <constraint firstItem="hYC-sN-Yet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-500" id="KZi-sA-vFA"/>
+                            <constraint firstItem="igl-3p-5U5" firstAttribute="width" secondItem="1pw-PF-b3I" secondAttribute="width" multiplier="0.8" id="NVw-q6-0r0"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
                             <constraint firstAttribute="centerX" secondItem="ZTD-zj-0JB" secondAttribute="centerX" id="SEK-b9-bme"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
