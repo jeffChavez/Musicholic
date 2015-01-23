@@ -87,6 +87,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Chk-9A-sko">
+                                <rect key="frame" x="290" y="355" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,9 +101,11 @@
                             <constraint firstItem="igl-3p-5U5" firstAttribute="width" secondItem="1pw-PF-b3I" secondAttribute="width" multiplier="0.8" id="NVw-q6-0r0"/>
                             <constraint firstItem="390-cx-5nC" firstAttribute="top" secondItem="P5N-m7-9U4" secondAttribute="bottom" id="OhN-MY-mpP"/>
                             <constraint firstItem="1pw-PF-b3I" firstAttribute="centerX" secondItem="xu6-03-2IW" secondAttribute="centerX" id="Ymb-j9-WVa"/>
+                            <constraint firstItem="Chk-9A-sko" firstAttribute="centerY" secondItem="1pw-PF-b3I" secondAttribute="centerY" id="ZUG-q0-LgR"/>
                             <constraint firstItem="igl-3p-5U5" firstAttribute="top" secondItem="1pw-PF-b3I" secondAttribute="bottom" constant="15" id="Zcd-Yh-7zB"/>
                             <constraint firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="b94-Zu-iKU"/>
                             <constraint firstAttribute="centerY" secondItem="1pw-PF-b3I" secondAttribute="centerY" constant="-65" id="bkf-i1-feA"/>
+                            <constraint firstItem="Chk-9A-sko" firstAttribute="centerX" secondItem="1pw-PF-b3I" secondAttribute="centerX" id="btA-DM-W4s"/>
                             <constraint firstAttribute="trailing" secondItem="t4o-ty-FOZ" secondAttribute="trailing" id="cQb-t5-5oF"/>
                             <constraint firstItem="t4o-ty-FOZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cdP-KM-7Ld"/>
                             <constraint firstItem="AC3-vN-C0D" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ebV-ea-cHK"/>
@@ -115,6 +120,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Chk-9A-sko" id="Wud-OE-iXE"/>
                         <outlet property="cancelOperationsButton" destination="u9i-Yk-EHZ" id="rJx-Ps-Lx3"/>
                         <outlet property="findDrinkButton" destination="igl-3p-5U5" id="Oxi-5A-iZa"/>
                         <outlet property="idNowButton" destination="1pw-PF-b3I" id="Q9X-v7-E4P"/>
