@@ -87,7 +87,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.cancelOperationsButton.alpha = 0.0;
 
     [self.findDrinkButton.layer setBorderColor:[UIColor whiteColor].CGColor];
-    [self.findDrinkButton.layer setBorderWidth: 1.5];
+    [self.findDrinkButton.layer setBorderWidth: 1];
     [self.findDrinkButton.layer setCornerRadius:self.findDrinkButton.frame.size.width / 10];
     self.findDrinkButton.layer.masksToBounds = YES;
 
@@ -107,18 +107,9 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // TODO: this context line causes the error on iPad: BSXPCMessage received error for message: Connection interrupted
     self.gpuContext = [CIContext contextWithOptions:nil];
         //Apply default blur to album image
-        self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
-        CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
-        CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
-        [imageFilter setDefaults];
-        [imageFilter setValue:image forKey:kCIInputImageKey];
-        NSNumber *radius = [NSNumber numberWithInt:25];
-        [imageFilter setValue:radius forKey:kCIInputRadiusKey];
-        CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
-        CGRect extent = [result extent];
-        CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
-        self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
-
+    
+        self.songAlbumImage.image = [self filterImage:[UIImage imageNamed:@"musicholic_logo_circle"]];
+    
     self.covertArtSmallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.20f, self.view.frame.size.width * 0.20f)];
 
     // Create a gradient layer that goes transparent -&gt; opaque
@@ -460,17 +451,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction)cancelAllOperations:(id)sender {
     self.currentDataModel = nil;
-    self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
-    CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
-    CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [imageFilter setDefaults];
-    [imageFilter setValue:image forKey:kCIInputImageKey];
-    NSNumber *radius = [NSNumber numberWithInt:15];
-    [imageFilter setValue:radius forKey:kCIInputRadiusKey];
-    CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
-    CGRect extent = [result extent];
-    CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
-    self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+    self.songAlbumImage.image = [self filterImage:[UIImage imageNamed:@"musicholic_logo_circle"]];
     self.idNowButtonCenterYAlignmentConstraint.constant = -65.0f;
     [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
         self.songAlbumImage.alpha = 1;
@@ -634,17 +615,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         [self.activityIndicator stopAnimating];
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
-        self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
-        CIImage *image = [CIImage imageWithCGImage:self.songAlbumImage.image.CGImage];
-        CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
-        [imageFilter setDefaults];
-        [imageFilter setValue:image forKey:kCIInputImageKey];
-        NSNumber *radius = [NSNumber numberWithInt:25];
-        [imageFilter setValue:radius forKey:kCIInputRadiusKey];
-        CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
-        CGRect extent = [result extent];
-        CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
-        self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+        self.songAlbumImage.image = [self filterImage:[UIImage imageNamed:@"musicholic_logo_circle"]];
         [UIView animateWithDuration:0.4 animations:^{
             self.songAlbumImage.alpha = 1.0;
         }];
@@ -657,16 +628,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         self.songInfoLabel.text = [NSString stringWithFormat:@"%@\n%@",self.currentDataModel.trackTitle, self.currentDataModel.albumArtist];
         self.songAlbumImage.image = nil;
         UIImage *songAlbumImageFromData = [UIImage imageWithData: self.currentDataModel.albumImageData];
-        CIImage *image = [CIImage imageWithCGImage:songAlbumImageFromData.CGImage];
-        CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
-        [imageFilter setDefaults];
-        [imageFilter setValue:image forKey:kCIInputImageKey];
-        NSNumber *radius = [NSNumber numberWithInt:5];
-        [imageFilter setValue:radius forKey:kCIInputRadiusKey];
-        CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
-        CGRect extent = [result extent];
-        CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
-        self.songAlbumImage.image = [UIImage imageWithCGImage:cgImageRef];
+        self.songAlbumImage.image = [self filterImage:songAlbumImageFromData];
         self.covertArtSmallImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * -1);
         self.covertArtSmallImageView.image = songAlbumImageFromData;
         [self.view addSubview:self.covertArtSmallImageView];
@@ -1067,6 +1029,24 @@ cancellableDelegate: (id <GnCancellableDelegate>) canceller {
         self.idNowButton.transform  = sscale;
     });
    }
+}
+
+-(UIImage *) filterImage: (UIImage*) imageToFilter {
+    CIImage *ciImage = [CIImage imageWithCGImage:imageToFilter.CGImage];
+    CIFilter *imageFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [imageFilter setDefaults];
+    [imageFilter setValue:ciImage forKey:kCIInputImageKey];
+    NSNumber *radius = [NSNumber numberWithInt:20];
+    [imageFilter setValue:radius forKey:kCIInputRadiusKey];
+    CIImage *result = [imageFilter valueForKey:kCIOutputImageKey];
+    CGRect extent = [result extent];
+    CGImageRef cgImageRef = [self.gpuContext createCGImage:result fromRect:extent];
+    UIImage *filteredImage = [[UIImage alloc] initWithCGImage:cgImageRef];
+    return filteredImage;
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end

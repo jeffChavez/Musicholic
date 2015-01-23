@@ -14,6 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+     [self.window setBackgroundColor:[UIColor whiteColor]];
     // Override point for customization after application launch.
     return YES;
 }
