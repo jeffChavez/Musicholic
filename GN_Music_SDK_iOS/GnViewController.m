@@ -428,6 +428,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 #pragma mark - BUTTONS PRESSED
 -(void) idNow:(id) sender {
+    [self.activityIndicator startAnimating];
     self.currentDataModel = nil;
     self.idNowButtonCenterYAlignmentConstraint.constant = 0;
     [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
@@ -496,6 +497,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction) findDrink:(id) sender {
     // Clear out image before downloading new one
+    [self.activityIndicator startAnimating];
     self.drinkView.imageView.image = nil;
     
     
@@ -509,6 +511,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
                 self.currentDrink.image = drinkImage;
                 self.drinkView.imageView.image = drinkImage;
+                [self.activityIndicator stopAnimating];
                 [UIView animateWithDuration:1.5 delay:0.0 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
                     self.findDrinkButton.alpha = 0;
                     CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.statusIdNowLabel.frame.origin.y - 5, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
@@ -628,6 +631,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     } completion:^(BOOL finished) {
     }];
     if (self.currentDataModel == nil) {
+        [self.activityIndicator stopAnimating];
         self.statusIdNowLabel.text = @"Sorry, no result found";
         self.songInfoLabel.text = @"";
         self.songAlbumImage.image = [UIImage imageNamed:@"musicholic_logo_circle"];
@@ -646,6 +650,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
         }];
         return;
     } else {
+        [self.activityIndicator stopAnimating];
         self.statusIdNowLabel.text = @"Match Found!";
         self.findDrinkButton.hidden = NO;
         self.findDrinkButton.enabled = YES;
