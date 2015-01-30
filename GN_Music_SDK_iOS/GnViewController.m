@@ -88,6 +88,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
     [self.findDrinkButton.layer setBorderColor:[UIColor whiteColor].CGColor];
     [self.findDrinkButton.layer setBorderWidth: 1];
+    self.findDrinkButton.layer.allowsEdgeAntialiasing = YES;
     [self.findDrinkButton.layer setCornerRadius:self.findDrinkButton.frame.size.width / 10];
     self.findDrinkButton.layer.masksToBounds = YES;
 
@@ -302,6 +303,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 -(void) setupInterface {
 
     [self.idNowButton.layer setBorderWidth: 1];
+    self.idNowButton.layer.allowsEdgeAntialiasing = YES;
     [self.idNowButton.layer setCornerRadius:self.idNowButton.frame.size.width / 2];
     self.idNowButton.layer.masksToBounds = YES;
     [self.idNowButton.layer setBorderColor:[UIColor whiteColor].CGColor];
@@ -431,7 +433,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     self.findDrinkButton.hidden = YES;
     self.findDrinkButton.enabled = NO;
     self.songInfoLabel.text = @"";
-    self.statusIdNowLabel.text = @"LISTENING...";
+    self.statusIdNowLabel.text = @"Listening...";
     if(self.gnMusicIDStream) {
         [self enableOrDisableControls:NO];
         [self.results removeAllObjects];
@@ -451,6 +453,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (IBAction)cancelAllOperations:(id)sender {
     self.currentDataModel = nil;
+    [self.activityIndicator stopAnimating];
     self.songAlbumImage.image = [self filterImage:[UIImage imageNamed:@"musicholic_logo_circle"]];
     self.idNowButtonCenterYAlignmentConstraint.constant = -65.0f;
     [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.2f options:0 animations:^{
@@ -480,7 +483,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     // Clear out image before downloading new one
     [self.activityIndicator startAnimating];
     self.drinkView.imageView.image = nil;
-    
+    self.statusIdNowLabel.text = @"Finding Drink...";
     
     
     [[NetworkController networkController] fetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.albumArtist withCompletionHandler:^(NSString *errorString, Drink *drink) {
@@ -490,6 +493,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
             self.currentDrink = drink;
             self.drinkView.labelView.text = [self.currentDrink.name stringByReplacingOccurrencesOfString:@"_" withString:@" "];
             [[NetworkController networkController] fetchImageForDrink:self.currentDrink withCompletionHandler:^(UIImage *drinkImage) {
+                self.statusIdNowLabel.text = @"Drink Found!";
                 self.currentDrink.image = drinkImage;
                 self.drinkView.imageView.image = drinkImage;
                 [self.activityIndicator stopAnimating];
