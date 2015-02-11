@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -12,15 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cg-ao-NDU">
-                    <rect key="frame" x="0.0" y="210" width="200" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="UhY-wN-B5Y"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="22"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXN-e6-fVY">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="210"/>
                     <constraints>
@@ -32,21 +22,79 @@
                         </mask>
                     </variation>
                 </imageView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7OQ-Xf-Ymm">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cs7-2Q-qE7">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cg-ao-NDU">
+                                <rect key="frame" x="51" y="210" width="98" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="UhY-wN-B5Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, but we couldn't find a drink that matches this song" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3A-jc-OfX">
+                                <rect key="frame" x="0.0" y="93" width="200" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="v3S-aV-Z4K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="v3S-aV-Z4K"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1S4-tZ-tsU">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kX8-P0-6Ae">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <vibrancyEffect>
+                                    <blurEffect style="dark"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="1S4-tZ-tsU" firstAttribute="leading" secondItem="Cs7-2Q-qE7" secondAttribute="leading" id="1ro-Mo-m7f"/>
+                            <constraint firstAttribute="trailing" secondItem="1S4-tZ-tsU" secondAttribute="trailing" id="2y1-0o-Zr7"/>
+                            <constraint firstAttribute="bottom" secondItem="9Cg-ao-NDU" secondAttribute="bottom" id="43m-z0-4fO"/>
+                            <constraint firstAttribute="centerX" secondItem="9Cg-ao-NDU" secondAttribute="centerX" id="Df4-jd-rN4"/>
+                            <constraint firstItem="t3A-jc-OfX" firstAttribute="leading" secondItem="Cs7-2Q-qE7" secondAttribute="leading" id="Fci-cH-udL"/>
+                            <constraint firstAttribute="trailing" secondItem="t3A-jc-OfX" secondAttribute="trailing" id="eff-m0-gUd"/>
+                            <constraint firstAttribute="centerY" secondItem="t3A-jc-OfX" secondAttribute="centerY" id="f5H-Lx-Qlf"/>
+                            <constraint firstAttribute="centerX" secondItem="t3A-jc-OfX" secondAttribute="centerX" id="rsC-aD-ZeL"/>
+                            <constraint firstAttribute="bottom" secondItem="1S4-tZ-tsU" secondAttribute="bottom" id="vaX-ld-E57"/>
+                            <constraint firstItem="1S4-tZ-tsU" firstAttribute="top" secondItem="Cs7-2Q-qE7" secondAttribute="top" id="yru-DN-9w6"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="sXN-e6-fVY" secondAttribute="trailing" id="1l7-6H-Mvs"/>
-                <constraint firstItem="9Cg-ao-NDU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2mn-2y-sfa"/>
-                <constraint firstItem="9Cg-ao-NDU" firstAttribute="top" secondItem="sXN-e6-fVY" secondAttribute="bottom" id="6jB-y4-wII"/>
+                <constraint firstItem="7OQ-Xf-Ymm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Tq-M7-M1I"/>
                 <constraint firstItem="sXN-e6-fVY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HBB-hE-ggZ"/>
+                <constraint firstAttribute="bottom" secondItem="sXN-e6-fVY" secondAttribute="bottom" constant="30" id="MSA-qK-Pfd"/>
+                <constraint firstAttribute="bottom" secondItem="7OQ-Xf-Ymm" secondAttribute="bottom" id="Q9n-C4-PMb"/>
+                <constraint firstItem="7OQ-Xf-Ymm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hSJ-so-P4V"/>
                 <constraint firstItem="sXN-e6-fVY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sau-sl-RGq"/>
-                <constraint firstAttribute="bottom" secondItem="9Cg-ao-NDU" secondAttribute="bottom" id="tBJ-YU-KzB"/>
-                <constraint firstAttribute="trailing" secondItem="9Cg-ao-NDU" secondAttribute="trailing" id="w3F-dA-a2Y"/>
+                <constraint firstAttribute="trailing" secondItem="7OQ-Xf-Ymm" secondAttribute="trailing" id="zKk-9P-FXm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="drinkNotFoundLabel" destination="t3A-jc-OfX" id="Acv-sw-nn2"/>
                 <outlet property="imageView" destination="sXN-e6-fVY" id="VcH-2O-LLX"/>
                 <outlet property="labelView" destination="9Cg-ao-NDU" id="aUb-d1-UuJ"/>
+                <outlet property="visualEffectView" destination="7OQ-Xf-Ymm" id="teG-F4-YK5"/>
             </connections>
             <point key="canvasLocation" x="178" y="196"/>
         </view>

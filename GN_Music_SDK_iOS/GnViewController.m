@@ -75,6 +75,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 @property UIImageView *covertArtSmallImageView;
 
 @property CIContext *gpuContext;
+
+
 @end
 
 @implementation GnViewController
@@ -82,7 +84,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     // Set up buttons
     self.cancelOperationsButton.alpha = 0.0;
 
@@ -136,8 +138,8 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     float width = self.view.frame.size.width * 0.7f;
     CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, 2000.0, width, width + 30);
     self.drinkView.frame = drinkViewFrame;
-    self.drinkView.imageView.layer.cornerRadius = 25;
-    self.drinkView.imageView.layer.masksToBounds = YES;
+    self.drinkView.layer.cornerRadius = 25;
+    self.drinkView.layer.masksToBounds = YES;
 
     // Set up tap gesture recognizer for the drinkView
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
@@ -484,7 +486,7 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
     [self.activityIndicator startAnimating];
     self.drinkView.imageView.image = nil;
     self.statusIdNowLabel.text = @"Finding Drink...";
-    
+    self.drinkView.drinkNotFoundLabel.hidden = YES;
     
     [[NetworkController networkController] fetchDrinkForSong:self.currentDataModel.trackTitle withArtist:self.currentDataModel.albumArtist withCompletionHandler:^(NSString *errorString, Drink *drink) {
         if (errorString == nil && drink != nil) {
@@ -499,10 +501,22 @@ static NSString *gnsdkLicenseFilename = @"license.txt";
                 [self.activityIndicator stopAnimating];
                 [UIView animateWithDuration:1.5 delay:0.0 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{
                     self.findDrinkButton.alpha = 0;
-                    CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.statusIdNowLabel.frame.origin.y - 5, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
+                    CGRect drinkViewFrame = CGRectMake(self.view.frame.size.width * 0.15f, self.statusIdNowLabel.frame.origin.y - 5, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
                     self.drinkView.frame = drinkViewFrame;
                 } completion:^(BOOL finished) {
                 }];
+            }];
+        } else {
+            self.statusIdNowLabel.text = @"Sorry, no drink found";
+            self.drinkView.drinkNotFoundLabel.hidden = NO;
+            self.drinkView.labelView.text = @"";
+            self.drinkView.imageView.image = nil;
+            [self.activityIndicator stopAnimating];
+            [UIView animateWithDuration:1.5 delay:0.0 usingSpringWithDamping: 0.8f initialSpringVelocity:0.2f options:0 animations:^{   
+                self.findDrinkButton.alpha = 0;
+                CGRect drinkViewFrame =  CGRectMake(self.view.frame.size.width * 0.15f, self.statusIdNowLabel.frame.origin.y - 5, self.drinkView.frame.size.width, self.drinkView.frame.size.height);
+                self.drinkView.frame = drinkViewFrame;
+            } completion:^(BOOL finished) {
             }];
         }
     }];

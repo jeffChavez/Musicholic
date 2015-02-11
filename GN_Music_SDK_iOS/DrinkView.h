@@ -12,5 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *labelView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *visualEffectView;
+@property (weak, nonatomic) IBOutlet UILabel *drinkNotFoundLabel;
+
 
 @end
