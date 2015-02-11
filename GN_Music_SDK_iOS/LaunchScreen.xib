@@ -35,7 +35,7 @@
         </view>
     </objects>
     <resources>
-        <image name="TextLogo" width="307" height="47"/>
+        <image name="TextLogo" width="316" height="47"/>
         <image name="musicholic_logo_circle.png" width="1024" height="1024"/>
     </resources>
 </document>

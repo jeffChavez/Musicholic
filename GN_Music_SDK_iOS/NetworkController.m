@@ -27,13 +27,12 @@
     
     return networkController;
 }
-
 - (void) requestOauthAccessForUser: (User *) user {
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                           user.screenname, @"screenname",
                           user.email, @"email",
                           user.password, @"password",
-                         nil];
+                          nil];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     [jsonData base64EncodedDataWithOptions:0];
@@ -98,7 +97,6 @@
     }];
     [dataRequest resume];
 }
-
 
 - (void) fetchImageForDrink: (Drink *)drink withCompletionHandler:(void (^)(UIImage *)) success; {
     self.imageQueue = [[NSOperationQueue alloc] init];
